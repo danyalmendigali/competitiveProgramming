@@ -13,11 +13,10 @@ void gotoxy(int x, int y)
 
 class Map {
 private: 
-     const int BORDER = 100;
-     const int EMPTY_CELL = 0; 
-     const int MINE = 10; 
-	      
-    int size;
+     const int BORDER = 100; // граница поля
+     const int EMPTY_CELL = 0; // пустая ячейка
+     const int MINE = 10; // мина
+     int size; // размер поля включая границы
 	vector <vector<int> > map;
 public:
 	Map() {
@@ -30,7 +29,7 @@ public:
 			 for(int j = 0; j < size; j++) {
 			 	if(i == 0 || j == 0 || i == size - 1 || j == size - 1) 
 			 	   temp.push_back(BORDER);
-			 	else 
+			 	
 			 	   temp.push_back(EMPTY_CELL);
 			 }
 			 map.push_back(temp);
@@ -62,10 +61,10 @@ public:
 		}
 	}
 	
+	// Случайная расстановка мин
 	void setRandMines(int numMines) {
 		
-		//while(true) 
-		
+	// Контроль количества мин которые можно установить на поле
 		if(numMines >= (size - 2)*(size - 2)) {
 			cout << "Too many mines" << endl;
 		  return;
@@ -74,7 +73,7 @@ public:
 		{
 			int x = 0; 
 			int y = 0;
-			
+			// Поиск пустой ячейки, не занятой мниой
 			do{
 			 x = rand() % (size - 2) + 1;
 			 y = rand() % (size - 2) + 1;
@@ -85,7 +84,7 @@ public:
 	}
 	
 	
-	
+	// Расстановка чисел не игровом поле
 	void setDigits() {
 		int d = 0;
 		for(int i = 1; i < size - 1; i++) {
