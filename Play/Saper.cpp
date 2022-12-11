@@ -3,6 +3,7 @@
 #include <vector>
 #include <ctime>
 #include <cstdlib>
+#include <conio.h>
 using namespace std;
 
 void gotoxy(int x, int y)
@@ -13,15 +14,29 @@ void gotoxy(int x, int y)
 
 class Map {
 private: 
-     const int BORDER = 100; // граница пол€
      const int EMPTY_CELL = 0; // пуста€ €чейка
      const int MINE = 10; // мина
      int size; // размер пол€ включа€ границы
-	vector <vector<int> > map;
+     const int BORDER = 100; // граница пол€
+	 vector <vector<int> > map;	
 public:
 	Map() {
 		 size = 5;
 	}
+	
+	bool isBorder(int x, int y) {
+		
+		if(x < 0 || x >= size)
+		  return false;
+		  
+		if(y < 0 || y >= size)
+		  return false;
+		
+	   if(map[x][y] == BORDER) {
+	   	 	return true;
+	     }
+	     return false; 
+   }
 	
 	void initMap() {		
 		for(int i = 0; i < size; i++) {
@@ -29,7 +44,7 @@ public:
 			 for(int j = 0; j < size; j++) {
 			 	if(i == 0 || j == 0 || i == size - 1 || j == size - 1) 
 			 	   temp.push_back(BORDER);
-			 	
+                 else
 			 	   temp.push_back(EMPTY_CELL);
 			 }
 			 map.push_back(temp);
@@ -112,10 +127,74 @@ public:
 			 
 		  }
 	  }
-  }
-	
-	
+  }	
 };
+
+class Keyboard {
+private :
+	int ch = 0;	
+public:	
+	Keyboard() {	
+		ch = 0;
+	}
+	
+	void waitKey() {
+	  ch = _getch();	
+     }
+	  
+     int getKey() {
+       return ch;	
+	 }
+};
+
+class Cursor {
+private:
+	int x = 1;
+	int y = 1;
+		
+	int tx = 1;
+	int ty = 1;
+public:
+	void save() {
+	 tx = x;
+	 ty = y;				
+	} 
+	
+	void undo() {
+	 x = tx;
+	 y = ty;				
+	}
+	
+	void incX() {
+		x++;
+	}
+	
+	void decX() {
+		x--;
+	}
+	
+	void incY() {
+		y++;
+	}
+	
+	void decY() {
+		y--;
+	}
+	
+	int getX() {
+		return x;
+	}
+	
+	int getY() {
+		return y;
+	}
+	
+	void move() {
+		gotoxy(x, y);
+	}
+				            	
+}; 
+
 
 class Game {
 private:
@@ -133,6 +212,31 @@ public:
 		map.setRandMines(2);
 		map.setDigits();
 		map.show();
+		
+		Keyboard kb;	
+		Cursor cs;
+		
+		cs.move();
+			
+		while(true) {
+			kb.waitKey();
+			cs.save();
+				
+			switch(kb.getKey()) {
+				case 77: cs.incX(); break; // вправо
+				case 80: cs.incY(); break; // вниз
+				case 75: cs.decX(); break; // влево
+				case 72: cs.decY(); break; // вверх				
+			}
+			
+			
+			if(map.isBorder(cs.getX(), cs.getY())) {
+				cs.undo();
+			}
+			cs.move(); 	 
+
+			
+		}
 	}	
 };
 
