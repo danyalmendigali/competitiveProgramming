@@ -18,11 +18,17 @@ private:
      const int MINE = 10; // мина
      int size; // размер поля включая границы
      const int BORDER = 100; // граница поля
-	 vector <vector<int> > map;	
+	 vector <vector<int> > map;
+	vector <vector<int> > mask;	 		
 public:
 	Map() {
-		 size = 5;
+		 size = 10;
 	}
+	
+	void openCell(int x, int y) {
+		mask[x][y] = 1;
+		
+		}
 	
 	bool isBorder(int x, int y) {
 		
@@ -50,14 +56,34 @@ public:
 			 map.push_back(temp);
 		}
 	}
+	
+	
+	
+	void initMask() {		
+		for(int i = 0; i < size; i++) {
+				vector <int> temp;
+			 for(int j = 0; j < size; j++) {
+			 	if(i == 0 || j == 0 || i == size - 1 || j == size - 1) 
+			 	   temp.push_back(BORDER);
+                 else
+			 	   temp.push_back(EMPTY_CELL);
+			 }
+			 mask.push_back(temp);
+		}
+	}	
 
 	
 
 	void show() {
-		
-		
+		gotoxy(0, 0);
+		 		
 		for(int i = 0; i < size; i++) {
 			 for(int j = 0; j < size; j++) {
+			 	
+			 	if(mask[i][j] == EMPTY_CELL) {
+			 		cout << ".";
+			 		continue;
+				 }
 			 	
 			 	if(map[j][i] == BORDER)
 			 	   cout << "#";
@@ -209,7 +235,8 @@ public:
 		//showLogo();
 		Map map;
 		map.initMap();
-		map.setRandMines(2);
+		map.initMask();
+		map.setRandMines(9);
 		map.setDigits();
 		map.show();
 		
@@ -226,7 +253,11 @@ public:
 				case 77: cs.incX(); break; // вправо
 				case 80: cs.incY(); break; // вниз
 				case 75: cs.decX(); break; // влево
-				case 72: cs.decY(); break; // вверх				
+				case 72: cs.decY(); break; // вверх
+				case 13:
+				  map.openCell(cs.getX(), cs.getY());
+				  map.show(); 
+				break; // вверх					
 			}
 			
 			
