@@ -20,13 +20,17 @@ private:
      const int BORDER = 100; // граница поля
 	 vector <vector<int> > map;
 	vector <vector<int> > mask;	 		
-public:
+public: 
 	Map() {
 		 size = 10;
 	}
 	
-	void openCell(int x, int y) {
-		mask[x][y] = 1;
+	int  openCell(int x, int y) {
+		mask[y][x] = 1;
+	 	
+		if(map[x][y] == MINE) {
+			return 0;
+		}
 		
 		}
 	
@@ -244,8 +248,10 @@ public:
 		Cursor cs;
 		
 		cs.move();
+		
+		bool exit = false;
 			
-		while(true) {
+		while(!exit) {
 			kb.waitKey();
 			cs.save();
 				
@@ -255,8 +261,16 @@ public:
 				case 75: cs.decX(); break; // влево
 				case 72: cs.decY(); break; // вверх
 				case 13:
-				  map.openCell(cs.getX(), cs.getY());
-				  map.show(); 
+				  if (map.openCell(cs.getX(), cs.getY()) == 0){
+				map.show();
+				
+				gotoxy(40, 9);
+			    cout << "Game over";
+			    Sleep(2000);
+			    
+			      exit = true;
+		 	    }
+		 	    map.show();
 				break; // вверх					
 			}
 			
