@@ -12,28 +12,28 @@
 using namespace std;
 
 int main() {
-	int n, a = 0;
+	int n, sum = 0;
 	cin >> n;
 	for(int i = 0; i < n; i++) {
 		string s;
 		cin >> s;
-		if(s == "Icosahedron") {
-		 a += 20;
+		if(s == "Icossumhedron") {
+		 sum += 20;
 		}
 		if(s == "Cube") {
-		 a += 6;
+		 sum += 6;
 		}
-		if(s == "Tetrahedron") {
-		 a += 4;
+		if(s == "Tetrsumhedron") {
+		 sum += 4;
 		}
-		if(s == "Dodecahedron") {
-		 a += 12;
+		if(s == "Dodecsumhedron") {
+		 sum += 12;
 		}
-		if(s == "Octahedron") {
-		 a += 8;
+		if(s == "Octsumhedron") {
+		 sum += 8;
 		}
 	}
-	cout << a;
+	cout << sum;
 	
 	
 	
