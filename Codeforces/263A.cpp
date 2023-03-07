@@ -12,6 +12,7 @@
 using namespace std;
 
 const int n = 5;
+const int f = 2;
 int main() {
 	int arr[n][n];
 	int x, y, s;
@@ -20,14 +21,11 @@ int main() {
 			cin >> arr[i][j];		
 			if(arr[i][j] == 1) {
 				x = i;
-				y = j;
-				s = x + y;
-				
-				
+				y = j;				
 	  }
      }
    }
-	cout << abs(x - 2) + abs(y - 2);
+	cout << abs(x - f) + abs(y - f);
 
 
 	
