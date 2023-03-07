@@ -17,7 +17,7 @@ int main() {
 	cin >> s;
 	vector <int> a;
 	for(int i = 0; i < s.size(); i+=2) {
-		a.push_back(s[i] - 48);
+		a.push_back(s 	[i] - 48);
 	}
 	
 	sort(a.begin(), a.end());
