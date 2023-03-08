@@ -12,25 +12,33 @@
 using namespace std;
 
 int main() {
-	string s;
-	cin >> s;
 	int count = 0;
-	for(int i = 0; i < s.size(); i++) {
-		for(int j = 0; j < s.size(); j++) {
-			if(s[i] != s[j]) {
-				count++;
-			}
-			if(s[i] == s[j]) {
-				break;
-			}
-		}
+	string s, s1;
+	cin >> s >> s1;
+	if(s.size() != s1.size()) {
+		cout << "NO";
+		return false;
 	}
 	
-	cout << count;
+	
+	for(int i = 0; i < s.size(); i++) {
+		if(s[i] == s1[s1.size() - i - 1]) {
+			count++;
+		}
+		
+	}
+		
+	if(count == s.size()) {
+		cout << "YES";
+	}
+	else cout << "NO";
+	
+ 
+
+	
 	
 	
 	
 	
 	return 0;
 }
-
