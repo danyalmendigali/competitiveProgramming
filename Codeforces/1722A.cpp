@@ -13,10 +13,10 @@ using namespace std;
 
 int main() {
 	int n;
+	int b = 0, c = 0, d = 0, e = 0, f = 0, g = 0;
 	cin >> n;
-	for(int i = 0; i <= n; i++) {
+	for(int i = 0; i < n; i++) {
 		int a;
-		int b = 0, c = 0, d = 0, e = 0, f = 0, g = 0;
 		cin >> a;
 		char y[a];
 		for(int j = 0; j < a; j++) {
@@ -38,16 +38,12 @@ int main() {
 				f++;
 			}
 			else g += 1;
-			
-			
-						
 		}
-		
-		if(b == 1 && c == 1 && d == 1 && e == 1 && f == 1 && g == 0) {
-			cout << "YES" << endl;
-		}
-		else cout << "NO" << endl;
 	}
+	  cout << b << c << d << e << f << g;
+		
+		
+	
 	
 	
 	
