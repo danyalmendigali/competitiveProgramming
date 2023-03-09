@@ -5,7 +5,6 @@
 #include <cmath>
 #include <vector>
 #include <string>
-#include <cstring>
 #include <iostream>
 #include <algorithm>
 
@@ -13,7 +12,7 @@ using namespace std;
 
 int main() {
 	int n;
-	int b = 0, c = 0, d = 0, e = 0, f = 0, g = 0;
+	
 	cin >> n;
 	for(int i = 0; i < n; i++) {
 		int a;
@@ -21,7 +20,7 @@ int main() {
 		char y[a];
 		for(int j = 0; j < a; j++) {
 			cin >> y[j];
-			int g = 0;
+			int b = 0, c = 0, d = 0, e = 0, f = 0, g = 0;
 			if(y[j] == 'T') {
 				b++;
 			}
@@ -40,10 +39,13 @@ int main() {
 			else g += 1;
 		}
 	}
-	  cout << b << c << d << e << f << g;
-		
-		
 	
+		
+		if(b == 1 && c == 1 && d == 1 && e == 1 && f == 1 && g == 0) {
+			cout << "YES" << endl;
+		}
+		else cout << "NO" << endl;
+	}
 	
 	
 	
