@@ -53,16 +53,16 @@ public:
 			
 			
 			switch(ch) {
-			    case 77: // вправо
+			    case 77: // РІРїСЂР°РІРѕ
 			      x++;
 			     break;
-			    case 80: // вниз
+			    case 80: // РІРЅРёР·
 			      y++;
 			     break;
-				case 75: // влево
+				case 75: // РІР»РµРІРѕ
 			      x--;
 			     break;	
-				case 72: // вверх
+				case 72: // РІРІРµСЂС…
 			      y--;
 			     break;				 					
 			}
