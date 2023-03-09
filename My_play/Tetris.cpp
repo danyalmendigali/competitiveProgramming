@@ -65,10 +65,8 @@ public:
 				case 72: // вверх
 			      y--;
 			     break;				 					
-			}
-						
-		}
-		
+			}						
+		}		
 		return 0;
 	}
 };
