@@ -1,22 +1,12 @@
-#include <map>
-#include <set>
-#include <cmath>
-#include <vector>
-#include <string>
-#include <cstring>
-#include <iostream>
-#include <algorithm>
-#include <cctype>
-
+#include <bits/stdc++.h>
 using namespace std;
 
+const int n = 32;
+const float g = 1.8;
 int main() {
-	long long int n;
-	long double a;
-	cin >> n;
-	a = n * 1.8 + 32;
-	cout << a;
-	
+	int t;
+	cin >> t;
+	cout << fixed << setprecision(1) << t * g + n;
 	
 	
 	
