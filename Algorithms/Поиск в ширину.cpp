@@ -28,17 +28,7 @@ int main() {
 	}
 	
 	
-	if (!used[to])
-	cout << "No path!";
-else {
-	vector<int> path;
-	for (int v=to; v!=-1; v=p[v])
-		path.push_back (v);
-	reverse (path.begin(), path.end());
-	cout << "Path: ";
-	for (size_t i=0; i<path.size(); ++i)
-		cout << path[i] + 1 << " ";
-}
+	
 	
 	
 	
