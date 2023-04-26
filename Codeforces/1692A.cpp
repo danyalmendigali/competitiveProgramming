@@ -1,39 +1,31 @@
-#include <cstdio>
-#include <cstdlib>
-#include <map>
-#include <set>
-#include <cmath>
-#include <vector>
-#include <string>
-#include <cstring>
-#include <iostream>
-#include <algorithm>
+#include <bits/stdc++.h>
 
 using namespace std;
 
+#define ll long long
+#define array arr
+
 int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	
 	int n;
 	cin >> n;
-	
-	for(int i = 0; i < n; i++) {	
-	int a, b, c, d, maxa;
-	cin >> a >> b >> c >> d;
-	
-	maxa = max(b, max(c, d));
-	
-	if(a < maxa) {
-		if(maxa == b) {
-			cout << 1 << endl;
+	for(int i = 0; i < n; i++) {
+		int a, b, c, d, s = 0;
+		cin >> a >> b >> c >> d;
+		if(a < b) {
+			s++;
 		}
-		if(maxa == c) {
-			cout << 2 << endl;
+		if(a < c) {
+			s++;
 		}
-		if(maxa == d) {
-			cout << 3 << endl;
-		}
-    }
-    else cout << 0 << endl;
-}
+		if(a < d) {
+			s++;
+		}	
+		cout << s << endl; 
+	}
+	
 	
 	
 	
