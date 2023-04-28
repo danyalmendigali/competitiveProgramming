@@ -3,7 +3,6 @@ using namespace std;
 
 #define ll long long
 #define array arr
-int A[1000];
 
 int main() {
 	ios::sync_with_stdio(false);
@@ -11,6 +10,7 @@ int main() {
 	
 	int n, k = 0, x;
 	cin >> n;
+	vector <int> A(n, 0);
 	for(int i = 0; i < n; i++) {
 		cin >> A[i];
 	}
@@ -23,7 +23,7 @@ int main() {
 	}
 	
 	
-	cout << k;
+	cout << k;	
 	
 	
 	
