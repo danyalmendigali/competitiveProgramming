@@ -1,36 +1,28 @@
-#include <cstdio>
-#include <cstdlib>
-#include <map>
-#include <set>
-#include <cmath>
-#include <vector>
-#include <string>
-#include <cstring>
-#include <iostream>
-#include <algorithm>
-
+#include <bits/stdc++.h>
 using namespace std;
 
+#define ll long long
+#define array arr
 int main() {
-	string s;
-	cin >> s;
-	int count = 0;
-	for(int i = 0; i < s.size(); i++) {
-		for(int j = 0; j < s.size(); j++) {
-			if(s[i] != s[j]) {
-				count++;
-			}
-			if(s[i] == s[j]) {
-				break;
-			}
-		}
-	}
+	ios::sync_with_stdio(false);
+	cin.tie(0);
 	
-	cout << count;
+	string s;
+	vector <char> v;
+	cin >> s;
+	for(size_t i = 0; i < s.size(); i++)
+	if(find(v.begin(), v.end(), s[i]) == v.end())
+	v.push_back(s[i]);
+	
+	if(v.size() % 2 == 0) {
+		cout << "CHAT WITH HER!";
+	}
+	else
+	   cout << "IGNORE HIM!";
+	
 	
 	
 	
 	
 	return 0;
 }
-

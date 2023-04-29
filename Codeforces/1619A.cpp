@@ -13,7 +13,7 @@ int main() {
 		string s;
 		cin >> s;
 		int a = 0;
-		for(int j = 0; j < s.size() / 2 - 1; j++) {
+		for(int j = 0; j < s.size() / 2; j++) {
 			for(int h = s.size() / 2 + 1; h < s.size(); h++) {
 				if(s[j] == s[h]) {
 				a++;	
