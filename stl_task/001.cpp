@@ -5,7 +5,7 @@ using namespace std;
 #define array arr
 
 int main() {
-    int n, l = 0;
+    int n, h = 0;
 	cin >> n;
 	vector <ll int> myVector(n);
 	for(ll int i = 0; i < n; i++) {
@@ -14,11 +14,11 @@ int main() {
 
 	for(ll int i = 0; i < n; i++) {
         if(myVector[i] != myVector[i + 1]) {
-            l++;
+            h++;
         }
 	}
 
-	cout << l;
+	cout << h;
 
 
 
