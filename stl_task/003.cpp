@@ -7,13 +7,13 @@ using namespace std;
 int main() {
     cin.tie(0);
     setlocale(LC_ALL, "Russian");
-    cout << "Ââåäèòå êîëè÷åñòâî ÷èñåë ïîñëåäîâàòåëüíîñòè: ";
+    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ñ‡Ð¸ÑÐµÐ» Ð¿Ð¾ÑÐ»ÐµÐ´Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚Ð¸: ";
     int n;
     double l = 0.0;
     cin >> n;
     vector <double> myVector(n);
 
-    cout << "Ââåäèòå ïîñëåäîâàòåëüíîñòü: ";
+    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ð¾ÑÐ»ÐµÐ´Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚ÑŒ: ";
     for(int i = 0; i < n; i++) {
         cin >> myVector[i];
         l += myVector[i];
@@ -32,9 +32,9 @@ int main() {
 
     l /= n;
 
-    cout << "Ñðåäíåå àðèôìåòè÷åñêîå: " << l << endl;
-    cout << "Ìèíèìàëüíîå ÷èñëî: " << minVector << endl;
-    cout << "Ìàêñèìàëüíîå ÷èñëî: " << maxVector << endl;
+    cout << "Ð¡Ñ€ÐµÐ´Ð½ÐµÐµ Ð°Ñ€Ð¸Ñ„Ð¼ÐµÑ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ðµ: " << l << endl;
+    cout << "ÐœÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾: " << minVector << endl;
+    cout << "ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾: " << maxVector << endl;
 
 
 
