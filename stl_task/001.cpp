@@ -5,6 +5,10 @@ using namespace std;
 #define array arr
 
 int main() {
+    ios::sync_with_stdio(false);
+	cin.tie(0);
+	setlocale(LC_ALL, "Russian");
+
     int n, h = 0;
 	cin >> n;
 	vector <ll int> myVector(n);
