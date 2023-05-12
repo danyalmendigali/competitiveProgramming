@@ -16,14 +16,14 @@ void solve() {
 
     int X;
     cin >> X;
-    int closest = A[0];
+    int closest = A[0]; // начальное значение ближайшего элемента равно первому элементу вектора
 
         for(int i = 1; i < n; i++) {
-            if(abs(A[i] - X) < abs(closest - X)) {
-                closest = A[i];
+            if(abs(A[i] - X) < abs(closest - X)) { // если нашли элемент, который ближе к X
+                closest = A[i]; // обновляем значение ближайшего элемента
             }
-            else if(abs(A[i] - X) == abs(closest- X) && A[i] < closest) {
-                closest = A[i];
+            else if(abs(A[i] - X) == abs(closest - X) && A[i] < closest) {  // если есть несколько ближайших элементов
+                closest = A[i]; // выбираем минимальный
             }
         }
 
