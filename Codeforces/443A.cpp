@@ -13,7 +13,7 @@ void solve() {
         letters.insert(input[i]);
     }
 
-    cout << letters.size() << std::endl;
+    cout << letters.size() << endl;
 
 }
 
