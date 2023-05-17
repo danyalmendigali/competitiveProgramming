@@ -7,13 +7,13 @@ int main() {
 	for(int i = 0; i <= n; i++) {
 		a += i;
 	}
-	cout << a ;
-	
-	
-	
-	
-	
-	
-	
+	cout << a;
+
+
+
+
+
+
+
 	return 0;
 }
