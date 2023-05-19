@@ -1,32 +1,42 @@
+
 #include <bits/stdc++.h>
 using namespace std;
 
 #define ll long long
-#define array arr
+#define ar array
+
+
+
+string solve(const string& s) {
+
+    int n = s.size();
+    if(n == 1 || n % 2 != 0) {
+        return "NO";
+    }
+    bool isSquare = true;
+    for(int i = 0; i < n / 2; i++) {
+        if(s[i] != s[i + n / 2]) {
+            isSquare = false;
+            break;
+        }
+    }
+    return isSquare? "YES" : "NO";
+}
+
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	
-	int n;
-	cin >> n;
-	for(int i = 0; i < n; i++) {
-		string s;
-		cin >> s;
-		int a = 0;
-		for(int j = 0; j < s.size() / 2; j++) {
-			for(int h = s.size() / 2 + 1; h < s.size(); h++) {
-				if(s[j] == s[h]) {
-				a++;	
-				}
-			}
-		}
-	
-    	cout << a << endl;
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+
+    int t;
+    cin >> t;
+    while(t--) {
+        string s;
+        cin >> s;
+        cout << solve(s) << endl;
+    }
+
+    return 0;
 }
-	
-	
-	
-	
-	
-	return 0;
-}
+
+
+
