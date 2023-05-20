@@ -1,62 +1,60 @@
-#include <iostream>
-#include <string>
-#include <cctype>
+
+#include <bits/stdc++.h>
 using namespace std;
 
-bool isCatSound(string s) {
-    int n = s.length();
-    int i = 0;
+#define ll long long
+#define ar array
+
+void solve() {
+        int t;
+        cin >> t;
+        while(t--) {
+        int a;
+        cin >> a;
+        vector <char> myChar;
+        for(int i = 0; i < a; i++) {
+            char h;
+            cin >> h;
+            myChar.push_back(h);
+        }
+        for(int i = 0; i < myChar.size(); i++) {
+            myChar[i] = tolower(myChar[i]);
+        }
 
 
-    while (i < n && (s[i] == 'm' || s[i] == 'M')) {
-        i++;
-    }
-    if (i == 0) {
-        return false;
-    }
+        auto it = unique(myChar.begin(), myChar.end());
+        myChar.erase(it, myChar.end());
+
+          cout << ((myChar.size() == 4 && myChar[0] == 'm' && myChar[1] == 'e' && myChar[2] == 'o' && myChar[3] == 'w') ? "YES" : "NO") << endl;
+
+        }
 
 
-    while (i < n && (s[i] == 'e' || s[i] == 'E')) {
-        i++;
-    }
-    if (i == 1) {
-        return false;
-    }
 
 
-    while (i < n && (s[i] == 'o' || s[i] == 'O')) {
-        i++;
-    }
-    if (i == 2) {
-        return false;
-    }
 
 
-    while (i < n && (s[i] == 'w' || s[i] == 'W')) {
-        i++;
-    }
-    if (i != n) {
-        return false;
-    }
 
-    return true;
+
+
+
 }
+
 
 int main() {
-    int t;
-    cin >> t;
+    ios::sync_with_stdio(false);
+    cin.tie(0);
 
-    while (t--) {
-        int n;
-        string s;
-        cin >> n >> s;
+    solve();
 
-        if (isCatSound(s)) {
-            cout << "YES" << endl;
-        } else {
-            cout << "NO" << endl;
-        }
-    }
 
-    return 0;
+
+
+
+
+   return 0;
 }
+
+
+
+
