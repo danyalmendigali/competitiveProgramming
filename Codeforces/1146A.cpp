@@ -8,21 +8,14 @@ void solve() {
     string s;
     cin >> s;
     int a = 0;
-    for(int i = 0; i < s.size(); i++) {
-        if(s[i] == 'a') {
+    for (int i = 0; i < s.size(); i++) {
+        if (s[i] == 'a') {
             a++;
         }
     }
 
-    if(a > s.size() - a){
-        cout << s.size() << endl;
-    }
-    int b, c;
-    if(a <= s.size() - a) {
-        b = a--;
-        cout << a + b;
-
-    }
+    int f = min(2 * a - 1, (int)s.size());
+    cout << f << endl;
 
 
 }
