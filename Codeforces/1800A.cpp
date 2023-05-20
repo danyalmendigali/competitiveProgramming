@@ -29,15 +29,6 @@ void solve() {
 
         }
 
-
-
-
-
-
-
-
-
-
 }
 
 
@@ -46,7 +37,6 @@ int main() {
     cin.tie(0);
 
     solve();
-
 
 
 
