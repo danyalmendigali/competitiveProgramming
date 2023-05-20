@@ -4,8 +4,6 @@ using namespace std;
 #define ll long long
 #define ar array
 
-
-
 void solve() {
        int t;
        cin >> t;
