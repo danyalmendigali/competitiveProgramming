@@ -5,7 +5,7 @@ using namespace std;
 #define ar array
 
 void solve() {
-    int n;
+    int n;m
     cin >> n;
     vector <int> myVector(n);
     for (int i = 0; i < n; i++) {
