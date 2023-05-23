@@ -39,6 +39,7 @@ void solve() {
 
       cout << ans;
 
+
 }
 
 int main() {
@@ -49,11 +50,11 @@ int main() {
     int t;
     cin >> t;
 
+
     FOR(i, 0, t) {
       solve();
       cout << "\n";
     }
-
 
 
 
