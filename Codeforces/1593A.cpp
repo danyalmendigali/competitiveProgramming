@@ -5,7 +5,7 @@ using namespace std;
 #define ar array
 
 int solve(ll int& a, ll int& b, ll int& c) {
-        // Находим максимальное значение из a, b и c и сохраняем в переменной mx
+    // Находим максимальное значение из a, b и c и сохраняем в переменной mx
     long mx = (a > b) ? a : b;
     mx = (mx > c) ? mx : c;
 
