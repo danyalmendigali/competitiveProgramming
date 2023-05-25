@@ -2,6 +2,7 @@
 using namespace std;
 
 bool isConcatenation(const string& str) {
+     // Регулярное выражение для проверки строк вида "aa", "aaa", "bb" или "bbb"
     regex pattern("^(a{2,3}|b{2,3})+$");
     return regex_match(str, pattern);
 }
