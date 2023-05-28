@@ -3,9 +3,9 @@
 #define ll long long
 #define ar array
 /*
-    int tt;
-	cin >> tt;
-	while (tt--) {
+    int t;
+	cin >> t;
+	while (t--) {
 		int n;
 		cin >> n;
 		vector<int> a(n);
