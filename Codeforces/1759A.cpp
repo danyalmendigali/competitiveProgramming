@@ -6,10 +6,23 @@
 using namespace std;
 
 void solve() {
+    // Неоптимальное создание строки
+    // string s = "YesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYes";
     int t;
     cin >> t;
     while(t--) {
-    string s = "YesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYesYes";
+    // Оптимальное создание строки
+    int n = 50;
+    string str = "Yes";
+
+    string s(n * str.length(), ' ');  // Создаем строку с достаточным размером
+
+    for (int i = 0; i < n; i++) {
+        s.replace(i * str.length(), str.length(), str);  // Заменяем каждую подстроку на "yes"
+    }
+
+
+
     string substring;
     cin >> substring;
 
@@ -21,6 +34,8 @@ void solve() {
         cout << "NO" << endl;
        }
     }
+
+
 
 }
 
