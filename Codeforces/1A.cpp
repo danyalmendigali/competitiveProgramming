@@ -1,6 +1,9 @@
 #include <iostream>
 using namespace std;
 
+#define ll long long
+#define ar array
+
 int main() {
 	long long n, m, a, sum = 1;
 	cin >> n >> m >> a;
