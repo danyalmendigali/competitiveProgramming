@@ -2,6 +2,8 @@
 #include <windows.h>
 using namespace std;
 
+
+
 int solve(int x)
 {
     int cnt = ((x % 10) - 1) * 10;
@@ -25,7 +27,6 @@ int main() {
       cout << solve(x) << "\n";
 
     }
-
 
 
 
