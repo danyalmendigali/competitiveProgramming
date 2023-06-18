@@ -12,34 +12,39 @@ int main() {
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
 
+    int a;
+    cin >> a;
+    while(a--) {
+
     int t;
     cin >> t;
-    while(t--)
-    {
-        int n;
-        cin >> n;
-        int arr[n];
-        for(int i = 0; i < n; i++)
-        {
-            cin >> arr[i];
-        }
-
-        sort(arr, arr + n);
-        int maxArr = arr[n - 1];
-        int j = 0;
-
-
-        for(int i = 0; i < n; i++)
-        {
-            j += maxArr - arr[i];
-        }
-
-        cout << j << endl;
+    int arr[t];
+    for(int i = 0; i < t; i++) {
+        cin >> arr[i];
     }
+
+    int minElement = arr[0];
+    int maxElement = arr[0];
+
+    for(int i = 0; i < t; i++) {
+        if(minElement >= arr[i]) {
+            minElement = arr[i];
+        }
+    }
+
+
+    for(int i = 0; i < t; i++) {
+        if(maxElement <= arr[i]) {
+            maxElement = arr[i];
+        }
+      }
+        cout << maxElement - minElement << endl;
+    }
+
+
+
+
 
 
   return 0;
 }
-
-
-
