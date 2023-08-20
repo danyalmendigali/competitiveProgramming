@@ -1,31 +1,46 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
+#include <set>
 using namespace std;
 
-int main() {
-        int size, m ,i;
-        cin >> size;
-        int *arr = new int[size];
-        
-        for (m = 0; m < size; m++) {
-            cin >> arr[m];   
+void solve()
+{
+    int n;
+    cin >> n;
+
+    vector<int> a(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
+    }
+
+    set<int> seen;
+    vector<int> result;
+
+
+    for (int i = n - 1; i >= 0; --i) {
+        if (seen.find(a[i]) == seen.end()) {
+            result.push_back(a[i]);
+            seen.insert(a[i]);
         }
-        
-        for(m = 0; m < size; m++) {
-        	cout << arr[m] << " ";
-        	for(i = m + 1; i < size; i++) {
-        		if(arr[m] == arr[i]) {
-        			for(int k = i; k < size - 1; k++) {
-        				arr[k] = arr[k + 1];
-					}
-					size--;
-				}
-			}
-		}
-		     
-	
-	
-	
-	
-	
+    }
+
+
+    cout << result.size() << endl;
+    for (int i = result.size() - 1; i >= 0; --i) {
+        cout << result[i] << " ";
+    }
+}
+
+int main() {
+
+
+
+    solve();
+
+
+
+
+
 	return 0;
 }
