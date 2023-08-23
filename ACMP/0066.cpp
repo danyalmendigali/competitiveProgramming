@@ -1,14 +1,44 @@
 #include <iostream>
 using namespace std;
 
+void solve()
+{
+    char str;
+    cin >> str;
+    string s = "qwertyuiopasdfghjklzxcvbnm";
+    int index_num;
+    if(str == 'm')
+    {
+        cout << "q";
+    }
+    else
+        {
+        for(int i = 0; i < s.size(); i++)
+        {
+            if(s[i] == str)
+            {
+                index_num = i;
+            }
+        }
+
+
+       for(int i = 0; i < s.size(); i++)
+       {
+           if(i == index_num + 1)
+           {
+                  cout << s[i];
+           }
+       }
+   }
+
+
+}
+
 int main()
 {
-	string s = "qwertyuiopasdfghjklzxcvbnmq";
-	char c;
-	cin >> c;
-	cout << s[s.find(c) + 1];
-	
-	
-	
+	solve();
+
+
+
 	return 0;
 }
