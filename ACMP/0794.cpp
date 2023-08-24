@@ -1,20 +1,31 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <cmath>
 using namespace std;
 
 void solve()
 {
-    long long int x, y, z;
-    cin >> x >> y >> z;
+    int n, m, k;
+    cin >> n >> m >> k;
 
-    cout << (x * 3) + (y * 5) + (z * 12);
+    int a = n * (min(k - 1, m) + m / k);
+
+    cout << a;
+
+
 }
 
 int main() {
+
 
     solve();
 
 
     return 0;
 }
+
+
+
+
+

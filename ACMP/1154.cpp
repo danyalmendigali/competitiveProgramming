@@ -1,20 +1,28 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <cmath>
 using namespace std;
 
 void solve()
 {
-    long long int x, y, z;
-    cin >> x >> y >> z;
+    char a, b, c;
+    int a1, b1, c1, d2;
+    cin >> a1 >> a >> b1 >> b >> c1 >> c  >> d2;
 
-    cout << (x * 3) + (y * 5) + (z * 12);
+
 }
 
 int main() {
+
 
     solve();
 
 
     return 0;
 }
+
+
+
+
+
