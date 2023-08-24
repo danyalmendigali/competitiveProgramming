@@ -1,33 +1,40 @@
 #include <iostream>
-#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
 using namespace std;
-
-#define ar array
-#define ll long long
-#define FOR(i, a, b) for(int i = a; i < b; i++)
 
 void solve()
 {
-    string s;
     int n;
     cin >> n;
-    for(int i = 0; i < n; i++)
+    vector<int> result;
+
+    string s;
+    int p = 1;
+    while(p <= 200)
     {
-        s += to_string(i);
+        p++;
+        for(int i = 1; i < p; i++)
+        {
+            result.push_back(i);
+            s += to_string(i);
+        }
     }
 
-    cout << s[n];
+
+    cout << s[n - 1];
 }
 
-
 int main() {
-    cin.tie(0);
+
 
     solve();
 
 
-
-
-
     return 0;
 }
+
+
+
+
