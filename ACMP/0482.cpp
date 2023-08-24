@@ -12,7 +12,7 @@ void solve()
 
     string s;
     int p = 1;
-    while(p <= 200)
+    while(p <= 1000)
     {
         p++;
         for(int i = 1; i < p; i++)
