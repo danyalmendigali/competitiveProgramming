@@ -9,14 +9,15 @@ using namespace std;
 void solve()
 {
 
-    long long int n;
+    int a;
+    cin >> a;
+    if(a % 10 == 0)
+    {
+        cout << "Vendel Bank" << "\n";
+        return false;
+    }
 
-    cin >> n;
-
-    long double a;
-    a = n * 1.8 + 32;
-
-    cout << fixed << setprecision(1) << a;
+    else if()
 
 
 }

@@ -3,21 +3,16 @@
 #include <algorithm>
 #include <cmath>
 #include <cctype>
-#include <iomanip>
 using namespace std;
+
 
 void solve()
 {
-
-    long long int n;
-
+    int n;
     cin >> n;
+    int a = (( n * ( n + 1) / 2) + 1);
 
-    long double a;
-    a = n * 1.8 + 32;
-
-    cout << fixed << setprecision(1) << a;
-
+    cout << a;
 
 }
 
