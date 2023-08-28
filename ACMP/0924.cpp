@@ -38,7 +38,7 @@ void solve()
     }
     else
     {
-        cout << "Noi" << "\n";
+        cout << "No" << "\n";
     }
 }
 
