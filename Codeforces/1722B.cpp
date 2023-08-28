@@ -5,6 +5,7 @@
 #include <cctype>
 using namespace std;
 
+
 void solve()
 {
     int n;
