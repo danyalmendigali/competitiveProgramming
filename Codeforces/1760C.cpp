@@ -30,11 +30,11 @@ void solve()
     {
         if(myVector[i] != maxElement1)
         {
-            cout << myVector[i] - maxElement1 << " ";
+            cout << maxElement1 = myVector[i] << " ";
         }
         if(myVector[i] == maxElement1)
         {
-            cout << myVector[i] - maxElement2 << " ";
+            cout << myVector[i] - maxElement2
         }
     }
 
