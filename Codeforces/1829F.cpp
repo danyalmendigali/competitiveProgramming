@@ -6,6 +6,7 @@ using namespace std;
 #define FOR(i, a, b) for(int i = a; i < b; i++)
 
 void solve() {
+
     int t;
     cin >> t; // Вводим количество тестовых случаев
     while (t--) {
