@@ -22,35 +22,23 @@ using namespace std;
 
 void solve()
 {
-
-    ll n, m;
-    cin >> n >> m;
-    for(ll i = 1; i <= m; i++)
+    string s;
+    getline(cin, s);
+    FOR(i, 0, s.size())
     {
-        for(ll j = 1; j <= n; j++)
+        s[i] = tolower(s[i]);
+        if(s[i] == ' ')
         {
-            char c;
-            cin >> c;
-            a[i][j] = c;
-
-            if(c == 'B')
-            {
-                countA++;
-            }
-            if(c == 'W')
-            {
-                countA++;
-            }
-            if(c == 'G')
-            {
-                countA++;
-            }
+            s.erase(i, 1);
+            i--;
         }
     }
 
+    char element = s[s.size() - 2];
+    cout << (element == 'a' || element == 'e' || element == 'i' || element == 'o' || element == 'u' || element == 'y' ? "YES" : "NO ") << endl;
 
 
-    cout << (n  == m * n ? "#Black&White" : "&Color") << endl;
+
 
 
 
