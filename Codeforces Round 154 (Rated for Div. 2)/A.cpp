@@ -1,3 +1,4 @@
+
 #include <bits/stdc++.h>
 #include <algorithm>
 
@@ -11,39 +12,40 @@
 #define F first
 #define S second
 
+using namespace std;
+
 const ll N = 1e9;
 const ll inf = 1e9 + 9;
 const ll mod = 1e9 + 7;
 
-
-using namespace std;
+string s;
 
 void solve()
 {
-    ll a, b, c, x, y;
-    cin >> a >> b >> c >> x >> y;
+    string s;
+    cin >> s;
 
-
-    ll res1 = b - y;
-    ll res2 = a - x;
-
-    if(res1 < 0)
+    int pos1 = 0, pos2 = 0;
+    for(int i = 0; i < s.size(); i++)
     {
-        c += res1;
-    }
-    if(res2 < 0)
-    {
-        c += res1;
+        if(s[i] == '1')
+            pos1 = i;
+
+        if(s[i] == '3')
+            pos2 = i;
     }
 
-
-
-    cout << (c >= 0 ? "YES" : "NO") << endl;
-
-
-
-
-
+    if(pos1 < pos2)
+    {
+        cout << 13 << endl;
+        return;
+    }
+    else
+    {
+        cout << 31 << endl;
+        return;
+    }
+    cout << -1 << endl;
 
 }
 

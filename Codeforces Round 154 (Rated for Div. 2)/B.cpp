@@ -11,38 +11,39 @@
 #define F first
 #define S second
 
+
+using namespace std;
+
 const ll N = 1e9;
 const ll inf = 1e9 + 9;
 const ll mod = 1e9 + 7;
 
-
-using namespace std;
+string s1, s2;
 
 void solve()
 {
-    ll a, b, c, x, y;
-    cin >> a >> b >> c >> x >> y;
+    cin >> s1 >> s2;
 
-
-    ll res1 = b - y;
-    ll res2 = a - x;
-
-    if(res1 < 0)
+    if(s1 == s2)
     {
-        c += res1;
-    }
-    if(res2 < 0)
-    {
-        c += res1;
+        cout << "YES" << "\n";
+        return;
     }
 
+    int n = s1.size();
+    int ok = 0;
 
+    for(int i = 0; i < n - 1; i++)
+    {
+        if(s1[i] == '0' && s2[i] == '0' && s1[i + 1] == '1' && s2[i + 1] == '1') ok = 1;
 
-    cout << (c >= 0 ? "YES" : "NO") << endl;
-
-
-
-
+    }
+    if(ok)
+    {
+        cout << "YES" << "\n";
+        return;
+    }
+    cout << "NO" << "\n";
 
 
 }
