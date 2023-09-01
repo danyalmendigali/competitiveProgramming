@@ -21,8 +21,6 @@ using namespace std;
 
 void solve() {
 
-
-
         int size_1;
         cin >> size_1;
 
@@ -40,8 +38,6 @@ void solve() {
                 cout << total_ways << endl;
             }
         }
-
-
 
 }
 
