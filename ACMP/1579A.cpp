@@ -32,8 +32,20 @@ void solve()
         if(s[i] == 'C') c++;
     }
 
+    ll mn = min(a, b);
+    ll g, h, t;
+    g = (a - mn) + (b - mn);
 
-     cout << (a + c == b || b + c == a ? "YES" : "NO") << endl;
+    if(mn == a)
+    {
+        if(g == c)
+        {
+            cout << "YES" << endl;
+            return;
+        }
+    }
+    cout << "NO" << endl;
+
 }
 
 signed main()
@@ -43,7 +55,7 @@ signed main()
 
     optimus_prime;
 
-    int t;
+    ll t;
     cin >> t;
     while(t--)
         solve();
