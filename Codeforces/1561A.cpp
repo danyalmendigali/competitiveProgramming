@@ -21,6 +21,7 @@ using namespace std;
 vll v, v1;
 ll result;
 
+
 void solve()
 {
     ll n, a, cnt = 0 , cnt1 = 0;
