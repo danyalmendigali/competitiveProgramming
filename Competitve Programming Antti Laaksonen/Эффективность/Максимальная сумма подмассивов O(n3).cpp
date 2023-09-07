@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <windows.h>
 
 #define optimus_prime  cin.tie(0); cout.tie(0)
 #define all(a) a.begin() , a.end()
@@ -17,9 +18,9 @@
 using namespace std;
 
 const ll N = 101;
+const ll INT_MAX = 1e9;
 const ll inf = 1e9 + 9;
 const ll mod = 1e9 + 7;
-
 
 ll a[N][N];
 ll countA = 0;
@@ -28,36 +29,43 @@ ll countA = 0;
 void solve()
 {
     int n;
+    cout << "Введите размер вектора: ";
     cin >> n;
-    string s;
-    cin >> s;
-    int x = 0, y = 0;
+    vector<int> array(n);
+    cout << "Введите вектор: ";
     for(int i = 0; i < n; i++)
     {
-        if(s[i] == 'L') x--;
-        if(s[i] == 'R') x++;
-        if(s[i] == 'D') y--;
-        if(s[i] == 'U') y++;
-        if(x == 1 && y == 1)
+        cin >> array[i];
+    }
+
+    int best = 0;
+    for(int a = 0; a < n; a++)
+    {
+        for(int b = a; b < n; b++)
         {
-            cout << "YES" << endl;
-            return;
+            int sum = 0;
+            for(int k = a; k <= b; k++)
+            {
+                sum += array[k];
+            }
+            best = max(best, sum);
         }
     }
-    cout << "NO" << endl;
+    cout << best;
 }
 
 signed main()
 {
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
 
     optimus_prime;
 
-    int t;
-    cin >> t;
-    for(int i = 1; i <= t; i++)
-    {
-        solve();
-    }
+
+    solve();
+
+
+
 
 
 
