@@ -17,8 +17,6 @@
 
 using namespace std;
 
-// O(n3) потому что три вложенных цикла
-
 const ll N = 101;
 const ll INT_MAX = 1e9;
 const ll inf = 1e9 + 9;
@@ -27,6 +25,8 @@ const ll mod = 1e9 + 7;
 ll a[N][N];
 ll countA = 0;
 
+
+// O(n2) потому что два вложенных цикла
 
 void solve()
 {
@@ -41,19 +41,16 @@ void solve()
     }
 
     int best = 0;
-    for(int a = 0; a < n; a++)
+    for(int a = 0; a < n;  a++)
     {
-        for(int b = a; b < n; b++)
+        int sum = 0;
+        for(int b = 1; b < n; b++)
         {
-            int sum = 0;
-            for(int k = a; k <= b; k++)
-            {
-                sum += array[k];
-            }
+            sum += array[b];
             best = max(best, sum);
         }
     }
-    cout << best;
+    cout << best << "\n";
 }
 
 signed main()
