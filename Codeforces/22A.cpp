@@ -8,6 +8,7 @@
 #define optimus_prime  cin.tie(0); cout.tie(0)
 #define endl "\n"
 #define vll vector<long long>
+#define vi vector<int>
 #define FOR(i, a, b) for(int i = a; i < b; i++)
 #define pb(a) push_back(a)
 #define sz size()
@@ -27,34 +28,24 @@ ll countA = 0;
 
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-    set<int> el;
-    vector<int> ans;
-    for(int i = 0; i < n; i++)
-    {
-        int x;
-        cin >> x;
-        if(!el.count(x))
-        {
-            ans.pb(i);
-            el.insert(x);
-        }
-    }
+    int n;
+    cin >> n;
+    vi myVector(n);
+    FOR(i, 0, n) cin >> myVector[i];
 
-    if(int(ans.size()) < k)
+    sort(all(myVector));
+    myVector.erase(unique(myVector.begin(), myVector.end()), myVector.end());
+
+    if(myVector.sz == 1)
     {
         cout << "NO" << endl;
     }
     else
     {
-        cout << "YES" << endl;
-        for(int i = 0; i < k; i++)
-        {
-            cout << ans[i] + 1 << " ";
-        }
-        cout << endl;
+        cout << myVector[1] << endl;
     }
+
+
 }
 
 signed main()
