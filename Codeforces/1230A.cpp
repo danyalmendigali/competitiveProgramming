@@ -71,7 +71,7 @@ void solve()
         cout << "YES" << endl;
         return;
     }
-    cout << "NP" << endl;
+    cout << "NO" << endl;
 
 
 
