@@ -28,28 +28,32 @@ ll countA = 0;
 
 // O(n) потому что один вложенный цикла
 
+// Функция для решения задачи
 void solve()
 {
-
     int n;
     cout << "Введите размер вектора: ";
     cin >> n;
-    vector<int> array(n);
+    vector<int> dp(n);
     cout << "Введите вектор: ";
 
+    // Считываем элементы массива
     for(int i = 0; i < n; i++)
     {
-        cin >> array[i];
+        cin >> dp[i];
     }
-
 
     int best = 0, sum = 0;
+
+    // Проходим по массиву и находим максимальную сумму подпоследовательности
     for(int k = 0; k < n; k++)
     {
-        sum = max(array[k], sum + array[k]);
+        sum = max(dp[k], sum + dp[k]);
         best = max(best, sum);
     }
-    cout << best << endl;
+
+    // Выводим результат
+    cout << "Максимальная сумма подпоследовательности: " << best << endl;
 }
 
 signed main()

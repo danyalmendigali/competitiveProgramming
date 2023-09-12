@@ -27,19 +27,19 @@ void solve()
         cout << 1 << endl;
         return;
     }
-    if(n % 2 == 1)
+    if(n % 4 == 1)
     {
         cout << 8 << endl;
         return;
     }
-    if(n % 2 == 2)
+    if(n % 4 == 2)
     {
         cout << 4 << endl;
         return;
     }
-    if(n % 2 == 3)
+    if(n % 4 == 3)
     {
-        cout << 8 << endl;
+        cout << 2 << endl;
         return;
     }
     else
