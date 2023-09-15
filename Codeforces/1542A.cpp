@@ -1,62 +1,83 @@
-#include <bits/stdc++.h>
-#include <windows.h>
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <set>
+#include <cmath>
+
+#define all(a) a.begin() , a.end()
+#define optimus_prime  cin.tie(0); cout.tie(0)
+#define endl "\n"
+#define vll vector<long long>
+#define vi vector<int>
+#define FOR(i, a, b) for(int i = a; i < b; i++)
+#define pb(a) push_back(a)
+#define sz size()
+#define ll long long
+#define F first
+#define S second
+
 using namespace std;
 
-#define ll long long
-#define ar array
-#define FOR(i, a, b) for(int i = a; i < b; i++)
+const ll N = 101;
+const ll inf = 1e9 + 9;
+const ll mod = 1e9 + 7;
 
-string ParityModsets(int* arr, int n)
+
+ll a[N][N];
+ll countA = 0;
+
+void solve()
 {
-    int o = 1, e = 0;
-    FOR(i, 0, n * 2)
-    {
-        int x;
-        cin >> x;
-        if(x & 1) o++;
-        else e++;
-    }
+    int n;
+    cin >> n;
+    n *= 2;
 
-    if(o == e)
+    vector<int> dp(n);
+    FOR(i, 0, n) cin >> dp[i];
+
+    if(n % 2 == 1)
     {
-        return "YES";
+       cout << "No" << endl;
+       return;
     }
     else
     {
-        return "NO";
+        int a = 0;
+        for(int i = 0; i < n; i++)
+        {
+            for(int j = 1; j < n; j++)
+            {
+                if(i != j && ((dp[i] + dp[j]) % 2 == 1))
+                {
+                    a++;
+                }
+            }
+        }
+        if(a <= n / 2)
+        {
+            cout << "YES" << endl;
+        }
+        else
+        {
+            cout << "NO" << endl;
+        }
     }
-
 }
 
+signed main()
+{
 
-int main() {
-    cin.tie(0);
-    SetConsoleOutputCP(CP_UTF8);
-    SetConsoleCP(CP_UTF8);
+    optimus_prime;
 
     int t;
     cin >> t;
-    while(t--) {
-        int n;
-        cin >> n;
-        int arr[n];
-
-        for (int i = 0; i < n; i++)
-        {
-            cin >> arr[i];
-        }
-        cout << ParityModsets(arr, n) << endl;
-    }
+    while(t--)
+        solve();
 
 
 
 
 
-
-
-
-  return 0;
+    return 0;
 }
-
-
-
