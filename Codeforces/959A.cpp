@@ -19,22 +19,17 @@ using namespace std;
 const ll inf = 1e9 + 9;
 
 
+
 void solve()
 {
-    vector<ll> mx(4);
-    for(int i = 0; i < 4; i++)
+    ll a;
+    cin >> a;
+    if(a % 2 != 0)
     {
-        cin >> mx[i];
+        cout << "Ehab" << endl;
     }
+    else cout << "Mahmoud" << endl;
 
-    sort(all(mx));
-
-    ll a1, a2, a3;
-    a1 = mx[3] - mx[0];
-    a2 = mx[3] - mx[1];
-    a3 = mx[3] - mx[2];
-
-    cout << a1 << " " << a2 << " " << a3 << endl;
 
 }
 
@@ -42,6 +37,7 @@ signed main() {
     optimus_prime;
 
     solve();
+
 
 
 

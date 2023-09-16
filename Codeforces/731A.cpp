@@ -21,20 +21,21 @@ const ll inf = 1e9 + 9;
 
 void solve()
 {
-    vector<ll> mx(4);
-    for(int i = 0; i < 4; i++)
-    {
-        cin >> mx[i];
+    string s;
+    cin >> s;
+
+    int rotations = 0;
+    char current = 'a';
+
+    for(int i = 0; i < s.sz; i++) {
+        int clockwise = (s[i] - current + 26) % 26;
+        int counterclockwise = (current - s[i] + 26) % 26;
+        rotations += min(clockwise, counterclockwise);
+        current = s[i];
     }
 
-    sort(all(mx));
+    cout << rotations << endl;
 
-    ll a1, a2, a3;
-    a1 = mx[3] - mx[0];
-    a2 = mx[3] - mx[1];
-    a3 = mx[3] - mx[2];
-
-    cout << a1 << " " << a2 << " " << a3 << endl;
 
 }
 
@@ -42,6 +43,7 @@ signed main() {
     optimus_prime;
 
     solve();
+
 
 
 

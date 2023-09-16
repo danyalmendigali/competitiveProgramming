@@ -18,30 +18,45 @@ using namespace std;
 
 const ll inf = 1e9 + 9;
 
-
 void solve()
 {
-    vector<ll> mx(4);
-    for(int i = 0; i < 4; i++)
+    int n;
+    string s;
+    cin >> n;
+    cin >> s;
+    int a = 0;
+
+    char target = '8';
+
+    int found = s.find(target);
+
+    if(found == -1)
     {
-        cin >> mx[i];
+        cout << "NO" << endl;
+        return;
     }
-
-    sort(all(mx));
-
-    ll a1, a2, a3;
-    a1 = mx[3] - mx[0];
-    a2 = mx[3] - mx[1];
-    a3 = mx[3] - mx[2];
-
-    cout << a1 << " " << a2 << " " << a3 << endl;
-
+    if(s.sz - found >= 11)
+    {
+        cout << "YES" << endl;
+        return;
+    }
+    else
+    {
+        cout << "NO" << endl;
+        return;
+    }
 }
 
 signed main() {
     optimus_prime;
 
-    solve();
+    int t;
+    t = 1;
+    //cin >> t;
+
+    while(t--)
+        solve();
+
 
 
 

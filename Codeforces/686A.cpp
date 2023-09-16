@@ -19,22 +19,38 @@ using namespace std;
 const ll inf = 1e9 + 9;
 
 
+
 void solve()
 {
-    vector<ll> mx(4);
-    for(int i = 0; i < 4; i++)
+    int n;
+    ll x;
+    cin >> n >> x;
+    ll g = x;
+    int f = 0;
+    for(int i = 0; i < n; i++)
     {
-        cin >> mx[i];
+        char s;
+        ll a;
+        cin >> s >> a;
+        if(s == '+')
+        {
+            g += a;
+        }
+        if(s == '-')
+        {
+            if(g - a < 0)
+            {
+                f++;
+            }
+            if(g - a >= 0)
+            {
+                g -= a;
+            }
+        }
     }
 
-    sort(all(mx));
+    cout << g << " " << f << endl;
 
-    ll a1, a2, a3;
-    a1 = mx[3] - mx[0];
-    a2 = mx[3] - mx[1];
-    a3 = mx[3] - mx[2];
-
-    cout << a1 << " " << a2 << " " << a3 << endl;
 
 }
 
@@ -42,6 +58,7 @@ signed main() {
     optimus_prime;
 
     solve();
+
 
 
 
