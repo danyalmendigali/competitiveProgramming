@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <math.h>
 #include <queue>
 #include <algorithm>
 
@@ -11,45 +10,44 @@
 #define FOR(i, a, b) for(int i = a; i < b; i++)
 #define pb(a) push_back(a)
 #define sz size()
-#define ll unsigned long long
+#define ll long long
 #define F first
 #define S second
 
 using namespace std;
 
 const ll inf = 1e9 + 9;
-const int N = 1;
 
 void solve()
 {
-    ll a, b, c;
+    long long a, b, c;
     cin >> a >> b >> c;
 
-    ll mx = max(c, b);
-    ll mn = min(c, b);
-    ll result = (mx - mn) + (c - 1);
-    ll z = min(a, result);
-    a--;
-
-    if(a < result)
+    if(c % 2 == 0)
     {
-        cout << 1 << endl;
-    }
-    else if(a > result)
-    {
-        cout << 2 << endl;
-    }
-    else if(a == result)
-    {
-        cout << 3 << endl;
+        if(a > b)
+        {
+            cout << "First" << endl;
+        }
+        else
+        {
+            cout << "Second" << endl;
+        }
     }
 
-
+    else
+    {
+        if(b > a)
+        {
+            cout << "Second" << endl;
+        }
+        else
+        {
+            cout << "First" << endl;
+        }
+    }
 
 }
-
-
-
 
 signed main() {
     optimus_prime;
@@ -59,7 +57,7 @@ signed main() {
     cin >> t;
 
     while(t--)
-        solve();
+        solve   ();
 
 
 

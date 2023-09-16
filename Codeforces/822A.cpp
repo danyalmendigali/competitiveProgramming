@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <math.h>
 #include <queue>
 #include <algorithm>
 
@@ -18,36 +17,32 @@
 using namespace std;
 
 const ll inf = 1e9 + 9;
-const int N = 1;
+
+ll fact(ll n) {
+    int a = 1;
+    for (ll i = 2; i <= n; i++) {
+        a *= i;
+    }
+
+
+    return a;
+}
+
+ll gcd(ll a, ll b)
+{
+    if(b == 0) return a;
+    return gcd(b, a % b);
+}
 
 void solve()
 {
-    ll a, b, c;
-    cin >> a >> b >> c;
+    ll a, b;
+    cin >> a >> b;
 
-    ll mx = max(c, b);
-    ll mn = min(c, b);
-    ll result = (mx - mn) + (c - 1);
-    ll z = min(a, result);
-    a--;
-
-    if(a < result)
-    {
-        cout << 1 << endl;
-    }
-    else if(a > result)
-    {
-        cout << 2 << endl;
-    }
-    else if(a == result)
-    {
-        cout << 3 << endl;
-    }
-
-
-
+    ll g = min(a, b);
+    ll r = fact(g);
+    cout << r << endl;
 }
-
 
 
 
@@ -56,10 +51,10 @@ signed main() {
 
     int t;
     t = 1;
-    cin >> t;
+    //cin >> t;
 
     while(t--)
-        solve();
+        solve ();
 
 
 
