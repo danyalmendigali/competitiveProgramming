@@ -27,25 +27,19 @@ const ll mod = 1e9 + 7;
 ll a[N][N];
 ll countA = 0;
 
-int gcd(int a, int b) {
-    while (b != 0) {
-        int temp = b;
-        b = a % b;
-        a = temp;
+ll digitSum(ll n) {
+    ll sum = 0;
+    while (n > 0) {
+        sum += n % 10;
+        n /= 10;
     }
-    return a;
+    return sum;
 }
 
-void solve()
-{
-    int a, b, c, a1, b1, c1;
-    cin >> a >> b >> c;
-    b1 = b / 2;
-    c1 = c / 4;
 
-    int max_elem = min(a, min(b1, c1));
-    cout << 1 * max_elem + (max_elem * 2) + (max_elem * 4);
-
+ll gcd(ll a, ll b) {
+    if (b == 0) return a;
+    return gcd(b, a % b);
 }
 
 signed main()
@@ -53,13 +47,21 @@ signed main()
 
     optimus_prime;
 
-    int t;
+    ll t;
     t = 1;
-    //cin >> t;
+    cin >> t;
     while(t--)
-         solve();
+    {
+        ll n;
+        cin >> n;
 
+        while(gcd(n, digitSum(n)) <= 1)
+        {
+           n++;
+        }
 
+        cout << n << endl;
+    }
 
 
 

@@ -27,24 +27,34 @@ const ll mod = 1e9 + 7;
 ll a[N][N];
 ll countA = 0;
 
-int gcd(int a, int b) {
-    while (b != 0) {
-        int temp = b;
-        b = a % b;
-        a = temp;
-    }
-    return a;
-}
-
 void solve()
 {
-    int a, b, c, a1, b1, c1;
-    cin >> a >> b >> c;
-    b1 = b / 2;
-    c1 = c / 4;
+    int n;
+    cin >> n;
+    vector<int> vec(n);
+    for(int i = 0; i < n; i++)
+    {
+        cin >> vec[i];
+    }
 
-    int max_elem = min(a, min(b1, c1));
-    cout << 1 * max_elem + (max_elem * 2) + (max_elem * 4);
+    string s;
+    cin >> s;
+    map<int, set<char>> m;
+    for(int i = 0; i < n; i++)
+    {
+        m[vec[i]].insert(s[i]);
+    }
+
+
+    for(auto it : m)
+    {
+        if(it.second.sz > 1)
+        {
+            cout << "NO" << endl;
+            return;
+        }
+    }
+    cout << "YES" << endl;
 
 }
 
@@ -55,7 +65,7 @@ signed main()
 
     int t;
     t = 1;
-    //cin >> t;
+    cin >> t;
     while(t--)
          solve();
 

@@ -38,14 +38,16 @@ int gcd(int a, int b) {
 
 void solve()
 {
-    int a, b, c, a1, b1, c1;
-    cin >> a >> b >> c;
-    b1 = b / 2;
-    c1 = c / 4;
+    int n;
+    cin >> n;
+    for (int i = (n - 1) / 2; i >= 1; i--){
+        int result = n - i;
 
-    int max_elem = min(a, min(b1, c1));
-    cout << 1 * max_elem + (max_elem * 2) + (max_elem * 4);
-
+        if (gcd(i, result) == 1) {
+            cout << i << " " << result << endl;
+            break;
+        }
+    }
 }
 
 signed main()
