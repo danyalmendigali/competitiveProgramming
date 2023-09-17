@@ -27,19 +27,33 @@ const ll mod = 1e9 + 7;
 ll a[N][N];
 ll countA = 0;
 
-ll digitSum(ll n) {
-    ll sum = 0;
-    while (n > 0) {
-        sum += n % 10;
-        n /= 10;
+void solve()
+{
+    int a, a1;
+    cin >> a >> a1;
+    string s;
+    cin >> s;
+
+    for(int i = 0; i < a; i++)
+    {
+        if(s[i] - '0' >= a1)
+        {
+            cout << s[i];
+        }
+        else
+        {
+            cout << a1;
+            for(int j = i; j < a; j++)
+            {
+                cout << s[j];
+            }
+            cout << "\n";
+            return;
+        }
     }
-    return sum;
-}
 
+    cout << a1 << "\n";
 
-ll gcd(ll a, ll b) {
-    if (b == 0) return a;
-    return gcd(b, a % b);
 }
 
 signed main()
@@ -51,17 +65,7 @@ signed main()
     t = 1;
     cin >> t;
     while(t--)
-    {
-        ll n;
-        cin >> n;
-
-        while(gcd(n, digitSum(n)) <= 1)
-        {
-           n++;
-        }
-
-        cout << n << endl;
-    }
+         solve();
 
 
 
