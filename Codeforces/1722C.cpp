@@ -1,85 +1,80 @@
 #include <iostream>
+#include <string>
 #include <vector>
+#include <algorithm>
+#include <set>
 #include <map>
+
+#define all(a) a.begin() , a.end()
+#define optimus_prime  cin.tie(0); cout.tie(0)
+#define endl "\n"
+#define vll vector<long long>
+#define vi vector<int>
+#define FOR(i, a, b) for(int i = a; i < b; i++)
+#define pb(a) push_back(a)
+#define sz size()
+#define ll long long
+#define F first
+#define S second
+
 using namespace std;
+
+const ll N = 101;
+const ll inf = 1e9 + 9;
+const ll mod = 1e9 + 7;
+
+
+ll a[N][N];
+ll countA = 0;
 
 void solve()
 {
     int n;
     cin >> n;
-
-    // Словари для подсчета количества повторений каждого слова
-    map<string, int> countMap1, countMap2, countMap3;
-
-    for (int i = 0; i < n; i++)
+    map<string, int> mp;
+    string g[4][1005];
+    for(int i = 1; i <= 3; i++)
     {
-        string word;
-        cin >> word;
-        countMap1[word]++;
-    }
-    for (int i = 0; i < n; i++)
-    {
-        string word;
-        cin >> word;
-        countMap2[word]++;
-    }
-    for (int i = 0; i < n; i++)
-    {
-        string word;
-        cin >> word;
-        countMap3[word]++;
-    }
-
-    int a = 0, b = 0, c = 0;
-
-    // Подсчет очков на основе количества повторений слов
-    for (const auto &entry : countMap1)
-    {
-        if (entry.second == 1)
+        for(int j = 1; j <= n; j++)
         {
-            a += 3;
-        }
-        else if (entry.second == 2 || entry.second == 3)
-        {
-            a += entry.second;
+            cin >> g[i][j];
+            mp[g[i][j]]++;
         }
     }
 
-    for (const auto &entry : countMap2)
+    for(int i = 1; i <= 3; i++)
     {
-        if (entry.second == 1)
+        int cnt = 0;
+        for(int j = 1; j <= n; j++)
         {
-            b += 3;
+            if(mp[g[i][j]] == 1)
+            {
+                cnt += 3;
+            }
+            else if(mp[g[i][j]] == 2)
+            {
+                cnt += 1;
+            }
         }
-        else if (entry.second == 2 || entry.second == 3)
-        {
-            b += entry.second;
-        }
+
+        cout << cnt << " ";
     }
 
-    for (const auto &entry : countMap3)
-    {
-        if (entry.second == 1)
-        {
-            c += 3;
-        }
-        else if (entry.second == 2 || entry.second == 3)
-        {
-            c += entry.second;
-        }
-    }
-
-    cout << a << " " << b << " " << c << "\n";
 }
 
-int main()
+signed main()
 {
+    optimus_prime;
+
     int t;
+    t = 1;
     cin >> t;
-    while (t--)
-    {
+    while(t--)
         solve();
-    }
+
+
+
+
 
     return 0;
 }

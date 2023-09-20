@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <set>
+#include <cmath>
 
 #define all(a) a.begin() , a.end()
 #define optimus_prime  cin.tie(0); cout.tie(0)
@@ -39,21 +40,11 @@ bool prime(int n)
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> dp(n);
-    FOR(i, 0, n) cin >> dp[i];
+    ll x, y, z;
+    cin >> x >> y >> z;
+    int a = sqrt(x * y * z);
 
-    int maxElement = dp[0];
-    for(int i = 0; i < n; i++)
-    {
-        if(dp[i] >= maxElement)
-        {
-            maxElement = dp[i];
-        }
-    }
-
-    cout << max_element(all(dp)) - dp.begin() + 1 << endl;
+    cout << 4 * (a / x + a / y + a / z);
 
 }
 
@@ -63,7 +54,7 @@ signed main()
 
     ll t;
     t = 1;
-    cin >> t;
+    //cin >> t;
     while(t--)
         solve();
 
