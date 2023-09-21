@@ -3,6 +3,9 @@
 #include <vector>
 #include <algorithm>
 #include <set>
+#include <map>
+#include <windows.h>
+#include <iterator>
 
 #define all(a) a.begin() , a.end()
 #define optimus_prime  cin.tie(0); cout.tie(0)
@@ -26,61 +29,43 @@ const ll mod = 1e9 + 7;
 ll a[N][N];
 ll countA = 0;
 
-pair<int, int> p[N];
+pair<ll, ll> p[N];
+map<ll, ll> mp;
 
 void solve()
 {
-    vector<int> mx(4);
-    int n;
+    mp.clear();
+    cout << "Введите количество элементов: ";
+    ll n;
     cin >> n;
-    mx[0] = mx[1] = mx[2] = mx[3] = 0;
-    for(int i = 1; i <= n; i++)
+
+    FOR(i, 0, n)
     {
-        cin >> p[i].F >> p[i].S;
+        cout << i << ") ";
+        ll a;
+        cin >> a;
+        mp[a] = i;
     }
 
-    sort(p + 1, p + 1 + n);
-
-    for(int i = 1; i <= n; i++)
+    map<ll, ll> ::iterator it = mp.begin();
+    cout << "Все отсортированное: " << endl;
+    for(int i = 0; it != mp.end(); it++, i++)
     {
-        if(p[i].F < 0 && mx[0] < abs(p[i].F))
-        {
-            mx[0] = abs(p[i].F);
-        }
-
-
-        if(p[i].F > 0 && mx[1] < abs(p[i].F))
-        {
-            mx[1] = abs(p[i].F);
-        }
-
-
-        if(p[i].S < 0 && mx[2] < abs(p[i].S))
-        {
-            mx[2] = abs(p[i].S);
-        }
-
-
-        if(p[i].S > 0 && mx[3] < abs(p[i].S))
-        {
-            mx[3] = abs(p[i].S);
-        }
+        cout << i << ". Ключ " << it -> first << ", значение " << it -> second << endl;
     }
 
-    cout << mx[0] * 2 + mx[1] * 2 + mx[2] * 2 + mx[3] * 2 << endl;
 
 
 }
 
 signed main()
 {
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
 
     optimus_prime;
 
-    int t;
-    cin >> t;
-    while(t--)
-         solve();
+    solve();
 
 
 
