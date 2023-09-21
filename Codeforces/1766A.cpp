@@ -27,28 +27,23 @@ ll a[N][N];
 ll countA = 0;
 
 
-void solve()
-{
-    int n , f = 0;
+void solve() {
+    ll n;
     cin >> n;
-    for(int i = 0; i <= n; i++)
-    {
+    ll cnt = 0;
 
-        string s = to_string(i);
-        int b = 0;
-        for(int j = 0; j < s.size(); j++)
+    for(int i = 1; i <= 9; i++)
+    {
+        ll num = i;
+
+        while(num <= n)
         {
-            if(s[j] == '0')
-            {
-                b++;
-            }
-        }
-        if(b == s.size() - 1)
-        {
-            f++;
+            cnt++;
+            num *= 10;
         }
     }
-    cout << f << endl;
+
+    cout << cnt << endl;
 }
 
 signed main()
@@ -57,6 +52,7 @@ signed main()
     optimus_prime;
 
     int t;
+    t = 1;
     cin >> t;
     while(t--)
         solve();
