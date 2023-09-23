@@ -32,34 +32,42 @@ set<char> st;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> dp(n);
-    FOR(i, 0, n) cin >> dp[i];
-
-    sort(all(dp));
-    if(n == 1)
+    string s, s1;
+    cin >> s >> s1;
+    reverse(all(s));
+    reverse(all(s1));
+    if(s[0] == s1[0])
     {
-        if(dp[0] != 1)
-        {
-            cout << "NO" << endl;
-        }
+        if(s[0] == 'M')
+            cout << "=\n";
         else
         {
-            cout << "YES" << endl;
+            if(s[0] == 'L')
+            {
+                if(s.size() > s1.size())
+                    cout << ">\n";
+                else if(s.size() < s1.size())
+                    cout << "<\n";
+                else
+                    cout << "=\n";
+            }
+            else
+            {
+                if(s.size() < s1.size())
+                    cout << ">\n";
+                else if(s.size() > s1.size())
+                    cout << "<\n";
+                else
+                    cout << "=\n";
+            }
         }
     }
-
     else
     {
-        if(dp[n - 1] - dp[n - 2] > 1)
-        {
-            cout << "NO" << endl;
-        }
+        if(s[0] > s1[0])
+            cout << "<\n";
         else
-        {
-            cout << "YES" << endl;
-        }
+            cout << ">\n";
     }
 
 
