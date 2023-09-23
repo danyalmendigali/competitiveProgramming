@@ -29,38 +29,21 @@ ll a[N][N];
 ll countA = 0;
 
 ll x[N];
+set<ll> st;
 
 void solve()
 {
-        int n;
-        cin >> n;
-        int arr[n];
-        for(int i = 0; i < n; i++) {
-            cin >> arr[i];
+    int n;
+    cin >> n;
+    for(int i = 1; i < n; i++)
+    {
+        if(n % i == 0)
+        {
+            st.ins(i);;
         }
-        int size = sizeof(arr) / sizeof(arr[0]);
-
-        sort(arr, arr + size);
-
-         int maxCount = 0;
-         int currentCount = 1;
-
-         for (int i = 1; i < size; ++i) {
-             if (arr[i] == arr[i - 1]) {
-                 currentCount++;
-             } else {
-                 if (currentCount > maxCount) {
-                     maxCount = currentCount;
-                 }
-                 currentCount = 1;
-             }
-         }
-
-    if (currentCount > maxCount) {
-        maxCount = currentCount;
     }
 
-    cout <<  maxCount << endl;
+    cout << st.sz << endl;
 
 
 

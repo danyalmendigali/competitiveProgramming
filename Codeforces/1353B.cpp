@@ -29,41 +29,36 @@ ll a[N][N];
 ll countA = 0;
 
 ll x[N];
+set<ll> st;
 
 void solve()
 {
-        int n;
-        cin >> n;
-        int arr[n];
-        for(int i = 0; i < n; i++) {
-            cin >> arr[i];
+        int n, k, sum = 0;
+        cin >> n >> k;
+        vector<int> a(n), b(n);
+
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+            sum += a[i];
         }
-        int size = sizeof(arr) / sizeof(arr[0]);
+        for (int i = 0; i < n; i++) {
+            cin >> b[i];
+        }
 
-        sort(arr, arr + size);
+        sort(all(a));
+        sort(all(b));
 
-         int maxCount = 0;
-         int currentCount = 1;
+        for(int i = n - 1; i >= 0 && k > 0; i--)
+        {
+            if(b[i] <= a[n - i - 1]) break;
+            else
+            {
+                sum -= a[n - i - 1] - b[i];
+            }
+            k--;
+        }
 
-         for (int i = 1; i < size; ++i) {
-             if (arr[i] == arr[i - 1]) {
-                 currentCount++;
-             } else {
-                 if (currentCount > maxCount) {
-                     maxCount = currentCount;
-                 }
-                 currentCount = 1;
-             }
-         }
-
-    if (currentCount > maxCount) {
-        maxCount = currentCount;
-    }
-
-    cout <<  maxCount << endl;
-
-
-
+        cout << sum << endl;
 
 }
 
@@ -74,7 +69,7 @@ signed main()
 
     int t;
     t = 1;
-    //cin >> t;
+    cin >> t;
     while(t--)
          solve();
 
