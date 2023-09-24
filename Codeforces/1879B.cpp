@@ -23,32 +23,32 @@ const ll inf = 1e9 + 9;
 const ll mod = 1e9 + 7;
 
 
-ll a[N][N];
 ll countA = 0;
 
 
 
 void solve() {
-    string s;
-    cin >> s;
-    int x = 0;
+    ll n;
+    cin >> n;
+    vector<ll> a(n, 0);
+    ll suma = 0, sumb = 0;
 
-    if ((s[0] == 'a' || s[0] == 'h') && (s[1] == '1' || s[1] == '8'))
+    for(ll i = 0; i < n; i++)
     {
-        x = 3;
+        cin >> a[i];
+        suma += a[i];
+    }
+    vector<ll> b(n, 0);
+    for(ll i = 0; i < n; i++)
+    {
+        cin >> b[i];
+        sumb += b[i];
     }
 
-    else if (s[0] == 'a' || s[0] == 'h' || s[1] == '1' || s[1] == '8')
-    {
-        x = 5;
-    }
+    sort(a.begin(), a.end());
+    sort(b.begin(), b.end());
 
-    else
-    {
-        x = 8;
-    }
-
-    cout << x << endl;
+    cout << min(suma + b[0] * n, sumb + a[0] * n) << endl;
 }
 
 signed main()
@@ -57,7 +57,7 @@ signed main()
     optimus_prime;
     ll t;
     t = 1;
-    //cin >> t;
+    cin >> t;
     while(t--)
         solve();
 

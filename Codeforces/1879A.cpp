@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -29,26 +30,38 @@ ll countA = 0;
 
 
 void solve() {
-    string s;
-    cin >> s;
-    int x = 0;
-
-    if ((s[0] == 'a' || s[0] == 'h') && (s[1] == '1' || s[1] == '8'))
+    int n;
+    cin >> n;
+    int x, y;
+    vector<pair<int, int>> a(n);
+    for(int i = 0; i < n; i++)
     {
-        x = 3;
+        cin >> x >> y;
+        a[i] = {x, y};
     }
 
-    else if (s[0] == 'a' || s[0] == 'h' || s[1] == '1' || s[1] == '8')
+    vector<pair<int, int>> ans;
+    for(int i = 0; i < n; i++)
     {
-        x = 5;
+        if(a[i].S >= a[0].S)
+        {
+            ans.push_back(a[i]);
+        }
+    }
+    int mx = 0;
+    for(int i = 1; i < ans.sz; i++)
+    {
+        mx = max(mx, ans[i].F);
     }
 
+    if(ans[0].F > mx)
+    {
+        cout << ans[0].F << endl;
+    }
     else
     {
-        x = 8;
+        cout << -1 << endl;
     }
-
-    cout << x << endl;
 }
 
 signed main()
@@ -57,7 +70,7 @@ signed main()
     optimus_prime;
     ll t;
     t = 1;
-    //cin >> t;
+    cin >> t;
     while(t--)
         solve();
 
