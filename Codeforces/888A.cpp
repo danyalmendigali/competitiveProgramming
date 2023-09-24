@@ -29,39 +29,25 @@ ll countA = 0;
 
 
 void solve() {
-    ll n;
+    int n;
     cin >> n;
+    int a = 0;
     vector<int> dp(n);
-    FOR(i, 0, n){
-        cin >> dp[i];
-    }
-    ll count =0;
-    ll idx = 0;
-    for(int i = 1; i < n; i++){
-        if(dp[i] < dp[i - 1]){
-            count++;
-            idx = i;
-        }
-    }
-    if(count == 0)
+    FOR(i, 0, n) cin >> dp[i];
+
+    for(int i = 1; i < n - 1; i++)
     {
-        cout << count << endl;
-    }
-    else if(count == 1)
-    {
-        if(dp[0] >= dp[n - 1])
+        if(dp[i] > dp[i - 1] && dp[i] > dp[i + 1])
         {
-            cout << n - idx << endl;
+            a++;
         }
-        else
+        if(dp[i] < dp[i - 1] && dp[i] < dp[i + 1])
         {
-            cout << -1 << endl;
+            a++;
         }
     }
-    else
-    {
-        cout << -1 << endl;
-    }
+
+    cout << a << endl;
 }
 
 signed main()
