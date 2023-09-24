@@ -23,32 +23,42 @@ const ll inf = 1e9 + 9;
 const ll mod = 1e9 + 7;
 
 
-ll a[N][N];
 ll countA = 0;
 
+bool isBerlandWord(const string& s) {
 
-
-void solve() {n
-    string s;
-    cin >> s;
-    int x = 0;
-
-    if ((s[0] == 'a' || s[0] == 'h') && (s[1] == '1' || s[1] == '8'))
-    {
-        x = 3;
+    for (int i = 0; i < s.size(); i++) {
+        char currentChar = s[i];
+        if (currentChar == 'n') {
+        } else if (currentChar != 'a' && currentChar != 'o' && currentChar != 'u' && currentChar != 'i' && currentChar != 'e') {
+            if (i == s.sz - 1 || (i + 1 < s.sz && (s[i + 1] != 'a' && s[i + 1] != 'o' && s[i + 1] != 'u' && s[i + 1] != 'i' &&  s[i + 1] != 'e'))) {
+                return false;
+            }
+        }
     }
 
-    else if (s[0] == 'a' || s[0] == 'h' || s[1] == '1' || s[1] == '8')
+    return true;
+}
+
+
+
+void solve() {
+    string s;
+    cin >> s;
+
+    if (isBerlandWord(s))
     {
-        x = 5;
+        cout << "YES" << endl;
+        return;
     }
 
     else
     {
-        x = 8;
+        cout << "NO" << endl;
+        return;
     }
 
-    cout << x << endl;
+
 }
 
 signed main()
