@@ -29,6 +29,8 @@ ll countA = 0;
 
 
 void solve() {
+    //freopen("input.txt", "r", stdin);
+    //freopen("output.txt", "w", stdout);
     ll n;
     cin >> n;
     vector<int> dp(n);
@@ -73,6 +75,8 @@ signed main()
     //cin >> t;
     while(t--)
         solve();
+
+
 
 
 
