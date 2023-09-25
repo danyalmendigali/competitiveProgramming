@@ -25,27 +25,24 @@ const ll mod = 1e9 + 7;
 
 ll countA = 0;
 
+
 void solve()
 {
     int n;
     cin >> n;
-    vector<int> dp(n);
-    FOR(i , 0 , n) cin >> dp[i];
-
-    int k = 1;
-    for(int i = 0; i < n; i++)
+    int cnt = 0, cnt1 = 0;
+    for(int i = 1; i <= 9; i++)
     {
-        if(dp[i] == k)
+        cnt = cnt * 10 + 1;
+        for(int j = 1; j <= 9; j++)
         {
-            k += 2;
-        }
-        else
-        {
-            k++;
+            if(cnt * j <= n)
+            {
+                cnt1++;
+            }
         }
     }
-
-    cout << k - 1 << endl;
+    cout << cnt1 << endl;
 
 
 }
@@ -53,12 +50,12 @@ void solve()
 signed main()
 {
     int t;
+    t = 1;
     cin >> t;
 
     while(t--)
-    {
         solve();
-    }
+
 
 
 

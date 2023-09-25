@@ -27,38 +27,42 @@ ll countA = 0;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> dp(n);
-    FOR(i , 0 , n) cin >> dp[i];
-
-    int k = 1;
-    for(int i = 0; i < n; i++)
+    int t, n;
+    cin >> n >> t;
+    if(t == 10&&n == 1)
     {
-        if(dp[i] == k)
-        {
-            k += 2;
-        }
-        else
-        {
-            k++;
-        }
+        cout << "-1";
+        return;
     }
 
-    cout << k - 1 << endl;
-
+    if(t == 10)
+    {
+        cout << t;
+        for(int i = 2; i < n; i++)
+        {
+            cout << 0;
+        }
+    }
+    else
+    {
+        for(int i = 0; i < n; i++)
+        {
+            cout << t;
+        }
+    }
+    cout << endl;
 
 }
 
 signed main()
 {
     int t;
-    cin >> t;
+    //cin >> t;
+    t = 1;
 
     while(t--)
-    {
         solve();
-    }
+
 
 
 
