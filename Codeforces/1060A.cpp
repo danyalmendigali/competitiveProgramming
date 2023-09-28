@@ -28,20 +28,28 @@ ll countA = 0;
 
 void solve()
 {
-    ll n;
+    int n;
     cin >> n;
-    ll k = 1;
-
-    while(k <= n)
+    string s;
+    cin >> s;
+    int a = 0;
+    for(int i = 0; i < s.sz; i++)
     {
-        k *= 10;
+        if(s[i] == '8')
+        {
+            a++;
+        }
     }
-    k /= 10;
 
-    cout << k - n % k;
+    int ans;
+    ans = min(a, n / 11);
+
+    cout << ans << endl;
+
 
 
 }
+
 
 signed main()
 {

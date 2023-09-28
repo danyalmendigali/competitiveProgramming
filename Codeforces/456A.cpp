@@ -30,15 +30,22 @@ void solve()
 {
     ll n;
     cin >> n;
-    ll k = 1;
-
-    while(k <= n)
+    pair<int , int> a[n + 9];
+    for(int i = 1; i <= n; i++)
     {
-        k *= 10;
+        cin >> a[i].S >> a[i].F;
     }
-    k /= 10;
+    sort(a + 1, a + n + 1);
+    for(int i = 2 ; i <= n; i++)
+    {
+        if(a[i].S < a[i - 1].S)
+        {
+            cout << "Happy Alex";
+            return;
+        }
+    }
 
-    cout << k - n % k;
+    cout << "Poor Alex" << endl;
 
 
 }

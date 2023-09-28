@@ -28,20 +28,30 @@ ll countA = 0;
 
 void solve()
 {
-    ll n;
-    cin >> n;
-    ll k = 1;
+    int n, d;
+    cin >> n >> d;
+    vector<int> b(n);
 
-    while(k <= n)
-    {
-        k *= 10;
+    for (int i = 0; i < n; i++) {
+        cin >> b[i];
     }
-    k /= 10;
 
-    cout << k - n % k;
+    int res = 0;
+
+    for (int i = 1; i < n; i++) {
+        if (b[i] <= b[i - 1]) {
+            int diff = b[i - 1] - b[i];
+            int steps = diff / d + 1;
+            res += steps;
+            b[i] += steps * d;
+        }
+    }
+
+    cout << res << endl;
 
 
 }
+
 
 signed main()
 {
