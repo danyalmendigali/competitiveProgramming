@@ -19,25 +19,17 @@ using namespace std;
 
 void solve()
 {
-        ll a, b;
-        cin >> a >> b;
+    ll a, b, c;
+    cin >> a >> b >> c;
+    int cnt = 0;
+    while(max(a, b) <= c)
+    {
+        if(b < a) b += a;
+        else  a += b;
+        cnt++;
+    }
 
-        if (a == b) {
-            cout << 0 << endl;
-        } else if (a < b) {
-            if ((b - a) % 2 == 0) {
-                cout << 2 << endl;
-            } else {
-                cout << 1 << endl;
-            }
-        } else {
-            if ((a - b) % 2 == 0) {
-                cout << 1 << endl;
-            } else {
-                cout << 2 << endl;
-            }
-        }
-
+    cout << cnt << endl;
 
 }
 
@@ -47,7 +39,8 @@ signed main()
     optimus_prime;
 
     ll t;
-    cin >> t;
+    t = 1;
+     cin >> t;
     while(t--)
     {
         solve();
