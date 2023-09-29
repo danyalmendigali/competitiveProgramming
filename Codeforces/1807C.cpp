@@ -28,32 +28,35 @@ ll countA = 0;
 
 void solve()
 {
-    ll n;
-    cin >> n;
     string s;
     cin >> s;
-    set<char> a, b;
-    for(int i = 0; i < s.sz; i++)
+    int cnt = 0;
+    if(s[0] != '1')
     {
-        if(i % 2 == 0)
+        cout << "YES" << endl;
+        return;
+    }
+    else
+    {
+        for(int i = 0; i < s.sz; i++)
         {
-            a.emplace(s[i]);
-        }
-        else
-        {
-            b.emplace(s[i]);
+            if(s[i] == '4') cnt++;
+            else if(s[i] != '1')
+            {
+                cout << "NO" << endl;
+                return;
+            }
+            else
+            {
+                cnt = 0;
+            }
+            if(cnt == 3)
+            {
+                cout << "NO" << endl;
+                return;
+            }
         }
     }
-
-    for(char i : a)
-    {
-        if(b.count(i))
-        {
-            cout << "NO" << endl;
-            return;
-        }
-    }
-    cout << "YES" << endl;
 
 
 }
@@ -63,7 +66,8 @@ signed main()
 
     optimus_prime;
     ll t;
-    cin >> t;
+    t = 1;
+    //cin >> t;
     while(t--)
     {
         solve();
