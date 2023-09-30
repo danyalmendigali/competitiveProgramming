@@ -22,44 +22,27 @@ const int N = 1;
 
 void solve()
 {
-    int n;
+    ll n;
     cin >> n;
     vector<ll> dp(n);
-    for(int i = 0; i < n; i++)
+    for(ll i = 0; i < n; i++)
     {
         cin >> dp[i];
     }
-    vector<ll> dp2 = dp;
 
-    ll a = 0;
+    sort(all(dp));
+    int f;
 
-    while(a == n - 1)
+    if(n % 2 != 0)
     {
-        ll mx = dp2[0], mn = dp2[0];
-        int indexMx, indexMn;
-        for(int i = 0; i < dp.sz; i++)
-        {
-            if(mx < dp2[i])
-            {
-                mx = dp2[i];
-                indexMx = i;
-            }
-            if(mn > dp2[i])
-            {
-                mn = dp2[i];
-                indexMn = i;
-            }
-        }
-
-        dp2.erase(dp2.begin() + indexMx);
-        dp2.erase(dp2.begin() + indexMn);
-        a++;
+        f = n / 2 + 1;
+    }
+    if(n % 2 == 0)
+    {
+        f = n / 2;
     }
 
-    for(int i = 0; i < dp2.sz; i++)
-    {
-        cout << dp2[i] << " ";
-    }
+    cout << dp[f - 1] << endl;
 
 
 
