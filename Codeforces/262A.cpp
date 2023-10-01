@@ -22,6 +22,7 @@ const int N = 1;
 
 void solve()
 {
+    /*
     ll n, k, b = 0;
     cin >> n >> k;
     ll res = 0;
@@ -48,6 +49,28 @@ void solve()
     }
 
     cout << res << endl;
+    */
+
+    ll n;
+    cin >> n;
+    vector<int> dp(n);
+    FOR(i, 0, n) cin >> dp[i];
+
+    sort(all(dp));
+
+    ll res = 0;
+    for(int i = 0; i < n; i++)
+    {
+        if(dp[i] > dp[0] && dp[i] < dp[n - 1])
+        {
+            res++;
+        }
+    }
+
+    cout << res << endl;
+
+
+
 
 }
 
