@@ -34,54 +34,25 @@ int f(int n)
 
 void solve()
 {
-	int x1, p1, x2, p2;
-	cin >> x1 >> p1 >> x2 >> p2;
-	int m1 = f(x1), m2 = f(x2);
-	if (m1 + p1 == m2 + p2)
-	{
-		if (m1 < m2)
-		{
-			while(m1<m2)
-			{
-				x1 *= 10;
-				m1++;
-			}
-		}
-		if (m1 > m2)
-		{
-			while (m1 > m2)
-			{
-				x2 *= 10;
-				m2++;
-			}
+    int a, b;
+    cin >> a >> b;
+    int ans = 0, ans2 = 0;
+    while(true)
+    {
+        if(a == 0) break;
+        ans++;
+        a--;
+        ans2++;
 
-		}
-		if (x1 > x2)
-		{
-			cout << ">" << endl;
-			return;
-		}
-		if (x1 == x2)
-		{
-			cout << "=" << endl;
-			return;
-		}
-		if (x1 < x2)
-		{
-			cout << "<" << endl;
-			return;
-		}
-	}
-	else if (m1 + p1 > m2 + p2)
-	{
-		cout << ">" << endl;
-		return;
-	}
-	else if (m1 + p1 < m2 + p2)
-	{
-		cout << "<" << endl;
-		return;
-	}
+        if(ans2 == b)
+        {
+            a++;
+            ans2 = 0;
+        }
+    }
+
+    cout << ans + a << endl;
+
 
 }
 
@@ -91,7 +62,7 @@ signed main()
 
     ll t;
     t = 1;
-    cin >> t;
+    //cin >> t;
     while (t--)
     {
         solve();
