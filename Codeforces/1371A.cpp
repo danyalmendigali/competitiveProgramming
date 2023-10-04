@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -26,29 +26,43 @@ const ll mod = 1e9 + 7;
 ll a[N][N];
 ll countA = 0;
 
-set<int> st;
-
-int gcd(int a, int b)
-{
-    if(b == 0) return a;
-    return gcd(b, a % b);;
-}
+set<int> st1, st2;
+int x[N];
 
 void solve()
 {
-    int n;
+    ll n;
     cin >> n;
-    cout << n / 2 << endl;
+
+    if(n % 2 == 0)
+    {
+        cout << n / 2 << endl;
+        return;
+    }
+    if(n == 1)
+    {
+        cout << 1 << endl;
+        return;
+    }
+
+    else
+    {
+        cout << n / 2 + 1 << endl;
+        return;
+    }
+
+
+
+
 
 }
 
 signed main()
 {
-
     optimus_prime;
     int t;
+    t = 1;
     cin >> t;
-
 
     while(t--)
          solve();
