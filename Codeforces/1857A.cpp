@@ -27,13 +27,31 @@ ll a[N][N];
 ll countA = 0;
 
 set<int> st1, st2;
-vector<int> num_table = {0,1,2,6,20,70,252,924,3432,12870,48620};
 
 void solve()
 {
     int n;
     cin >> n;
-    cout << num_table[n] << endl;
+    vector<int> dp(n);
+    int oll = 0;
+
+    for(int i = 0; i < n; i++)
+    {
+        cin >> dp[i];
+        oll += dp[i] % 2;
+    }
+
+    if(oll % 2 == 0)
+    {
+        cout << "YES" << endl;
+        return;
+    }
+    else
+    {
+        cout << "NO" << endl;
+        return;
+    }
+
 
 }
 
@@ -42,7 +60,7 @@ signed main()
     optimus_prime;
     int t;
     t = 1;
-    //cin >> t;
+    cin >> t;
 
     while(t--)
          solve();
