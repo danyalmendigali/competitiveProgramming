@@ -28,35 +28,29 @@ ll countA = 0;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    int a = 0;
-    vector<int> dp(n);
-    vector<bool> visited(n, false);
-    for(int i = 0; i < n; i++)
+    vector<ll> dp(3);
+    for(int i = 0; i < 3; i++)
     {
         cin >> dp[i];
     }
-    for(int i = 0; i < n; i++)
+    if(dp[2] == dp[0] + dp[1])
     {
-            if(dp[i] == 4 && !visited[i])
-            {
-                a++;
-                visited[i] = true;
-            }
-            for(int j = 0; j < n; j++)
-            {
-                if(i != j && !visited[i] && !visited[j] && dp[i] + dp[j] <= 4)
-                {
-                    a++;
-                    visited[i] = true;
-                    visited[j] = true;
-                }
-
-            }
+        cout << "YES" << endl;
+        return;
+    }
+    else if(dp[0] == dp[1] && dp[2] % 2 == 0)
+    {
+        cout << "YES" << endl;
+        return;
+    }
+    else if(dp[1] == dp[2] && dp[0] % 2 == 0)
+    {
+        cout << "YES" << endl;
+        return;
     }
 
-    cout << a << endl;
+    cout << "NO" << endl;
+
 
 
 }
@@ -64,10 +58,9 @@ void solve()
 signed main()
 {
     optimus_prime;
-
     int t;
-    t = 1;
-    //cin >> t;
+    cin >> t;
+
 
     while(t--)
          solve();
