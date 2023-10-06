@@ -50,6 +50,7 @@ void solve()
     }
 
     cout << "NO" << endl;
+    return;
 
 
 

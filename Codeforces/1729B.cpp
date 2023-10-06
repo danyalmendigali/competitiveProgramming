@@ -26,48 +26,34 @@ const ll mod = 1e9 + 7;
 ll a[N][N];
 ll countA = 0;
 
-void solve()
-{
+void solve() {
     int n;
     cin >> n;
-    int a = 0;
-    vector<bool> visited(n, false);
-    for(int i = 0; i < n; i++)
-    {
-        cin >> dp[i];
-    }
-    for(int i = 0; i < n; i++)
-    {
-            if(dp[i] == 4 && !visited[i])
-            {
-                a++;
-                visited[i] = true;
-            }
-            for(int j = 0; j < n; j++)
-            {
-                if(i != j && !visited[i] && !visited[j] && dp[i] + dp[j] <= 4)
-                {
-                    a++;
-                    visited[i] = true;
-                    visited[j] = true;
-                }
+    string s;
+    cin >> s;
 
-            }
+    string res;
+    int i = 0;
+    while (i < n) {
+        if (s[i] == '0') {
+            res += s[i+2];
+            i += 3;
+        } else {
+            res += s[i] - '1' + 'a';
+            i++;
+        }
     }
 
-    cout << a << endl;
-
-
+    cout << res << '\n';
 }
+
 
 signed main()
 {
     optimus_prime;
-
     int t;
     t = 1;
-    //cin >> t;
-
+    cin >> t;
     while(t--)
          solve();
 
