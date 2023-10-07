@@ -37,39 +37,39 @@ void solve()
 {
     int n, x;
     cin >> n >> x;
-    vector<ll> a(n);
+    vector<ll> dp(n);
     for(ll i = 0; i < n; i++)
     {
-        cin >> a[i];
+        cin >> dp[i];
     }
 
     ll l = 1, r = maximum;
-    ll ans = maximum;
+    ll res1 = maximum;
 
     while(l <= r)
     {
-        ll mid = (r - l) / 2 + l;
+        ll middle = (r - l) / 2 + l;
         ll res = 0;
 
-        for(ll &i : a)
+        for(ll i : dp)
         {
-            if(mid > i)
+            if(middle > i)
             {
-                res += (mid - i);
+                res += (middle - i);
             }
         }
         if(res <= x)
         {
-            ans = mid;
-            l = mid + 1;
+            res1 = middle;
+            l = middle + 1;
         }
         else
         {
-            r = mid - 1;
+            r = middle - 1;
         }
     }
 
-    cout << ans << endl;
+    cout << res1 << endl;
 }
 
 signed main()
