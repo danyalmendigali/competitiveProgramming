@@ -35,67 +35,31 @@ pair<int, int> p[N];
 
 void solve()
 {
-    int n;
-    int res = 0;
-    cin>> n;
-    vector<int> dp(n);
-    int a1 = 0, a2 = 0, a3 = 0, a4 = 0;
-    for(int i = 0; i < dp.sz; i++)
-    {
-        cin >> dp[i];
-        if(dp[i] == 1)
-        {
-            a1++;
-        }
-        if(dp[i] == 2)
-        {
-            a2++;
-        }
-        if(dp[i] == 3)
-        {
-            a3++;
-        }
-        if(dp[i] == 4)
-        {
-            a4++;
-        }
-    }
+    string s;
+    cin >> s;
 
-    if(a1 == n)
+    for(ll i = s.sz - 1; i >= 0; i--)
     {
-        if(a1 % 4 == 0)
+        if(s[i] == '4' && s[i - 1] == '4' && s[i - 2] == '1')
         {
-            cout << a1 / 4 << endl;
-            return;
+            i -= 2;
+        }
+        else if(s[i] == '4' && s[i - 1] == '1')
+        {
+            i--;
+        }
+        else if(s[i] == '1')
+        {
+            continue;
         }
         else
         {
-            cout << a1 + 1 / 4 << endl;
+            cout << "NO" << endl;
             return;
         }
-
     }
 
-    res += a4;
-    int mn = min(a1, a3);
-    res += mn;
-    a1 -= mn;
-    a3 -= mn;
-    res += a1;
-    res += a3;
-
-    if(a2 % 2 == 0)
-    {
-        res += a2 / 2;
-    }
-    if(a2 % 2 != 0)
-    {
-        res += 1;
-    }
-
-    cout << res << endl;
-
-
+    cout << "YES" << endl;
 
 }
 
