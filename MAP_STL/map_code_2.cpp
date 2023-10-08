@@ -22,6 +22,7 @@ const ll mod = 1e9 + 7;
 int x[N];
 map<ll, ll> mp;
 
+
 void solve()
 {
     int n, k;
