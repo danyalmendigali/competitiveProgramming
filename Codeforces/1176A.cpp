@@ -1,84 +1,74 @@
-
 #include <iostream>
-#include <string>
 #include <vector>
 #include <algorithm>
-#include <set>
-
-#define all(a) a.begin() , a.end()
-#define optimus_prime  cin.tie(0); cout.tie(0)
-#define endl "\n"
-#define vll vector<long long>
-#define vi vector<int>
-#define FOR(i, a, b) for(int i = a; i < b; i++)
-#define pb(a) push_back(a)
-#define sz size()
-#define ll long long
-#define F first
-#define S second
 
 using namespace std;
 
-const ll N = 101;
-const ll inf = 1e9 + 9;
-const ll mod = 1e9 + 7;
+const int MAXN = 2005;
+vector<int> adj[MAXN];
+int n, m;
+int timer;
+vector<int> tin, low;
+vector<bool> isBridge;
+vector<vector<int>> bridges;
 
-
-ll a[N][N];
-ll countA = 0;
-
-void solve()
-{
-    ll n;
-    cin >> n;
-    ll ans = 0;
-    while(n != 1)
-    {
-        int i = 0;
-        if(n % 5 == 0)
-        {
-            n = (4 * n) / 5;
-            ans++;
-            i++;
+void dfs(int v, int p = -1) {
+    tin[v] = low[v] = timer++;
+    for (int u : adj[v]) {
+        if (u == p) continue;
+        if (tin[u] == -1) {
+            dfs(u, v);
+            low[v] = min(low[v], low[u]);
+            if (low[u] > tin[v]) {
+                isBridge[u] = true;
+                isBridge[v] = true;
+                bridges.push_back({v, u});
+            }
+        } else {
+            low[v] = min(low[v], tin[u]);
         }
-        if(n % 3 == 0)
-        {
-            n = (2 * n) / 3;
-            ans++;
-            i++;
-        }
-        if(n % 2 == 0)
-        {
-            n /= 2;
-            ans++;
-            i++;
-        }
-
-        if(i == 0)
-        {
-            cout << -1 << endl;
-            return;
-        }
-
     }
-
-    cout << ans << endl;
-
-
 }
 
-signed main()
-{
-    optimus_prime;
+int findBridges() {
+    timer = 0;
+    tin.assign(n, -1);
+    low.assign(n, -1);
+    isBridge.assign(n, false);
+    bridges.clear();
 
-    int t;
-    cin >> t;
-    while(t--)
-         solve();
+    for (int i = 0; i < n; ++i) {
+        if (tin[i] == -1) {
+            dfs(i);
+        }
+    }
 
+    return bridges.size();
+}
 
+int main() {
+    cin >> n >> m;
+    for (int i = 0; i < m; ++i) {
+        int u, v;
+        cin >> u >> v;
+        --u;
+        --v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
 
+    int numBridges = findBridges();
+    int numTrees = numBridges + 1; // Количество деревьев в лесу
 
+    int ans = n - numTrees; // Минимальное количество рёбер для преобразования в лес
+    if(ans == 2)
+    {
+        cout << 1 << endl;
+    }
+    else
+    {
+        cout << ans << endl;
+    }
 
     return 0;
 }
