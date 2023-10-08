@@ -20,6 +20,7 @@ const ll inf = 1e9;
 const ll INF = 1e9 + 9;
 const ll mod = 1e9 + 7;
 
+
 int x[N];
 map<ll, ll> mp , mp2;
 
