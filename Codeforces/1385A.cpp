@@ -21,21 +21,46 @@ const ll mod = 1e9 + 7;
 
 void solve()
 {
-    ll x, y, z;
-    cin >> x >> y >> z;
+    vector<ll> dp(3);
+    ll mx = 0;
+    for(ll i = 0; i < 3; i++)
+    {
+        cin >> dp[i];
+        mx = max(mx, dp[i]);
+    }
+    ll mn = dp[0];
+    for(ll i = 0; i < 3; i++)
+    {
+        if(dp[i] <= mn)
+        {
+            mn = dp[i];
+        }
+    }
 
-    int mxX, mxY, mxZ;
-    mxX = max(y, z);
-    mxY = max(x, z);
-    mxZ = max(x, y);
+    ll a = 0;
+    for(ll i = 0; i < 3; i++)
+    {
+        if(dp[i] == mx)
+        {
+            a++;
+        }
+    }
 
-    if((x >= mxX) && (y >= mxY) && (z >= mxZ)) cout << "YES" << endl;
-
-    else cout << "NO" << endl;
-
-
-
-
+    if(a == 3)
+    {
+        cout << "YES" << endl;
+        cout << mx << " " << mx << " " << mx << endl;
+    }
+    else if(a == 2)
+    {
+        cout << "YES" << endl;
+        sort(all(dp));
+        cout << mx << " " << dp[0] << " " << dp[0] << endl;
+    }
+    else
+    {
+        cout << "NO" << endl;
+    }
 }
 
 signed main()
