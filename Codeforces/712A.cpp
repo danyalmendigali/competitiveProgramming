@@ -28,20 +28,28 @@ ll countA = 0;
 
 void solve()
 {
-    ll num;
-    cin >> num;
-    if(num == 0)
+    ll n;
+    cin >> n;
+    vector<ll> dp(n);
+    vector<ll> dp2(n);
+    for(ll i = 0; i < n; i++)
     {
-        cout << 0 << endl;
+        cin >> dp[i];
     }
-    else if((num + 1) % 2 == 0)
+    for(ll i = 0; i < n; i++)
     {
-        cout << (num + 1) / 2 << endl;
+        dp2[i] = dp[i];
+        if(i != n - 1)
+        {
+            dp2[i] += dp[i + 1];
+        }
     }
-    else
+
+    for(ll i = 0; i < dp2.sz; i++)
     {
-        cout << num + 1 << endl;
+        cout << dp2[i] << " ";
     }
+
 
 }
 
