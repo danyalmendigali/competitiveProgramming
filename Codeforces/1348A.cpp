@@ -38,15 +38,13 @@ void solve() {
         ans = b + 2;
     }
     cout << ans << endl;
-
-
-
 }
 
 signed main()
 {
     optimus_prime;
     int t;
+    t = 1;
     cin >> t;
     while(t--)
          solve();
