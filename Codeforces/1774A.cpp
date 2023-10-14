@@ -27,37 +27,29 @@ int cnt, res, mx;
 
 void solve()
 {
-    ll n;
+    int n;
+    int res = 0;
     cin >> n;
-    vector<ll> dp(n);
-    for(ll i = 0; i < n; i++)
+    vector<int> dp(n);
+    for(int i = 0; i < n; i++)
     {
         cin >> dp[i];
-    }
-
-    ll index = 1;
-
-    ll mn = dp[0];
-    for(ll i = 0; i < n; i++)
-    {
-        if(mn >= dp[i])
+        if(i == 0)
         {
-            mn = dp[i];
-            index = i;
+            res += dp[i] - '0';
         }
+        else if(res)
+        {
+            cout << '-';
+            res -= dp[i] - '0';
+        }
+        else
+        {
+            cout << '+';
+            res += dp[i] - '0';
+        }
+        res = 0;
     }
-
-
-    dp[index] = dp[index] + 1;
-
-    ll res = 1;
-
-    for(ll i = 0; i < dp.sz; i++)
-    {
-        res *= dp[i];
-    }
-
-    cout << res << endl;
 
 }
 
