@@ -30,31 +30,16 @@ set <string> st;
 map<string, int> mp;
 map<string, int> mp2;
 
+ll square(ll n, ll s)
+{
+    return s / (n * n);
+}
+
 void solve()
 {
-    int n, mx = 0;
-    cin >> n;
-    vector<string> people(n);
-    vector<int> point(n);
-    for(int i = 0; i < n; i++)
-    {
-        cin >> people[i] >> point[i];
-        mp[people[i]] += point[i];
-    }
-
-    for(auto i : mp)
-    {
-        mx = max(mx, i.S);
-    }
-    for(int i = 0; i < n; i++)
-    {
-        mp2[people[i]] += point[i];
-        if(mp2[people[i]] >= mx && mp[people[i]] == mx)
-        {
-            cout << people[i] << endl;
-            return;
-        }
-    }
+    ll n, s;
+    cin >> n >> s;
+    cout << square(n, s) << endl;
 
 }
 
@@ -63,7 +48,7 @@ signed main()
     optimus_prime;
     int t;
     t = 1;
-    //cin >> t;
+    cin >> t;
     while(t--)
          solve();
 
