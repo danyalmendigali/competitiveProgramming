@@ -30,24 +30,31 @@ set <string> st;
 map<string, int> mp;
 map<string, int> mp2;
 
-int numLight(int n, int m)
+void numLight(ll n, ll m)
 {
-    int g = ((n * m + 1) / 2);
-    return g;
+    if(m < n * 2)
+    {
+        cout << -1 << " " << -1 << endl;
+    }
+    else
+    {
+        cout << n << " " << n * 2 << endl;
+    }
+
 }
 
 void solve()
 {
-    int n, m;
+    ll n, m;
     cin >> n >> m;
-    cout << numLight(n, m) << endl;
+    numLight(n, m);
 
 }
 
 signed main()
 {
     optimus_prime;
-    int t;
+    ll t;
     t = 1;
     cin >> t;
     while(t--)
