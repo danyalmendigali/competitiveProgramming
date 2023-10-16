@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <set>
+#include <map>
 
 #define all(a) a.begin() , a.end()
 #define optimus_prime  cin.tie(0); cout.tie(0)
@@ -21,44 +22,27 @@ using namespace std;
 const ll N = 101;
 const ll inf = 1e9 + 9;
 const ll mod = 1e9 + 7;
-
+const int day = 7;
 
 ll a[N][N];
 ll countA = 0;
+map<ll , string> mp;
 
 
-void solve()
-{
-    int n, k, x;
-    int sum = 0;
-    cin >> n >> k >> x;
-    vector<int> dp(n);
-    FOR(i, 0, n) cin >> dp[i];
-
-    sort(all(dp));
-    for(int i = 0; i < n - k; i++)
-    {
-        sum += dp[i];
-    }
-
-    sum += k * x;
-
-
-    cout << sum << endl;
-
-
+void solve() {
+    ll a, b;
+    cin >> a >> b;
+    cout << a + b << endl;
 
 }
 
 signed main()
 {
-
     optimus_prime;
     int t;
-    t = 1;
-    //cin >> t;
+    cin >> t;
     while(t--)
-        solve();
+         solve();
 
 
 

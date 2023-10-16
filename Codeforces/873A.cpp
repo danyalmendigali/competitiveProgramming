@@ -47,6 +47,7 @@ void solve()
     cout << sum << endl;
 
 
+
 }
 
 signed main()
