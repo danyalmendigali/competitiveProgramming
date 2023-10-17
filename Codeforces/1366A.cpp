@@ -1,9 +1,8 @@
-#include <iostream>
+#include <bits/stdc++.h>
 #include <string>
 #include <vector>
 #include <algorithm>
 #include <set>
-#include <map>
 
 #define all(a) a.begin() , a.end()
 #define optimus_prime  cin.tie(0); cout.tie(0)
@@ -22,17 +21,19 @@ using namespace std;
 const ll N = 101;
 const ll inf = 1e9 + 9;
 const ll mod = 1e9 + 7;
-const int day = 7;
+
 
 ll a[N][N];
 ll countA = 0;
-map<ll , string> mp;
 
+set<int> st;
+map<ll , ll> mp;
+ll x[N];
 
-void solve() {
-    mp.insert(pair<ll , string>(1, "One"));
-
-
+void solve()
+{
+    ll a, b; cin >> a >> b;
+    cout << min(a, min(b, (a + b) / 3)) << endl;
 
 
 }
@@ -40,8 +41,11 @@ void solve() {
 signed main()
 {
     optimus_prime;
-
-    solve();
+    int t;
+    t = 1;
+    cin >> t;
+    while(t--)
+         solve();
 
 
 
