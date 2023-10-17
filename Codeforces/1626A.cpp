@@ -32,8 +32,10 @@ ll x[N];
 
 void solve()
 {
-    ll a, b; cin >> a >> b;
-    cout << min(a, min(b, (a + b) / 3)) << endl;
+    string s;
+    cin >> s;
+    sort(all(s));
+    cout << s << endl;
 
 }
 

@@ -32,7 +32,7 @@ ll x[N];
 
 void solve()
 {
-    ll n
+    ll n;
     cin >> n;
     if(n == 2)
     {
