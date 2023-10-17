@@ -24,20 +24,25 @@ const ll mod = 1e9 + 7;
 ll a[N][N];
 ll countA = 0;
 
-ll x[N];
-map <int , int> mp;
+int x[N];
+map<int ,int> mp;
 
 void solve()
 {
-    int n , mx = 0;  cin >> n;
-    for(int i = 0; i < n; i++)
+    int n, mx = 0, x; cin >> n;
+    int p[n + 9];
+    for(int i = 1; i <= n; i++)
     {
-        cin >> x[i];
-        mp[x[i]]++;
-        mx = max(mx, mp[x[i]]);
+        cin >> p[i];
+        mp[p[i]]++;
+        if(mp[p[i]] > mx)
+        {
+            mx = mp[p[i]];
+            x = p[i];
+        }
     }
 
-    cout << mx << endl;
+    cout << x;
 
 
 
