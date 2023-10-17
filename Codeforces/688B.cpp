@@ -29,15 +29,10 @@ map<ll ,ll> mp;
 
 void solve()
 {
-    string str; int n; cin >> n; cin >> str;
-    for(int i = 0; i < str.sz; i++)
-    {
-        if(i % 2 != 0)
-        {
-            cout << str[i];
-        }
-    }
-    cout << endl;
+    string str1, str2; cin >> str1;
+    str2 = str1;
+    reverse(all(str1));
+    cout << str2 << str1 << endl;
 }
 
 signed main()
@@ -46,7 +41,7 @@ signed main()
 
     int t;
     t = 1;
-    cin >> t;
+    //cin >> t;
     while(t--)
          solve();
 
