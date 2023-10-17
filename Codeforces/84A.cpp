@@ -30,17 +30,16 @@ set<int> st;
 map<ll , ll> mp;
 ll x[N];
 
+ll num(ll n)
+{
+    return n + (n / 2);
+}
 
 void solve()
 {
-    int g;
-    cin >> g;
-    for(int i = 1; i <= g; i++)
-    {
-        cout << 1 << " ";
-    }
-    cout << endl;
-
+    ll n;
+    cin >> n;
+    cout << num(n);
 }
 
 signed main()
@@ -48,7 +47,7 @@ signed main()
     optimus_prime;
     int t;
     t = 1;
-    cin >> t;
+    //cin >> t;
     while(t--)
          solve();
 
