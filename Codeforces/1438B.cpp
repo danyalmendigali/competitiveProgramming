@@ -5,7 +5,7 @@
 #include <set>
 
 #define all(a) a.begin() , a.end()
-#define ios ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0)
+#define optimus_prime  cin.tie(0); cout.tie(0)
 #define endl "\n"
 #define vll vector<long long>
 #define vi vector<int>
@@ -27,39 +27,51 @@ ll a[N][N];
 ll countA = 0;
 
 set<int> st;
-map<string , int> mp;
+map<ll , ll> mp;
 map <ll, ll> mp1 , mp2;
 vector<ll> v, v1;
 
 void solve()
 {
     mp.clear();
-    int n; cin >> n;
-    string s[n + 9];
+    ll n; cin >> n;
+    ll x[n + 9];
+    ll ans = 0;
+    for(int i = 1; i <= n; i++)
+    {
+        cin >> x[i];
+        mp[x[i]]++;
+    }
     for(int i = 0; i < n; i++)
     {
-        cin >> s[i];
-        if(mp.find(s[i]) == mp.end())
+        if(mp[x[i]] >= 2)
         {
-            cout << "OK" << endl;
-            mp[s[i]]++;
-        }
-        else
-        {
-            cout << s[i] << mp[s[i]] << endl;
-            mp[s[i]]++;
+            ans = 1;
         }
     }
+
+    if(ans == 0)
+    {
+        cout << "NO" << endl;
+    }
+    else
+    {
+        cout << "YES" << endl;
+    }
+
+
+
 }
 
 signed main()
 {
-    ios;
+    optimus_prime;
     int t;
     t = 1;
-    //cin >> t;
+    cin >> t;
     while(t--)
          solve();
+
 
 
 
