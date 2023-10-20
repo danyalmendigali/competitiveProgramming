@@ -26,11 +26,16 @@ const ll mod = 1e9 + 7;
 
 void solve()
 {
-    int a, b; cin >> a >> b;
-    a = abs(a);
-    b = abs(b);
-    int mn = min(a, b), mx = max(a, b);
-    cout << mx + max(mn, mx - 1) << endl;
+    int n;
+    cin >> n;
+    if(n == 2)
+    {
+        cout << 2 << endl;
+    }
+    else
+    {
+        cout << 3 << endl;
+    }
 
 
 
