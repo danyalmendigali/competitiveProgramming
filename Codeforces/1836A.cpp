@@ -34,7 +34,7 @@ vector<ll> v, v1;
 void solve()
 {
     int n; cin >> n;
-    mp1.clear();
+    mp1.clear(); st.clear();
     int x[n + 9];
     for(int i = 1; i <= n; i++)
     {
@@ -58,7 +58,6 @@ void solve()
 
 
     cout << "YES" << endl;
-    st.clear();
 }
 
 signed main()
