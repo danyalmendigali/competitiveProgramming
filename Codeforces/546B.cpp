@@ -27,33 +27,35 @@ ll a[N][N];
 ll countA = 0;
 
 set<int> st;
-map<string, int> mp;
+map<int, int> mp;
 
 void solve()
 {
+    mp.clear();
     int n; cin >> n;
-    vector<int> dp(n);
-    int mx = -1, mn = -1;
+    ll f[n + 9];
+    pair<int , int> p[n + 9];
     for(int i = 0; i < n; i++)
     {
-        cin >> dp[i];
-        if(dp[i] == n)
-        {
-            mx = i;
-        }
-        if(dp[i] == 1)
-
-            mn = i;
-        }
+        cin >> f[i];
+        mp[f[i]]++;
     }
 
-    int ans = abs(mx - mn);
-    if (mx < mn) swap(mx, mn);
-    if (mn != 0) ans = max(ans, mx);
-    if (mx != n - 1) ans = max(ans, n - 1 - mn);
+    int index = 0;
+    for (auto i : mp) {
+        p[index].F = i.F;
+        p[index].S = i.S;
+        index++;
+    }
 
-    cout << ans << endl;
-
+    for(int i = 0; i < n - 1; i++)
+    {
+        cout << p[i].F << " " << p[i].S << endl;
+        if(p[i].S == 1)
+        {
+            p[i + 1].F != p
+        }
+    }
 
 
 
