@@ -27,7 +27,7 @@ const int size_dp = 6;
 ll countA = 0;
 
 set<pair<int, int>> st;
-map<int, int> mp;
+map<pair<ll ,ll>, int> mp;
 
 void solve()
 {
@@ -39,7 +39,10 @@ void solve()
     {
        cin >> p[i].F >> p[i].S;
        st.insert({p[i].F, p[i].S});
+       mp[{p[i].F, p[i].S}]++;
     }
+    cout << endl << endl;
+
     cout << endl << endl;
 
     for(auto it = st.end(); it != st.begin(); --it)
