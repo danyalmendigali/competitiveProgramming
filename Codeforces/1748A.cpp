@@ -23,13 +23,9 @@ const int square = 360;
 
 void solve()
 {
-    string s1, s2;
-    cin >> s1 >> s2;
-    if(s1 == s2){
-        cout << -1;
-        return;
-    }
-    cout << max(s1.sz, s2.sz);
+    int n;
+    cin >> n;
+    cout << (n + 1) / 2 << endl;
 }
 
 signed main()
@@ -38,7 +34,7 @@ signed main()
 
     ll t;
     t = 1;
-    //cin >> t;
+    cin >> t;
     while (t--)
     {
         solve();
