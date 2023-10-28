@@ -1,3 +1,4 @@
+
 #include <bits/stdc++.h>
 #include <cmath>
 
@@ -16,31 +17,12 @@
 
 using namespace std;
 
-const int N = 55;
-const int inf = 1e9 + 9;
-const int mod = 1e9 + 7;
-const int square = 360;
+const int N = 2e5 + 5 , inf = 2e9 + 7;
+const ll INF = 1e18 ,   mod = 1e9 + 7 , P = 6547;
 
-void solve() {
-    int n;
-    cin >> n;
-    vector<int> dp(n);
-
-    for (int i = 0; i < n; i++) {
-        cin >> dp[i];
-    }
-
-    int ans = 0;
-    for (int i = 1; i < n; i++) {
-        int b = max(dp[i], dp[i - 1]);
-        int s = min(dp[i], dp[i - 1]);
-        while (b > 2 * s) {
-            s *= 2;
-            ans++;
-        }
-    }
-
-    cout << ans << endl;
+void solve()
+{
+    cout << "NO" << endl;
 }
 
 signed main()
@@ -51,8 +33,9 @@ signed main()
     t = 1;
     cin >> t;
     while (t--)
-         solve();
-
+    {
+        solve();
+    }
 
     return 0;
 }

@@ -1,7 +1,8 @@
+
 #include <bits/stdc++.h>
 #include <cmath>
 
-#define optimus_prime ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0)
+#define truemendigali ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0)
 #define all(a) a.begin(), a.end()
 #define endl "\n"
 #define vll vector<long long>
@@ -21,31 +22,36 @@ const int inf = 1e9 + 9;
 const int mod = 1e9 + 7;
 const int square = 360;
 
+map<int ,int> mp;
+
 void solve() {
+    mp.clear();
     int n;
     cin >> n;
-    vector<int> dp(n);
-
-    for (int i = 0; i < n; i++) {
-        cin >> dp[i];
+    pair<int, int> freq[n + 9];
+    for(int i = 1; i <= n; i++){
+        cin >> freq[i].F;
+        mp[freq[i].F]++;
+        freq[i].S = i;
     }
 
-    int ans = 0;
-    for (int i = 1; i < n; i++) {
-        int b = max(dp[i], dp[i - 1]);
-        int s = min(dp[i], dp[i - 1]);
-        while (b > 2 * s) {
-            s *= 2;
-            ans++;
+    sort(freq + 1, freq + 1 + n);
+
+    for(int i = 1; i <= n; i++)
+    {
+        if(mp[freq[i].F] == 1)
+        {
+            cout << freq[i].S << endl;
+            return;
         }
     }
+    cout << -1 << endl;
 
-    cout << ans << endl;
 }
 
 signed main()
 {
-    optimus_prime;
+    truemendigali;
 
     ll t;
     t = 1;
