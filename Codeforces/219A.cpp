@@ -21,28 +21,38 @@ const int inf = 1e9 + 9;
 const int mod = 1e9 + 7;
 const int square = 360;
 
-set<int> st1, st2;
-
+set<int> st;
+set<char> st2;
+map<char, int> mp;
 
 void solve()
 {
-    vector<int> dp(3);
-    for(int i = 0; i < 3; i++)
-    {
-        cin >> dp[i];
-    }
-    sort(all(dp));
-    if(dp[0] < dp[2] - 1)
-    {
-        dp[0]++;
-        dp[2]--;
-        cout << (dp[2] - dp[0]) * 2 << endl;
-        return;
+    int k;
+    cin >> k;
+    string s;
+    cin >> s;
+    vector<int> count(26);
+
+    for (char ch : s) {
+        count[ch - 'a']++;
     }
 
-    cout << 0 << endl;
+    string res;
+    for (int i = 0; i < 26; i++) {
+        if (count[i] % k != 0) {
+            cout << -1 << endl;
+            return;
+        }
+        res += string(count[i] / k, 'a' + i);
+    }
 
-т
+    for (int i = 0; i < k; i++) {
+        cout << res;
+    }
+    cout << endl;
+
+
+
 
 }
 
@@ -52,7 +62,7 @@ signed main()
 
     ll t;
     t = 1;
-    cin >> t;
+    //cin >> t;
     while (t--)
         solve();
 
