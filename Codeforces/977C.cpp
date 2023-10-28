@@ -22,28 +22,25 @@ const int mod = 1e9 + 7;
 const int square = 360;
 
 void solve() {
-	ll n , k;
-	cin >> n >> k;
-	ll dp[n + 9];
-	for (ll i = 1; i <= n ; i++){
+    int n;
+    cin >> n;
+    vector<int> dp(n);
+
+    for (int i = 0; i < n; i++) {
         cin >> dp[i];
-	}
-	sort(dp + 1, dp + 1 + n);
-	if (k == 0) {
-		if (dp[1] == 1){
-			cout << -1;
-			return;
-		}
-		else{
-			cout << 1;
-			return;
-		}
-	}
-	if (dp[k] == dp[k + 1])
-    {
-        dp[k] = -1;
     }
-	cout << dp[k];
+
+    int ans = 0;
+    for (int i = 1; i < n; i++) {
+        int b = max(dp[i], dp[i - 1]);
+        int s = min(dp[i], dp[i - 1]);
+        while (b > 2 * s) {
+            s *= 2;
+            ans++;
+        }
+    }
+
+    cout << ans << endl;
 }
 
 signed main()
