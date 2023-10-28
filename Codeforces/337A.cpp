@@ -1,65 +1,56 @@
-#include <cctype>
 #include <bits/stdc++.h>
-#include <string>
-#include <vector>
-#include <algorithm>
-#include <set>
+#include <cmath>
 
-#define all(a) a.begin() , a.end()
-#define optimus_prime  cin.tie(0); cout.tie(0)
+#define optimus_prime ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0)
+#define all(a) a.begin(), a.end()
 #define endl "\n"
 #define vll vector<long long>
-#define vi vector<int>
 #define FOR(i, a, b) for(int i = a; i < b; i++)
 #define pb(a) push_back(a)
+#define p(a) push(a)
 #define sz size()
 #define ll long long
+#define ld double
 #define F first
 #define S second
 
 using namespace std;
 
-const ll N = 101;
-const ll inf = 1e9 + 9;
-const ll mod = 1e9 + 7;
+const int N = 55;
+const int inf = 1e9 + 9;
+const int mod = 1e9 + 7;
+const int square = 360;
 
+void solve() {
+    int n, m;
+    cin >> n >> m;
+    vector<int> dp(m);
 
-ll a[N][N];
-ll countA = 0;
-
-pair<int, int> p[N];
-set <int> st;
-
-void solve()
-{
-    int n;
-    cin >> n;
-    vector<int> dp(n);
-    for(int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < m; i++) {
         cin >> dp[i];
     }
 
     sort(all(dp));
-    dp.erase(unique(all(dp)), dp.end());
 
+    int mn = dp[n - 1] - dp[0];
 
+    for (int i = 1; i <= m - n; i++) {
+        int r = dp[i + n - 1] - dp[i];
+        mn = min(mn, r);
+    }
 
-
+    cout << mn << endl;
 }
 
 signed main()
 {
     optimus_prime;
 
-    int t;
+    ll t;
     t = 1;
     //cin >> t;
-    while(t--)
+    while (t--)
          solve();
-
-
-
 
 
     return 0;

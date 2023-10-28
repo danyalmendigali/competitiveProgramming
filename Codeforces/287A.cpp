@@ -32,18 +32,18 @@ void solve() {
 
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            int blackCount = 0;
-            int whiteCount = 0;
+            int b = 0;
+            int w = 0;
             for (int x = i; x <= i + 1; x++) {
                 for (int y = j; y <= j + 1; y++) {
                     if (matrix[x][y] == '#') {
-                        blackCount++;
+                        b++;
                     } else {
-                        whiteCount++;
+                        w++;
                     }
                 }
             }
-            if (blackCount >= 3 || whiteCount >= 3) {
+            if (b >= 3 || w >= 3) {
                 cout << "YES" << endl;
                 return;
             }
