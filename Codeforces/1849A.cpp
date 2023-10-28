@@ -27,20 +27,18 @@ set<int> st1, st2;
 void solve()
 {
     st1.clear(); st2.clear();
-    int a, b;
-    cin >> a >> b;
-
-    int res = 0;
-    while (a > 0) {
-        a--;
-        res++;
-        if (res % b == 0)
-        {
-            a++;
-        }
+    int a, b, c;
+    cin >> a >> b >> c;
+    int ans = b + c;
+    int g = a - 1;
+    if(g >= ans)
+    {
+        cout << ans + ans + 1 << endl;
     }
-
-    cout << res << endl;
+    else
+    {
+        cout << a + a - 1 << endl;
+    }
 
 }
 
@@ -50,7 +48,7 @@ signed main()
 
     ll t;
     t = 1;
-    //cin >> t;
+    cin >> t;
     while (t--)
         solve();
 
