@@ -31,19 +31,19 @@ void solve()
     cin >> k;
     string s;
     cin >> s;
-    vector<int> count(26);
+    vector<int> dp(26);
 
     for (char ch : s) {
-        count[ch - 'a']++;
+        dp[ch - 'a']++;
     }
 
     string res;
     for (int i = 0; i < 26; i++) {
-        if (count[i] % k != 0) {
+        if (dp[i] % k != 0) {
             cout << -1 << endl;
             return;
         }
-        res += string(count[i] / k, 'a' + i);
+        res += string(dp[i] / k, 'a' + i);
     }
 
     for (int i = 0; i < k; i++) {
