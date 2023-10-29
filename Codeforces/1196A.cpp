@@ -28,44 +28,8 @@ void solve()
     mp.clear();
     ll a, b, c;
     cin >> a >> b >> c;
-    ll g = (a + b) / 2;
-    if((a + b) % 2 == 0)
-    {
-        a = (a + b) / 2;
-        b = (a + b) / 2;
-    }
-    if((a + b) % 2 == 1)
-    {
-        ll f = abs(a - b);
-        if(min(a , b) == a)
-        {
-            a += f / 2;
-            b -= f / 2;
-        }
-        if(min(a , b) == b)
-        {
-            a -= f / 2;
-            b += f / 2;
-        }
-    }
-
-    ll mx = max(a , b);
-    ll t = mx - a;
-    ll t1 = mx - b;
-
-    if(c >= t + t1)
-    {
-        a += t;
-        b += t1;
-        c -= t + t1;
-    }
-
-
-
-    cout << (a + (c / 2)) << endl;
-
-
-
+    ll sum = a + b + c;
+    cout << sum / 2 << endl;
 
 }
 
