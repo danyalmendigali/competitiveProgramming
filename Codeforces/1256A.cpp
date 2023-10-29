@@ -23,30 +23,21 @@ const int square = 360;
 
 map<int, int> mp;
 
+
 void solve()
 {
-    mp.clear();
-    int n;
-    cin >> n;
+    ll a, b, n, S;
+    cin >> a >> b >> n >> S;
 
-    vector<int> dp(n);
-    int res = 0;
+    ll mn = min(a, S / n);
+    ll res = S - mn * n;
 
-    for (int i = 0; i < n; i++) {
-        cin >> dp[i];
-        res += dp[i];
+    if(res <= b)
+    {
+        cout << "YES" << endl;
+        return;
     }
-
-    int ans = 0;
-
-    for (int i = 1; i <= 5; i++) {
-        if ((res + i - 1) % (n + 1) != 0) {
-            ans++;
-        }
-    }
-
-    cout << ans << endl;
-
+    cout << "NO" << endl;
 }
 
 signed main()
@@ -55,7 +46,7 @@ signed main()
 
     ll t;
     t = 1;
-    //cin >> t;
+    cin >> t;
     while(t--)
         solve();
 
