@@ -26,38 +26,26 @@ map<int, int> mp;
 void solve()
 {
     mp.clear();
-    ll a, b, s;
-    cin >> a >> b >> s;
-    ll f = abs(a) + abs(b);
-    if(a == 0 && b == 0 && s % 2 == 0){
-        cout << "Yes" << endl;
-        return;
+    int n;
+    cin >> n;
+
+    vector<int> fingers(n);
+    int totalFingers = 0;
+
+    for (int i = 0; i < n; i++) {
+        cin >> fingers[i];
+        totalFingers += fingers[i];
     }
-    if(a == 0 && b == 0 && s % 2 == 1){
-        cout << "No" << endl;
-        return;
-    }
-    if(abs(f) > abs(s)){
-        cout << "No";
-        return;
-    }
-    if(abs(f) == abs(s)){
-        cout << "Yes" << endl;
-        return;
-    }
-    if(abs(f) <  abs(s)){
-        ll r = abs(s) - abs(f);
-        if(r % 2 == 0)
-        {
-            cout << "Yes" << endl;
-            return;
-        }
-        if(r % 2 == 1)
-        {
-            cout << "No" << endl;
-            return;
+
+    int ways = 0;
+
+    for (int i = 1; i <= 5; i++) {
+        if ((totalFingers + i - 1) % (n + 1) != 0) {
+            ways++;
         }
     }
+
+    cout << ways << endl;
 
 }
 
