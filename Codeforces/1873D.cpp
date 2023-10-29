@@ -22,33 +22,31 @@ using namespace std;
 const ll N = 101;
 const ll inf = 1e9 + 9;
 const ll mod = 1e9 + 7;
+ll n, k, ans;
 
 
 ll a[N][N];
 ll countA = 0;
 
-const int SIZE = 11;
-
 pair<int, int> p[N];
 
 void solve()
 {
-    int n, k;
     cin >> n >> k;
     string s;
     cin >> s;
-    int res = 0;
+    ans = 0;
 
-    for(int i = 0; i < n; i++)
+    for(int i = 0; i < s.sz; i++)
     {
         if(s[i] == 'B')
         {
-            res++;
+            ans++;
             i += k - 1;
         }
     }
 
-    cout << res << endl;
+    cout << ans << endl;
 
 }
 
