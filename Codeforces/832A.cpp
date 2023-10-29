@@ -26,25 +26,16 @@ map<int, int> mp;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> dp(n);
-    for (int i = 0; i < n; i++) {
-        cin >> dp[i];
+    ll a, b;
+    cin >> a >> b;
+    ll g = a / b;
+    if(g % 2 == 0)
+    {
+        cout << "NO" << endl;
+        return;
     }
-
-    sort(all(dp));
-
-    int q;
-    cin >> q;
-
-    for (int i = 0; i < q; i++) {
-        int m;
-        cin >> m;
-
-        int s = upper_bound(all(dp), m) - dp.begin();
-
-        cout << s << endl;
+    else{
+        cout << "YES" << endl;
     }
 }
 
