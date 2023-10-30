@@ -27,50 +27,44 @@ ll countA = 0;
 ll a, b;
 
 set<int> st;
-map<ll, ll> mp;
+map<int, int> mp;
 
 void solve()
 {
+    mp.clear();
     int n;
     cin >> n;
-    string s;
-    cin >> s;
-    int fs = 0, sf = 0;
-    for(int i = 0; i < s.sz; i++)
+    vector<int> dp(n);
+    for(int i = 0; i < n; i++)
     {
-        if(s[i] == 'F' && s[i + 1] == 'S')
+        cin >> dp[i];
+        mp[dp[i]]++;
+    }
+    int a = 0;
+
+    for(auto i : mp){
+        if(i.S > ((n + 1) / 2))
         {
-            fs++;
-        }
-        if(s[i] == 'S' && s[i + 1] == 'F')
-        {
-            sf++;
+            a++;
         }
     }
 
-    if(sf == fs)
-    {
-        cout << "NO";
-        return;
+    if(a == 0) {
+        cout << "YES" << endl;
     }
-    if(sf > fs)
+    else
     {
-        cout << "YES";
-        return;
+        cout << "NO" << endl;
     }
 
-    cout << "NO";
 
 }
 
 signed main()
 {
     optimus_prime;
-    int t;
-    t = 1;
-    //cin >> t;
-    while(t--)
-         solve();
+
+    solve();
 
 
 
