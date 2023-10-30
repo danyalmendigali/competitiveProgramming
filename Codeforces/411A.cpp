@@ -33,27 +33,30 @@ vector<ll> v, v1;
 
 void solve()
 {
-    mp.clear(); st.clear();
-    int siz; cin >> siz;
-    vector<ll> dp(siz);
-    for(int i = 0; i < siz; i++)
+    string s; cin >> s;
+    int a = 0, b = 0, c = 0;
+    for(int i = 0; i < s.sz; i++)
     {
-        cin >> dp[i];
-        while(dp[i] % 3 == 0) {
-            dp[i] /= 3;
+        if(s[i] >= 'A' && s[i] <= 'Z')
+        {
+            a++;
         }
-        while(dp[i] % 2 == 0) {
-            dp[i] /= 2;
+        if(s[i] >= 'a' && s[i] <= 'z')
+        {
+            b++;
+        }
+        if(s[i] >= '0' && s[i] <= '9')
+        {
+            c++;
         }
     }
-    sort(all(dp));
 
-    if(dp[0] == dp[siz - 1]){
-        cout << "Yes" << endl;
+    if(s.sz >= 5 && a != 0 && b != 0 && c != 0)
+    {
+        cout << "Correct";
         return;
     }
-
-    cout << "No" << endl;
+    cout << "Too weak";
 }
 
 signed main()
