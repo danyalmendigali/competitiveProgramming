@@ -22,32 +22,37 @@ const int mod = 1e9 + 7;
 const int square = 360;
 
 map<int, int> mp;
+set<pair<int, int>> st;
 
 void solve() {
-    int n, m;
-    cin >> n >> m;
-    vector<int> dp(n);
+    int n, H, M;
+    cin >> n >> H >> M;
+    int minutes = H * 60 + M;
+    int ans = 24 * 60 + 1;
 
-    for (int i = 0; i < n; i++){
-        cin >> dp[i];
-    }
+    for (int i = 0; i < n; i++) {
+        int a, b;
+        cin >> a >> b;
+        int res = a * 60 + b;
 
-    int mx = 0;
-    int res = 0;
-    int l = 0;
-
-    for (int i = 0; i < n; i++){
-        res += dp[i];
-
-        if(res > m) {
-            res -= dp[l];
-            l++;
+        if (res == minutes) {
+            ans = 0;
         }
-
-        mx = max(mx, i - l + 1);
+        else if(res <= minutes)
+        {
+            ans = min(ans, 24 * 60 - minutes + res);
+        }
+        else
+        {
+            ans = min(res - minutes, ans);
+        }
     }
 
-    cout << mx << endl;
+    int ans1 = ans / 60;
+    int ans2 = ans % 60;
+
+    cout << ans1 << " " << ans2 << "\n";
+
 
 }
 
@@ -57,7 +62,7 @@ signed main()
 
     ll t;
     t = 1;
-    //cin >> t;
+    cin >> t;
     while(t--)
         solve();
 
