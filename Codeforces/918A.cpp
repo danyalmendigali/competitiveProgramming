@@ -33,27 +33,35 @@ vector<ll> v, v1;
 
 void solve()
 {
-    mp.clear(); st.clear();
-    int siz; cin >> siz;
-    vector<ll> dp(siz);
-    for(int i = 0; i < siz; i++)
-    {
-        cin >> dp[i];
-        while(dp[i] % 3 == 0) {
-            dp[i] /= 3;
-        }
-        while(dp[i] % 2 == 0) {
-            dp[i] /= 2;
-        }
-    }
-    sort(all(dp));
+    int n;
+    cin >> n;
 
-    if(dp[0] == dp[siz - 1]){
-        cout << "Yes" << endl;
-        return;
+    vector<int> dp {};
+    dp.pb(1);
+    dp.pb(1);
+
+    while (dp.back() < n) {
+        int next = dp[dp.sz - 1] + dp[dp.sz - 2];
+        dp.pb(next);
     }
 
-    cout << "No" << endl;
+    string s;
+    int r = 0;
+
+    for(int i = 1; i <= n; i++){
+        if(i == dp[r])
+        {
+            s += 'O';
+            r++;
+        }
+        else{
+            s += 'o';
+        }
+    }
+
+    cout << s << endl;
+
+
 }
 
 signed main()
@@ -70,3 +78,4 @@ signed main()
 
     return 0;
 }
+
