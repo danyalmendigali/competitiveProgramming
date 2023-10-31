@@ -27,26 +27,27 @@ void solve() {
     int n, m;
     cin >> n >> m;
     vector<int> dp(n);
-    for(int i = 0; i < n; i++)
-    {
+
+    for (int i = 0; i < n; i++) {
         cin >> dp[i];
     }
-    sort(all(dp));
-    int sum = 0;
-    int a = 0;
-    for(int i = 0; i < dp.sz; i++)
-        {
-            m -= dp[i];
-            a++;
-            if(m <= 0)
-            {
-                m += dp[i];
-                a--;
-                cout << a << endl;
-                return;
-            }
+
+    int mx = 0;
+    int res = 0;
+    int l = 0;
+
+    for (int i = 0; i < n; i++) {
+        res += dp[i];
+
+        if(res > m) {
+            res -= dp[l];
+            l++;
         }
-        cout << a << endl;
+
+        mx = max(mx, i - l + 1);
+    }
+
+    cout << mx << endl;
 
 }
 
