@@ -24,20 +24,42 @@ const int square = 360;
 set<int> st;
 
 void solve() {
-    int a, n;
-    cin >> a >> n;
-    vector<int> dp(a);
+    int a, b;
+    cin >> a >> b;
+    vector<int> dp1(a), dp2(a);
+    vector<int> ans;
     for(int i = 0; i < a; i++){
-        cin >> dp[i];
+        cin >> dp1[i];
     }
-    sort(all(dp));
-
-    if (dp[0] + n >= dp[a - 1] - n){
-        cout << dp[0] + n << endl;
-        return;
+    for(int i = 0; i < a; i++){
+        cin >> dp2[i];
     }
 
-    cout << -1 << endl;
+    sort(all(dp1));
+    sort(all(dp2));
+    reverse(all(dp2));
+
+    for(int i = 0; i < a; i++)
+    {
+        ll t = dp1[i] + dp2[i];
+        ans.pb(t);
+    }
+    int res = 0;
+
+    for(int i = 0; i < ans.sz; i++){
+        if(ans[i] <= b){
+            res++;
+        }
+    }
+
+    if(res == a){
+        cout << "Yes" << endl;
+    }
+    else
+    {
+        cout << "No" << endl;
+
+    }
 
 }
 
