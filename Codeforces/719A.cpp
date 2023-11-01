@@ -46,18 +46,18 @@ void solve()
         cout << -1 << endl;
         return;
     }
-    if(s[n] == 15)
+    if(s[n - 1] == 15)
     {
         cout << "DOWN" << endl;
         return;
     }
 
-    if(s[n] == 0){
+    if(s[n - 1] == 0){
         cout << "UP" << endl;
         return;
     }
 
-    if(s[n - 1] < s[n]){
+    if(s[n - 2] < s[n - 1]){
         cout << "UP" << endl;
         return;
     }
