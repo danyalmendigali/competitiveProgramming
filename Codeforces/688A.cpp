@@ -29,25 +29,24 @@ ll countA = 0;
 map<char, int> mp;
 
 void solve() {
-    string str; cin >> str;
-    int ans1 = 0, ans2 = 0;
-    for(int i = 0; i < str.sz; i++){
-        if(str[i] == '0')
+    int n, t; cin >> n >> t;
+    int cnt = 0, ans = 0;
+    string str;
+    for(int i = 0; i < t; i++)
+    {
+        cin >> str;
+        if(str[0] == '0')
         {
-            ans1++;
+            cnt = max(ans, cnt);
         }
-        if(str[i] == '1')
-        {
-            ans2++;
+        else{
+            cnt = 0;
         }
     }
 
-    if(ans1 == ans2)
-    {
-        cout << ans1 - 1 << endl;
-        return;
-    }
-    cout << min(ans1, ans2) << endl;
+    cout << ans << endl;
+
+
 
 }
 
@@ -57,7 +56,7 @@ signed main()
 
     int t;
     t = 1;
-    cin >> t;
+    //cin >> t;
 
     while(t--)
          solve();
