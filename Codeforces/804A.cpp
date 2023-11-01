@@ -30,31 +30,10 @@ map<char, int> mp;
 
 void solve()
 {
-    mp.clear();
-    int n, k;
-    cin >> n >> k;
-    string s;
-    cin >> s;
+    int a; cin >> a;
+    ll g = (a - 1) / 2;
 
-    for (char c : s) {
-        mp[c]++;
-    }
-
-    int f = 0;
-    for (auto it : mp) {
-        if (it.S % 2 != 0) {
-            f++;
-        }
-    }
-
-    if (f <= k && (n % 2 == 0 || k % 2 == 0)){
-        cout << "YES" << endl;
-        return;
-    }
-    else{
-        cout << "NO" << endl;
-        return;
-    }
+    cout << g << endl;
 }
 
 signed main()
@@ -63,7 +42,7 @@ signed main()
 
     int t;
     t = 1;
-    cin >> t;
+    //cin >> t;
 
     while(t--)
          solve();
