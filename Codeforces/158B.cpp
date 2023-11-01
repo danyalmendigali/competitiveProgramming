@@ -28,34 +28,17 @@ ll countA = 0;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    int a = 0;
-    vector<bool> visited(n, false);
-    for(int i = 0; i < n; i++)
-    {
-        cin >> dp[i];
-    }
-    for(int i = 0; i < n; i++)
-    {
-            if(dp[i] == 4 && !visited[i])
-            {
-                a++;
-                visited[i] = true;
-            }
-            for(int j = 0; j < n; j++)
-            {
-                if(i != j && !visited[i] && !visited[j] && dp[i] + dp[j] <= 4)
-                {
-                    a++;
-                    visited[i] = true;
-                    visited[j] = true;
-                }
+    int a, b, c;
+    cin >> a >> b >> c;
 
-            }
-    }
+    int twominute = b * 2;
+    int threeminute = c * 3;
 
-    cout << a << endl;
+    if((a + twominute + threeminute) % 2 == 0) {
+        cout << 0 << endl;
+        return;
+    }
+    cout << 1 << endl;
 
 
 }
@@ -66,7 +49,7 @@ signed main()
 
     int t;
     t = 1;
-    //cin >> t;
+    cin >> t;
 
     while(t--)
          solve();
