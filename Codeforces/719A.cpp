@@ -42,10 +42,6 @@ void solve()
         cin >> s[i];
     }
 
-    if(n == 1){
-        cout << -1 << endl;
-        return;
-    }
     if(s[n - 1] == 15)
     {
         cout << "DOWN" << endl;
@@ -56,20 +52,18 @@ void solve()
         cout << "UP" << endl;
         return;
     }
+    if(n == 1){
+        cout << -1 << endl;
+        return;
+    }
 
-    if(s[n - 2] < s[n - 1]){
+    if(s[n - 2] < s[n - 1]) {
         cout << "UP" << endl;
-        return;
     }
-    else
-    {
+
+    else {
         cout << "DOWN" << endl;
-        return;
     }
-
-
-
-
 
 
 }
