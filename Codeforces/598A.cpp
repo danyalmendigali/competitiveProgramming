@@ -29,15 +29,18 @@ ll countA = 0;
 map<char, int> mp;
 
 void solve() {
-    ll res;
-    cin >> res;
-    ll ans = ((res + 1) * res) / 2;
-
-    for(int i = 1; i <= res; i *= 2){
-        ans -= (i * 2);
+    ll n;
+    cin >> n;
+    vector<ll> dp;
+    for(ll i = 0; i < n; i++)
+    {
+        dp.pb(i + 2);
     }
 
-    cout << ans << endl;
+    for(ll i = 0; i < dp.sz; i++)
+    {
+        cout << dp[i] << " ";
+    }
 }
 
 signed main()

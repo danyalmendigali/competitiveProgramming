@@ -1,4 +1,5 @@
 #include <iostream>
+#include <bits/stdc++.h>
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -22,14 +23,13 @@ const ll N = 101;
 const ll inf = 1e9 + 9;
 const ll mod = 1e9 + 7;
 
-
 ll a[N][N];
 ll countA = 0;
 
-void solve()
-{
-    int num; cin >> num;
-    cout << num - 3 << " " << 1 << " " << 1 << " " << 1 << endl;
+map<char, int> mp;
+
+void solve() {
+
 }
 
 signed main()
@@ -38,12 +38,10 @@ signed main()
 
     int t;
     t = 1;
-    cin >> t;
+    //cin >> t;
 
     while(t--)
          solve();
-
-
 
 
 

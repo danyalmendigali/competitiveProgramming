@@ -1,11 +1,11 @@
-#include <iostream>
+#include <bits/stdc++.h>
 #include <string>
 #include <vector>
 #include <algorithm>
 #include <set>
 
 #define all(a) a.begin() , a.end()
-#define optimus_prime  cin.tie(0); cout.tie(0)
+#define ios ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0)
 #define endl "\n"
 #define vll vector<long long>
 #define vi vector<int>
@@ -26,24 +26,26 @@ const ll mod = 1e9 + 7;
 ll a[N][N];
 ll countA = 0;
 
-void solve()
-{
-    int num; cin >> num;
-    cout << num - 3 << " " << 1 << " " << 1 << " " << 1 << endl;
+set<int> st;
+map<string , int> mp;
+map <ll, ll> mp1 , mp2;
+vector<ll> v, v1;
+
+void solve() {
+    int n, a, b;
+    cin >> n >> a >> b;
+    int mx = max(n - a, n - b);
+    cout << mx + 1 << endl;
 }
 
 signed main()
 {
-    optimus_prime;
-
+    ios;
     int t;
     t = 1;
     cin >> t;
-
     while(t--)
          solve();
-
-
 
 
 
