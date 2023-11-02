@@ -31,17 +31,10 @@ map<int , int> mp;
 vector<ll> v, v1;
 
 void solve() {
-    int n; cin >> n;
+    ll s, a, b, c, mx; cin >> s >> a >> b >> c;
+    mx = (s / c) + ((s / c) / a) * b;
 
-    int mn = (n / 7) * 2;
-    int res = n % 7;
-
-    int mx = mn + min(res, 2);
-
-    if (res == 6)
-        mn++;
-
-    cout << mn << " " << mx << endl;
+    cout << mx << endl;
 }
 
 signed main()
@@ -49,7 +42,7 @@ signed main()
     mendigalitrue;
     int t;
     t = 1;
-    //cin >> t;
+    cin >> t;
     while(t--)
          solve();
 

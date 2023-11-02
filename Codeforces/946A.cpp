@@ -32,16 +32,26 @@ vector<ll> v, v1;
 
 void solve() {
     int n; cin >> n;
+    vector<int> dp(n);
+    vector<int> mx, mn;
+    int sum1 = 0, sum2 = 0;
+    for(int i = 0; i < n; i++){
+        cin >> dp[i];
+        if(dp[i] >= 0){
+            sum1 += dp[i];
+        }
+        if(dp[i] < 0){
+            sum2 += dp[i];
+        }
+    }
 
-    int mn = (n / 7) * 2;
-    int res = n % 7;
+    int res = sum1 - sum2;
 
-    int mx = mn + min(res, 2);
+    cout << res << endl;
 
-    if (res == 6)
-        mn++;
 
-    cout << mn << " " << mx << endl;
+
+
 }
 
 signed main()
