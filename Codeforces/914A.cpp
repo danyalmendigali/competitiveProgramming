@@ -19,7 +19,7 @@
 using namespace std;
 
 const ll N = 101;
-const ll inf = 1e9 + 9;
+const ll inf = -1e9 - 9;
 const ll mod = 1e9 + 7;
 
 
@@ -31,35 +31,24 @@ map<int , int> mp;
 vector<ll> v, v1;
 
 void solve() {
-    ll n, sum = 0; cin >> n;
-    vector<ll> a(n), b(n);
-    for(ll i = 0; i < n; i++){
-        cin >> a[i];
-        sum += a[i];
-    }
-    for(ll i = 0; i < n; i++){
-        cin >> b[i];
-    }
-    sort(all(b));
+    int n;
+    cin >> n;
+    vector<int> dp(n);
 
-
-    ll g = b[n - 2] + b[n - 1];
-    if(n == 2){
-        cout << "YES" << endl;
+    for (int i = 0; i < n; i++) {
+        cin >> dp[i];
     }
-    else
-    {
-        if(g >= sum){
-            cout << "YES" << endl;
-            return;
+
+    int mx = inf;
+
+    for (int i = 0; i < n; i++) {
+        double sqr = sqrt(dp[i]);
+        if (sqr != floor(sqr)) {
+            mx = max(mx, dp[i]);
         }
-        else
-        {
-            cout << "NO" << endl;
-            return;
-        }
-
     }
+
+    cout << mx << endl;
 
 
 }
