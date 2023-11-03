@@ -67,7 +67,11 @@ signed main()
     mendigalitrue;
     int t;
     t = 1;
+<<<<<<< HEAD
     cin >> t;
+=======
+    //cin >> t;
+>>>>>>> 5fafed864b6797ce1997497b6260f7be617c6fd5
     while(t--)
          solve();
 

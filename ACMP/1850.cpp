@@ -1,15 +1,39 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <cctype>
+#include <iomanip>
 using namespace std;
 
-const int n = 32;
-const float g = 1.8;
-int main() {
-	int t;
-	cin >> t;
-	cout << fixed << setprecision(1) << t * g + n;
-	
-	
-	
-	
-	return 0;
+void solve()
+{
+
+    long long int n;
+
+    cin >> n;
+
+    long double a;
+    a = n * 1.8 + 32;
+
+    cout << fixed << setprecision(1) << a;
+
+
 }
+
+int main() {
+
+
+    solve();
+
+
+    return 0;
+}
+
+
+
+
+
+
+
+

@@ -1,62 +1,55 @@
 #include <bits/stdc++.h>
-#include <windows.h>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <set>
+
+#define all(a) a.begin() , a.end()
+#define optimus_prime  cin.tie(0); cout.tie(0)
+#define endl "\n"
+#define vll vector<long long>
+#define vi vector<int>
+#define FOR(i, a, b) for(int i = a; i < b; i++)
+#define pb(a) push_back(a)
+#define sz size()
+#define ll long long
+#define F first
+#define S second
+
 using namespace std;
 
-#define ll long long
-#define ar array
-#define FOR(i, a, b) for(int i = a; i < b; i++)
+const ll N = 101;
+const ll inf = 1e9 + 9;
+const ll mod = 1e9 + 7;
 
-string ParityModsets(int* arr, int n)
+
+ll a[N][N];
+ll countA = 0;
+
+set<int> st1, st2;
+vector<int> num_table = {0,1,2,6,20,70,252,924,3432,12870,48620};
+
+void solve()
 {
-    int o = 1, e = 0;
-    FOR(i, 0, n * 2)
-    {
-        int x;
-        cin >> x;
-        if(x & 1) o++;
-        else e++;
-    }
-
-    if(o == e)
-    {
-        return "YES";
-    }
-    else
-    {
-        return "NO";
-    }
+    int n;
+    cin >> n;
+    cout << num_table[n] << endl;
 
 }
 
-
-int main() {
-    cin.tie(0);
-    SetConsoleOutputCP(CP_UTF8);
-    SetConsoleCP(CP_UTF8);
-
+signed main()
+{
+    optimus_prime;
     int t;
-    cin >> t;
-    while(t--) {
-        int n;
-        cin >> n;
-        int arr[n];
+    t = 1;
+    //cin >> t;
 
-        for (int i = 0; i < n; i++)
-        {
-            cin >> arr[i];
-        }
-        cout << ParityModsets(arr, n) << endl;
-    }
+    while(t--)
+         solve();
 
 
 
 
 
-
-
-
-  return 0;
+    return 0;
 }
-
-
-

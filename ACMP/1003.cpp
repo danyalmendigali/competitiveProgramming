@@ -1,26 +1,20 @@
-#include <map>
-#include <set>
-#include <cmath>
-#include <vector>
-#include <string>
-#include <cstring>
 #include <iostream>
+#include <vector>
 #include <algorithm>
-#include <cctype>
-
 using namespace std;
 
+void solve()
+{
+    long long int x, y, z;
+    cin >> x >> y >> z;
+
+    cout << (x * 3) + (y * 5) + (z * 12);
+}
+
 int main() {
-	long long int x, y, z, a;
-	cin >> x >> y >> z;
-	a = (x * 3) + (x * 3 + 2) + ( x * 3 + 9);
-	cout << a ;
-	
-	
-	
-	
-	
-	
-	
-	return 0;
+
+    solve();
+
+
+    return 0;
 }
