@@ -1,73 +1,48 @@
-#include <iostream>
+#include <bits/stdc++.h>
+#include <string>
 #include <vector>
 #include <algorithm>
-#include <cmath>
+#include <set>
+
+#define all(a) a.begin() , a.end()
+#define optimus_prime  cin.tie(0); cout.tie(0)
+#define endl "\n"
+#define vll vector<long long>
+#define vi vector<int>
+#define FOR(i, a, b) for(int i = a; i < b; i++)
+#define pb(a) push_back(a)
+#define sz size()
+#define ll long long
+#define F first
+#define S second
+
 using namespace std;
+
+const ll N = 101;
+const ll inf = 1e9 + 9;
+const ll mod = 1e9 + 7;
+
+
+ll a[N][N];
+ll countA = 0;
 
 void solve()
 {
-   int y, w;
-   cin >> y >> w;
-
-   int maxPoint = max(y, w);
-
-   vector<int> point;
-   for(int i = maxPoint - 1; i < 6; i++)
-   {
-       point.push_back(i);
-   }
-
-   int size_vector = point.size();;
-
-
-   if(size_vector == 0)
-   {
-       cout << "0/1";
-   }
-
-    if(size_vector == 1)
-   {
-       cout << "1/6";
-   }
-
-    if(size_vector == 2)
-   {
-       cout << "1/3";
-   }
-
-    if(size_vector == 3)
-   {
-       cout << "1/2";
-   }
-
-    if(size_vector == 4)
-   {
-       cout << "2/3";
-   }
-    if(size_vector == 5)
-
-   {
-       cout << "5/6";
-   }
-
-    if(size_vector == 6)
-
-   {
-       cout << "1/1";
-   }
-
-
-
-
-
-
+    ll num; cin >> num;
+    cout << num / 2 << endl;
 
 }
 
-int main() {
+signed main()
+{
+    optimus_prime;
 
+    int t;
+    t = 1;
+        cin >> t;
 
-    solve();
+    while(t--)
+         solve();
 
 
 
@@ -75,4 +50,3 @@ int main() {
 
     return 0;
 }
-

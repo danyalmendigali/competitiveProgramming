@@ -30,7 +30,7 @@ void solve()
 {
     int n, m;
     cin >> n >> m;
-    double ans = 1e9 + 7, a, b;
+    double ans = inf, a, b;
 
     while (n--) {
         cin >> a >> b;
