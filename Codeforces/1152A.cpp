@@ -28,21 +28,32 @@ ll countA = 0;
 
 void solve()
 {
-    int a; cin >> a;
-    vector<ll> dp(a);
-    for(ll i = 0; i < a; i++){
-        cin >> dp[i];
+    ll n, m; cin >> n >> m;
+    vector<ll> case_dp(n);
+    vector<ll> key_dp(m);
+    ll a = 0, a2 = 0, b = 0, b2 = 0;
+    for(ll i = 0; i < n; i++){
+        cin >> case_dp[i];
+        if(case_dp[i] % 2 == 0){
+                a++;
+        }
+        if(case_dp[i] % 2 == 1){
+            a2++;
+        }
     }
-    vector<ll> copy_dp = dp;
-    sort(all(copy_dp));
-    int ans = 0;
-    for(ll i = 0; i < dp.sz; i++){
-        if(copy_dp[i] != dp[i]){
-            ans++;
+    for(ll i = 0; i < m; i++){
+        cin >> key_dp[i];
+        if(key_dp[i] % 2 == 0){
+            b++;
+        }
+        if(key_dp[i] % 2 == 1){
+            b2++;
         }
     }
 
-    cout << (ans <= 2 ? "YES" : "NO") << endl;
+    ll mx = min(a, b2) + min(a2, b);
+    cout << mx << endl;
+
 
 }
 
