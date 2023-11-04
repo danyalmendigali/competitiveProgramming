@@ -31,21 +31,31 @@ map<string , int> mp;
 map <ll, ll> mp1 , mp2;
 vector<ll> v, v1;
 
-void solve()
-{
-    mp.clear();
-    int a; cin >> a;
-    vector<int> dp(a);
-    for(int i = 0; i < a; i++){
+void solve() {
+    int n;
+    cin >> n;
+    vector<int> dp(n);
+
+    for (int i = 0; i < n; i++) {
         cin >> dp[i];
     }
-    //sort(all(dp));
-    reverse(all(dp));
-    for(int i = 0; i < dp.sz; i++){
-        cout << dp[i] << " ";
+
+    int a = 0;
+    int b = -1;
+
+    for (int i = 0; i < n; i++) {
+        if (dp[i] % 2 == 0) {
+            cout << "1\n" << i + 1 << "\n";
+            a = -1;
+            break;
+        } else if (b == -1) {
+            b = i;
+        }
     }
 
-
+    if (a == 0) {
+        cout << "2\n" << b + 1 << " " << (b == 0 ? 2 : 1) << "\n";
+    }
 }
 
 signed main()
