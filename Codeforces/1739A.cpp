@@ -34,16 +34,12 @@ vector<ll> v, v1;
 void solve()
 {
     mp.clear();
-    ll n, k;
-    cin >> n >> k;
-    if(n >= k){
-        cout << (n - k) % 2 << endl;
+    int a, b; cin >> a >> b;
+    if(a == 1 || b == 1){
+        cout << 1 << " " << 1 << endl;
         return;
     }
-    if(n < k){
-        cout << k - n << endl;
-        return;
-    }
+    cout << 2 << " " << 2 << endl;
 
 }
 
