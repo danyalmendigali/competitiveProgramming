@@ -28,17 +28,63 @@ ll countA = 0;
 
 void solve()
 {
-    int a, b, c;
-    cin >> a >> b >> c;
+    int n;
+    cin >> n;
+    vector<int> dp(n);
 
-    int twominute = b * 2;
-    int threeminute = c * 3;
-
-    if((a + twominute + threeminute) % 2 == 0) {
-        cout << 0 << endl;
-        return;
+    for (int i = 0; i < n; i++) {
+        cin >> dp[i];
     }
-    cout << 1 << endl;
+
+    int res = 0;
+    int a1 = 0, a2 = 0, a3 = 0, a4 = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (dp[i] == 4) {
+            a4++;
+        } else if (dp[i] == 3) {
+            a3++;
+        } else if (dp[i] == 2) {
+            a2++;
+        } else {
+            a1++;
+        }
+    }
+
+    res += a3;
+    a3 = 0;
+
+    while (a2 > 0 && a1 > 1) {
+        res++;
+        a2--;
+        a1 -= 2;
+    }
+
+    while (a3 > 0 && a1 > 0) {
+        res++;
+        a3--;
+        a1--;
+    }
+
+    while (a4 > 0) {
+        res++;
+        a4--;
+    }
+    while (a3 > 0) {
+        res++;
+        a3--;
+    }
+    while (a2 > 0) {
+        res++;
+        a2--;
+    }
+
+    while (a1 > 0) {
+        res++;
+        a1--;
+    }
+
+    cout << res - 1 << endl;
 
 
 }
@@ -49,7 +95,7 @@ signed main()
 
     int t;
     t = 1;
-    cin >> t;
+    //cin >> t;
 
     while(t--)
          solve();
