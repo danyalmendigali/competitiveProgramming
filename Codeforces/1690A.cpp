@@ -39,18 +39,19 @@ void solve()
         int h2 = n / 3 + 1;
         int h3 = n / 3 - 1;
         cout << h << " " << h2 << " " << h3 << endl;
+
      }
      else if(n % 3 == 1){
         int h = n / 3;
         int h2 = n / 3 + 2;
         int h3 = n / 3 - 1;
-        cout << h << " " << h2 << " " << h3;
+        cout << h << " " << h2 << " " << h3 << endl;
      }
      else{
         int h = n / 3 + 1;
         int h2 = n / 3 + 2;
         int h3 = n / 3 - 1;
-        cout << h << " " << h2 << " " << h3;
+        cout << h << " " << h2 << " " << h3 << endl;
      }
 
 }
