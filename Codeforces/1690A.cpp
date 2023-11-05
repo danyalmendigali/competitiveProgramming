@@ -34,11 +34,11 @@ vector<ll> v, v1;
 void solve()
 {
     int n; cin >> n;
-    if(n % 3){
+    if(n % 3 == 0){
         int h = n / 3;
         int h2 = n / 3 + 1;
         int h3 = n / 3 - 1;
-        cout << h << " " << h2 << " " << h3;
+        cout << h << " " << h2 << " " << h3 << endl;
      }
      else if(n % 3 == 1){
         int h = n / 3;
