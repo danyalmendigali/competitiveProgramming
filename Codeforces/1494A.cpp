@@ -28,14 +28,26 @@ ll countA = 0;
 
 void solve()
 {
-    ll a, b; cin >> a >> b;
-    if(a % 2){
-        a++;
+    int a; cin >> a;
+    string s; cin >> s;
+
+
+    if(a == 1){
+        cout << "YES" << endl;
+        return;
     }
+    if(a == 2){
+        if(s == "10"){
+            cout << "YES" << endl;
+            return;
+        }
+        if(s == "01"){
+            cout << "YES" << endl;
+            return;
+        }
+    }
+    cout << "NO" << endl;
 
-    if(b - a < 2) cout << -1 << endl;
-
-    else cout << a << " " << a + 1 << " " << a + 2 << endl;
 
 
 }
@@ -46,7 +58,7 @@ signed main()
 
     int t;
     t = 1;
-    //cin >> t;
+    cin >> t;
 
     while(t--)
          solve();
