@@ -26,24 +26,20 @@ const ll mod = 1e9 + 7;
 
 ll a[N][N];
 ll countA = 0;
+set<int> st;
 
 void solve()
 {
-    ll n; cin >> n;
-    vector<ll> dp(n * 2);
-    for(ll i = 0; i < dp.sz; i++){
-        cin >> dp[i];
-    }
-    sort(all(dp));
-    if(dp[0] == dp[dp.sz - 1]){
-        cout << -1;
-        return;
-    }
-    else{
-        for(ll i = 0; i < dp.sz; i++){
-            cout << dp[i] << " ";
+    st.clear();
+    int n;
+    cin >> n;
+    for(int i = 0; i < n; i++){
+        int a; cin >> a;
+        if(a != 0){
+            st.insert(a);
         }
     }
+    cout << st.sz << endl;
 
 }
 
