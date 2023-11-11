@@ -28,17 +28,16 @@ map<int, int> mp2;
 
 void solve()
 {
-        int n;
-        cin >> n;
-        vector<int> dp(n);
-        for (int i = 0; i < n; i++) {
-            cin >> dp[i];
-        }
-        int mn = min_element(all(dp)) - dp.begin();
-        int mx = max_element(all(dp)) - dp.begin();
-        int res = min(max(mn, mx) + 1, min(n - mn, n - mx));
-
-        cout << res << endl;
+    int a1, a2; cin >> a1 >> a2;
+    if(a1 == 0){
+        cout << 1 << endl;
+        return;
+    }
+    else{
+        int r = (a2 * 2) + 1;
+        cout << r + a1 << endl;
+        return;
+    }
 
 
 }
