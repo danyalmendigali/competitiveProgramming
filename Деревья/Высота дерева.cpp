@@ -41,7 +41,7 @@ struct Node{
     Node* left;
     Node* right;
 
-    Node(int val) : value(val), left(nullptr) , right(nullptr) {}
+    Node(int val) : value(val), left(nullptr), right(nullptr) {}
 };
 
 void insert(Node*& node, int value){
@@ -56,14 +56,15 @@ void insert(Node*& node, int value){
     }
 }
 
-
 int height(Node* node){
     if(!node){
         return 0;
     }
+
     int leftHeight = height(node -> left);
-    int rightHeight = height(node -> right);
-    return max(leftHeight, rightHeight) + 1;
+    int rightGeight = height(node -> right);
+
+    return max(leftHeight, rightGeight) + 1;
 }
 
 void solve() {
@@ -71,11 +72,13 @@ void solve() {
 
     int num;
     cin >> num;
-    while (num != 0) {
+    while(num != 0){
         insert(root, num);
         cin >> num;
     }
+
     cout << height(root) << endl;
+
 }
 
 signed main()
