@@ -18,7 +18,6 @@
 
 using namespace std;
 
-// ---
 
 const ll N = 101;
 const ll inf = 1e9 + 9;
@@ -36,20 +35,21 @@ map<string , int> mp;
 map <ll, ll> mp1 , mp2;
 vector<ll> v, v1;
 
-void solve(){
-    int n; cin >> n;
-    string s; cin >> s;
-    int a = 0, b = 0;
+void solve() {
+    ll n, k;
+    cin >> n >> k;
+    vector<pair<ll, ll>> p(n);
+    vll dp;
 
-    for(int i = 0; i < n - 1; i++){
-        if(s[i] != s[i + 1]){
-            cout << i + 1 << " " << i + 2 << endl;
-            return;
+    for (ll i = 0; i < n; i++) {
+        cin >> p[i].F >> p[i].S;
+        if (p[i].second <= k) {
+            dp.push_back(p[i].F);
         }
     }
 
-    cout << -1 << " " << -1 << endl;
-
+    ll mx = (dp.empty()) ? -1 : *max_element(dp.begin(), dp.end());
+    cout << mx << endl;
 }
 
 signed main()
@@ -57,7 +57,7 @@ signed main()
     ios;
     int t;
     t = 1;
-    cin >> t;
+    //cin >> t;
     while(t--)
          solve();
 
