@@ -36,6 +36,7 @@ map<string , int> mp;
 map <ll, ll> mp1 , mp2;
 vector<ll> v, v1;
 
+// Структура узла
 struct Node{
     int value;
     Node* left;
@@ -44,6 +45,7 @@ struct Node{
     Node(int val) : value(val), left(nullptr), right(nullptr) {}
 };
 
+// Добавленте узла в BST
 void insert(Node*& node, int value_input){
     if(!node){
         node = new Node(value_input);
@@ -56,6 +58,7 @@ void insert(Node*& node, int value_input){
     }
 }
 
+// Нахождение минимального узла в BST
 Node* findMin(Node* node) {
     while (node -> left != nullptr) {
         node = node -> left;
@@ -63,37 +66,39 @@ Node* findMin(Node* node) {
     return node;
 }
 
-Node* remove(Node* root, int key) {
-    if (root == nullptr) {
-        return root;
+// Функция удаления узла в BST
+Node* remove(Node* node, int key) {
+    if (node == nullptr) {
+        return node;
     }
 
-    if (key < root -> value){
-        root -> left = remove(root -> left, key);
+    if (key < node -> value){
+        node -> left = remove(node -> left, key);
     }
-    else if(key > root -> value){
-        root -> right = remove(root -> right, key);
+    else if(key > node -> value){
+        node -> right = remove(node -> right, key);
     }
     else{
-        if(root -> left == nullptr){
-            Node* temp = root -> right;
-            delete root;
+        if(node -> left == nullptr){
+            Node* temp = node -> right;
+            delete node;
             return temp;
-        } else if (root -> right == nullptr) {
-            Node* temp = root -> left;
-            delete root;
+        } else if (node -> right == nullptr) {
+            Node* temp = node -> left;
+            delete node;
             return temp;
         }
 
-        Node* temp = findMin(root -> right);
-        root -> value = temp -> value;
+        Node* temp = findMin(node -> right);
+        node -> value = temp -> value;
 
-        root -> right = remove(root -> right, temp -> value);
+        node -> right = remove(node -> right, temp -> value);
     }
 
-    return root;
+    return node;
 }
 
+// Функция находит высоту в BST
 int height(Node* node){
     if(!node){
         return 0;
@@ -105,13 +110,14 @@ int height(Node* node){
     return max(leftHeight, rightGeight) + 1;
 }
 
+// Функция находит диаметр в BST
 int diameter(Node* node) {
     if (!node) {
         return 0;
     }
 
     int leftDiameter = diameter(node -> left);
-    int rightDiameter = diameter(node->right);
+    int rightDiameter = diameter(node -> right);
 
     int leftHeight = height(node -> left);
     int rightHeight = height(node -> right);
