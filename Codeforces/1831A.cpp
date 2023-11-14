@@ -28,23 +28,16 @@ ll countA = 0;
 
 void solve()
 {
-    int n, m, k; cin >> n >> m >> k;
-    vector<int> dp(n), ans;
-    for(int i = 0; i < n; i++){
+    int a; cin >> a;
+    vector<int> dp(a);
+    for(int i = 0; i < a; i++){
         cin >> dp[i];
     }
-    for(int i = 0; i < n; i++)
-    {
-        if(dp[i] != 0 && dp[i] <= k){
-            ans.pb(i + 1);
-        }
+    for(int i = 0; i < a; i++){
+        cout << a + 1 - dp[i] << " ";
     }
+    cout << endl;
 
-    int mn = abs(ans[0] - m);
-    for(int i = 0; i < ans.sz; i++){
-        mn = min(mn, abs(ans[i] - m));
-    }
-    cout << mn * 10 << endl;
 
 }
 
@@ -54,7 +47,7 @@ signed main()
 
     int t;
     t = 1;
-    //cin >> t;
+    cin >> t;
     while(t--)
          solve();
 
