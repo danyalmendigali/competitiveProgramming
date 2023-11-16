@@ -33,11 +33,7 @@ map<string, int> mp2;
 void solve()
 {
     ll n; cin >> n;
-    if(n % 4 == 0){
-        cout << "YES" << endl;
-        return;
-    }
-    cout << "NO" << endl;
+    cout << n << endl;
 
 }
 
