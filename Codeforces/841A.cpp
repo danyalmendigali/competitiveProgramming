@@ -27,36 +27,38 @@ ll a[N][N];
 ll countA = 0;
 
 set <string> st;
-map<string, int> mp;
+map<char, int> mp;
 map<string, int> mp2;
 
 void solve()
 {
-    ll n;
-    cin >> n;
-    vector<ll> dp(n);
-    ll sum = 0;
-    for(ll i = 0; i < n; i++){
-        cin >> dp[i];
-        sum += dp[i];
+    mp.clear();
+    int n, k;
+    cin >> n >> k;
+    string s;
+    cin >> s;
+    for(int i = 0; i < s.sz; i++){
+        mp[s[i]]++;
     }
-    ll mx = dp[0];
-    for(ll i = 0; i < n; i++){
-        mx = max(mx, dp[i]);
+    int mx = 0;
+    for(auto i : mp){
+        mx = max(mx, i.S);
     }
-    double f = sum - mx;
-    double r = (double)f / (n - 1);
 
+    if(mx > k){
+        cout << "NO" << endl;
+        return;
+    }
+    cout << "YES" << endl;
 
-    printf("%.10f\n", (double)((double)mx + (double)(r)));
 }
 
 signed main()
 {
-    optimus_prime;N
+    optimus_prime;
     int t;
     t = 1;
-    cin >> t;
+    //cin >> t;
     while(t--)
          solve();
 
