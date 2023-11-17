@@ -32,17 +32,15 @@ map<string, int> mp2;
 
 void solve()
 {
-    int n, t, k, d;
-    cin >> n >> t >> k >> d;
+	int n, t, k, d;
+	cin >> n >> t >> k >> d;
+	int time1 = ((n + k - 1) / k) * t;
+	if (time1 > d + t) {
+		cout << "YES" << endl;
+		return;
+	}
+    cout << "NO" << endl;
 
-    int time1 = ((n + k - 1) / k) * t;
-    int time2 = d + ((n + 2 * k - 1) / (2 * k)) * t;
-
-    if (time2 < time1) {
-        cout << "YES" << endl;
-    } else {
-        cout << "NO" << endl;
-    }
 
 }
 
