@@ -28,14 +28,13 @@ ll countA = 0;
 
 void solve()
 {
-    ll n; cin >> n;
-    ll f, g;
-    f = n / 10;
-    g = n % 10;
-    if(g != 0){
-        f++;
+    ll a, b;
+    cin >> a >> b;
+    if(a % b == 0 || b % a == 0){
+        cout << 1 << endl;
+        return;
     }
-    cout << f << endl;
+    cout << 666 << endl;
 
 }
 
