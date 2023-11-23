@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <set>
+#include <climits>
 
 #define all(a) a.begin() , a.end()
 #define optimus_prime  cin.tie(0); cout.tie(0)
@@ -26,42 +27,36 @@ const ll mod = 1e9 + 7;
 ll a[N][N];
 ll countA = 0;
 
-void solve()
-{
-    int n; cin >> n;
+void solve() {
+    int n;
+    cin >> n;
+
     vector<int> dp(n);
-    int res = 0;
-    int a1 = 0, a2 = 0, a3 = 0, a4 = 0;
-    for(int i = 0; i < n; i++){
+    for (int i = 0; i < n; ++i) {
         cin >> dp[i];
-        if(dp[i] == 4){
-            a4++;
-        }
-        if(dp[i] == 3){
-            a3++;
-        }
-        if(dp[i] == 2){
-            a2++;
-        }
-        if(dp[i] == 1){
-            a1++;
-        }
     }
 
-    res += a4;
-    int mn = min(a3, a1);
-    a3 -= mn;
-    a1 -= mn;
-    res += mn;
-    cout << res << endl;
+    sort(all(dp));
+    int mx = dp[n - 1] - dp[0];
+    long long res = 0;
+    if (mx == 0){
+        res = static_cast<long long>(n - 1) * n / 2;
+    }
+     else{
+        int mn = count(all(dp), dp[0]);
+        int mx = count(all(dp), dp[n - 1]);
 
+        res = static_cast<long long>(mn) * mx;
+    }
+
+    cout << mx << " " << res << endl;
 }
 
 signed main()
 {
     optimus_prime;
 
-    int t;
+    ll t;
     t = 1;
     //cin >> t;
 
