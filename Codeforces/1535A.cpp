@@ -1,39 +1,52 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <set>
+#include <climits>
+
+#define all(a) a.begin() , a.end()
+#define optimus_prime  cin.tie(0); cout.tie(0)
+#define endl "\n"
+#define vll vector<long long>
+#define vi vector<int>
+#define FOR(i, a, b) for(int i = a; i < b; i++)
+#define pb(a) push_back(a)
+#define sz size()
+#define ll long long
+#define F first
+#define S second
+
 using namespace std;
 
-bool PlayOff(int arr[4])
-{
-    int max1 = max(arr[0], arr[1]);
-    int max2 = max(arr[2], arr[3]);
+const ll N = 101;
+const ll inf = 1e9 + 9;
+const ll mod = 1e9 + 7;
 
-    sort(arr, arr + 4);
 
-    if((max1 == arr[2] || max1 == arr[3]) && (max2 == arr[2] || max2 == arr[3])) {
-         return true;
-    }
-    else {
-        return false;
-    }
+ll a[N][N];
+ll countA = 0;
+
+void solve() {
+    int n; cin >> n;
+    cout << (n << 1) - 1 << endl;
+
 }
 
-int main() {
-    int t;
-    cin >> t;
-    while(t--)
-    {
-        int arr[4];
-        for(int i = 0; i < 4; i++) {
-            cin >> arr[i]; // Вводим значения элементов массива
-        }
+signed main()
+{
+    optimus_prime;
 
-        if(PlayOff(arr))
-        {
-            cout << "YES" << endl;
-        }
-        else {
-            cout << "NO" << endl;
-        }
-    }
+    ll t;
+    t = 1;
+    cin >> t;
+
+    while(t--)
+         solve();
+
+
+
+
 
     return 0;
 }
