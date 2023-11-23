@@ -28,28 +28,13 @@ ll a[N][N];
 ll countA = 0;
 
 void solve() {
-    int n;
-    cin >> n;
-
-    vector<int> dp(n);
-    for (int i = 0; i < n; ++i) {
-        cin >> dp[i];
+    int n; cin >> n;
+    if(n % 2 != 0){
+        cout << 0 << endl;
+        return;
     }
+    cout << (1 << n / 2);
 
-    sort(all(dp));
-    int mx = dp[n - 1] - dp[0];
-    ll res = 0;
-    if (mx == 0){
-        res = static_cast<ll>(n - 1) * n / 2;
-    }
-     else{
-        int mn = count(all(dp), dp[0]);
-        int mx = count(all(dp), dp[n - 1]);
-
-        res = static_cast<ll>(mn) * mx;
-    }
-
-    cout << mx << " " << res << endl;
 }
 
 signed main()
