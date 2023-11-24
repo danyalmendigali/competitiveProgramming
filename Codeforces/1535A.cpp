@@ -29,7 +29,7 @@ ll countA = 0;
 
 void solve() {
     int n; cin >> n;
-    cout << (n << 1) - 1 << endl;
+    cout << (1 << n) - 1 << endl;
 
 }
 
