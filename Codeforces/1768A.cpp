@@ -29,15 +29,10 @@ ll countA = 0;
 
 void solve() {
     int a; cin >> a;
-    int res = 0;
-    vector<int> dp(a);
-    for(int i = 0; i < a; i++){
-        cin >> dp[i];
-        if(dp[i] == 1 || dp[i] == 3){
-            res++;
-        }
+    if(a == 1){
+        cout << 1 << endl;
     }
-    cout << res << endl;
+    else cout << a - 1 << endl;
 
 }
 
