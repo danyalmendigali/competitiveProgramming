@@ -29,36 +29,38 @@ const ll mod = 1e9 + 7;
 ll a[N][N];
 ll countA = 0;
 
+
 void solve()
 {
     int n;
     cin >> n;
+    vi p(n);
 
-    vector<int> p(n);
     for (int i = 0; i < n; i++) {
         cin >> p[i];
     }
-
-    bool ok = true;
-    for (int i = 0; i < n; i++) {
-        if (i < n - 1 && abs(p[i] - p[i + 1]) == 1) {
-            ok = false;
+    bool direct_horovod = true;
+    for (int i = 0; i < n - 1; i++) {
+        if (p[i] + 1 != p[i + 1] && !(p[i] == n && p[i + 1] == 1)) {
+            direct_horovod = false;
             break;
         }
-        if (i == n - 1 && abs(p[i] - p[0]) == 1) {
-            ok = false;
+    }
+    bool reverse_horovod = true;
+    for (int i = 0; i < n - 1; i++) {
+        if (p[i] - 1 != p[i + 1] && !(p[i] == 1 && p[i + 1] == n)) {
+            reverse_horovod = false;
             break;
         }
     }
 
-    if (ok) {
+    if (direct_horovod || reverse_horovod) {
         cout << "YES" << endl;
-    }
-    else
-    {
+    } else {
         cout << "NO" << endl;
     }
 }
+
 
 signed main()
 {

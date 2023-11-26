@@ -1,11 +1,9 @@
-#include <cctype>
-#include <bits/stdc++.h>
+#include <iostream>
 #include <string>
 #include <vector>
 #include <algorithm>
 #include <set>
-
-#define maximum INT_MAX
+#include <climits>
 
 #define all(a) a.begin() , a.end()
 #define optimus_prime  cin.tie(0); cout.tie(0)
@@ -33,37 +31,47 @@ using Edge = int;
 using Vertex = vector<Edge>;
 using Graph = vector<Vertex>;
 
-Graph g;
+Graph g; // vector<vector<int>> g;
 
-void solve()
-{
-    int n, m; cin >> n >> m;
+void solve() {
+    int n; cin >> n;
     g.resize(n);
-
-    for (int i = 0; i < m; ++i) {
-        int from, to;
-        cin >> from >> to;
-        g[from].push_back(to);
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            bool t;
+            cin >> t;
+            if(t) g[i].pb(j);
+        }
     }
 
-    cout << n << endl;
 
-    for (int i = 1; i <= g.sz; ++i) {
-        cout << g[i].sz << " ";
-        for (int v : g[i]) {
-            cout << v << " ";
+    int i = 0;
+    for(Vertex const& v : g){
+        cout << ++i << " : ";
+        for(Edge const& e : v){
+            cout << e + 1 << " ";
         }
         cout << endl;
     }
-}
 
+
+    /*
+    for(int i = 0; i < g.sz; i++){
+        for(int j = 0; j < g[i].sz; j++){
+            cout << i + 1 << " " << g[i][j] + 1 << endl;
+        }
+    }
+    */
+}
 
 signed main()
 {
     optimus_prime;
-    int t;
+
+    ll t;
     t = 1;
     //cin >> t;
+
     while(t--)
          solve();
 
