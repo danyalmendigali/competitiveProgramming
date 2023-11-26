@@ -37,27 +37,23 @@ Graph g;
 
 void solve()
 {
-    int n, m; cin >> n >> m;
-    g.resize(n);
-
+    int n, m;
+    cin >> n >> m;
+    Graph g(n + 1);
     for (int i = 0; i < m; ++i) {
         int from, to;
         cin >> from >> to;
         g[from].push_back(to);
     }
-
     cout << n << endl;
-
-    for (int i = 1; i <= g.sz; ++i) {
-        cout << g[i].sz << " ";
-        for (int v : g[i]) {
+    for(int i = 1; i < g.sz; i++){
+        cout << g[i].size() << " ";
+        for(int v : g[i]){
             cout << v << " ";
         }
         cout << endl;
     }
-
 }
-
 
 signed main()
 {
