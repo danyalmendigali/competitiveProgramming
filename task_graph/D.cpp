@@ -23,6 +23,7 @@ using vertex = int;
 using Edge = vector<vertex>;
 using Graph = vector<Edge>;
 
+
 Graph g;
 
 void solve()
