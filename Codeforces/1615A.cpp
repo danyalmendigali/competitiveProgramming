@@ -28,7 +28,7 @@ ll a[N][N];
 ll countA = 0;
 
 void solve() {
-    ll n, res = 0;
+    int n, res = 0;
     cin >> n;
     vector<int> dp(n);
     for(int i = 0; i < n; i++){
