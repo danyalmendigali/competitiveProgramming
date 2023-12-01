@@ -26,33 +26,33 @@ set<int> st;
 
 void solve()
 {
-    int a, b;
+    ll a, b;
     cin >> a >> b;
-    int sum = 0;
-    vector<int> dp;
-    int sum2 = 0;
-    pair<int, int> p[a + 9];
-    for(int i = 0; i < a; i++){
+    ll sum = 0;
+    vector<ll> dp;
+    ll sum2 = 0;
+    pair<ll, ll> p[a + 9];
+    for(ll i = 0; i < a; i++){
         cin >> p[i].F >> p[i].S;
         dp.pb(p[i].F - p[i].S);
         sum += p[i].F;
         sum2 += p[i].S;
     }
-    int res = sum - b;
+    ll res = sum - b;
     if(sum2 > b){
         cout << -1 << endl;
         return;
     }
 //    cout << res << endl;
 //    cout << sum << endl;
-//    for(int i = 0; i < dp.sz; i++){
+//    for(ll i = 0; i < dp.sz; i++){
 //        cout << dp[i] << " ";
 //    }
     sort(all(dp));
     reverse(all(dp));
-    int num = 0;
-    int i = 0;
-    int g = 0;
+    ll num = 0;
+    ll i = 0;
+    ll g = 0;
     while(num < res){
         num += dp[i];
         i++;
