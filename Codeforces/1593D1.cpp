@@ -19,27 +19,36 @@ const ll INF = 1e15 + 9;
 const ll mod = 1e9 + 7;
 const ll N = 101;
 
+map<int, int> mp;
+set<int> st;
+
+int gcd(int a, int b)
+{
+    if(b == 0) return a;
+    return gcd(b, a % b);
+}
+
 void solve()
 {
-    ll n;
-    cin >> n;
-    vector<ll> dp(n);
+    st.clear();
+    int n; cin >> n;
+    vector<int> dp(n);
     for(int i = 0; i < n; i++){
         cin >> dp[i];
     }
     sort(all(dp));
-    ll mn = INF;
-    for(ll i = 0; i < dp.sz - 1; i++){
-        mn = min(mn, abs(dp[i] - dp[i + 1]));
-    }
-    ll a = 0;
-    for(int i = 0; i < dp.sz - 1; i++){
-        if(dp[i + 1] - dp[i] == mn){
-            a++;
+    int res = 0;
+    for(int i = 0; i < n; i++){
+        for(int j = i; j < n; j++){
+            res = gcd(res, dp[j] - dp[i]);
         }
     }
 
-    cout << mn << " " << a << endl;
+    if(res != 0){
+        cout << res << endl;
+        return;
+    }
+    cout << -1 << endl;
 }
 
 signed main()
@@ -47,7 +56,7 @@ signed main()
     optimus_prime;
     int t;
     t = 1;
-    // cin >> t;
+    cin >> t;
 
     while(t--)
         solve();
