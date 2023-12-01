@@ -31,7 +31,7 @@ void solve()
     cin >> n >> m;
 
     if(m == 0){
-        cout << "NO" << endl;
+        cout << "YES" << endl;
         return;
     }
 
