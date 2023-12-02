@@ -22,26 +22,22 @@ const ll N = 101;
 using vertex = int;
 using Edge = vector<vertex>;
 using GraphMatrix = vector<Edge>;
-using GraphList = vector<pair<vertex, vertex>>;
+using GrapgAdjacencyList = vector<vector<vertex>>;
 
 GraphMatrix g;
-GraphList g1;
+GrapgAdjacencyList g1;
 
 void solve()
 {
     int n; cin >> n;
-    g.resize(n, vector<vertex>(n));
+    g1.resize(n);
+    int a;
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
-            cin >> g[i][j];
-            if(g[i][j] == 1){
-                g1.push_back({i, j});
-            }
+            cin >> a;
+            if(a)
+            g1[i].push_back(j);
         }
-    }
-
-    for(int i = 0; i < g1.sz; i++){
-        cout << g1[i].F + 1 << " " << g1[i].S + 1 << endl;
     }
 }
 

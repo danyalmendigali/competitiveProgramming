@@ -21,27 +21,32 @@ const ll N = 101;
 
 using vertex = int;
 using Edge = vector<vertex>;
-using GraphMatrix = vector<Edge>;
 using GraphList = vector<pair<vertex, vertex>>;
+using GraphMatrix = vector<Edge>;
 
-GraphMatrix g;
-GraphList g1;
+GraphList g;
+GraphMatrix g1;
 
 void solve()
 {
-    int n; cin >> n;
-    g.resize(n, vector<vertex>(n));
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < n; j++){
-            cin >> g[i][j];
-            if(g[i][j] == 1){
-                g1.push_back({i, j});
-            }
+    int n, m; cin >> n >> m;
+    g.resize(m);
+    g1.resize(n, vector<vertex>(n));
+    for(int i = 0; i < g1.sz; i++){
+        for(int j = 0; j < g1.sz; j++){
+            g1[i][j] = 0;
         }
     }
-
+    for(int i = 0; i < m; i++){
+        int to, from;
+        cin >> to >> from;
+        g1[to - 1][from - 1] = 1;
+    }
     for(int i = 0; i < g1.sz; i++){
-        cout << g1[i].F + 1 << " " << g1[i].S + 1 << endl;
+        for(int j = 0; j < g1.sz; j++){
+            cout << g1[i][j] << " ";
+        }
+        cout << endl;
     }
 }
 
