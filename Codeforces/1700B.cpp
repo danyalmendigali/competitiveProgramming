@@ -24,21 +24,7 @@ set<int> st;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    string s;
-    cin >> s;
-    int r = 0;
-    while (s[r] == '0') {
-        r++;
-    }
-    string str = s.substr(r, n - r);
-    string res = str;
-    for (int i = str.length() - 1; i >= 0; i--) {
-        res += str[i];
-    }
 
-    cout << res << endl;
 }
 
 signed main()
