@@ -39,7 +39,6 @@ void solve()
             }
         }
     }
-
     for(int i = 0; i < g1.sz; i++){
         cout << g1[i].F + 1 << " " << g1[i].S + 1 << endl;
     }
