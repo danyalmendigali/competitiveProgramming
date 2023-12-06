@@ -30,14 +30,13 @@ void solve()
 {
     ll a, b;
     cin >> a >> b;
-
-    if (b < 0)
-    {
-        a = -a;
-        b = -b;
+    ll q = a / b, r = a % b;
+    if (r < 0) {
+        r += abs(b);
+        q -= 1;
     }
+    cout << r << endl;
 
-    cout << (a % b + b) % b << endl;
 }
 
 signed main()
