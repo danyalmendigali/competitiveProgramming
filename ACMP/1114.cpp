@@ -28,15 +28,14 @@ ll countA = 0;
 
 void solve()
 {
-    int v, t;
-    cin >> v >> t;
-    int g = v * t;
-    if (v <= 0)
-    {
-        cout << 109 << endl;
-        return;
+    int V, T;
+    cin >> V >> T;
+    int res = (V * T) % 109;
+    if (res < 0) {
+        res += 109;
     }
-    cout << (g % 109 + 109) % 109 + 1 << endl;
+
+    cout << res + 1 << endl;
 }
 
 signed main()
