@@ -4,6 +4,7 @@ using namespace std;
 typedef long long ll;
 const int INF = 1e9;
 
+
 void solve()
 {
     int size_vector1, size_vector2;
