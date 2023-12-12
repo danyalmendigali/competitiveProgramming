@@ -16,7 +16,7 @@ using namespace std;
 
 void solve()
 {
-    int a, b; cin >> a >> b;
+    ll a, b; cin >> a >> b;
     cout << b / a << " " << b % a << " ";
     if(b % a == 0)
     {
@@ -24,7 +24,7 @@ void solve()
         return;
     }
     else{
-        int h = (((b / a) + 1) * a) - b ;
+        ll h = (((b / a) + 1) * a) - b ;
         cout << h << endl;
         return;
     }
