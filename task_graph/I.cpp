@@ -10,29 +10,48 @@
 #define pb(a) push_back(a)
 #define S second
 #define F first
-#define mendigali ios::sync_wity_stdio(false); cin.tie(0); cout.tie(0);
+
 
 const ll inf = 1e9 + 9;
 const ll mod = 1e9 + 7;
-const ll N = 101;
 
-using vertex = int;
-using Edge = vector<vertex>;
-using Gra phList = vector<vector<vertex>>;
-
-GraphList g;
+using namespace std;
 
 void solve()
 {
-    int n; cin >> n;
-    g.resize(n);
-    for(int i = 0; i < n; i++){
-        int a, b;
-        cin >> a >> b;
-        a--;
-        b--;
-        g[a].pb(b);
-        g[b].pb(a);
+    int N;
+    cin >> N;
+
+    // Ввод списка смежности
+    vector<vector<int>> adjacencyList(N + 1); // +1 для удобства индексации с 1
+    for (int i = 1; i <= N; ++i) {
+        int neighbors;
+        cin >> neighbors;
+
+        for (int j = 0; j < neighbors; ++j) {
+            int neighborVertex;
+            cin >> neighborVertex;
+            adjacencyList[i].push_back(neighborVertex);
+        }
+    }
+
+    // Обращение графа
+    vector<vector<int>> reversedGraph(N + 1);
+    for (int i = 1; i <= N; ++i) {
+        for (int j : adjacencyList[i]) {
+            reversedGraph[j].push_back(i);
+        }
+    }
+
+    // Вывод обращенного графа
+    cout << N << endl;
+    for (int i = 1; i <= N; ++i) {
+        sort(reversedGraph[i].begin(), reversedGraph[i].end()); // Сортировка для удобства вывода
+        cout << reversedGraph[i].size() << " ";
+        for (int j : reversedGraph[i]) {
+            cout << j << " ";
+        }
+        cout << endl;
     }
 
 
@@ -41,7 +60,6 @@ void solve()
 
 signed main()
 {
-    mendigali;
     int t;
     t = 1;
     //cin >> t;

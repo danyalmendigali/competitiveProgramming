@@ -1,59 +1,60 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <set>
+#include <map>
+#include <algorithm>
 
-#include <bits/stdc++.h>
-#include <cmath>
-
-#define optimus_prime ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0)
-#define all(a) a.begin(), a.end()
-#define endl "\n"
-#define vll vector<long long>
-#define FOR(i, a, b) for(int i = a; i < b; i++)
-#define pb(a) push_back(a)
-#define p(a) push(a)
-#define sz size()
 #define ll long long
-#define ld double
-#define F first
+#define sz size()
+#define pb(a) push_back(a)
 #define S second
+#define F first
 
 using namespace std;
 
-const int N = 55;
-const int INF = 1e9 + 9;
-const int mod = 1e5 + 9;
-const int square = 360;
-
-map<int, int> mp1;
-map<int, int> mp2;
+const ll inf = 1e9 + 9;
+const ll mod = 1e9 + 7;
+const ll N = 101;
 
 
 void solve()
 {
-        int n;
-        cin >> n;
-        vector<int> dp(n);
-        for (int i = 0; i < n; i++) {
-            cin >> dp[i];
+    int a; cin >> a;
+    vector<int> dp(a);
+    for(int i = 0; i < a; i++){
+        cin >> dp[i];
+    }
+    int mn = dp[0], mx = dp[0];
+    int ind1, ind2;
+    for(int i = 0; i < dp.sz; i++){
+        if(dp[i] >= mx){
+            mx = dp[i];
+            ind2 = i;
         }
-        int mn = min_element(all(dp)) - dp.begin();
-        int mx = max_element(all(dp)) - dp.begin();
-        int res = min(max(mn, mx) + 1, min(n - mn, n - mx));
-
-        cout << res << endl;
+        if(dp[i] <= mn){
+            mn = dp[i];
+            ind1 = i;
+        }
+    }
+    int res = max(ind1 + 1, ind2 + 1);
+    res = min(res, ind2 + 1 + a - ind1);
+    res = min(res, ind1 + 1 + a - ind2);
+    res = min(res, max(a - ind2, a - ind1));
+    cout << res << endl;
 
 
 }
 
 signed main()
 {
-    optimus_prime;
-
-    ll t;
+    int t;
     t = 1;
     cin >> t;
     while(t--)
         solve();
 
 
+
     return 0;
 }
-
