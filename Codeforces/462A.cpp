@@ -48,6 +48,7 @@ void solve()
             }
             if (res % 2 != 0) {
                 cout << "NO" << endl;
+                return;
             }
         }
     }
