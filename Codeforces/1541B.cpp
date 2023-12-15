@@ -20,8 +20,8 @@ const ll N = 101;
 
 void solve()
 {
-    int n, res = 0; cin >> n;
-    int dp[n + 1];
+    ll n, res = 0; cin >> n;
+    ll dp[n + 1];
     for(int i = 0; i < n; i++){
         cin >> dp[i + 1];
     }
