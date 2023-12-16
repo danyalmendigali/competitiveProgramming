@@ -37,8 +37,6 @@ void solve()
     }
     cout << mx << endl;
 
-
-
 }
 
 signed main()
