@@ -19,21 +19,27 @@ const ll N = 101;
 
 set<pair<int, int>> st;
 
+using vertex = int;
+using Edge = vector<vertex>;
+using Graph = vector<vector<vertex>>;
+
+Graph g;
 
 void solve()
 {
     st.clear();
-    int n, m; cin >> n >> m;
-    vector<pair<int, int>> dp(m);
-    for(int i = 0; i < m; i++){
-        cin >> dp[i].F >> dp[i].S;
-        st.insert({dp[i].S, dp[i].F});
+    int n, val; cin >> n;
+    g.resize(n + 1);
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            cin >> val;
+            if(val) g[i].push_back(j + 1);
+        }
     }
-    if(st.sz == m){
-        cout << "NO" << endl;
-        return;
+    for(int i = 0; i < n; i++){
+        cout << g[i].sz << endl;
     }
-    cout << "YES" << endl;
+
 
 
 
