@@ -39,7 +39,6 @@ void solve() {
         }
     }
     int ans;
-
     if(res3 - abs(res1 - res2) > 0){
         ans = 1;
     }
@@ -55,7 +54,7 @@ signed main()
 {
     int t;
     t = 1;
-    //cin >> t;
+    cin >> t;
     while(t--)
         solve();
 
