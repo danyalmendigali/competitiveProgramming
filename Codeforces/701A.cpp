@@ -19,16 +19,19 @@ const ll mod = 1e9 + 7;
 const ll N = 101;
 
 void solve() {
-    int n; cin >> n;
-    if(n == 1){
-        cout << 1 << endl;
-        return;
+    int n;
+    cin >> n;
+
+    vector<pair<int, int>> dp;
+    for (int i = 1; i <= n; ++i) {
+        int value;
+        cin >> value;
+        dp.push_back({value, i});
     }
-    if(n % 2 == 0){
-        cout << n / 2 << endl;
-    }
-    else{
-        cout << n / 2 + 1 << " " << n / 2 << endl;
+    sort(all(dp));
+
+    for (int i = 0; i < n / 2; ++i) {
+        cout << dp[i].S << " " << dp[n - i - 1].S << endl;
     }
 
 

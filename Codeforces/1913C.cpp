@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <set>
+#include <unordered_set>
 
 typedef long long ll;
 
@@ -10,35 +10,34 @@ const ll INF = 1e9 + 9;
 const ll MOD = 1e9 + 7;
 const ll N = 101;
 
-bool hasSubsetWithSum(const multiset<ll>& numberSet, ll targetSum) {
-    vector<bool> possibleSums(targetSum + 1, false);
-    possibleSums[0] = true;
+bool hasSubsetWithSum(const vector<ll>& numberSet, ll targetSum) {
+    unordered_set<ll> possibleSums;
+    possibleSums.insert(0);
 
     for (ll num : numberSet) {
-        for (ll i = targetSum; i >= num; --i) {
-            if (possibleSums[i - num]) {
-                possibleSums[i] = true;
-                if (i == targetSum) {
-                    return true;
-                }
-            }
+        vector<ll> newSums;
+        for (ll sum : possibleSums) {
+            newSums.push_back(sum + num);
+        }
+        for (ll newSum : newSums) {
+            possibleSums.insert(newSum);
         }
     }
 
-    return possibleSums[targetSum];
+    return possibleSums.count(targetSum) > 0;
 }
 
 void solve() {
     ll n;
     cin >> n;
-    multiset<ll> numberSet;
+    vector<ll> numberSet;
 
     for (ll i = 0; i < n; i++) {
         ll operationType, value;
         cin >> operationType >> value;
 
         if (operationType == 1) {
-            numberSet.insert(1 << value);
+            numberSet.push_back(1 << value);
         }
 
         if (operationType == 2) {
