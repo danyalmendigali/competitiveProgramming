@@ -7,53 +7,48 @@
 
 #define ll long long
 #define sz size()
-#define pb() push_back(a)
-#define optimus_prime ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-#define F first
+#define pb(a) push_back(a)
 #define S second
+#define F first
+#define mendigalutrue ios::sync_with_stdio(false); cin.tie(); cout.tie(0)
 
 using namespace std;
 
+const ll INF = 1e9 + 9;
+const ll MOD = 1e9 + 7;
+const ll N = 101;
+
 using vertex = int;
 using Edge = vector<vertex>;
-using Graph = vector<pair<int, int>>;
+using Graph = vector<pair<vertex, vertex>>;
 using GraphAdjList = vector<vector<vertex>>;
+
 
 Graph g;
 GraphAdjList g2;
 
-vector<int> res, res2, res3, ans;
-set<int> st, st2;
+vector<int> res1, res2, res3;
 vector<bool> used;
+set<int> st, st2, st3;
 map<int, int> mp;
-
-void dfs(int v)
-{
-    used[v] = true;
-    res.pb(v + 1);
-    for(int i : g2[v]){
-        if(!used[i]) dfs(i);
-    }
-}
 
 void solve()
 {
-    st.clear(), st.clear(), mp.clear(), res.clear(); used.clear();
-    int n, m; cin >> n >> m;
-    g2.resize(n);
+    st.clear(); st2.clear(); st3.clear(); mp.clear();
+    int n, m;
+    cin >> n >> m;
     g.resize(m);
-    used.assign(n, false);
+    g2.resize(n);
     for(int i = 0; i < m; i++){
         cin >> g[i].F >> g[i].S;
-        g2[g[i].F - 1].push_back(g[i].S - 1);
+        g2[g[i].F - 1].push_back(g[i].S);
     }
-
     for(int i = 0; i < g2.sz; i++){
-        if(!used[i]) dfs(i);
-    }
-
-    for(int i = 0; i < res.sz; i++){
-        cout << res[i] << " ";
+        cout << i << " ";
+        for(int j = 0; j < g2[i].sz; j++){
+            cout << g2[i][j] << " ";
+        }
+        cout << endl;
     }
 
 
@@ -61,12 +56,13 @@ void solve()
 
 signed main()
 {
-    optimus_prime;
     int t;
-    //cin >> t;
     t = 1;
+    //cin >> t;
     while(t--)
         solve();
+
+
 
 
     return 0;
