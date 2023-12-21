@@ -1,50 +1,49 @@
-#include <bits/stdc++.h>
-#include <cmath>
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <set>
 
-#define optimus_prime ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0)
-#define all(a) a.begin(), a.end()
+#define all(a) a.begin() , a.end()
+#define optimus_prime  cin.tie(0); cout.tie(0)
 #define endl "\n"
 #define vll vector<long long>
+#define vi vector<int>
 #define FOR(i, a, b) for(int i = a; i < b; i++)
 #define pb(a) push_back(a)
-#define p(a) push(a)
 #define sz size()
 #define ll long long
-#define ld double
 #define F first
 #define S second
 
 using namespace std;
 
-const int N = 55;
-const int inf = 1e9 + 9;
-const int mod = 1e9 + 7;
-const int square = 360;
+const ll N = 101;
+const ll inf = 1e9 + 9;
+const ll mod = 1e9 + 7;
 
+
+ll a[N][N];
+ll countA = 0;
 
 void solve()
 {
-    int n, a, b, c;
-    cin >> n >> a >> b >> c;
-    if(n == a + b + c)
-    {
-        cout << 3 << endl;
-        return;
+    int a, b, c, d, mx = 0;
+    cin >> a >> b >> c >> d;
+    for(int i = 0; i < a + 1; i++){
+        for(int j = 0; j < a + 1; j++){
+            int ans = a - b * i - c * j;
+            if(ans < 0){
+                continue;
+            }
+            if(ans % d == 0){
+                mx = max(i + j + ans / d, mx);
+            }
+        }
     }
-    if(n == b + c){
-        cout << 2 << endl;
-        return;
-    }
-    if(n == b + c)
-    {
-        cout << 2 << endl;
-        return;
-    }
-    else
-    {
-        cout << 1 << endl;
-        return;
-    }
+    cout << mx << endl;
+
+
 
 
 }
@@ -53,11 +52,14 @@ signed main()
 {
     optimus_prime;
 
-    ll t;
+    int t;
     t = 1;
     //cin >> t;
-    while (t--)
-        solve();
+    while(t--)
+         solve();
+
+
+
 
 
     return 0;

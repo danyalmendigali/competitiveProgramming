@@ -28,37 +28,32 @@ ll countA = 0;
 
 void solve()
 {
-    int n; cin >> n;
+    int n, res = 0;
+    cin >> n;
+
+    int a4 = 0, a3 = 0, a2 = 0, a1 = 0;
     vector<int> dp(n);
-    int res = 0;
-    int a1 = 0, a2 = 0, a3 = 0, a4 = 0;
-    for(int i = 0; i < n; i++){
+
+    for (int i = 0; i < n; i++) {
         cin >> dp[i];
-        if(dp[i] == 4){
-            a4++;
-        }
-        if(dp[i] == 3){
-            a3++;
+        if(dp[i] == 1){
+            a1++;
         }
         if(dp[i] == 2){
             a2++;
         }
-        if(dp[i] == 1){
-            a1++;
+        if(dp[i] == 3){
+            a3++;
+        }
+        if(dp[i] == 4){
+            a4++;
         }
     }
-
-    res += a4;
-    int mn = min(a3, a1); // 3, 1
-    a3 -= mn;
-    a1 -= mn;
-    res += mn;
+    a1 = max(a1 - a3, 0);
+    a2 = a2 * 2;
+    cout << a4 + a3 + (a2 + a1 + 3) / 4 << endl;
 
 
-    int g = a2 / 2; // 2;
-    int d = a2 % 2;
-
-    res += g;
 
 
 
@@ -71,7 +66,6 @@ signed main()
     int t;
     t = 1;
     //cin >> t;
-
     while(t--)
          solve();
 
