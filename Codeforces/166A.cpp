@@ -29,52 +29,39 @@ ll countA = 0;
 set<pair<int, int>> st;
 map<pair<ll ,ll>, int> mp;
 
-void solve()
-{
-    mp.clear(); st.clear();
-    int n, k;
-    cin >> n >> k;
-    pair<ll , ll> p[n + 9];
-    for(int i = 1; i <= n; i++)
-    {
-       cin >> p[i].F >> p[i].S;
-       st.insert({p[i].F, p[i].S});
-       mp[{p[i].F, p[i].S}]++;
+void solve() {
+//    mp.clear(); st.clear();
+//    int n, k;cin >> n >> k;
+//    pair<ll, ll> p[n + 9];
+//
+//    for (int i = 1; i <= n; i++) {
+//        cin >> p[i].F >> p[i].S;
+//        st.insert({p[i].F, p[i].S});
+//        mp[{p[i].F, p[i].S}]++;
+//    }
+//
+//    sort(p + 1, p + 1 + n, greater<pair<ll, ll>>());
+//
+//    int ans = 0;
+//    for (int i = 1; i <= n; i++) {
+//        if (p[i].F == p[k].F && p[i].S == p[k].S) {
+//            ans++;
+//        }
+//    }
+//
+//    cout << ans << endl;
+
+    int a, b, res;
+    cin >> a >> b;
+    pair<int, int> p[a];
+
+    for (int i = 0; i < a; i++) {
+        cin >> p[i].F >> p[i].S;
+        p[i].F *= -1;
     }
-    cout << endl << endl;
-
-    cout << endl << endl;
-
-    for(auto it = st.end(); it != st.begin(); --it)
-    {
-        cout << it -> F << " " << it -> S << endl;
-    }
-    cout << endl << endl;
-
-    sort(p + 1, p + 1 + n);
-    reverse(p + 1, p + 1 + n);
-
-    int first_pair, second_pair, d;
-
-    for(int i = 1; i <= n; i++)
-    {
-        if(i == k)
-        {
-            first_pair = p[k].F;
-            second_pair = p[k].S;
-        }
-    }
-    int ans = 0;
-
-    for(int i = 1; i <= n; i++)
-    {
-        if(p[i].F == first_pair && p[i].S == second_pair)
-        {
-            ans++;
-        }
-    }
-
-    cout << ans << endl;
+    sort(p, p + a);
+    res = count(p, p + a, p[b - 1]);
+    cout << res << endl;
 }
 
 signed main()
