@@ -8,9 +8,9 @@
 #define ll long long
 #define sz size()
 #define pb(a) push_back(a)
-#define S second
 #define F first
-#define mendigalutrue ios::sync_with_stdio(false); cin.tie(); cout.tie(0)
+#define S second
+#define mendigalitrue ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
 using namespace std;
 
@@ -20,48 +20,74 @@ const ll N = 101;
 
 using vertex = int;
 using Edge = vector<vertex>;
-using Graph = vector<pair<vertex, vertex>>;
 using GraphAdjList = vector<vector<vertex>>;
+using GraphVertexList = vector<pair<vertex, vertex>>;
 
-
-Graph g;
-GraphAdjList g2;
-
-vector<int> res1, res2, res3;
 vector<bool> used;
-set<int> st, st2, st3;
-map<int, int> mp;
+vector<int> res, res2, res3, res4;
+set<int> st1, st2;
+map<int, int> mp1, mp2;
+
+GraphVertexList g2;
+
+void dfs(int v)
+{
+    used[v] = true;
+    res.pb(v + 1);
+    for(auto edge : g2){
+        int to = edge.F;
+        int from = edge.S;
+        if(to == v && !used[from - 1]){
+            dfs(from - 1);
+        }
+        else if(from == v && !used[to - 1]){
+            dfs(to - 1);
+        }
+    }
+}
 
 void solve()
 {
-    st.clear(); st2.clear(); st3.clear(); mp.clear();
-    int n, m;
-    cin >> n >> m;
-    g.resize(m);
-    g2.resize(n);
+    used.clear(); res.clear();
+    int n, m; cin >> n >> m;
+    used.assign(n, false);
+    g2.resize(m);
     for(int i = 0; i < m; i++){
-        cin >> g[i].F >> g[i].S;
-        g2[g[i].F - 1].push_back(g[i].S);
-    }
-    for(int i = 0; i < g2.sz; i++){
-        cout << i << " ";
-        for(int j = 0; j < g2[i].sz; j++){
-            cout << g2[i][j] << " ";
-        }
-        cout << endl;
+        cin >> g2[i].F >> g2[i].S;
     }
 
+    for(int i = 0; i < n; i++){
+        if(!used[i]){
+            dfs(i);
+        }
+    }
+//    for(int i = 0; i < res.sz; i++){
+//        cout << res[i] - 1 << " ";
+//    }
+    bool ok = true;
+    for(int i = 0; i < n; i++){
+        if(!used[i]){
+            ok = false;
+            break;
+        }
+    }
+    if(ok){
+        cout << "YES" << endl;
+    }
+    else{
+        cout << "NO" << endl;
+    }
 
 }
 
 signed main()
 {
+    mendigalitrue;
     int t;
     t = 1;
-    //cin >> t;
+    // cin >> t;
     while(t--)
         solve();
-
 
 
 

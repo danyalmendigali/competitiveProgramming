@@ -54,7 +54,7 @@ signed main()
 
     int t;
     t = 1;
-    //cin >> t;
+    cin >> t;
     while(t--)
          solve();
 
