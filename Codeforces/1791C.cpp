@@ -5,6 +5,7 @@
 #include <map>
 #include <cmath>
 #include <algorithm>
+#include <climits>
 
 #define ll long long
 #define F first
@@ -24,42 +25,31 @@ vector<bool> used;
 set<int> st1, st2;
 map<int, int> mp1, mp2;
 
-bool isPalindrome(int num) {
-    int res = 0, original = num;
-    while (num > 0) {
-        res = res * 10 + num % 10;
-        num /= 10;
-    }
-    return original == res;
-}
-
-int mn(int h, int m) {
-    int res = h * 60 + m;
-    int mnnx = 0;
-
-    while (true) {
-        res = (res + 1) % (24 * 60);
-        mnnx++;
-        if (isPalindrome(res))
-            break;
-    }
-
-    return mnnx;
-}
-
 void solve()
 {
-    int hours, minutes;
-    char colon;
-    cin >> hours >> colon >> minutes;
-    cout << mn(hours, minutes) << endl;
+    int n;cin >> n;
+    string s;cin >> s;
+
+    int res = INT_MAX;
+    for (int i = 0; i <= n; ++i) {
+        string f = s.substr(0, i);
+        string s2 = s.substr(i);
+        string t = s2 + f;
+        reverse(t.begin(), t.end());
+        if (t == s) {
+            res = min(res, max(i, n - i));
+        }
+    }
+
+    cout << res << endl;
 }
+
 
 signed main()
 {
     int t;
     t = 1;
-    //cin >> t;
+    cin >> t;
     while(t--)
         solve();
 

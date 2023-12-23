@@ -1,48 +1,48 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include <iostream>
+#include <vector>
+#include <string>
+#include <set>
+#include <map>
+#include <cmath>
+#include <algorithm>
+#include <climits>
 
 #define ll long long
-#define ar array
+#define F first
+#define S second
+#define pb(a) push_back(a)
+#define sz size()
+#define mendigalitrue ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
-void solve() {
-   int t;
-   cin >> t;
-   while(t--) {
-     int n, a = 0, b = 0;
-     cin >> n;
-     int arr[n];
-     for(int i = 0; i < n; i++) {
-        cin >> arr[i];
-     }
-     for(int i = 0; i < n; i++) {
-        if(arr[i] % 2 == 0) {
-            a++;
-        }
-        if(arr[i] % 2 != 0) {
-            b++;
-        }
-     }
+using namespace std;
 
-     cout << ((b == 0 || a == 0 && b % 2 == 0)? "NO" : "YES") << endl;
+const ll inf = 1e9 + 9;
+const ll mod = 1e9 + 7;
+const ll N = 1e5 + 5;
 
+vector<int> res, res2, res3;
+vector<bool> used;
+set<int> st1, st2;
+map<int, int> mp1, mp2;
 
-   }
-
-
+void solve()
+{
+    ll a, res = 0; cin >> a;
+    while(a > 9){
+        res += ((a / 10) * 10);
+        a = ((a % 10) + (a / 10));
+    }
+    cout << res + a << endl;
 }
 
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
+signed main()
+{
+    int t;
+    t = 1;
+    cin >> t;
+    while(t--)
+        solve();
 
-    solve();
-
-
-
-
-
-
-   return 0;
+    return 0;
 }
-
