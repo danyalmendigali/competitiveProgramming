@@ -1,72 +1,80 @@
-#include <bits/stdc++.h>
-#include <string>
+#include <iostream>
 #include <vector>
-#include <algorithm>
+#include <string>
 #include <set>
+#include <map>
+#include <cmath>
+#include <algorithm>
 
-#define all(a) a.begin() , a.end()
-#define ios ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0)
-#define endl "\n"
-#define vll vector<long long>
-#define vi vector<int>
-#define FOR(i, a, b) for(int i = a; i < b; i++)
-#define pb(a) push_back(a)
-#define sz size()
 #define ll long long
 #define F first
 #define S second
+#define pb(a) push_back(a)
+#define sz size()
+#define mendigalitrue ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
 using namespace std;
 
-const ll N = 101;
 const ll inf = 1e9 + 9;
 const ll mod = 1e9 + 7;
+const ll N = 1e5 + 5;
 
+vector<int> res, res2, res3;
+vector<bool> used;
+set<int> st1, st2;
+map<int, int> mp1, mp2;
 
-ll a[N][N];
-ll countA = 0;
-
-set<int> st;
-map<string , int> mp;
-map <ll, ll> mp1 , mp2;
-vector<ll> v, v1;
+bool isPalindrome(int g, int g2)
+{
+    int f = g2 / 10;
+    int f2 = g2 % 10;
+    string s = to_string(f);
+    s += to_string(f2);
+    if(g == stoi(s)){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 
 void solve()
 {
-    mp.clear(); st.clear();
-    int siz; cin >> siz;
-    vector<ll> dp(siz);
-    for(int i = 0; i < siz; i++)
-    {
-        cin >> dp[i];
-        while(dp[i] % 3 == 0) {
-            dp[i] /= 3;
-        }
-        while(dp[i] % 2 == 0) {
-            dp[i] /= 2;
-        }
-    }
-    sort(all(dp));
-
-    if(dp[0] == dp[siz - 1]){
-        cout << "Yes" << endl;
+    string s; cin >> s;
+    int res = 0;
+    string s2, s3;
+    s2 += s[0];
+    s2 += s[1];
+    s3 += s[3];
+    s3 += s[4];
+    int g1 = stoi(s2);
+    int g2 = stoi(s3);
+    if(isPalindrome(g1, g2)){
+        cout << 0 << endl;
         return;
     }
-
-    cout << "No" << endl;
+    while(!isPalindrome(g1, g2)){
+        res++;
+        g2++;
+        if(g2 >= 60){
+            g1++;
+            g2 = 0;
+        }
+        if(g1 >= 24){
+            g1 = 0;
+            g2 = 0;
+        }
+    }
+    cout << res << endl;
 }
 
 signed main()
 {
-    ios;
     int t;
     t = 1;
     //cin >> t;
     while(t--)
-         solve();
-
-
-
+        solve();
 
     return 0;
 }
