@@ -54,10 +54,10 @@ void solve()
         graph[i + 1].push_back(dp[i] + i + 1);
     }
     dfs(1);
-    cout << endl << endl;
-    for(ll i = 0; i < res.sz; i++){
-        cout << res[i] << " ";
-    }
+//    cout << endl << endl;
+//    for(ll i = 0; i < res.sz; i++){
+//        cout << res[i] << " ";
+//    }
     if(!used[b]){
         cout << "NO" << endl;
         return;
