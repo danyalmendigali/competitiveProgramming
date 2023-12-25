@@ -20,7 +20,7 @@ const ll N = 101;
 
 void solve()
 {
-    int a, b, c, d, x, y, x1, y1, x2, y2;
+    ll a, b, c, d, x, y, x1, y1, x2, y2;
     cin >> a >> b >> c >> d >> x >> y >> x1 >> y1 >> x2 >> y2;
     int finalX = x + b - a;
     int finalY = y + d - c;
