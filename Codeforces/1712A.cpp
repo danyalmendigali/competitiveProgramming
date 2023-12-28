@@ -30,6 +30,7 @@ void solve()
         if(dp[i] > b) ans++;
     }
     cout << ans << endl;
+
 }
 
 signed main()
