@@ -30,7 +30,7 @@ Graph g3;
 
 vector<int> res, res2, ans;
 vector<char> used;
-map<int, int> mp;
+map<int, int> mp;9
 set<int> st, st2;
 set<pair<int, int>> st4;
 int n;

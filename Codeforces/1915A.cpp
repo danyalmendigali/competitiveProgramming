@@ -1,6 +1,6 @@
 #include <iostream>
-#include <string>
 #include <vector>
+#include <string>
 #include <set>
 #include <map>
 #include <algorithm>
@@ -10,6 +10,7 @@
 #define pb(a) push_back(a)
 #define F first
 #define S second
+#define mendigalitrue ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
 using namespace std;
 
@@ -17,27 +18,32 @@ const ll inf = 1e9 + 9;
 const ll mod = 1e9 + 7;
 const ll N = 101;
 
-map<int, int> mp;
+set<int> st1, st2;
+map<int, int> mp, mp2;
+vector<int> ans1, ans2;
 
 void solve()
 {
-    mp.clear();
-    vector<int> dp(3);
-    for(int i = 0; i < 3; i++){
-        cin >> dp[i];
-        mp[dp[i]]++;
+    int a, b, c;
+    cin >> a >> b >> c;
+    if(a == b){
+        cout << c << endl;
     }
-    for(auto i : mp){
+    if(a == c){
+        cout << b << endl;
+    }
+    if(b == c){
+        cout << a << endl;
+    }
 
-        if(i.F == 1){
-            cout << i.S << endl;
-        }
-    }
+
 }
+
 
 signed main()
 {
     int t;
+    t = 1;
     cin >> t;
     while(t--)
         solve();

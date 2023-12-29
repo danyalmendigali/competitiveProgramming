@@ -3,7 +3,6 @@
 #include <string>
 #include <set>
 #include <map>
-#include <cmath>
 #include <algorithm>
 
 #define ll long long
@@ -11,7 +10,7 @@
 #define pb(a) push_back(a);
 #define S second
 #define F first
-#define daniyaltrue ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+#define ios ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
 using namespace std;
 
@@ -19,20 +18,17 @@ const ll inf = 1e9 + 9;
 const ll mod = 1e9 + 7;
 const ll N = 101;
 
-
 using vertex = int;
 using Edge = vector<vertex>;
 using GraphAdjList = vector<vector<vertex>>;
-using GraphPairVertexList = vector<pair<vertex, vertex>>;
+using GraphPair = vector<pair<vertex, vertex>>;
 
 GraphAdjList g1;
-GraphPairVertexList g2;
+GraphPair g2;
 
-vector <int> res1, res2, res3;
-map <int, int> mp1, mp2;
-set <int> st1, st2;
+vector<int> res1, res2;
 vector<bool> used;
-int n, m;
+
 
 void dfs(ll cur)
 {
@@ -42,38 +38,45 @@ void dfs(ll cur)
         if(!used[i]) dfs(i);
     }
 }
+
+
 void solve()
 {
-    res1.clear(), res2.clear(), res3.clear();
-    mp1.clear(); st1.clear();
-    cin >> n >> m;
+    res1.clear(); used.clear();
+    ll n, m; cin >> n >> m;
     g2.resize(m);
     g1.resize(n);
     for(int i = 0; i < m; i++){
         cin >> g2[i].F >> g2[i].S;
-        g1[g2[i].F].push_back(g2[i].S);
+        g1[g2[i].F - 1].push_back(g2[i].S - 1);
     }
-    cout << endl << endl;
-    for(int i = 0; i < m; i++){
-        cout << i << " ";
-        for(int j = 0; j < g1[i].sz; i++){
-            cout << g1[i][j] << " ";
-        }
-        cout << endl;
+//    cout << endl << endl;
+//    for(int i = 0; i < n; i++){
+//        cout << i + 1 << " ";
+//        for(int j = 0; j < g1[i].sz; j++){
+//            cout << g1[i][j] + 1 << " ";
+//        }
+//        cout << endl;
+//    }
+
+
+    for(int i = 0; i < g1.sz; i++){
+        if(!used[i]) dfs(i);
     }
 
-    for(int i = 0; )
-
+    for(int i = 0; i < res1.sz; i++){
+        cout << res1[i] << " ";
+    }
 
 }
 
 signed main()
 {
+    ios;
     int t;
     t = 1;
     //cin >> t;
-    while(t--)
-          solve();
+    while(t--) solve();
 
 
 
