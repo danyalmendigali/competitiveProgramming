@@ -3,6 +3,7 @@
 #include <string>
 #include <set>
 #include <map>
+#include <queue>
 #include <algorithm>
 
 #define ll long long
@@ -31,35 +32,48 @@ vector<bool> used;
 map<int, int> mp1, mp2;
 set<int> st1, st2;
 
-void dfs(ll curr)
+void bfs(GraphAdjList g2, int n, int s)
 {
-    used[curr] = true;
-    res1.pb(curr + 1);
-    for(int i : g1[curr]){
-        if(!used[i]) dfs(i);
+    queue<int> q;
+    q.push(s);
+    used.resize(n);
+    vector<int> d(n), p(n);
+    used[s] = true;
+    p[s] = -1;
+    while(!q.empty())
+    {
+        int curr = q.front(); q.pop();
+        for(int i = 0; i < g2[curr].sz; i++){
+            int to = g2[curr][i];
+            if(!used[to]){
+                used[to] = true;
+                q.push(to);
+                d[to] = d[curr] + 1;
+                p[to] = curr;
+                res1.pb(p[to]);
+            }
+        }
     }
 }
 
 void solve()
 {
-    res1.clear(); used.clear();
+    used.clear(); res1.clear();
     int n, m; cin >> n >> m;
     used.assign(n, false);
     g1.resize(n); g2.resize(m);
     for(int i = 0; i < m; i++){
         cin >> g2[i].F >> g2[i].S;
-        g1[g2[i].F - 1].push_back(g2[i].S - 1);
+        g1[g2[i].F - 1].pb(g2[i].S - 1);
     }
-
-    for(int i = 0; i < g1.sz; i++){
-        if(!used[i]) dfs(i);
-    }
-
-    cout << endl << endl;
-    for(int i = 0; i < g2.sz; i++){
+    bfs(g1, n, 0);
+    for(int i = 0; i < res1.sz; i++){
         cout << res1[i] << " ";
     }
-    cout << endl << endl;
+
+
+
+
 
 
 
