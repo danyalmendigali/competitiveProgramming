@@ -8,7 +8,7 @@
 
 #define ll long long
 #define sz size()
-#define pb(a) push_back(a);
+#define pb(a) push_back(a)
 #define F first
 #define S second
 #define mendigalitrue ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
@@ -61,42 +61,35 @@ void bfs(int startPoint, int endPoint, GraphAdjList graph)
         for(int i = endPoint; i != -1; i = p[i]){
             path.pb(i + 1);
         }
-        cout << path.sz - 1 << endl;
-//        for(int i = 0; i < path.sz; i++){
-//            cout << path[i] << " ";
-//        }
-//        cout << endl;
+        for(int i = 0; i < path.sz; i++){
+            cout << path[i] << " ";
+        }
+        cout << endl;
     }
 }
 
+
 void solve()
 {
-    res1.clear(); mp1.clear(); st1.clear(); g1.clear();
     int n; cin >> n;
+    g2.resize(2);
     g1.resize(n);
-
-    vector<vector<int>> matrix(n, vector<int>(n));
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < n; j++){
-            cin >> matrix[i][j];
-            if(matrix[i][j] == 1){
-                g1[i].push_back(j);
-                g1[j].push_back(i);
-            }
+    for(int i = 0; i < 2; i++){
+        cin >> g2[i].F >> g2[i].S;
+        g1[g2[i].F - 1].push_back(g2[i].S - 1);
+    }
+    cout << endl;
+    for(int i = 0; i < g1.sz; i++){
+        cout << i + 1 << " ";
+        for(int j = 0; j < g1[i].sz; j++){
+            cout << g1[i][j] + 1 << " ";
         }
+        cout << endl;
     }
 
-    int startPoint, endPoint; cin >> startPoint >> endPoint;
-    startPoint--; endPoint--;
-//    cout << endl << endl;
-//    for(int i = 0; i < g1.size(); i++){
-//        cout << i + 1<< " ";
-//        for(int j = 0; j < g1[i].size(); j++){
-//            cout << g1[i][j] + 1 << " ";
-//        }
-//        cout << endl;
-//    }
-    bfs(endPoint, startPoint, g1);
+    bfs(g2[1].F, g2[0].F, g1);
+
+
 }
 
 signed main()

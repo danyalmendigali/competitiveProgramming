@@ -26,11 +26,12 @@ GraphPairList g2;
 vector<int> res1, res2;
 map<int, int> mp1, mp2;
 set<int> st1, st2;
+set<pair<int, int>> stPair;
 
 const ll inf = 1e9 + 9;
 const ll mod = 1e9 + 7;
 const ll N = 1e5 + 5;
-
+ч
 void bfs(int start, int endPoint, GraphAdjList graph)
 {
     queue<int> q;
@@ -41,15 +42,16 @@ void bfs(int start, int endPoint, GraphAdjList graph)
     was[start] = true;
     p[start] = -1;
     while(!q.empty()){
-        int numFront = q.front();
+        int from = q.front();
         q.pop();
-        for(int i = 0; i < graph[numFront].sz; i++){
-            int to = g1[numFront][i];
+        for(int i = 0; i < graph[from].sz; i++){
+            int to = g1[from][i];
+            stPair.insert({to + 1, from + 1});
             if(!was[to]){
                 was[to] = true;
                 q.push(to);
-                d[to] = d[numFront] + 1;
-                p[to] = numFront;
+                d[to] = d[from] + 1;
+                p[to] = from;
             }
         }
     }
@@ -72,12 +74,14 @@ void bfs(int start, int endPoint, GraphAdjList graph)
 
 void solve()
 {
+    res1.clear(); st1.clear(); mp1.clear();
     int n, m;
     cin >> n >> m;
     g1.resize(n); g2.resize(m);
     for(int i = 0; i < m; i++){
         cin >> g2[i].F >> g2[i].S;
         g1[g2[i].F - 1].push_back(g2[i].S - 1);
+        g1[g2[i].S - 1].push_back(g2[i].F - 1); //Если граф неориентированный
     }
     cout << endl << endl;
     for(int i = 0; i < g1.sz; i++){
@@ -94,6 +98,12 @@ void solve()
     endPoint--;
 
     bfs(start, endPoint, g1);
+    cout << endl << endl;
+
+    for(pair<int, int> i : stPair){
+        cout << i.F << " " << i.S << endl;
+    }
+    cout << endl << endl;
 
 }
 
