@@ -24,7 +24,6 @@ GraphAdjList g1;
 GraphPairList g2;
 
 vector<int> res1, res2;
-vector<bool> was;
 map<int, int> mp1, mp2;
 set<int> st1, st2;
 
@@ -32,39 +31,19 @@ const ll inf = 1e9 + 9;
 const ll mod = 1e9 + 7;
 const ll N = 1e5 + 5;
 
-void solve()
+void bfs(int start, int endPoint, GraphAdjList graph)
 {
-    int n, m;
-    cin >> n >> m;
-    g1.resize(n); g2.resize(m);
-    for(int i = 0; i < m; i++){
-        cin >> g2[i].F >> g2[i].S;
-        g1[g2[i].F - 1].push_back(g2[i].S - 1);
-        g1[g2[i].S - 1].push_back(g2[i].F - 1);
-    }
-    cout << endl << endl;
-    for(int i = 0; i < g1.sz; i++){
-        cout << i + 1 << " ";
-        for(int j = 0; j < g1[i].sz; j++){
-            cout << g1[i][j] + 1 << " ";
-        }
-        cout << endl;
-    }
-    cout << endl;
-    int start, endPoint;
-    cin >> start >> endPoint;
-    start--;
-    endPoint--;
     queue<int> q;
     q.push(start);
-    vector<bool> was(n);
-    vector<int> d(n), p(n);
+    int GraphAdjListSize = graph.sz;
+    vector<bool> was(GraphAdjListSize);
+    vector<int> d(GraphAdjListSize), p(GraphAdjListSize);
     was[start] = true;
     p[start] = -1;
     while(!q.empty()){
         int numFront = q.front();
         q.pop();
-        for(int i = 0; i < g1[numFront].sz; i++){
+        for(int i = 0; i < graph[numFront].sz; i++){
             int to = g1[numFront][i];
             if(!was[to]){
                 was[to] = true;
@@ -89,7 +68,33 @@ void solve()
             cout << path[i] << " ";
         }
     }
+}
+
+void solve()
+{
+    int n, m;
+    cin >> n >> m;
+    g1.resize(n); g2.resize(m);
+    for(int i = 0; i < m; i++){
+        cin >> g2[i].F >> g2[i].S;
+        g1[g2[i].F - 1].push_back(g2[i].S - 1);
+    }
+    cout << endl << endl;
+    for(int i = 0; i < g1.sz; i++){
+        cout << i + 1 << " ";
+        for(int j = 0; j < g1[i].sz; j++){
+            cout << g1[i][j] + 1 << " ";
+        }
+        cout << endl;
+    }
     cout << endl;
+    int start, endPoint;
+    cin >> start >> endPoint;
+    start--;
+    endPoint--;
+
+    bfs(start, endPoint, g1);
+
 }
 
 signed main()

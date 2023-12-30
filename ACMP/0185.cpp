@@ -27,9 +27,10 @@ using GraphPair = vector<pair<vertex, vertex>>;
 vector<int> res, res2;
 vector<bool> was;
 map<int, int> mp;
-set<int> st;
+set<pair<int, int>> st;
 
 GraphAdjList g1;
+GraphPair g2;
 
 void dfs(ll curr)
 {
@@ -40,31 +41,37 @@ void dfs(ll curr)
     }
 }
 
+
 void solve()
 {
-    res.clear(); was.clear();
-    int n, s;
-    cin >> n >> s;
-    g1.resize(n);
-    was.assign(n, false);
-    vector<vector<int>> matrix(n, vector<int>(n));
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < n; j++){
-            cin >> matrix[i][j];
-            if(matrix[i][j] != 0) g1[i].pb(j);
-        }
-    }
-//    cout << endl;
-//    for(int i = 0; i < g1.sz; i++){
-//        cout << i << " ";
-//        for(int j = 0; j < g1[i].sz; j++){
-//            cout << g1[i][j] << " ";
-//        }
-//        cout << endl;
-//    }
+    st.clear();
+    int n, k, res = 0 ; cin >> n >> k;
+    int num1, num2;
+    vector<int> dp;
+    int i = 0;
+    g2.resize(n);
+    do{
+        cin >> num1;
+        dp.push_back(num1);
 
-     dfs(s - 1);
-     cout << res.sz - 1 << endl;
+    } while(num1 != 0);
+
+    for(int i = 0; i < dp.sz; i += 2){
+        g2[i].F = dp[i]; g2[i].S = dp[i + 1];
+    }
+    for(pair<int, int> edge : g2){
+        cout << edge.F << " " << edge.S << endl;
+        g1[edge.F - 1].push_back(edge.S - 1);
+    }
+    for(int i = 0; i < g1.sz; i++){
+        cout << i + 1 << " ";
+        for(int j = 0; j < g1[i].sz; j++){
+            cout << g1[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+
 }
 
 signed main()
