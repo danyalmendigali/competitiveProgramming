@@ -52,7 +52,7 @@ void solve()
     was[start] = true;
     p[start] = -1;
     while(!q.empty()){
-        int numFront = q.front();
+        int numvFront = q.front();
         q.pop();
         for(int i = 0; i < g1[numFront].sz; i++){
             int to = g1[numFront][i];
