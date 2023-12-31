@@ -33,7 +33,6 @@ const ll inf = 1e9 + 9;
 const ll mod = 1e9 + 7;
 const ll N = 1e5 + 5;
 
-
 void dfs(ll curr)
 {
     was[curr] = true;
@@ -43,24 +42,29 @@ void dfs(ll curr)
     }
 }
 
+
 void solve()
 {
-    was.clear(); res1.clear(); g1.clear();
+    res1.clear(); was.clear();
     int n, k; cin >> n >> k;
-    was.assign(n, false);
     g1.resize(n);
+    was.assign(n, false);
     vector<vector<int>> matrix(n, vector<int>(n));
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
             cin >> matrix[i][j];
-            if(matrix[i][j] == 1){
-                g1[i].push_back(j);
-                g1[j].push_back(i);
-            }
+            if(matrix[i][j] == 1) g1[i].push_back(j);
         }
     }
-
-    dfs(k + 1);
+//    cout << endl << endl;
+//    for(int i = 0; i < g1.sz; i++){
+//        cout << i + 1 << " ";
+//        for(int j = 0; j < g1[i].sz; j++){
+//            cout << g1[i][j] + 1 << " ";
+//        }
+//        cout << endl;
+//    }
+    dfs(k - 1);
     cout << res1.sz << endl;
 
 }
