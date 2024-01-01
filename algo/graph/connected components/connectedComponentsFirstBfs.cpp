@@ -26,6 +26,7 @@ using GraphPair = vector<pair<int, int>>;
 GraphAdjList g1;
 GraphPair g2;
 
+
 vector<int> res1, res2, comp;
 map<int, int> mp1, mp2;
 set<int> st1, st2;
@@ -37,7 +38,7 @@ void dfs(ll curr)
     res1.pb(curr + 1);
     comp.pb(curr + 1);
     for(int i : g1[curr]){
-        if(!was[curr]) dfs(i);
+        if(!was[i]) dfs(i);
     }
 }
 
@@ -67,16 +68,15 @@ void solve()
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
             cin >> matrix[i][j];
-            if(matrix[i][j] == 1){
+            if(matrix[i][j] == 1)
               g1[i].push_back(j);
-              g1[j].push_back(i);
-            }
         }
     }
+    cout << endl << endl;
     for(int i = 0; i < g1.sz; i++){
-        cout << i << " ";
+        cout << i + 1 << " ";
         for(int j = 0; j < g1[i].sz; j++){
-            cout << g1[i][j] << " ";
+            cout << g1[i][j] + 1 << " ";
         }
         cout << endl;
     }
