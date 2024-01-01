@@ -26,7 +26,6 @@ using GraphPair = vector<pair<int, int>>;
 GraphAdjList g1;
 GraphPair g2;
 
-
 vector<int> res1, res2, comp;
 map<int, int> mp1, mp2;
 set<int> st1, st2;
