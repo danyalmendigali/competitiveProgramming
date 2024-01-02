@@ -31,8 +31,7 @@ set<pair<int, int>> stPair;
 const ll inf = 1e9 + 9;
 const ll mod = 1e9 + 7;
 const ll N = 1e5 + 5;
-ч
-void bfs(int start, int endPoint, GraphAdjList graph)
+чvoid bfs(int start, int endPoint, GraphAdjList graph)
 {
     queue<int> q;
     q.push(start);
