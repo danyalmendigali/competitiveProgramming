@@ -35,7 +35,6 @@ GraphAdjList g1;
 GraphPair g2;
 
 
-
 void dfs(ll curr, ll parent){
     was[curr] = true;
     comp.pb(curr + 1);

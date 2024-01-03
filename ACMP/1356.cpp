@@ -35,19 +35,19 @@ vector<bool> was;
 void solve()
 {
     was.clear(); res1.clear(); comp.clear();
-    int n, m; cin >> n >> m;
-    g1.resize(n); g2.resize(m);
-    for(int i = 0; i < m; i++){
-        cin >> g2[i].F >> g2[i].S;
-        g1[g2[i].F - 1].push_back(g2[i].S - 1);
+    int n; cin >> n;
+    g1.resize(n);
+    vector<vector<int>> matrix(n, vector<int>(n));
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            cin >> matrix[i][j];
+            if(matrix[i][j] == 1){
+                g1[i].push_back(j);
+            }
+        }
     }
-    cout << n << endl;
     for(int i = 0; i < g1.sz; i++){
         cout << g1[i].sz << " ";
-        for(int j = 0; j < g1[i].sz; j++){
-            cout << g1[i][j] + 1 << " ";
-        }
-        cout << endl;
     }
 
 }
