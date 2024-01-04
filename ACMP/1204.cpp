@@ -35,28 +35,7 @@ vector<bool> was;
 void solve()
 {
     was.clear(); res1.clear(); comp.clear(); st1.clear();
-    int n, ans1 = 0, ans2 = 0, a1 = 0; cin >> n;
-    vector<vector<int>> matrix(n, vector<int>(n));
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < n; j++){
-            cin >> matrix[i][j];
-            if(matrix[i][j] == 1){
-                a1++;
-            }
-            if(i == j && matrix[i][j] == 0){
-                ans1++;
-            }
-            if(matrix[i][j] == matrix[j][i] && matrix[i][j] == 1){
-                ans2++;
-            }
-        }
-    }
-    a1 /= 2;
-    if(ans1 == n && ans2 != a1){
-        cout << "YES" << endl;
-        return;
-    }
-    cout << "NO" << endl;
+
 
 }
 
