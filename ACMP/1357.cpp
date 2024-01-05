@@ -1,81 +1,90 @@
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
 #include <set>
 #include <map>
-#include <queue>
 #include <algorithm>
 
 #define ll long long
 #define sz size()
 #define pb(a) push_back(a)
-#define F first
 #define S second
-#define mendigalitrue ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+#define F first
+#define all(dp) dp.begin(), dp.end()
+
+
 
 using namespace std;
 
+const ll inf = 1e9 + 9;
+const ll mod = 1e9 + 7;
+const ll N = 101;
+
 using vertex = int;
-using Edge = vector <vertex>;
+using Edge = vector<vertex>;
+using Graph = vector<pair<vertex, vertex>>;
 using GraphAdjList = vector<vector<vertex>>;
-using GraphPair = vector<pair<vertex, vertex>>;
 
-GraphAdjList g1;
-GraphPair g2;
+GraphAdjList g2;
 
-set<int> st1, st2;
+vector<int> res, res2, ans;
+map<int, int> mp;
+set<int> st, st2;
 
 void solve()
 {
-    st1.clear(); st2.clear();
-    int n; cin >> n;
-    g1.resize(n);
-    vector<int> res, ans, ans2;
-    for(int i = 0; i < n; i++){
-        ans.pb(i + 1);
-    }
-    cout << endl;
+    st.clear(); mp.clear(); st2.clear();
+    int n, val; cin >> n;
     vector<vector<int>> matrix(n, vector<int>(n));
+    g2.resize(n);
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
             cin >> matrix[i][j];
             if(matrix[i][j] == 1){
-                g1[i].push_back(j);
+                g2[i].push_back(j + 1);
             }
         }
     }
-    cout << endl << endl;
-    for(int i = 0; i < g1.sz; i++){
-        cout << i << " ";
-        for(int j = 0; j < g1[i].sz; j++){
-            cout << g1[i][j] + 1 << " ";
+    for(int i = 0; i < n; i++){
+        //cout << i << " ";
+        for(int j = 0; j < g2[i].sz; j++){
+            st.insert(g2[i][j]);
         }
-        cout << endl;
     }
+    for(int i = 1; i <= n; i++){
+        st2.insert(i);
+    }
+    for(const auto& i : st2){
+        if(st.find(i) == st.end()){
+            res2.pb(i);
+        }
+    }
+    /*
+    for(int i = 0; i < res2.sz; i++){
+        cout << res2[i] << " ";
+    }
+    */
 
-    for(int i = 0; i < g1.sz; i++){
-        if(g1[i].sz == 0){
+
+    for(int i = 0; i < n; i++){
+        if(g2[i].sz == 0){
             res.pb(i + 1);
         }
-        for(int j = 0; j < g1[i].sz; j++){
-            st1.insert(g1[i][j] + 1);
-        }
     }
-    for(auto i : st1){
-        ans.pb(i);
+
+
+
+    cout << res2.sz << " ";
+    for(int i = 0; i < res2.sz; i++){
+        cout << res2[i] << " ";
     }
-    sort(ans.begin(), ans.end());
-    for(int i = 0; i < ans.sz; i++){
-        if(ans[i] == ans[i + 1]){
-            i += 2;
-        }
-        else{
-            ans2.push_back(ans[i]);
-        }
+    cout << endl;
+    cout << res.sz << " ";
+    for(int i = 0; i < res.sz; i++){
+        cout << res[i] << " ";
     }
-    for(int i = 0; i < ans2.sz; i++){
-        cout << ans2[i] << " ";
-    }
+
+
 
 
 
@@ -86,7 +95,8 @@ signed main()
     int t;
     t = 1;
     //cin >> t;
-    while(t--) solve();
+    while(t--)
+        solve();
 
 
 
