@@ -1,33 +1,38 @@
-#include <bits/stdc++.h>
-#include <iterator>
-using namespace std;
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
+#include <queue>
+#include <set>
+#include <algorithm>
 
-#define ar array
 #define ll long long
-#define FOR(i, a, b) for(int i = a; i < b; i++)
+#define sz size()
+#define pb(a) push_back(a)
+#define F first
+#define S second
+#define all(dp) dp.begin(), dp.end();
+#define mendigalitrue ios::sync_with_stdio(false); cin.tie(9); cout.tie(0);
+
+using namespace std;
 
 void solve()
 {
-    long long int a, b;
+    ll a , b;
     cin >> a >> b;
+    cout << (a / 2) + 1 << " " << (b / 2) +  1 << endl;
 
-    long long int min_crane = (min(a, b) + abs(a - b) + 1) / 2;
-    long long int max_crane = (max(a, b) + 1) / 2;
 
-    cout << min_crane << " " << max_crane << endl;
 }
 
-
-int main() {
-
-
-    solve();
-
-
-
+signed main()
+{
+    int t;
+    t = 1;
+    //cin >> t;
+    while(t--) solve();
 
 
     return 0;
 }
-
 
