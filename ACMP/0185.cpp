@@ -28,6 +28,7 @@ vector<int> res, res2;
 vector<bool> was;
 map<int, int> mp;
 set<pair<int, int>> st;
+set<int> st1, st2;
 
 GraphAdjList g1;
 GraphPair g2;
@@ -44,33 +45,33 @@ void dfs(ll curr)
 
 void solve()
 {
-    st.clear();
-    int n, k, res = 0 ; cin >> n >> k;
-    int num1, num2;
+    st.clear(); st1.clear();
+    int n, k, res1 = 0, res2 = 0;
+    cin >> n >> k;
     vector<int> dp;
-    int i = 0;
-    g2.resize(n);
-    do{
-        cin >> num1;
-        dp.push_back(num1);
-
-    } while(num1 != 0);
-
-    for(int i = 0; i < dp.sz; i += 2){
-        g2[i].F = dp[i]; g2[i].S = dp[i + 1];
+    int val;
+    cin >> val;
+    while(val != 0){
+        dp.pb(val);
+        cin >> val;
     }
-    for(pair<int, int> edge : g2){
-        cout << edge.F << " " << edge.S << endl;
-        g1[edge.F - 1].push_back(edge.S - 1);
+    pair<int, int> p[dp.sz / 2];
+    int ind = 0;
+    for(int i = 0; i < dp.sz - 1; i += 2){
+        p[ind].F = dp[i];
+        p[ind].S = dp[i + 1];
+        ind++;
     }
-    for(int i = 0; i < g1.sz; i++){
-        cout << i + 1 << " ";
-        for(int j = 0; j < g1[i].sz; j++){
-            cout << g1[i][j] << " ";
+    for(int i = 0; i < dp.sz / 2; i++){
+        if(p[i].F == k){
+            res1++;
         }
-        cout << endl;
     }
-
+    if(res1 == n - 1){
+        cout << "Yes" << endl;
+        return;
+    }
+    cout << "No" << endl;
 
 }
 

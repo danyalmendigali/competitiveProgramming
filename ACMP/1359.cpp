@@ -33,7 +33,6 @@ void solve()
         }
     }
     int size_st = st1.sz;
-    cout << size_st << endl;
 
     for(ll i = a - 1; i >= 0; i--){
         sum += i;
