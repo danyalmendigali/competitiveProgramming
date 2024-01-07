@@ -30,6 +30,7 @@ map<int, int> mp;
 set<pair<int, int>> st;
 set<int> st1, st2;
 
+
 GraphAdjList g1;
 GraphPair g2;
 
@@ -53,11 +54,11 @@ void solve()
     cin >> val;
     cin >> val2;
     if(val == 0 && n == 0){
-        cout << "Yes" << endl;
+        cout << "No" << endl;
         return;
     }
     if(val == 0 && n != 0){
-        cout << "No" << endl;
+        cout << "Yes" << endl;
         return;
     }
 
