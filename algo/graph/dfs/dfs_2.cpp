@@ -3,64 +3,84 @@
 #include <string>
 #include <set>
 #include <map>
-#include <algorithm>
+#include <queue>
+#include <stack>
 
 #define ll long long
 #define sz size()
 #define pb(a) push_back(a)
-#define S second
 #define F first
+#define S second
+#deifne all(dp) dp.begin(), dp.end()
 #define mendigalitrue ios::sync_with_stdio(false); cin.tie(0); cout.tie(0)
 
 using namespace std;
 
-const ll inf = 1e9 + 9;
-const ll mod = 1e9 + 7;
-const ll N = 101;
+vector<int> res1, res2, res3, comp;
+vector<bool> was;
+set<int> st1, st2;
+set<pair<int, int>> stPair;
+map<int, int> mp1, mp2;
 
 using vertex = int;
-using Edge = vector<vertex>;
+using Edge = vector<vertex>
 using GraphAdjList = vector<vector<vertex>>;
-using GraphAdjPair = vector<pair<vertex, vertex>>;
+using GraphPair = vector<pair<vertex, vertex>>;
 
 GraphAdjList g1;
-GraphAdjPair g2;
-
-vector<int> res1, res2;
-vector<bool> used;
-map<int, int> mp1, mp2;
-set<int> st1, st2;
+GraphPair g2;
 
 void dfs(ll curr)
 {
-    used[curr] = true;
-    res1.pb(curr + 1);
+    was[curr] = true;
+    comp.pb(curr + 1);
     for(int i : g1[curr]){
-        if(!used[i]) dfs(i);
+        if(!was[i]) {
+            dfs(i);
+            stPair.insert({curr, i});
+        }
+    }
+}
+
+int numConnectedComponent()
+{
+    int component = 0;
+    for(int i = 0; i < g1.sz; i++){
+        if(!was[i]){
+            comp.clear();
+            component++;
+            dfs(i);
+        }
+    }
+    return component;
+}
+
+void connectedComponent()
+{
+    for(int i = 0; i < g1.sz; i++) was[i] = false;
+    for(int i = 0; i < g1.sz; i++){
+        if(!was[i]){
+            comp.clear();
+            dfs(i);
+            cout << comp.sz << endl;
+            for(int i = 0; i < comp.sz; i++){
+                cout << comp[i] << " ";
+            }
+            cout << endl;
+        }
     }
 }
 
 void solve()
 {
-    res1.clear(); used.clear();
-    int n, m; cin >> n >> m;
-    used.assign(n, false);
+    res1.clear(); st1.clear(); was.clear(); comp.clear(); stPair.clear();
+    int n, m; cin > n >> m;
     g1.resize(n); g2.resize(m);
+    was.assign(n, false);
     for(int i = 0; i < m; i++){
         cin >> g2[i].F >> g2[i].S;
-        g1[g2[i].F - 1].push_back(g2[i].S - 1);
+        g1[g2[i].F - 1].push_back(g2)
     }
-
-    for(int i = 0; i < g1.sz; i++){
-        if(!used[i]) dfs(i);
-    }
-
-    cout << endl << endl;
-    for(int i = 0; i < g2.sz; i++){
-        cout << res1[i] << " ";
-    }
-    cout << endl << endl;
-
 
 
 
@@ -71,10 +91,7 @@ signed main()
     int t;
     t = 1;
     //cin >> t;
-    while(t--)
-        solve();
-
-
+    while(t--) solve();
 
 
     return 0;

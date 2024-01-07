@@ -27,28 +27,26 @@ unordered_map<int, int> mp;
 
 
 void solve() {
-    int n;
-    cin >> n;
-
+    int ans = 10000;
+    int n; cin >> n;
     vector<vector<int>> dp(n, vector<int>(n));
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
             cin >> dp[i][j];
         }
     }
-    int mn = INF;
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < n; ++j) {
-            for (int k = 0; k < n; ++k) {
-                if (i != j && j != k && k != i) {
-                    int route = dp[i][j] + dp[j][k] + dp[k][i];
-                    mn = min(minRoute, route);
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            for(int k = 0; k < n; k++){
+                if(i != j && j != k && i != k){
+                    ans = min(ans, dp[i][j] + dp[j][k] + dp[k][i]);
                 }
             }
         }
     }
+    cout << ans << endl;
 
-    cout << mn << endl;
+
 }
 
 
