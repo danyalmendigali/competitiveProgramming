@@ -24,7 +24,7 @@ using Edge = vector<vertex>;
 using GraphAdjList = vector<vector<vertex>>;
 using GraphPair = vector<pair<vertex, vertex>>;
 
-vector<int> res, res2;
+vector<int> res1, res2;
 vector<bool> was;
 map<int, int> mp;
 set<pair<int, int>> st;
@@ -36,47 +36,54 @@ GraphPair g2;
 void dfs(ll curr)
 {
     was[curr] = true;
-    res.pb(curr + 1);
+    res1.pb(curr + 1);
     for(int i : g1[curr]){
         if(!was[i]) dfs(i);
     }
 }
 
-
 void solve()
 {
-    st.clear(); st1.clear();
-    int n, k, res1 = 0, res2 = 0;
-    cin >> n >> k;
+    st.clear(); st1.clear(); was.clear(); res1.clear();
+    int n, m; cin >> n >> m;
+    was.assign(n, false);
+    g1.resize(n); g2.resize(m);
     vector<int> dp;
-    int val;
+    int val, val2;
     cin >> val;
-    while(val != 0){
-        dp.pb(val);
-        cin >> val;
-    }
-    pair<int, int> p[dp.sz / 2];
-    int ind = 0;
-    for(int i = 0; i < dp.sz - 1; i += 2){
-        p[ind].F = dp[i];
-        p[ind].S = dp[i + 1];
-        ind++;
-    }
-    for(int i = 0; i < dp.sz / 2; i++){
-        if(p[i].F == k){
-            res1++;
-        }
-    }
-    if(res1 == n - 1){
+    cin >> val2;
+    if(val == 0 && n == 0){
         cout << "Yes" << endl;
         return;
     }
-    cout << "No" << endl;
+    if(val == 0 && n != 0){
+        cout << "No" << endl;
+        return;
+    }
+
+
+    while(val != 0){
+        g1[val - 1].push_back(val2 - 1);
+        cin >> val;
+        if(val == 0){
+            dfs(m - 1);
+            if(res1.sz == n){
+                cout << "Yes" << endl;
+                return;
+            }
+            cout << "No" << endl;
+            return;
+        }
+        cin >> val2;
+    }
+
+
 
 }
 
 signed main()
 {
+    daniyaltrue;
     int t;
     t = 1;
     //cin >> t;
