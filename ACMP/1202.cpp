@@ -32,24 +32,29 @@ map<int, int> mp1, mp2;
 set<int> st1, st2;
 vector<bool> was;
 
+
 void solve()
 {
     was.clear(); res1.clear(); comp.clear();
-    int n, m; cin >> n >> m;
-    g1.resize(n); g2.resize(m);
-    for(int i = 0; i < m; i++){
+    ll n, m; cin >> n >> m;
+    g1.resize(n);
+    g2.resize(m);
+    int a = 0;
+    for(ll i = 0; i < m; i++){
         cin >> g2[i].F >> g2[i].S;
-        g1[g2[i].F - 1].push_back(g2[i].S - 1);
+        if(g2[i].F != g2[i].S){
+            g1[g2[i].F - 1].push_back(g2[i].S - 1);
+        }
     }
-    cout << n << endl;
-    for(int i = 0; i < g1.sz; i++){
+    cout << g1.sz << endl;
+    for(ll i = 0; i < g1.sz; i++){
         cout << g1[i].sz << " ";
-        for(int j = 0; j < g1[i].sz; j++){
+        sort(g1[i].begin(), g1[i].end());
+        for(ll j = 0; j < g1[i].sz; j++){
             cout << g1[i][j] + 1 << " ";
         }
         cout << endl;
     }
-
 }
 
 signed main()
