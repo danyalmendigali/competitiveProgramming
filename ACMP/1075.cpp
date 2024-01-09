@@ -18,19 +18,28 @@ using namespace std;
 
 void solve()
 {
-    int n, a, b;
-    cin >> n >> a >> b;
-    vector<int> dp;
-    for(int i = 1; i <= n; i++){
-        dp.pb(i);
+    vector<int> dp1(11) , dp2(11);
+    int a = 0;
+    int b = 0;
+    for(int i = 0; i < dp1.sz; i++){
+        cin >> dp1[i];
     }
-    for(int i = 0; i <= b - a - 1; i++){
-        dp[a + i] = dp[b - i];
+    for(int i = 0; i < dp2.sz; i++){
+        cin >> dp2[i];
     }
-    for(int i = 0; i < dp.sz; i++){
-        cout << dp[i] << " ";
+    for(int i = 0; i < dp1.sz; i++){
+        if(dp1[i] < dp2[i]){
+            a++;
+        }
+        if(dp1[i] > dp2[i]){
+            b++;
+        }
     }
-
+    if(a > b){
+        cout << "First" << endl;
+        return;
+    }
+    cout << "Second" << endl;
 
 
 
