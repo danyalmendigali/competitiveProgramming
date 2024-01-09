@@ -30,8 +30,7 @@ map<int, int> mp1;
 void dfs(ll curr)
 {
     was[curr] = true;
-    comp.push_back(curr + 1);
-    res1.pb(curr + 1);
+    comp.pb(curr + 1);
     for(int i : g1[curr]){
         if(!was[i]) dfs(i);
     }
@@ -42,27 +41,12 @@ int numComponent()
     int component = 0;
     for(int i = 0; i < g1.sz; i++){
         if(!was[i]){
-            component++;
             comp.clear();
             dfs(i);
+            component++;
         }
     }
     return component;
-}
-
-void findComponentGraph() {
-    for(int i = 0; i < g1.sz; i++) was[i] = false;
-    for(int i = 0; i < g1.sz; i++) {
-        if(!was[i]) {
-            comp.clear();
-            dfs(i);
-            cout << comp.sz << endl;
-            for(int j = 0; j < comp.sz; j++) {
-                cout <<  comp[j] << " ";
-            }
-            cout << endl;
-        }
-    }
 }
 
 
@@ -106,7 +90,6 @@ void solve()
         for(int j = 0; j < n; j++){
             if(matrix2[i][j] == 1){
                 g1[i].push_back(j);
-                g1[j].push_back(i);
             }
         }
     }
@@ -120,7 +103,7 @@ void solve()
 
     int component = numComponent();
 //    cout << component << endl;
-    if(component <= 2){
+    if(component == 2 || component == 1){
         cout << "YES" << endl;
         return;
     }

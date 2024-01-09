@@ -34,7 +34,12 @@ vector<bool> was;
 
 void solve()
 {
-    int n;
+    int n, a, b;
+    cin >> n >> a >> b;
+    vector<int> dp(n - 1);
+    for(int i = 0; i < dp.sz; i++){
+            cin >> dp[i];
+    }
 
 }
 

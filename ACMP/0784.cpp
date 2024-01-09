@@ -32,7 +32,7 @@ map<int, int> mp1, mp2;
 set<int> st1, st2;
 vector<bool> was;
 
-int findCommonAncestor(int n, int a, int b) {
+ll findCommonAncestor(ll n, ll a, ll b) {
     while (a != b) {
         if (a > b) {
             a /= 2;
@@ -45,13 +45,13 @@ int findCommonAncestor(int n, int a, int b) {
 
 void solve()
 {
-    int n, a, b;
+    ll n, a, b;
     cin >> n >> a >> b;
     if(a == b){
         cout << a << endl;
         return;
     }
-    int result = findCommonAncestor(n, a, b);
+    ll result = findCommonAncestor(n, a, b);
     cout << result << endl;
 
 }
