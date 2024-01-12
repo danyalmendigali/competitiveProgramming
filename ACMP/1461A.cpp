@@ -54,16 +54,13 @@ void solve()
     }
     cout << s << endl;
 
-
-
-
 }
 
 
 signed main()
 {
     int t;
-    t = 1;
+    t = 1;а
     cin >> t;
     while(t--) solve();
 
