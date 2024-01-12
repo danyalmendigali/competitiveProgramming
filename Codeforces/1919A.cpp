@@ -19,9 +19,12 @@ using namespace std;
 void solve()
 {
     ll a, b; cin >> a >> b;
-    if(a == b){
+    ll g = abs(a - b);
+    if(g % 2 == 1){
+        cout << "Alice" << endl;
+    }
+    else{
         cout << "Bob" << endl;
-        return;
     }
 
 

@@ -1,95 +1,61 @@
 #include <iostream>
+#include <vector>
+#include <string>
 #include <set>
 #include <map>
-#include <vector>
 #include <queue>
-#include <string>
 #include <algorithm>
 
 #define ll long long
 #define sz size()
-#define pb(a) push_back(a);
+#define pb(a) push_back(a)
 #define F first
 #define S second
+#define all(dp) dp.begin(), dp.end()
 #define mendigalitrue ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
 using namespace std;
 
-using vertex = int;
-using Edge = vector<vertex>;
-using GraphAdjList = vector<vector<vertex>>;
-using GraphPairList = vector<pair<vertex, vertex>>;
 
-GraphAdjList g1;
-GraphPairList g2;
-
-vector<int> res1, res2;
+vector<int> res1, res2, comp, path;
 vector<bool> was;
-map<int, int> mp1, mp2;
-set<int> st1, st2;
+vector<pair<int, int>> g2;
+vector<vector<int>> g1;
 
-const ll inf = 1e9 + 9;
-const ll mod = 1e9 + 7;
-const ll N = 1e5 + 5;
-
-void solve()
+void bfs(int startPoint, vector<vector<int>> graph)
 {
-    int n, m;
-    cin >> n >> m;
-    g1.resize(n); g2.resize(m);
-    for(int i = 0; i < m; i++){
-        cin >> g2[i].F >> g2[i].S;
-        g1[g2[i].F - 1].push_back(g2[i].S - 1);
-        g1[g2[i].S - 1].push_back(g2[i].F - 1);
-    }
-    cout << endl << endl;
-    for(int i = 0; i < g1.sz; i++){
-        cout << i + 1 << " ";
-        for(int j = 0; j < g1[i].sz; j++){
-            cout << g1[i][j] + 1 << " ";
-        }
-        cout << endl;
-    }
-    cout << endl;
-    int start, endPoint;
-    cin >> start >> endPoint;
-    start--;
-    endPoint--;
+    was.clear();
+    was.assign(graph.sz, false);
+    int size_graph = graph.sz;
     queue<int> q;
-    q.push(start);
-    vector<bool> was(n);
-    vector<int> d(n), p(n);
-    was[start] = true;
-    p[start] = -1;
+    q.push(startPoint);
+    was[startPoint] = true;
     while(!q.empty()){
         int numFront = q.front();
         q.pop();
-        for(int i = 0; i < g1[numFront].sz; i++){
-            int to = g1[numFront][i];
-            if(!was[to]){
-                was[to] = true;
-                q.push(to);
-                d[to] = d[numFront] + 1;
-                p[to] = numFront;
+        for(int i = 0; i < size_graph; i++){
+            if(graph[numFront][i] != 0 && !was[i]){
+                q.push(i);
+                was[i] = true;
             }
         }
     }
-    if(!was[endPoint]){
-        cout << "Problem!" << endl;
-        return;
+}
+
+void solve()
+{
+    was.clear(); path.clear();
+    int n, m; cin >> n >> m;
+    g2.resize(m);
+    g1.resize(n);
+    for(int i = 0; i < m; i++){
+        cin >> g2[i].F >> g2[i].S;
+        g1[g2[i].F - 1].push_back(g2[i].S - 1);
     }
-    else{
-        vector<int> path;
-        for(int i = endPoint; i != -1; i = p[i]){
-            path.push_back(i + 1);
-        }
-        reverse(path.begin(), path.end());
-        cout << "Path: ";
-        for(int i = 0; i < path.sz; i++){
-            cout << path[i] << " ";
-        }
-    }
-    cout << endl;
+    int startPoint = 0;
+    bfs(startPoint, g1);
+
+
 }
 
 signed main()
@@ -99,4 +65,7 @@ signed main()
     t = 1;
     //cin >> t;
     while(t--) solve();
+
+
+    return 0;
 }

@@ -24,7 +24,7 @@ void solve()
     dp.pb(0);
     dp.pb(1);
     string s = "";
-    for(int i = 0; i < 1000; i++){
+    for(int i = 0; i <= 1000; i++){
         s += 'o';
     }
     for(int i = 0; i < 15; i++){
@@ -32,7 +32,7 @@ void solve()
     }
 
     for(int i = 0; i < dp.sz; i++){
-        s[dp[i]] = '0';
+        s[dp[i]] = 'O';
     }
     s.erase(s.begin());
     for(int i = 0; i < g; i++){
