@@ -1,16 +1,16 @@
-#include <iostream>
 #include <vector>
-#include <string>
 #include <set>
+#include <iostream>
 #include <map>
+#include <string>
 #include <algorithm>
 
 #define ll long long
-#define pb(a) push_back(a)
 #define sz size()
+#define pb(a) push_back(a)
+#define S second
 #define F first
-#define S second;
-#define mendigalitrue ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+#define all(dp) dp.begin(), dp.end()
 
 using namespace std;
 
@@ -18,45 +18,60 @@ const ll INF = 1e9 + 9;
 const ll MOD = 1e9 + 7;
 const ll N = 101;
 
+map<int, int> mp;
+
 void solve()
 {
-    int n, m;
+    mp.clear();
+    ll n, m;
     cin >> n >> m;
+    vector<ll> res;
+    vector<vector<ll>> dp(m, vector<ll>(n));
 
-    vector<vector<int>> votes(m, vector<int>(n));
-
-    // Считываем данные
     for (int i = 0; i < m; ++i) {
         for (int j = 0; j < n; ++j) {
-            cin >> votes[i][j];
+            cin >> dp[i][j];
         }
     }
 
-    // Подсчет результатов по городам
-    vector<int> city_wins(n, 0);
-    for (int j = 0; j < n; ++j) {
-        for (int i = 0; i < m; ++i) {
-            if (votes[i][j] > votes[i][city_wins[j]]) {
-                city_wins[j] = i;
+    for(int i = 0; i < n; i++){
+        ll k = 0;
+        ll mx = 0, ind;
+        for(int j = 0; j < m; j++){
+            if(mx < dp[j][i]){
+                mx = dp[j][i];
+                ind = j;
             }
         }
+        res.pb(ind + 1);
     }
 
-    // Подсчет результатов по кандидатам
-    vector<int> candidate_wins(n, 0);
-    for (int i = 0; i < n; ++i) {
-        candidate_wins[city_wins[i]]++;
+    ll s = 0;
+    for(int i = 0; i < res.sz; i++){
+        mp[res[i]]++;
+        s++;
     }
-
-    // Определение победителя
-    int winner = 0;
-    for (int i = 1; i < n; ++i) {
-        if (candidate_wins[i] > candidate_wins[winner]) {
-            winner = i;
+    vector<pair<ll, ll>> p;
+    ll r = 0;
+    for(auto i : mp){
+        cout << i.F << " " << i.S << endl;
+        p.emplace_back(i.F, i.S);
+        r++;
+    }
+    ll mx = 0;
+    for(ll i = 0; i < r; i++){
+        mx = max(mx, p[i].S);
+    }
+    cout << mx << endl;
+    vector<ll> t;
+    for(ll i = 0; i < r; i++){
+        if(p[i].S == mx){
+            t.pb(i + 1);
         }
     }
+    sort(all(t));
+    cout << t[0] << endl;
 
-    cout << winner + 1 << endl; // Учитываем номерацию кандидатов с 1
 }
 
 
@@ -67,4 +82,6 @@ signed main()
     //cin >> t;
     while(t--)
         solve();
+
+    return 0;
 }
