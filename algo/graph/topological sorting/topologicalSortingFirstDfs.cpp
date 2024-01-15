@@ -8,16 +8,16 @@
 
 #define ll long long
 #define sz size()
-#define pb(a) push_back(a);
+#define pb(a) push_back(a)
 #define F first
 #define S second
-#define mendigalitrue ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+#define all(dp) dp.begi(), dp.end()
+#define _mendigali_ ios::sync_with_stdio(false); cin.tie(); cout.tie(0)
 
 using namespace std;
 
-const ll inf = 1e9 + 9;
-const ll mod = 1e9 + 7;
-const ll N = 1e5 + 5;
+vector<bool> was;
+vector<int> res1, res2, topologicalSort;
 
 using vertex = int;
 using Edge = vector<vertex>;
@@ -27,61 +27,39 @@ using GraphPair = vector<pair<vertex, vertex>>;
 GraphAdjList g1;
 GraphPair g2;
 
-vector<int> res1, res2, res3, comp;
-vector<bool> was;
-set<int> st1, st2;
-map<int, int> mp1, mp2;
-
-
 void dfs(ll curr)
 {
     was[curr] = true;
     for(int i : g1[curr]){
-        if(!was[i]) dfs(i);
+        int to = g1[curr][i];
+        if(!was[to]) dfs(to);
     }
-    res1.pb(curr);
+    topologicalSort.pb(curr);
 }
 
-vector<int> topologicalSort()
+void topological_sort()
 {
     for(int i = 0; i < g1.sz; i++) was[i] = false;
-    res1.clear();
+    topologicalSort.clear();
     for(int i = 0; i < g1.sz; i++){
         if(!was[i]) dfs(i);
     }
-    reverse(res1.begin(), res1.end());
+    reverse(all(topologicalSort));
 
-    return res1;
 }
-
 
 void solve()
 {
-    res1.clear(); was.clear(); st1.clear();
-    int n, m; cin >> n >> m;
-    was.assign(n, false);
-    g1.resize(n); g2.resize(m);
-    for(int i = 0; i < m; i++){
-        cin >> g2[i].F >> g2[i].S;
-        g1[g2[i].F - 1].push_back(g2[i].S - 1);
-    }
-
-    vector<int> ans = topologicalSort();
-    for(int i : ans){
-        cout << i + 1 << " ";
-    }
-    cout << endl;
+    was.clear(); topologicalSort.clear();
 
 }
 
 signed main()
 {
-    mendigalitrue;
     int t;
     t = 1;
     //cin >> t;
     while(t--) solve();
-
 
 
     return 0;
