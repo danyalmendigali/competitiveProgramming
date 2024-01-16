@@ -18,20 +18,19 @@ using namespace std;
 
 void solve()
 {
-    int n; cin >> n;
-    vector<int> dp(n, 1);
+    int x1, y1, x2, y2;
+    cin >> x1 >> y1 >> x2 >> y2;
 
-    for (int i = 1; i < n; ++i) {
-        int j = i;
-        while (j > 0 && dp[j - 1] == dp[j]) {
-            dp[j]++;
-            j--;
-        }
+    if ((x2 == x1) && (y2 == y1 + 1)) {
+        cout << "YES" << endl;
+    } else if ((x2 == x1) && (y1 == 2) && (y2 == 4)) {
+        cout << "YES" << endl;
+    } else {
+        cout << "NO" << endl;
     }
 
-    for (int i = 0; i < n; ++i) {
-        cout << dp[i] << " ";
-    }
+
+
 
 }
 

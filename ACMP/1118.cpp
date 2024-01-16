@@ -1,40 +1,41 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <map>
-#include <queue>
 #include <set>
+#include <map>
+#include <cmath>
 #include <algorithm>
 
-#define ll long long
+#define ll long long9
 #define sz size()
 #define pb(a) push_back(a)
-#define F first
 #define S second
-#define all(dp) dp.begin(), dp.end();
-#define mendigalitrue ios::sync_with_stdio(false); cin.tie(9); cout.tie(0);
+#define F first
+#define mendigalitrue ios::sync_with_stdio(false); cin.tie(0); cout.tie(0)
 
 using namespace std;
 
+
 void solve()
 {
-    int a, b, c;
-    cin >> a >> b >> c;
-    int res = 0;
-    a -= b;
-    res++;
-    int g = a / (b - c);
-    cout << res + g << endl;
+    int H, A, B;
+    cin >> H >> A >> B;
+    int days = ceil(static_cast<double>(H - A) / (A - B)) + 1;
 
+    cout << days << endl;
 
 }
 
 signed main()
 {
+    mendigalitrue;
     int t;
     t = 1;
     //cin >> t;
-    while(t--) solve();
+    while(t--)
+        solve();
+
+
 
 
     return 0;

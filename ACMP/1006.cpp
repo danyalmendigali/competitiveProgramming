@@ -18,20 +18,7 @@ using namespace std;
 
 void solve()
 {
-    int n; cin >> n;
-    vector<int> dp(n, 1);
 
-    for (int i = 1; i < n; ++i) {
-        int j = i;
-        while (j > 0 && dp[j - 1] == dp[j]) {
-            dp[j]++;
-            j--;
-        }
-    }
-
-    for (int i = 0; i < n; ++i) {
-        cout << dp[i] << " ";
-    }
 
 }
 

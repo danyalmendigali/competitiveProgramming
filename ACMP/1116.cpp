@@ -1,46 +1,45 @@
-#include <bits/stdc++.h>
-#include <string>
+#include <iostream>
 #include <vector>
-#include <algorithm>
+#include <string>
 #include <set>
+#include <map>
+#include <cmath>
+#include <algorithm>
 
-#define all(a) a.begin() , a.end()
-#define optimus_prime  cin.tie(0); cout.tie(0)
-#define endl "\n"
-#define vll vector<long long>
-#define vi vector<int>
-#define FOR(i, a, b) for(int i = a; i < b; i++)
-#define pb(a) push_back(a)
+#define ll long long9
 #define sz size()
-#define ll long long
-#define F first
+#define pb(a) push_back(a)
 #define S second
+#define F first
+#define mendigalitrue ios::sync_with_stdio(false); cin.tie(0); cout.tie(0)
 
 using namespace std;
 
-const ll N = 101;
-const ll inf = 1e9 + 9;
-const ll mod = 1e9 + 7;
-
-
-ll a[N][N];
-ll countA = 0;
 
 void solve()
 {
+    int h1, m1, s1;
+    int h2, m2, s2;
 
+    cin >> h1 >> m1 >> s1;
+    cin >> h2 >> m2 >> s2;
+    int time1 = h1 * 3600 + m1 * 60 + s1;
+    int time2 = h2 * 3600 + m2 * 60 + s2;
+
+    int difference = time2 - time1;
+
+    cout << difference << endl;
 
 }
 
 signed main()
 {
-    optimus_prime;
+    mendigalitrue;
     int t;
     t = 1;
     //cin >> t;
     while(t--)
-         solve();
-
+        solve();
 
 
 

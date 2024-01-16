@@ -18,31 +18,15 @@ using namespace std;
 
 void solve()
 {
-    int n, a, b; cin >> n >> a >> b;
-    int j = a + b;
-    int g;
-    if(j == 0){
-        cout << n << endl;
-        returnl
+    int a, b, c; cin >> a >> b >> c;
+    if(c < 0){
+        int f = abs(c);
     }
-    if(n == 1){
-        cout << n << endl;
-        return;
-    }
-    if(abs(j) > n){
-        g = n % abs(j);
-        return;
-    }
-    else{
-        g = abs(j);
-        return;
-    }
-    cout << g << endl;
-
 }
 
 signed main()
 {
+    mendigalitrue;
     int t;
     t = 1;
     //cin >> t;

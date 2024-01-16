@@ -1,67 +1,48 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #include <set>
 #include <map>
-#include <string>
-#include <queue>
+#include <cmath>
 #include <algorithm>
 
-#define ll long long
-#define pb(a) push_back(a)
+#define ll long long9
 #define sz size()
-#define F first
+#define pb(a) push_back(a)
 #define S second
-#define optimus_prime ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define F first
+#define mendigalitrue ios::sync_with_stdio(false); cin.tie(0); cout.tie(0)
 
 using namespace std;
 
-const ll inf = 1e9 + 9;
-const ll mod = 1e9 + 7;
-const ll N = 101;
-
-using vertex = int;
-using Edge = vector<vertex>;
-using Graph = vector<Edge>;
-
-Graph g;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<pair<int, int>> p;
-    g.resize(n, vector<vertex>(n));
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < n; j++){
-            cin >> g[i][j];
-        }
+    int x1, y1, x2, y2;
+    cin >> x1 >> y1 >> x2 >> y2;
+
+    int dx = abs(x1 - x2);
+    int dy = abs(y1 - y2);
+
+    if ((dx <= 1) && (dy <= 1)) {
+        cout << "YES" << endl;
+    } else {
+        cout << "NO" << endl;
     }
 
-    int edge = 0;
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < n; j++){
-            if(g[i][j] == 1){
-                p.emplace_back(i + 1, j + 1);
-                edge++;
-            }
-        }
-    }
 
-    cout << n << " " << edge << endl;
-
-    for(int i = 0; i < p.sz; i++){
-        cout << p[i].F << " " << p[i].S << endl;
-    }
 }
 
 signed main()
 {
-    optimus_prime;
+    mendigalitrue;
     int t;
-    //cin >> t;
     t = 1;
+    //cin >> t;
     while(t--)
         solve();
+
+
 
 
     return 0;
