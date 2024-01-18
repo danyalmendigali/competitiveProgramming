@@ -22,41 +22,36 @@ vector<int> res1, res2, comp;
 set<int> st1, st2;
 map<int, int> mp1, mp2;
 
-bool isNum(ll r, ll r2)
-{
-    bool ok = false;
-    ll t = 0, t2 = 0;
-    for(int i = 1; i <= r; i++){
-        if(r % i == 0){
-            t++;
+void sieveOfEratosthenes(int n, vector<bool>& isPrime) {
+    isPrime.resize(n + 1, true);
+    isPrime[0] = isPrime[1] = false;
+
+    for (int i = 2; i * i <= n; ++i) {
+        if (isPrime[i]) {
+            for (int j = i * i; j <= n; j += i) {
+                isPrime[j] = false;
+            }
         }
     }
-    for(int i = 1; i <= r2; i++){
-        if(r2 % i == 0){
-            t2++;
-        }
-    }
-    if(t == 2 && t2 == 2){
-        ok = true;
-    }
-    else{
-        ok = false;
-    }
-    return ok;
 }
 
 void solve()
 {
-    ll n; cin >> n;
-    ll g = 0;
-    for(int i = 1; i < n; i++){
-        int f = i;
-        int d = n - i;
-        if(isNum(f, d)){
-            cout << f << " " << d << endl;
-            return;
+    int M, N; cin >> M >> N;
+    vector<bool> isPrime;
+    sieveOfEratosthenes(N, isPrime);
+
+    bool absent = true;
+    for (int i = max(2, M); i <= N; ++i) {
+        if (isPrime[i]) {
+            cout << i << endl;
+            absent = false;
         }
     }
+
+    if (absent)  cout << "Absent" << endl;
+
+
 
 
 }

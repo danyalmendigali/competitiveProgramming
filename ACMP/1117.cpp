@@ -6,10 +6,9 @@
 #include <cmath>
 #include <algorithm>
 
-#define ll long long9
+#define ll long long
 #define sz size()
-#define pb(a) push_back(a)
-#define S second
+#define pb(a) push_back(a)2
 #define F first
 #define mendigalitrue ios::sync_with_stdio(false); cin.tie(0); cout.tie(0)
 
@@ -18,28 +17,20 @@ using namespace std;
 
 void solve()
 {
-    int lessonNumber;
-    cin >> lessonNumber;
-
-    int startHour = 9;
-    int startMinute = 0;
-    int lessonDuration = 45;
-    int shortBreakDuration = 5;
-    int longBreakDuration = 15;
-
-    int endMinute = startMinute + lessonNumber * (lessonDuration + shortBreakDuration);
-    int endHour = startHour + endMinute / 60;
-    endMinute = endMinute % 60;
-
-    if (lessonNumber > 1) {
-        int longBreaks = (lessonNumber - 1) / 2;
-        endMinute += longBreaks * longBreakDuration;
-        endHour += endMinute / 60;
-        endMinute = endMinute % 60;
+    ll les; cin >> les;
+    int sum = 0;
+    for(int i = 1; i < les; i++){
+        if(i % 2 == 0){
+            sum += 15;
+        }
+        else{
+            sum += 5;
+        }
     }
-
-    cout << endHour << " " << endMinute << endl;
-
+    int h = (45 * les) + sum;
+    int y = h / 60;
+    int r = h % 60;
+    cout << 9 + y << " " << r << endl;
 }
 
 signed main()
