@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <set>
 #include <map>
+#include <set>
 #include <queue>
 #include <algorithm>
 
@@ -12,7 +12,7 @@
 #define F first
 #define S second
 #define all(dp) dp.begin(), dp.end()
-#define _mendigali_ ios::sync_with_stdio(false); cin.tie(0); cout.tie(0)
+#define _mendigali_ ios::sync_with_stdio(false); cin.tie(); cout.tie()
 
 using namespace std;
 
@@ -31,14 +31,14 @@ GraphPair g2;
 
 void bfs(int startPoint, int endPoint, GraphAdjList graph)
 {
-    was.clear(); res1.clear(); comp.clear();
-    was.assign(graph.sz, false);
-    int graph_size = graph.sz;
+    was.clear(); res1.clear();
+    int size_graph = graph.sz;
+    was.assign(size_graph, false);
     queue<int> q;
-    vector<int> d(graph_size), p(graph_size);
-    p[startPoint] = -1;
+    vector<int> d(size_graph), p(size_graph);
     q.push(startPoint);
     was[startPoint] = true;
+    p[startPoint] = -1;
     while(!q.empty()){
         int numFront = q.front();
         q.pop();
@@ -52,7 +52,6 @@ void bfs(int startPoint, int endPoint, GraphAdjList graph)
             }
         }
     }
-
     if(!was[endPoint]){
         cout << "No path" << endl;
         return;
@@ -66,9 +65,8 @@ void bfs(int startPoint, int endPoint, GraphAdjList graph)
         for(int i = 0; i < path.sz; i++){
             cout << path[i] << " ";
         }
-        cout << endl;
+        return;
     }
-
 }
 
 void solve()
@@ -85,19 +83,18 @@ void solve()
     int startPoint, endPoint;
     cin >> startPoint >> endPoint;
     startPoint--; endPoint--;
-    bfs(startPoint, endPoint, g1);
-
+    bfs(startPoint ,endPoint, g1);
 
 
 }
 
 signed main()
 {
+    _mendigali_;
     int t;
     t = 1;
     //cin >> t;
     while(t--) solve();
-
 
     return 0;
 }
