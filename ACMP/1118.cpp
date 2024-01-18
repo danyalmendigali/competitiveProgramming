@@ -18,11 +18,20 @@ using namespace std;
 
 void solve()
 {
-    int H, A, B;
-    cin >> H >> A >> B;
-    int days = ceil(static_cast<double>(H - A) / (A - B)) + 1;
+    int a, b, c;
+    cin >> a >> b >> c;
+    int g = 0;
+    int res = 0;
+    while(g < a){
+        g += b;
+        res++;
+        if(g >= a){
+            cout << res << endl;
+            return;
+        }
+        g -= c;
 
-    cout << days << endl;
+    }
 
 }
 
