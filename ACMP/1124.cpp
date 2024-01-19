@@ -20,12 +20,13 @@ void solve()
 {
     int x1, y1, x2, y2;
     cin >> x1 >> y1 >> x2 >> y2;
-
-    if ((x2 == x1) && (y2 == y1 + 1)) {
+    int g = abs(y1 - y2);
+    int g2 = abs(x1 - x2);
+    if(x1 == x2 && g <= 2){
         cout << "YES" << endl;
-    } else if ((x2 == x1) && (y1 == 2) && (y2 == 4)) {
-        cout << "YES" << endl;
-    } else {
+        return;
+    }
+    else{
         cout << "NO" << endl;
     }
 

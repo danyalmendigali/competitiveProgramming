@@ -6,30 +6,27 @@
 #include <cmath>
 #include <algorithm>
 
-#define ll long long9
+#define ll long long
 #define sz size()
 #define pb(a) push_back(a)
 #define S second
 #define F first
-#define mendigalitrue ios::sync_with_stdio(falsen); cin.tie(0); cout.tie(0)
+#define mendigalitrue ios::sync_with_stdio(false); cin.tie(0); cout.tie(0)
 
 using namespace std;
 
-
 void solve()
 {
-    int a, b, c;
-    cin >> a >> b >> c;
-    int g = 0;
+    double x, p, y; cin >> x >> p >> y;
     int res = 0;
-    while(g < a){
-        g += b;
+    while(x < y){
+        double f = x * (p / 100);
+        x += f;
         res++;
-        if(g >= a){
+        if(x >= y){
             cout << res << endl;
             return;
         }
-        g -= c;
 
     }
 
