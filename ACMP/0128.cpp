@@ -29,6 +29,14 @@ using GraphPair = vector<pair<vertex, vertex>>;
 GraphAdjList g1;
 GraphPair g2;
 
+void bfs(int startPoint, int endPoint, GraphAdjList graph)
+{
+    was.clear(); res.clear();
+    int size_graph = graph.sz;
+    was.assign(n, false);;
+
+}
+
 void solve()
 {
     res1.clear(); was.clear(); mp1.clear();
