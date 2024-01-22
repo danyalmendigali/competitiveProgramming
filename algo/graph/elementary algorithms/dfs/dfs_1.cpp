@@ -1,88 +1,54 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <set>
 #include <map>
+#include <set>
+#include <queue>
 #include <algorithm>
 
 #define ll long long
 #define sz size()
 #define pb(a) push_back(a)
-#define S second
 #define F first
+#define S second
 #define all(dp) dp.begin(), dp.end()
+#define _mendigali_ ios::sync_with_stdio(false); cin.tie(0); cout.tie(0)
 
 using namespace std;
 
-const ll inf = 1e9 + 9;
-const ll mod = 1e9 + 7;
-const ll N = 101;
+vector<bool> was;
+vector<vector<int>> g1;
+vector<pair<int, int>> g2;
+vector<int> path;
 
-using vertex = int;
-using Edge = vector<vertex>;
-using Graph = vector<pair<vertex, vertex>>;
-using GraphAdjList = vector<vector<vertex>>;
-
-GraphAdjList g2;
-GraphAdjList g5;
-Graph g;
-Graph g3;
-
-vector<int> res, res2, ans;
-vector<char> used;
-map<int, int> mp;9
-set<int> st, st2;
-set<pair<int, int>> st4;
-int n;
-
-void dfs(int v)
+void dfs(ll curr)
 {
-    used[v] = true;
-    res.pb(v + 1);
-    for (int i : g5[v]) {
-        if (!used[i]) {
-            dfs(i);
-        }
+    was[curr] = true;
+    path.pb(curr + 1);
+    for(int i : g1[curr]){
+        if(!was[i]) dfs(i);
     }
 }
 
 void solve()
 {
-    st.clear(); mp.clear(); st2.clear(); st4.clear(); res.clear();
-    int n, m;
-    cin >> n >> m;
-    g3.resize(m);
-    g5.resize(n);
-    used.assign(n, false);
+    was.clear(); path.clear();
+    int n, m; cin >> n >> m;
+    was.assign(n, false);
+    g1.resize(n); g2.resize(m);
     for(int i = 0; i < m; i++){
-        cin >> g3[i].F >> g3[i].S;
-        g5[g3[i].F - 1].push_back(g3[i].S - 1);
+        cin >> g2[i].F >> g2[i].S;
+        g1[g2[i].F - 1].push_back(g2[i].S - 1);
+        g1[g2[i].S - 1].push_back(g2[i].F - 1);
     }
-//    cout << endl << endl;
-//    for(int i = 0; i < n; i++){
-//        cout << i + 1 << " ";
-//        for(int j = 0; j < g5[i].sz; j++){
-//            cout << g5[i][j] << " ";
-//        }
-//        cout << endl;
-//    }
-//    cout << endl << endl;
-
-    for(int i = 0; i < g5.sz; i++){
-        if(!used[i]) dfs(i);
+    int startPoint; cin >> startPoint;
+    startPoint--;
+    dfs(startPoint);
+    cout << path.sz << endl;
+    for(int i = 0; i < path.sz; i++){
+        cout << path[i] << " ";
     }
-
-    for(int i = 0; i < res.sz; i++){
-        cout << res[i] << " ";
-    }
-
-// 4 5
-// 1 4
-// 2 4
-// 2 3
-// 3 4
-
-
+    cout << endl;
 
 
 
@@ -93,10 +59,7 @@ signed main()
     int t;
     t = 1;
     //cin >> t;
-    while(t--)
-        solve();
-
-
+    while(t--) solve();
 
     return 0;
 }

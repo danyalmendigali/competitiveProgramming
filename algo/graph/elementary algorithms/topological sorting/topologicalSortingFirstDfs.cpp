@@ -16,55 +16,50 @@
 
 using namespace std;
 
-vector<int> res1, res2, comp;
+vector<pair<int, int>> g2;
+vector<vector<int>> g1;
 vector<bool> was;
-set<int> st;
-map<int, int> mp1, mp2;
-
-using node = int;
-using Edge = vector<node>;
-using GraphAdjList = vector<vector<node>>;
-using GraphPair = vector<pair<node, node>>;
-
-GraphAdjList g1;
-GraphPair g2;
+vector<int> res;
 
 void dfs(ll curr)
 {
     was[curr] = true;
-    for (int i = 0; i < g1.sz; i++) {
-        if (!was[i]) dfs(i);
+    for(int i : g1[curr]){
+        if(!was[i]) dfs(i);
     }
-    res1.pb(curr + 1);
+    res.pb(curr + 1);
 }
 
-vector<int> topologicalSort()
+vector<int> toSo()
 {
-    for (int i = 0; i < g1.sz; i++) was[i] = false;
-    res1.clear();
-    for (int i = 0; i < g1.sz; i++) {
-        if (!was[i]) dfs(i);
+    for(int i = 0; i < g1.sz; i++) was[i] = false;
+    res.clear();
+    for(int i = 0; i < g1.sz; i++){
+        if(!was[i]) dfs(i);
     }
-    reverse(res1.begin(), res1.end());
-
-    return res1;
+    reverse(all(res));
+    return res;
 }
 
 
 void solve()
 {
-    was.clear(); res1.clear();
+    was.clear(); res.clear();
     int n, m; cin >> n >> m;
     g1.resize(n); g2.resize(m);
-    for (int i = 0; i < m; i++) {
+    was.assign(n, false);
+    for(int i = 0; i < m; i++){
         cin >> g2[i].F >> g2[i].S;
         g1[g2[i].F - 1].push_back(g2[i].S - 1);
+        g1[g2[i].S - 1].push_back(g2[i].F - 1);
     }
 
-    vector<int> ans = topologicalSort();
-    for (int i = 0; i < ans.sz; i++) {
-        cout << ans[i] << " ";
+    vector<int> ans = toSo();
+    for(int i = 0; i < res.sz; i++){
+        cout << res[i] << " ";
     }
+
+
 
 
 
