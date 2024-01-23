@@ -29,32 +29,33 @@ ll countA = 0;
 void solve()
 {
     int num;
-    vector<int> dp;
-    while (cin >> num){
-        if (num != 0){
-            dp.pb(num);
+    int increasing_length = 1;
+    int decreasing_length = 1;
+    int max_length = 1;
+    cin >> num;
+
+    while (num != 0) {
+        int next_num;
+        cin >> next_num;
+
+        if (next_num > num) {
+            increasing_length++;
+            decreasing_length = 1;
+        } else if (next_num < num) {
+            decreasing_length++;
+            increasing_length = 1;
+        }
+        else{
+            increasing_length = 1;
+            decreasing_length = 1;
         }
 
-        else{
-            break;
-        }
+        max_length = max(max_length, max(increasing_length, decreasing_length));
+
+        num = next_num;
     }
-    int a = 1;
-    int mx = 0;
-    for (int i = 0; i < dp.sz - 1; i++)
-    {
-        if (dp[i] < dp[i + 1])
-        {
-            a++;
-        }
-        else
-        {
-            mx = max(mx, a);
-            a = 1;
-        }
-    }
-    mx = max(mx, a);
-    cout << mx << endl;
+
+    cout << max_length << endl;
 }
 
 signed main()

@@ -17,18 +17,15 @@ using namespace std;
 
 void solve()
 {
-    double x, p, y; cin >> x >> p >> y;
+    int X, P, Y;
+    cin >> X >> P >> Y;
     int res = 0;
-    while(x < y){
-        double f = x * (p / 100);
-        x += f;
-        res++;
-        if(x >= y){
-            cout << res << endl;
-            return;
-        }
 
+    while (X < Y) {
+        X += X * P / 100;
+        res++;
     }
+    cout << res << endl;
 
 }
 
