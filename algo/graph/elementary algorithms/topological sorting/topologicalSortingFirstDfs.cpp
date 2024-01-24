@@ -30,7 +30,7 @@ void dfs(ll curr)
     res.pb(curr + 1);
 }
 
-vector<int> toSo()
+void topoSort()
 {
     for(int i = 0; i < g1.sz; i++) was[i] = false;
     res.clear();
@@ -38,30 +38,26 @@ vector<int> toSo()
         if(!was[i]) dfs(i);
     }
     reverse(all(res));
-    return res;
-}
 
+
+    cout << "Topological sort: ";
+    for(int i = 0; i < res.sz; i++){
+        cout << res[i] << " ";
+    }
+    cout << endl;
+}
 
 void solve()
 {
     was.clear(); res.clear();
     int n, m; cin >> n >> m;
-    g1.resize(n); g2.resize(m);
     was.assign(n, false);
+    g1.resize(n); g2.resize(m);
     for(int i = 0; i < m; i++){
         cin >> g2[i].F >> g2[i].S;
         g1[g2[i].F - 1].push_back(g2[i].S - 1);
-        g1[g2[i].S - 1].push_back(g2[i].F - 1);
     }
-
-    vector<int> ans = toSo();
-    for(int i = 0; i < res.sz; i++){
-        cout << res[i] << " ";
-    }
-
-
-
-
+    topoSort();
 
 }
 
