@@ -31,22 +31,22 @@ GraphPair g2;
 
 void khan(int size_graph)
 {
-    vector<int> degree(size_graph, 0);
-    for(int i = 0; i < g2.sz; i++){
-        degree[g2[i].S - 1]++;
+    vector<int> res(size_graph, 0);
+    for(int i = 0; i < size_graph; i++){
+        res[g2[i].S - 1]++;
     }
     queue<int> q;
     for(int i = 0; i < size_graph; i++){
-        if(degree[i] == 0){
+        if(res[i] == 0){
             q.push(i);
         }
     }
-
     while(!q.empty()){
-        int numFront = q.front(); q.pop();
+        int numFront = q.front();
+        q.pop();
         res1.pb(numFront + 1);
         for(int i : g1[numFront]){
-            if(--degree[i] == 0){
+            if(--res[i] == 0){
                 q.push(i);
             }
         }
@@ -56,6 +56,19 @@ void khan(int size_graph)
 void solve()
 {
     was.clear(); res1.clear();
+    int n, m; cin >> n >> m;
+    was.assign(n, false);
+    g1.resize(n); g2.resize(m);
+    for(int i = 0; i < m; i++){
+        cin >> g2[i].F >> g2[i].S;
+        g1[g2[i].F - 1].push_back(g2[i].S - 1);
+    }
+    khan(g1.sz);
+    for(int i = 0; i < res1.sz; i++){
+        cout << res1[i] << " ";
+    }
+    cout << endl;
+
 
 }
 
