@@ -1,27 +1,29 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <set>
 #include <map>
 #include <queue>
-#include <set>
-#include <algorithm>
 
 #define ll long long
 #define sz size()
 #define pb(a) push_back(a)
 #define F first
 #define S second
-#define all(dp) dp.begin(), dp.end();
-#define mendigalitrue ios::sync_with_stdio(false); cin.tie(9); cout.tie(0);
+#define all(dp) dp.begin(), dp.end()
 
 using namespace std;
 
 void solve()
 {
-    ll a , b;
-    cin >> a >> b;
-    cout << (a / 2) + 1 << " " << (b / 2) +  1 << endl;
-
+    int a, b; cin >> a >> b;
+    if(max(a, b) % 2 == 1){
+        cout << (max(a ,b) / 2) + 1 << " ";
+    }
+    if(max(a, b) % 2 == 0){
+        cout << max(a, b) / 2 << " ";
+    }
+    cout << min(a, b) << endl;
 
 }
 
@@ -33,6 +35,8 @@ signed main()
     while(t--) solve();
 
 
+
+
+
     return 0;
 }
-
