@@ -1,56 +1,57 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
+#include <set>
+#include <queue>
+#include <stack>
+#include <cmath>
+#include <algorithm>
+#include <fstream>
 
-#define all(a) a.begin(), a.end()
-#define optimus_prime ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0)
-#define endl "\n"
-#define vi vector<int>
+#define ll long long
 #define sz size()
+#define pb(a) push_back(a)
+#define F first
+#define S second
+#define ios ios::sync_with_stdio(false);
 
 using namespace std;
 
-const int N = 101;
-
 void solve()
 {
-    int num;
-    int dp[N];
-    int size = 0;
-
-    while (cin >> num)
-    {
-        if (num == 0)
-            return;
-
-        dp[size++] = num;
+    vector<int> dp;
+    vector<int> res;
+    int n;
+    while(n != 0){
+        cin >> n;
+        dp.pb(n);
     }
-
-    if (size < 3)
-    {
+    dp.erase(dp.end() - 1);
+    int sum = 0;
+    if(dp.sz <= 2){
         cout << 0 << endl;
         return;
     }
-
-    int res = 0;
-
-    for (int i = 1; i < size - 1; ++i)
-    {
-        if (dp[i] > dp[i - 1] && dp[i] > dp[i + 1])
-        {
-            ++res;
+    for(int i = 1; i < dp.sz - 1; i++){
+        if(dp[i] > dp[i - 1] && dp[i] > dp[i + 1]){
+            sum++;
         }
     }
+    cout << sum << endl;
 
-    cout << res << endl;
 }
 
-int main()
-{
-    optimus_prime;
+signed main()
 
-    int t = 1;
-    // cin >> t;
-    while (t--)
-        solve();
+{
+    ios;
+    int t;
+    t = 1;
+    //cin >> t;
+    while(t--) solve();
+
+
 
     return 0;
 }
