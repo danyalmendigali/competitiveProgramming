@@ -22,38 +22,28 @@ void solve()
 {
     vector<int> dp;
     int n;
-    while (true){
+    int sum = 0;
+    while(n != 0) {
         cin >> n;
-        if (n == 0) break;
         dp.push_back(n);
+        sum += n;
     }
-    if (dp.size() <= 2){
-        cout << 0 << endl;
-        return;
+    dp.erase(dp.end() - 1);
+
+    double s = double(sum) / double(dp.size());
+    double sum2 = 0.0;
+    for (int i = 0; i < dp.size(); i++) {
+        sum2 += pow(double(dp[i] - s), 2);
     }
 
-    vector<int> res;
-    for (int i = 1; i < dp.size() - 1; i++){
-        if (dp[i] > dp[i - 1] && dp[i] > dp[i + 1]){
-            res.push_back(i);
-        }
-    }
+    double res = sqrt(double(sum2) / double(dp.size() - 1));
 
-    if (res.size() < 2){
-        cout << 0 << endl;
-        return;
-    }
-    int mn = dp.size();
-    for (int i = 0; i < res.size() - 1; i++){
-        mn = min(mn, abs(res[i] - res[i + 1]));
-    }
+    cout << double(res) << endl;
 
-    cout << mn << endl;
 
 }
 
 signed main()
-
 {
     ios;
     int t;
