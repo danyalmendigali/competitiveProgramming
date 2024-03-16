@@ -19,18 +19,20 @@
 using namespace std;
 
 
-void solve()
-{
-    string str = "";
-    for(int i = 1; i < 100000; i++){
-        str += to_string(i);
+void solve() {
+    map<char, ll> mp;
+    ll n, m;
+    cin >> n >> m;
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= m; j++){
+            string s = to_string(i * j);
+            for(char c : s) {
+                mp[c]++;
+            }
+        }
     }
-    int n; cin >> n;
-    string n_str = to_string(n);
-
-    int found = str.find(n_str);
-    if (found != string::npos) {
-        cout << found + 1 << endl;
+    for(pair<char, ll> i : mp){
+        cout << i.S << endl;
     }
 }
 
