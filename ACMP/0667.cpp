@@ -18,27 +18,27 @@
 
 using namespace std;
 
-
 void solve() {
-    int n, m; cin >> n >> m;
-    vector<string> dp(n);
-    vector<int> res;
-    for(int i = 0; i < n; i++){
-        cin >> dp[i];
-        int h = 0;
-        for(int j = 0; j < dp[i].sz; j++){
-            if(dp[i][j] == '.'){
-                h++;
-            }
+    int n, m, k;
+    cin >> n >> m >> k;
+    int g = k - 2;
+    int f = (n + g - 1) / g;
+    int h = (m + 1) / 2;
+    if(m == 1 || k <= 2){
+        cout << 0 << endl;
+        return;
+    }
+    if((n * 1)/ (k - 2) > (m / 2)){
+        cout << 0 << endl;
+    }
+    else{
+        if((n + m) % k == 0){
+            cout << (n + m) / k;
         }
-        res.pb(m - (m - h));
+        else{
+            cout << (n + m) / k + 1;
+        }
     }
-    int mn = 10000;
-    for(int i = 0; i < res.sz; i++){
-         mn = min(mn, res[i]);
-    }
-    cout << mn << endl;
-
 }
 
 signed main()
