@@ -20,20 +20,10 @@ using namespace std;
 
 
 void solve() {
-    map<char, ll> mp;
-    ll n, m;
-    cin >> n >> m;
-    for(int i = 1; i <= n; i++){
-        for(int j = 1; j <= m; j++){
-            string s = to_string(i * j);
-            for(char c : s) {
-                mp[c]++;
-            }
-        }
-    }
-    for(char c = '0'; c <= '9'; c++) {
-        cout << mp[c] << endl;
-    }
+    int n; cin >> n;
+    int total = (n - n / 2 - n / 3 - n / 5 + n / (2 * 3) + n / (2 * 5) + n / (3 * 5) - n / (2 * 3 * 5));
+
+    cout << total << endl;
 }
 
 signed main()

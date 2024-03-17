@@ -20,20 +20,23 @@ using namespace std;
 
 
 void solve() {
-    map<char, ll> mp;
-    ll n, m;
-    cin >> n >> m;
-    for(int i = 1; i <= n; i++){
-        for(int j = 1; j <= m; j++){
-            string s = to_string(i * j);
-            for(char c : s) {
-                mp[c]++;
-            }
-        }
+    set<string> st;
+    int n, m; cin >> n >> m;
+    string s; cin >> s;
+    int x = 0;
+    int y = 0;
+    for(int i = 0; i < s.sz - m + 1; i++){
+         string str = "";
+         int y = 0;
+         for(int j = i; j < m + i; j++){
+            str += s[j];
+         }
+         st.insert(str);
+         //cout << str << " ";
+         str = "";
     }
-    for(char c = '0'; c <= '9'; c++) {
-        cout << mp[c] << endl;
-    }
+    cout << st.sz << endl;
+
 }
 
 signed main()
