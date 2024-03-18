@@ -26,6 +26,11 @@ void solve()
     }
     for(int i = 0; i < n + 2; i++){
         cout << str[i];
+        if(str[n + 1] > '4'){
+            int g = (str[n] - '0') + 1;
+            cout << g;
+         return;
+        }
     }
     cout << endl;
 

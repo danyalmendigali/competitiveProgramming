@@ -4,6 +4,7 @@
 #include <map>
 #include <set>
 #include <queue>
+#include <cmath>
 #include <unordered_set>
 #include <algorithm>
 
@@ -24,31 +25,14 @@ map<int, int> mp1, mp2;
 
 void solve()
 {
-    int N, M;
-    cin >> N >> M;
-
-    set<int> set1, set2;
-
-    for (int i = 0; i < N; ++i) {
-        int num;
-        cin >> num;
-        set1.insert(num);
+    ll n; cin >> n;
+    ll m = sqrt(n);
+    if(m * m == n){
+        cout << "YES" << endl;
     }
-
-    for (int i = 0; i < M; ++i) {
-        int num;
-        cin >> num;
-        set2.insert(num);
+    else{
+        cout << "NO" << endl;
     }
-
-    vector<int> intersection;
-
-    set_intersection(set1.begin(), set1.end(), set2.begin(), set2.end(), back_inserter(intersection));
-
-    for (int num : intersection) {
-        cout << num << " ";
-    }
-    cout << endl;
 }
 
 signed main()
