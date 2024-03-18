@@ -26,16 +26,19 @@ void solve()
 {
     int N;
     cin >> N;
+    set<int> st1, st2;
 
     vector<int> colors(N);
     for (int i = 0; i < N; ++i) {
         cin >> colors[i];
+        st.insert(colors[i]);
     }
 
     map<int, int> colorCount;
     for (int i = 0; i < N; ++i) {
         colorCount[colors[i]]++;
     }
+    int h = 0;
 
     int mostCommonColor = colors[0]; // предполагаем, что самый частый цвет - первый встреченный
     int maxCount = colorCount[colors[0]]; // количество встреч встреченного цвета
