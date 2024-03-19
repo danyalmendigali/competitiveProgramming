@@ -23,27 +23,18 @@ set<int> st1, st2;
 map<int, int> mp1, mp2;
 
 void solve(){
-    string s; cin >> s;
-    s += 'A';
-    int res = 0;
-    if((s[0] < 'A') || (s[0] > 'Z')){
-        cout << "No" << endl;
-        return;
+    int n;
+    int a = 1, b = 1, f = 1, res = 0;
+    cin >> n;
+    while(n >= f)
+    {
+        res = (a + b) % 10;
+        a = b;
+        b = res;
+        f++;
     }
-    for(int i = 1; i < s.sz; i++){
-        if((s[i] >= 'A') && (s[i] <= 'Z')){
-            if((res < 1) || (res > 3)){
-                cout << "No" << endl;
-                return;
-            }
-            res = 0;
-        }
+    cout << a << endl;
 
-        else{
-            res++;
-        }
-    }
-    cout << "Yes" << endl;
 
 
 
