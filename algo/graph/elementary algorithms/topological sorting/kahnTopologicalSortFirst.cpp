@@ -1,11 +1,15 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <map>
 #include <queue>
-#include <set>
+#include <stack>
+#include <cmath>
 #include <algorithm>
 
+
+// Topological Sort | Kahn's Algorithm | Graph Theory
+
+using namespace std;
 
 #define ll long long
 #define sz size()
@@ -13,73 +17,58 @@
 #define F first
 #define S second
 #define all(dp) dp.begin(), dp.end()
-#define ios ios::sync_with_stdio(false); cin.tie(0); cout.tie(0)
 
-using namespace std;
-
-vector<bool> was;
-vector<int> res1, res2;
-queue<int> q;
-set<int> st;
-
-using vertex = int;
-using Edge = vector<vertex>;
-using GraphAdjList = vector<vector<vertex>>;
-using GraphPair = vector<pair<vertex, vertex>>;
-
-GraphAdjList g1;
-GraphPair g2;
-
-void khan(int size_graph)
+vector<int> kahnAlgorithm(vector<vector<int>>& graph, vector<int>& mass, vector<int>& res)
 {
-    vector<int> res(size_graph, 0);
-    for(int i = 0; i < size_graph; i++){
-        res[g2[i].S - 1]++;
-    }
+    int size_graph = graph.sz;
     queue<int> q;
     for(int i = 0; i < size_graph; i++){
-        if(res[i] == 0){
+        if(mass[i] == 0){
             q.push(i);
         }
     }
+
     while(!q.empty()){
         int numFront = q.front();
         q.pop();
-        res1.pb(numFront + 1);
-        for(int i : g1[numFront]){
-            if(--res[i] == 0){
-                q.push(i);
+        res.pb(numFront);
+
+        for(int adj : graph[numFront]){
+            if(--mass[adj] == 0){
+                q.push(adj);
             }
         }
     }
+    return res;
 }
 
 void solve()
 {
-    was.clear(); res1.clear();
     int n, m; cin >> n >> m;
-    was.assign(n, false);
-    g1.resize(n); g2.resize(m);
+    vector<vector<int>> graph(n);
+    vector<pair<int, int>> graph2(m);
+    vector<int> g;
+    vector<int> mass(n, 0);
     for(int i = 0; i < m; i++){
-        cin >> g2[i].F >> g2[i].S;
-        g1[g2[i].F - 1].push_back(g2[i].S - 1);
+        cin >> graph2[i].F >> graph2[i].S;
+        graph[graph2[i].F].push_back(graph2[i].S);
+        mass[graph2[i].S]++;
     }
-    khan(g1.sz);
-    for(int i = 0; i < res1.sz; i++){
-        cout << res1[i] << " ";
+    kahnAlgorithm(graph, mass, g);
+    for(int i : g){
+        cout << i << " ";
     }
     cout << endl;
-
 
 }
 
 signed main()
 {
-    ios;
-    int t;
-    t = 1;
+    int t = 1;
     //cin >> t;
     while(t--) solve();
+
+
 
 
     return 0;
