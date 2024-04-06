@@ -18,14 +18,18 @@ using namespace std;
 #define all(dp) dp.begin(), dp.end()
 #define ios ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0)
 
-
-void solve()
-{
-    int n; cin >> n;
-    ll f = 3 * pow(2, (n - 1));
-    cout << f << endl;
+const ll mx = 1e6 + 1;
 
 
+void solve() {
+    int a, b, k; cin >> a >> b >> k;
+
+    if(a >= b) a %= b;
+
+    for(int i = 0; i < k; i++){
+        a = (a % b) * 10;
+    }
+    cout << a / b << endl;
 }
 
 signed main()
