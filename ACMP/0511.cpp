@@ -18,8 +18,8 @@ using namespace std;
 
 void solve()
 {
-    int n; cin >> n;
-    if(n >= 143){
+    ll n; cin >> n;
+    if(n > 145){
         cout << "NO" << endl;
         return;
     }
