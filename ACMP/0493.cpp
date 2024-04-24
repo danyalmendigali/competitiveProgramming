@@ -46,6 +46,8 @@ void solve()
 
 signed main()
 {
+    cin.tie(nullptr);
+    cout.tie(nullptr);
     int t;
     t = 1;
     //cin >> t;
