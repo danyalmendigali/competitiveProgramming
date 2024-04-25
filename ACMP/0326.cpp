@@ -33,7 +33,6 @@ void solve()
             mg = i.F;
         }
     }
-    cout << mx << " " << mg << endl;
     auto it = dp.begin();
     while (it != dp.end()) {
         if (*it == mg)  it = dp.erase(it);
