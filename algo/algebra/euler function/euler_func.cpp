@@ -27,7 +27,7 @@ int n, m;
 int phi(int val)
 {
     int res = val;
-    for(int i = 2; i * i <= val; ++i){
+    for(int i = 2; i * i <= val; i++){
         if(val % i == 0){
             while(val % i == 0)
                 val /= i;
