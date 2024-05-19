@@ -24,19 +24,20 @@ set<int> st, st2, st3;
 map<int, int> mp1, mp2;
 int n, m;
 
-int phi(int val)
+int phi(int n)
 {
-    int res = val;
-    for(int i = 2; i * i <= val; i++){
-        if(val % i == 0){
-            while(val % i == 0)
-                val /= i;
-            res -= res / i;
-        }
-    }
-    if(val > 1) res -= res / val;
+       int res = n;
+       for(int i = 2; i * i <= n; i++){
+              if(n % i == 0){
+                     while(n % i == 0) n /= if;
+                     res -= res / i;
+              }
+       }
+       if(n > 1){
+              res -= res / n;
+       }
 
-    return res;
+       return res;
 }
 
 void solve()

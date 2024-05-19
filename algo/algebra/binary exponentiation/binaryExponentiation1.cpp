@@ -16,14 +16,16 @@
 
 using namespace std;
 
-ll binpow(ll a, ll n)
+int binpow(int n, int m)
 {
-    if(n == 0) return 1;
-    if(n % 2 == 1) return binpow(a, n - 1) * a;
-    else{
-        ll c = binpow(a, n / 2);
-        return c * c;
-    }
+       if(m == 0) return 1;
+       if(m % 2 == 0){
+              int c = binpow(n, m / 2);
+              return c * c;
+       }
+       else{
+              return binpow(n, m - 1) * n;
+       }
 }
 
 void solve()

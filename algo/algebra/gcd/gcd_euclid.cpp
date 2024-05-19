@@ -2,8 +2,8 @@
 #include <string>
 #include <vector>
 #include <queue>
-#include <map>
 #include <set>
+#include <map>
 #include <numeric>
 #include <cmath>
 #include <algorithm>
@@ -17,31 +17,29 @@ using namespace std;
 #define S second
 #define all(a) a.begin(), a.end()
 
+int gcd(int a, int b)
+{
+       if(b == 0) return a;
+       else return gcd(b, a % b);
+}
+
 void solve()
 {
-       int n; cin >> n;
-       map<int, int> mp1;
-       vector<int> a(n);
-       for(int i = 0; i < n; i++){
-              cin >> a[i];
-              mp1[a[i]]++;
-       }
-
-
-
-
-
+       int a, b; cin >> a >> b;
+       cout << gcd(a, b) << endl;
 
 
 }
 
 signed main()
 {
+       ios::sync_with_stdio(false);
+       cin.tie(0);
+       cout.tie(0);
        int t;
        t = 1;
        //cin >> t;
        while(t--) solve();
-
 
        return 0;
 }
