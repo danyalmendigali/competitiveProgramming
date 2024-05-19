@@ -23,8 +23,8 @@ int gcd(int a, int b)
        else return gcd(b, a % b);
 }
 
-void solve()
-{
+       void solve()
+       {
        int a, b; cin >> a >> b;
        cout << "Euclid: ";
        cout << ((a * b) / (gcd(a, b)));
