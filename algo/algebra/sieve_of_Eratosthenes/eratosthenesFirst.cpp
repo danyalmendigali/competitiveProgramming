@@ -40,7 +40,7 @@ vector<int> eratosthenes(int n)
 }
 
 void solve()
-{
+{s
        int n; cin >> n;
        vector<int> res = eratosthenes(n);
        for(int i = 0; i < res.sz; i++){
