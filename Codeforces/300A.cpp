@@ -1,49 +1,87 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <algorithm>
-#include <map>
+#include <queue>
 #include <set>
-
-#define ll long long
-#define pb(a) push_back(a)
-#define sz size()
-#define S second
-#define F first
-#define all(dp) dp.begin(), dp.end()
-#define optimus_prime ios::sync_with_stdio(false); cin.tie(0); cout.tie(0)
+#include <map>
+#include <cmath>
+#include <iomanip>
+#include <map>
+#include <numeric>
+#include <algorithm>
 
 using namespace std;
 
-// ---
-
-const ll INF = 1e9 + 9;
-const ll MOD = 1e9 + 7;
-const ll N = 101;
-
-map<int, int> mp;
-set<int> st;
+#define ll long long
+#define sz size()
+#define pb(a) push_back(a)
+#define F first
+#define S second
+#define all(a) a.begin(), a.end()
 
 
 void solve()
 {
-    int n; cin >> n;
-    vector<int> dp(n);
-    for(int i = 0; i < n; i++){
-        cin >> dp[i];
-    }
+       int n; cin >> n;
+       int a = 0, b = 0, c = 0;
+       vector<int> vec(n);
+       vector<int> vec1, vec2, vec3;
+       for(int i = 0; i < n; i++){
+              cin >> vec[i];
+              if(vec[i] == 0){
+                     vec1.pb(0);
+              }
+              else if(vec[i] > 0){
+                     vec2.pb(vec[i]);
+              }
+              else{
+                     vec3.pb(vec[i]);
+              }
+       }
+       if(vec2.sz == 0){
+              cout << 1 << " " << vec3[0] << endl;
+              cout << 2 << " " << vec3[1] << " " << vec3[2] << endl;
+              cout << vec1.sz + (vec3.sz - 3) << " ";
+              for(int i = 0; i < vec1.sz; i++){
+                     cout << vec1[i] << " ";
+              }
+              for(int i = 3; i < vec3.sz; i++){
+                     cout << vec3[i] << " ";
+              }
+              cout << endl;
+              return;
+       }
+       if(vec2.sz != 0){
+              cout << 1 << " " << vec3[0] << endl;
+              cout << 1 << " " << vec2[0] << endl;
+              cout << vec1.sz + (vec2.sz - 1) + (vec3.sz - 1) << " ";
+              for(int i = 0; i < vec1.sz; i++){
+                     cout << vec1[i] << " ";
+              }
+              for(int i = 1; i < vec2.sz; i++){
+                     cout << vec2[i] << " ";
+              }
+              for(int i = 1; i < vec3.sz; i++){
+                     cout << vec3[i] << " ";
+              }
+              cout << endl;
+              return;
+       }
+
+
 
 
 }
 
 signed main()
 {
-    optimus_prime;
-    int t;
-    t = 1;
-    //cin >> t;
-    while(t--)
-        solve();
+       ios::sync_with_stdio(false);
+       cin.tie(0);
+       cout.tie(0);
+       int t;
+       t = 1;
+       //cin >> t;
+       while(t--) solve();
 
-    return 0;
+       return 0;
 }
