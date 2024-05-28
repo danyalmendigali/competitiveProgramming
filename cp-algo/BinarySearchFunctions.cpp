@@ -28,7 +28,7 @@ void solve()
        for(int i = 0; i < a.sz; i++){
               cin >> a[i];
        }
-       for()
+       for(int i =0)
 
 
 

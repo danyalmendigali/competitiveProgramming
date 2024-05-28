@@ -22,11 +22,8 @@ using namespace std;
 set<char> st1;
 map<char, int> mp1, mp2;
 
-signed main()
+void solve()
 {
-       cin.tie(0);
-       cout.tie(0);
-       ios::sync_with_stdio(false);
        int t; cin >> t;
        while(t--)
        {
@@ -38,7 +35,7 @@ signed main()
               long long res = 0;
               for(int j = 0; j < n - 3; ++j){
                      int count_r = 0;
-                     if(a[j] != a[j + 1]) count_r++;
+                     if(a[j] != a[j]) count_r++;
                      if(a[j + 1] != a[j + 2]) count_r++;
                      if(a[j + 2] != a[j + 3]) count_r++;
                      if(count_r == 1){
@@ -48,6 +45,18 @@ signed main()
               cout << res << endl;
        }
 
+
+}
+
+signed main()
+{
+       cin.tie(0);
+       cout.tie(0);
+       ios::sync_with_stdio(false);
+       int t;
+       t = 1;
+       //cin >> t;
+       while(t--) solve();
 
        return 0;
 }
