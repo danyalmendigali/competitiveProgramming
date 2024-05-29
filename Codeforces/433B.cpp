@@ -32,16 +32,16 @@ void solve()
        sort(all(a2));
        int a1, b1, c1;
 
-       vector<ll> prefix_sum(a.sz);
-       prefix_sum[0] = a[0];
+       vector<ll> pref(a.sz);
+       pref[0] = a[0];
        for(size_t i = 1; i < a.sz; i++){
-              prefix_sum[i] = prefix_sum[i - 1] + a[i];
+              pref[i] = pref[i - 1] + a[i];
        }
 
-       vector<ll> prefix_sum_2(a2.sz);
-       prefix_sum_2[0] = a2[0];
+       vector<ll> pref2(a2.sz);
+       pref2[0] = a2[0];
        for(size_t i = 1; i < a2.sz; i++){
-              prefix_sum_2[i] = prefix_sum_2[i - 1] + a2[i];
+              pref2[i] = pref2[i - 1] + a2[i];
        }
 
 
@@ -50,16 +50,16 @@ void solve()
               b1--;
               c1--;
               if(a1 == 1){
-                     ll sum_in_range = prefix_sum[c1];
+                     ll sum_in_range = pref[c1];
                      if(b1 > 0){
-                            sum_in_range -= prefix_sum[b1 - 1];
+                            sum_in_range -= pref[b1 - 1];
                      }
                      cout << sum_in_range << endl;
               }
               if(a1 == 2){
-                     ll sum_in_range2 = prefix_sum_2[c1];
+                     ll sum_in_range2 = pref2[c1];
                      if(b1 > 0){
-                            sum_in_range2 -= prefix_sum_2[b1 - 1];
+                            sum_in_range2 -= pref2[b1 - 1];
                      }
                      cout << sum_in_range2 << endl;
               }
