@@ -23,50 +23,42 @@ using namespace std;
 
 
 
-void solve()
-{
-       int n; cin >> n;
-       int res = 0;
-       int sum1 = 0, sum2 = 0;
-       vector<int> a(n);
-       for(int i = 0; i < n; i++){
-              cin >> a[i];
-       }
-       int h = 0;
-       int g = a[0];
-       sum1 += a[0];
-       h++;
-       g++;
-       res++;
-       int s, s1;
-       a.erase(a.begin());
-       while(!a.empty()){
-              if(h % 2 == 1){
-                     int s = 0;
-                     while(!a.empty() && s < g){
-                            s += a.back();
-                            sum2 += a.back();
-                            a.pop_back();
-                     }
-                     h++;
-                     g++;
-                     res++;
-              }
-              else{
-                     int s1 = 0;
-                     while(!a.empty() && s1 < g){
-                            s1 += a.front();
-                            sum1 += a.front();
-                            a.erase(a.begin());
-                     }
-                     h++;
-                     g++;
-                     res++;
-              }
-       }
-       if(!a.empty()) res++;
-       cout << res << " " << sum1 << " " << sum2 << endl;
+void solve() {
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
 
+    int alice_res = 0, bob_res = 0;
+    int h = 0;
+    int last_eaten = 0;
+    int l = 0, r = n - 1;
+
+    while (l <= r) {
+        if (h % 2 == 0){
+            int curr = 0;
+            while (l <= r && curr <= last_eaten){
+                curr += a[l];
+                alice_res += a[l];
+                l++;
+            }
+            last_eaten = curr;
+        }
+        else{
+            int curr = 0;
+            while (l <= r && curr <= last_eaten){
+                curr += a[r];
+                bob_res += a[r];
+                r--;
+            }
+            last_eaten = curr;
+        }
+        h++;
+    }
+
+    cout << h << " " << alice_res << " " << bob_res << endl;
 }
 
 signed main()
