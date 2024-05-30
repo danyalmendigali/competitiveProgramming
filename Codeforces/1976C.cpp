@@ -18,22 +18,18 @@ using namespace std;
 #define S second
 #define all(a) a.begin(), a.end()
 
-
-
 void solve()
 {
-       int n, g; cin >> n >> g;
-       string s = "";
-       for(int i = 0; i < n - 2; i++){
-              s += 'a';
+       int n, m; cin >> n >> m;
+       vector<int> a(n + m + 1);
+       vector<int> b(n + m + 1);
+       for(int i = 0; i < a.sz; i++){
+              cin >> a[i];
        }
-       for(int i = 0; i < 2; i++){
-              s += 'b';
+       for(int i = 0; i < b.sz; i++){
+              cin >> b[i];
        }
-       for(int i = 0; i < g - 1; i++){
-              next_permutation(all(s));
-       }
-       cout << s << endl;
+
 
 
 
@@ -46,7 +42,7 @@ signed main()
        cout.tie(0);
        int t;
        t = 1;
-       cin >> t;
+       //cin >> t;
        while(t--) solve();
 
        return 0;

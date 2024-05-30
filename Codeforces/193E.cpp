@@ -19,31 +19,45 @@ using namespace std;
 #define S second
 #define all(a) a.begin(), a.end()
 
-ll fibonacci(ll n) {
-    const double sqrt5 = sqrt(5.0);
-    const double phi = (1.0 + sqrt5) / 2.0;
-    return round(pow(phi, n) / sqrt5);
-}
+const ll mod = 1e13;
 
-ll fibonacciIndex(ll Fn) {
-    const double sqrt5 = sqrt(5.0);
-    const double phi = (1.0 + sqrt5) / 2.0;
-    double index = log(Fn * sqrt5) / log(phi);
-    ll roundedIndex = round(index);
-    if (fibonacci(roundedIndex) == Fn){
-        return roundedIndex;
-    }
-    else{
-        return -1;
-    }
-}
 
+unsigned long long binarySearch(const vector<unsigned long long>& arr, unsigned long long target) {
+    unsigned long long left = 0;
+    unsigned long long right = arr.size() - 1;
+
+    while (left <= right) {
+        unsigned long long mid = left + (right - left) / 2;
+
+        if (arr[mid] == target){
+            return mid % mod;
+        }
+        else if(arr[mid] < target){
+            left = mid + 1;
+        }
+        else{
+            right = mid - 1;
+        }
+    }
+
+    return -1;
+}
 
 void solve()
 {
-      ll Fn; cin >> Fn;
-      ll index = fibonacciIndex(Fn);
-      cout << index << endl;
+    int n; cin >> n;
+    vector<unsigned long long> fibonacci;
+
+    fibonacci.push_back(0);
+    fibonacci.push_back(1);
+    while (true) {
+        unsigned long long next = fibonacci[fibonacci.size() - 1] + fibonacci[fibonacci.size() - 2];
+        if (next > 10e13){
+            break;
+        }
+        fibonacci.push_back(next);
+    }
+    cout << binarySearch(fibonacci, n) << endl;
 
 
 

@@ -21,20 +21,35 @@ using namespace std;
 
 const ll mod = 1e9 + 7;
 
-ll fibonacciBinet(ll n) {
-    const double sqrt5 = sqrt(5.0);
-    const double phi = (1.0 + sqrt5) / 2.0;
-    const double psi = (1.0 - sqrt5) / 2.0;
+double binpow(double a, ll b)
+{
+       if(b == 0) return 1;
+       if(b % 2 == 0){
+              double c = binpow(a, b / 2);
+              return c * c;
+       }
+       else{
+              return binpow(a, b - 1) * a;
+       }
 
-    return round((pow(phi, n) - pow(psi, n)) / sqrt5);
 }
+
+
+double fibonacci(ll n)
+{
+       const double r = sqrt(5);
+       const double r2 = (1.0 + r) / 2.0;
+
+       return round(binpow(r2, n) / r);
+}
+
+
 
 
 void solve()
 {
        ll n; cin >> n;
-       cout << fibonacciBinet(n) << endl;
-
+       cout << fibonacci(n) << endl;
 
 
 }

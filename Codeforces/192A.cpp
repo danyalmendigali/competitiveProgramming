@@ -22,18 +22,21 @@ using namespace std;
 
 void solve()
 {
-       int n, g; cin >> n >> g;
-       string s = "";
-       for(int i = 0; i < n - 2; i++){
-              s += 'a';
+       int n; cin >> n;
+       vector<ll> a;
+       for(int i = 1; i < 1e3; i++){
+              a.pb((i * i + i) / 2);
+
        }
-       for(int i = 0; i < 2; i++){
-              s += 'b';
+       for(int i = 0; i < a.sz; i++){
+              for(int j = 0; j < a.sz; j++){
+                     if(a[i] + a[j] == n){
+                            cout << "YES" << endl;
+                            return;
+                     }
+              }
        }
-       for(int i = 0; i < g - 1; i++){
-              next_permutation(all(s));
-       }
-       cout << s << endl;
+       cout << "NO" << endl;
 
 
 
@@ -46,7 +49,7 @@ signed main()
        cout.tie(0);
        int t;
        t = 1;
-       cin >> t;
+       //cin >> t;
        while(t--) solve();
 
        return 0;
