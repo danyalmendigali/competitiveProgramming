@@ -19,22 +19,20 @@ using namespace std;
 #define all(a) a.begin(), a.end()
 
 
-
 void solve()
 {
-       int n, g; cin >> n >> g;
-       string s = "";
-       for(int i = 0; i < n - 2; i++){
-              s += 'a';
-       }
-       for(int i = 0; i < 2; i++){
-              s += 'b';
-       }
-       for(int i = 0; i < g - 1; i++){
-              next_permutation(all(s));
-       }
-       cout << s << endl;
+        int n, m; cin >> n >> m;
+        string s(n, 'a');
+        for(int i = n - 2; i >= 0; i--){
+              if(m <= (n - i - 1)){
+                     s[i] = 'b';
+                     s[n - m] = 'b';
+                     break;
+              }
+              m -= n - 1 - i;
+        }
 
+        cout << s << endl;
 
 
 }
