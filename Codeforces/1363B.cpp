@@ -20,25 +20,46 @@
 
 using namespace std;
 
+int numZero(int l, int r, string s)
+{
+       int n = 0;
+       for(int i = l; i < r; i++){
+              if(s[i] == '0'){
+                     n++;
+              }
+       }
+       return n;
+}
+
+int numOne(int l, int r, string s)
+{
+       int n = 0;
+       for(int i = l; i < r; i++){
+              if(s[i] == '1'){
+                     n++;
+              }
+       }
+       return n;
+}
+
+int val(string s, char t)
+{
+       int ans = 0;
+       for(int i = 0; i < s.sz; i++){
+              if(s[i] == t){
+                     ans++;
+              }
+       }
+       return ans;
+}
+
+
 void solve()
 {
        string s; cin >> s;
-       if(s[0] == '0' && s[s.sz - 1] == '0'){
-              int sum = 0;
-              for(int i = 0; i < s.sz; i++){
-                     if(s[i] == '1'){
-                            sum++;
-                     }
-              }
-              cout << sum << endl;
-       }
-       iota
+       int g = 0;
 
-
-
-
-
-
+}
 
 }
 
