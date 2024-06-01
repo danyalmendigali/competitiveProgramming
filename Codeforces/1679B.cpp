@@ -19,26 +19,30 @@ using namespace std;
 
 void solve()
 {
-       ll n; cin >> n;
-       vector<int> a(n);
+       int n, m; cin >> n >> m;
+       vector<ll> a(n);
+       ll sum = 0;
        for(int i = 0; i < n; i++){
               cin >> a[i];
+              sum += a[i];
        }
-       ll res = 0;
-       sort(all(a));
-       /*
-       for(int i = 0; i < a.sz; i++){
-              cout << a[i] << " ";
-       }
-       */
-       for(int i = 0; i < a.sz - 1; i++){
-              if(a[i + 1] <= a[i]){
-                     ll g = a[i + 1] - a[i];
-                     a[i + 1] += g + 1;
-                     res += g + 1;
+       for(int i = 0; i < m; i++){
+              int t, a2, b2; cin >> t;
+              if(t == 2){
+                     cin >> a2;
+                     fill(a.begin(), a.end(), a2);
+                     sum = a2 * a.sz;
+                     cout << sum << endl;
+
+              }
+              if(t == 1){
+                     cin >> a2 >> b2;
+                     sum = sum - (a[a2 - 1]) + b2;
+                     cout << sum << endl;
+                     a[a2 - 1] = b2;
+
               }
        }
-       cout << res << endl;
 
 
 
