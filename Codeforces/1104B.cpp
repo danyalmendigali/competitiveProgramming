@@ -32,34 +32,25 @@ map<string, int> mp, mp20;
 
 void solve()
 {
-    st.clear();
-    int res = 0;
-    string s;
-    cin >> s;
+       string s; cin >> s;
+       int cnt = 0;
+       for(int i = 0; i < s.sz; i++){
+              if(!st1.empty() && st1.top() == s[i]){
+                     st1.pop();
+                     cnt++;
+              }
+              else{
+                     st1.push(s[i]);
+              }
+       }
 
-    st1.push(s[0]);
+       if(cnt % 2 == 0){
+              cout << "No" << endl;
+              return;
+       }
+       cout << "Yes" << endl;
 
-    for(int i = 1; i < s.sz; i++)
-    {
-        if(!st.empty() && s[i] == st1.top())
-        {
-            res++; st1.pop();
-        }
-        else
-        {
-            st1.push(s[i]);
-        }
-    }
 
-    //cout << res << endl;
-    if(res % 2 == 0)
-    {
-        cout << "No" << endl;
-    }
-    else
-    {
-        cout << "Yes" << endl;
-    }
 
 }
 
