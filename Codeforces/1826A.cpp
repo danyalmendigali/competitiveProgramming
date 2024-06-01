@@ -20,22 +20,22 @@ using namespace std;
 void solve()
 {
        int n; cin >> n;
-       int f[n + 9];
        vector<int> a(n);
        for(int i = 0; i < n; i++){
               cin >> a[i];
-              f[a[i]]++;
        }
        sort(all(a));
-       int res = 0;
        for(int i = 0; i < a.sz; i++){
-              if(a[i] < a.sz){
-                     res++;
+              if(a[i] <= n - 1 - i){
+                     if(i + 1 <= n - 1 && a[i + 1] > n - 1 - i){
+                            cout << n - 1 - i << endl;
+                            return;
+                     }
+                     else if(i == n - 1){
+                            cout << 0 << endl;
+                            return;
+                     }
               }
-       }
-       if(res != 0){
-              cout << res << endl;
-              return;
        }
        cout << -1 << endl;
 
