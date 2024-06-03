@@ -18,47 +18,34 @@ using namespace std;
 #define all(a) a.begin(), a.end()
 
 
-void solve()
-{
-       int n; cin >> n;
-       map<int, int> mp;
-       vector<int> a(n);
-       int mx = -1;
-       for(int i = 0; i < n; i++){
-              cin >> a[i];
-              mp[a[i]]++;
-              mx = max(mx, mp[a[i]]);
-       }
-       vector<pair<ll, pair<ll, ll>>> ans;
-       int mn = 1e9;
-       for(pair<int, int> i : mp){
-              if(i.S == mx){ // i.F
-                     int pos1 = -1, pos2 = -1;
-                     for(int j = 0; j < a.sz; j++){
-                            if(a[j] == i.F){
-                                   pos1 = j;
-                                   break;
-                            }
-                     }
-                     for(int j = a.sz - 1; j > 0; j--){
-                            if(a[j] == i.F){
-                                   pos2 = j;
-                                   ans.push_back({abs((pos1 + 1) - (pos2 + 1)), {pos1 + 1, pos2 + 1}});
-                                   mn = min(mn, abs((pos1 + 1) - (pos2 + 1)));
-                                   break;
-                            }
-                     }
-              }
-       }
-       for(int i = 0; i < ans.sz; i++){
-              if(ans[i].F == mn){
-                     cout << ans[i].S.F << " " << ans[i].S.S << endl;
-                     return;
-              }
-       }
+void solve() {
+    int n;
+    cin >> n;
 
+    map<int, vector<int>> mp;
+    vector<int> a(n);
+    int mx = -1;
 
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
+        mp[a[i]].push_back(i + 1);
+        mx = max(mx, static_cast<int>(mp[a[i]].sz));
+    }
 
+    int mn = n + 1;
+    pair<int, int> ans_pos;
+
+    for (const auto& p : mp) {
+        if (p.S.sz == mx) {
+            int diff = p.S.back() - p.S.front();
+            if (diff < mn) {
+                mn = diff;
+                ans_pos = {p.S.front(), p.S.back()};
+            }
+        }
+    }
+
+    cout << ans_pos.F << " " << ans_pos.S << endl;
 }
 
 signed main()
