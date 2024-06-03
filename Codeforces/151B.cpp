@@ -41,7 +41,7 @@ void solve()
                      int h4 = s[j][4] - '0';
                      int h5 = s[j][6] - '0';
                      int h6 = s[j][7] - '0';
-                     if(h1 == h2 && h2 == h3 && h3 == h4 && h4 == h5 && h6 == р7){
+                     if(h1 == h2 && h2 == h3 && h3 == h4 && h4 == h5 && h5 == h6){
                             taxi1++;
                      }
                      else if(h1 > h2 && h2 > h3 && h3 > h4 && h4 > h5 && h5 > h6){
