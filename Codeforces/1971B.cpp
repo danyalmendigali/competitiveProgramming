@@ -28,21 +28,26 @@ void solve()
 {
        ch.clear();
        string s; cin >> s;
-       string str = s;
+       string s2 = s;
+       sort(all(s));
        for(int i = 0; i < s.sz; i++){
               ch.insert(s[i]);
        }
        if(ch.sz == 1){
               cout << "NO" << endl;
+              return;
        }
        else{
-             while(next_permutation(s.begin(),s.end())){
-                  if(str != s){
-                            cout << "YES" << endl;
-                            cout << s << endl;
-                            return;
-                  }
-             }
+              cout << "YES" << endl;
+              if(s != s2){
+                     cout << s << endl;
+                     return;
+              }
+              else{
+                     reverse(all(s));
+                     cout << s << endl;
+                     return;
+              }
        }
 
 
