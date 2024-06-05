@@ -22,7 +22,6 @@ int binSearch(vector<int>& a, int numSearch)
               int l = 0, mid = 0, num = 0, h = a.sz - 1;
               while(l <= h){
                      mid = (l + h) / 2;
-                     cout << a[mid]
                      num = a[mid];
                      if(num == numSearch) return mid + 1;
                      if(num > numSearch) h = mid - 1;
