@@ -18,37 +18,38 @@ using namespace std;
 
 void solve()
 {
-    int n, k; cin >> n >> k;
-    vector<int> dp(n);
-    int t = dp.sz;
-    int d = 0;
-    for(int i = 0; i < n; i++){
-        cin >> dp[i];
-    }
-    for(int i = 0; i < k; i++){
-        if(i % 2 == 0){
-            if(dp.sz == 0){
-                cout << t << endl;
-                return;
-            }
-            dp[0]--;
-            if (dp[0] == 0){
-                dp.erase(dp.begin());
-            }
-        }
-        if(i % 2 == 1){
-            if(dp.sz == 0){
-                cout << t << endl;
-                return;
-            }
-            dp.back()--;
-            if (dp.back() == 0){
-                dp.pop_back();
-            }
-        }
-    }
-    cout << n - dp.sz << endl;
+       ll n, k; cin >> n >> k;
+       vector<ll> a(n);
+       for(int i = 0; i < a.sz; i++){
+              cin >> a[i];
+       }
+       ll h = a.sz;
+       ll l, r;
+       if(k % 2 == 1){
+              r = k / 2;
+              l = (k / 2) + 1;
+       }
+       if(k % 2 == 0){
+              l = k / 2;
+              r = k / 2;
+       }
+       int mn;
+       ll res = 0;
+       for(int i = 0; i < a.sz; i++){
+              mn = min(a[i], l);
+              a[i] -= mn;
+              l -= mn;
+       }
+       for(int i = a.sz - 1; i >= 0; i--){
+              mn = min(a[i], r);
+              a[i] -= mn;
+              r -= mn;
+       }
+       for(int i : a){
+              if(i == 0) res++;
+       }
 
+       cout << res << endl;
 
 
 
