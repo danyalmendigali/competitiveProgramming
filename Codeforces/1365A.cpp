@@ -18,17 +18,6 @@ using namespace std;
 #define all(a) a.begin(), a.end()
 #define Fast_Code ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
-int reverseVector(const vector<int>& a, const vector<int>& b)
-{
-       int ans = 0;
-       for(int i = 0; i < min(a.sz, b.sz); i++){
-              if(a[i] == 0 && a[i] == b[i]){
-                     ans++;
-              }
-       }
-       return ans;
-}
-
 void solve()
 {
        int n, m; cin >> n >> m;
