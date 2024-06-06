@@ -20,19 +20,34 @@ using namespace std;
 
 void solve()
 {
-       int n; cin >> n;
+       int n, s; cin >> n >> s;
        vector<int> a(n);
-       for(int i = 0; i < n; i++){
+       for(int i = 0; i < a.sz; i++){
               cin >> a[i];
        }
-       ll sum = 0;
-       reverse(all((a)));
-       for(int i = 0; i < a.sz - 1; i++){
-              if(a[i] < a[i + 1]){
-                     sum += (a[i + 1] - a[i]);
+       int cnt_1 = count(all(a), 1);
+       if(cnt_1 < s){
+              cout << -1 << endl;
+              return;
+       }
+       if(cnt_1 == s){
+              cout << 0 << endl;
+              return;
+       }
+       int l = 0, r = 0;
+       int curr = 0;
+       int mn = n;
+       while(r < n){
+              curr += a[r++];
+              while(curr > s){
+                     curr -= a[l++];
+              }
+              if(curr == s){
+                     mn = min(mn, l + n - r);
               }
        }
-       cout << sum << endl;
+       cout << mn << endl;
+
 
 
 }
