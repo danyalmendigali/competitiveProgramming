@@ -20,9 +20,9 @@ using namespace std;
 
 void solve()
 {
-       int n; cin >> n;
-       vector<int> a(n);
-       for(int i = 0; i < n; i++){
+       ll n; cin >> n;
+       vector<ll> a(n);
+       for(ll i = 0; i < n; i++){
               cin >> a[i];
        }
        sort(all(a));
@@ -35,7 +35,7 @@ void solve()
        ll mx2 = a[0] * a[1] * a[n - 1] * a[n - 2] * a[n - 3];
        ll mx3 = a[n - 1] * a[n - 2] * a[n - 3] * a[n - 4] * a[n - 5];
        ll res = max(mx1, max(mx2, mx3));
-       cout << res * ll << endl;
+       cout << res << endl;
 }
 
 
