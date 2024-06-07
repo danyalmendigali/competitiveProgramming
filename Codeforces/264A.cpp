@@ -20,13 +20,21 @@ using namespace std;
 
 void solve()
 {
-       int n, a, b; cin >> n >> a >> b;
        string s; cin >> s;
-       if(s[a - 1] == s[b - 1]){
-              cout << 0 << endl;
-              return;
+       vector<int> pos;
+       for(int i = 0; i < s.sz; i++){
+              if(s[i] == 'r'){
+                     pos.pb(i + 1);
+              }
        }
-       cout << 1 << endl;
+       for(int i = s.sz; i >= 0; i--){
+              if(s[i] == 'l'){
+                     pos.pb(i + 1);
+              }
+       }
+       for(int i = 0; i < pos.sz; i++){
+              cout << pos[i] << endl;
+       }
 
 
 
