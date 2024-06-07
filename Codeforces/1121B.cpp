@@ -36,7 +36,7 @@ void solve()
        map<int, int> mp;
        for(const auto& elem : st){
               int i, j, sum;
-
+              tie(i, j, sum) = elem;
               mp[sum]++;
        }
        int mx = 0;
