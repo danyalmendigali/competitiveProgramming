@@ -20,21 +20,27 @@ using namespace std;
 
 void solve()
 {
-       int n; cin >> n;
-       vector<int> cnt_home(n, 0), cnt_visit(n, 0);
-       vector<pair<int, int>> a(n);
-       for(int i = 0; i < n; i++){
-              cin >> a[i].F >> a[i].S;
-              cnt_home[a[i].F]++;
+       string s; cin >> s;
+       ll res = 0;
+       if(s.sz == 1){
+              cout << "0" << endl;
+              return;
        }
-       vector<int> res(n, 0), res2(n, 0);
-       for(int i = 0; i < n; i++){
-              res[i] = n - 1;
-              res[i] += cnt_home[a[i].S];
+       for(ll i = 0; i < s.sz; i++){
+              res += (s[i] - '0');
+       }
+       ll ans = 1;
+       while(res > 9){
+              string g = to_string(res);
+              res = 0;
+              for(int j = 0; j < g.sz; j++){
+                            res += (g[j] - '0');
+              }
+              ans++;
 
-              res2[i] = (2 *( n - 1)) - res[i];
        }
 
+       cout << ans << endl;
 
 
 
