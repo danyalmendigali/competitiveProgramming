@@ -21,26 +21,31 @@ using namespace std;
 void solve()
 {
        int n; cin >> n;
-       vector<pair<int, int>> a(n);
+       vector<int> a(n);
+       set<tuple<int, int, int>> st;
        for(int i = 0; i < n; i++){
-              cin >> a[i].F >> a[i].S;
+              cin >> a[i];
        }
-       vector<int> ans;
-       int x = 1;
-       for(int i = 0; i < a.sz; i++){
-              if(x < a[i].F){
-                     x = a[i].F;
-              }
-              if(x >= a[i].F && x <= a[i].S){
-                     ans[i] = x;
-                     x++;
+       for(int i = 0; i < n; i++){
+              for(int j = 0; j < n; j++){
+                     if(i != j){
+                            st.insert(make_tuple(i, j, a[i] + a[j]));
+                     }
               }
        }
 
-       for(int i : ans){
-              cout << i << " ";
+       map<int, int> mp;
+       for(const auto& elem : st){
+              int i, j, sum;
+
+              mp[sum]++;
        }
-       cout << endl;
+       int mx = 0;
+       for(pair<int, int> i : mp){
+              mx = max(mx, i.S / 2);
+       }
+       cout << mx << endl;
+
 
 
 
@@ -51,7 +56,7 @@ signed main()
        Fast_Code;
        int t;
        t = 1;
-       cin >> t;
+       //cin >> t;
        while(t--) solve();
 
 
