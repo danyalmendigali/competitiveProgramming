@@ -32,8 +32,11 @@ void solve()
                      x = a[i].F;
               }
               if(x >= a[i].F && x <= a[i].S){
-                     ans[i] = x;
+                     ans.pb(x);
                      x++;
+              }
+              else{
+                     ans.pb(0);
               }
        }
 
