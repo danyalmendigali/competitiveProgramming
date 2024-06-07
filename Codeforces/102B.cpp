@@ -34,7 +34,7 @@ void solve()
               string g = to_string(res);
               res = 0;
               for(int j = 0; j < g.sz; j++){
-                            res += (g[j] - '0');
+                     res += (g[j] - '0');
               }
               ans++;
 

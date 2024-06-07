@@ -33,7 +33,6 @@ void solve()
                      }
               }
        }
-
        map<int, int> mp;
        for(const auto& elem : st){
               int i, j, sum;
@@ -45,6 +44,30 @@ void solve()
               mx = max(mx, i.S / 2);
        }
        cout << mx << endl;
+
+
+
+       /* int n; cin >> n;
+       vector<int> a(n);
+       for(int i = 0; i < n; i++){
+              cin >> a[i];
+       }
+       map<int, int> mp;
+       for(int i = 0; i < n; i++){
+              for(int j = 0; j < n; j++){
+                     mp[a[i] + a[j]]++;
+              }
+       }
+
+       ll mx = -1e9;
+       ll res;
+       for(pair<int, int> i : mp){
+                     if(mx < i.S){
+                            mx = i.S;
+                            res = i.F;
+                     }
+       }
+       cout << mx / 2 << endl; */
 
 
 
