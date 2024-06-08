@@ -31,10 +31,11 @@ void solve()
                      k++;
               }
               g++;
+
               while(g > t){
                      if(s[l] == 'B'){
                             k--;
-                            l++;
+                            l++s;
                             g--;
                      }
                      else{
@@ -56,7 +57,7 @@ signed main()
         Fast_Code;
         int t;
         t = 1;
-        //cin >> t;
+        cin >> t;
         while(t--) solve();
 
 
