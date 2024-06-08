@@ -38,7 +38,7 @@ void solve()
        vector<int> cnt(a.sz, 0);
        for(int i = 0; i < n; i++){
               int pos = mp[b[i]];
-              int shift = (i - pos + n) % n;
+              int shift = (i - pos + n) % n; // вычисляем сдвиг чтобы элемент из перестановки b переместился на правильную позицию в перестановке a
               cnt[shift]++;
        }
        int mx = 0;
