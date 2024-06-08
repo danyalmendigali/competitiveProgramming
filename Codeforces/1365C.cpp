@@ -1,10 +1,12 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <cmath>
-#include <set>
+#include <queue>
 #include <map>
+#include <set>
+#include <unordered_map>
 #include <numeric>
+#include <cmath>
 #include <algorithm>
 
 using namespace std;
@@ -15,29 +17,7 @@ using namespace std;
 #define F first
 #define S second
 #define all(a) a.begin(), a.end()
-
-const ll N = 2e5 + 5;
-
-vector<int> shiftLeft(vector<int> myVector) {
-    if (!myVector.empty()) {
-        rotate(myVector.begin(), myVector.begin() + 1, myVector.end());
-    }
-
-
-    return myVector;
-}
-
-
-ll vec(const vector<int>& first, const vector<int>& second)
-{
-       ll cnt = 0;
-       for(int i = 0; i < first.sz; i++){
-              if(first[i] == second[i]){
-                     cnt++;
-              }
-       }
-       return cnt;
-}
+#define Fast_Code ios::sync_with_stdio(false); cin.tie(0); cout.tie(0)
 
 void solve()
 {
@@ -49,26 +29,34 @@ void solve()
        for(int i = 0; i < n; i++){
               cin >> b[i];
        }
-       ll mx = -1;
+
+       map<int, int> mp;
+
        for(int i = 0; i < n; i++){
-              b = shiftLeft(b);
-              mx = max(mx, vec(a, b));
+              mp[a[i]] = i;
+       }
+       vector<int> cnt(a.sz, 0);
+       for(int i = 0; i < n; i++){
+              int pos = mp[b[i]];
+              int shift = (i - pos + n) % n;
+              cnt[shift]++;
+       }
+       int mx = 0;
+       for(int i = 0; i < cnt.sz; i++){
+              mx = max(mx, cnt[i]);
        }
        cout << mx << endl;
+
 
 }
 
 signed main()
 {
-       ios::sync_with_stdio(false);
-       cin.tie(0);
-       cout.tie(0);
-       int t;
-       t = 1;
-
-       //cin >> t;
-       while(t--) solve();
-
+        Fast_Code;
+        int t;
+        t = 1;
+        //cin >> t;
+        while(t--) solve();
 
 
        return 0;
