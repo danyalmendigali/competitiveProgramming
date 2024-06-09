@@ -35,8 +35,11 @@ void solve()
                      mn2 += '7';
               }
        }
-       cout << mn1 << endl;
-       cout << mn2 << endl;
+       for(int i = 0; i < n; i++){
+              if((n - (4 * i)) % 7 == 0){
+                     for()
+              }
+       }
 
 
 }
