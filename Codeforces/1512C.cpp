@@ -1,94 +1,85 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <queue>
-#include <set>
-#include <map>
-#include <cmath>
-#include <iomanip>
-#include <map>
-#include <numeric>
 #include <algorithm>
 
 using namespace std;
 
-#define ll long long
 #define sz size()
-#define pb(a) push_back(a)
-#define F first
-#define S second
-#define all(a) a.begin(), a.end()
 
-bool solve_2(string &s, int a, int b) {
+bool isPalindrome(string s) {
     int n = s.sz;
     for (int i = 0; i < n / 2; ++i) {
-        if (s[i] == '?' && s[n - i - 1] != '?') {
-            s[i] = s[n - i - 1];
-        } else if (s[i] != '?' && s[n - i - 1] == '?') {
-            s[n - i - 1] = s[i];
-        }
-    }
-
-    int count0 = 0, count1 = 0;
-    for (char c : s) {
-        if (c == '0') count0++;
-        if (c == '1') count1++;
-    }
-
-    if (count0 > a || count1 > b) return false;
-    for (int i = 0; i < n / 2; ++i) {
-        if (s[i] == '?' && s[n - i - 1] == '?') {
-            if (count0 + 2 <= a) {
-                s[i] = s[n - i - 1] = '0';
-                count0 += 2;
-            } else if (count1 + 2 <= b) {
-                s[i] = s[n - i - 1] = '1';
-                count1 += 2;
-            } else {
-                return false;
-            }
-        }
-    }
-    if (n % 2 == 1 && s[n / 2] == '?') {
-        if (count0 < a) {
-            s[n / 2] = '0';
-            count0++;
-        } else if (count1 < b) {
-            s[n / 2] = '1';
-            count1++;
-        } else {
+        if (s[i] != s[n - i - 1]) {
             return false;
         }
     }
-
-    return count0 == a && count1 == b;
+    return true;
 }
 
+void solve() {
+           int a, b;
+           string s;
+           cin >> a >> b >> s;
+           int n = s.sz;
 
-void solve()
-{
-        int a, b;
-        string s; cin >> a >> b >> s;
-        if (solve_2(s, a, b)) {
-            cout << s << endl;
-            return;
-        }
-        cout << -1 << endl;
+           for (int i = 0; i < n / 2; ++i) {
+               if (s[i] == '?' && s[n - i - 1] != '?') {
+                   s[i] = s[n - i - 1];
+               } else if (s[i] != '?' && s[n - i - 1] == '?') {
+                   s[n - i - 1] = s[i];
+               }
+           }
 
+           for (char c : s) {
+               if (c == '1') {
+                   b--;
+               } else if (c == '0') {
+                   a--;
+               }
+           }
 
+           if (a < 0 || b < 0) {
+               cout << -1 << endl;
+               return;
+           }
 
+           for (int i = 0; i <= n / 2; ++i) {
+               if (s[i] == '?' && s[n - i - 1] == '?') {
+                   if (i == n - i - 1) {
+                       if (a > 0) {
+                           s[i] = '0';
+                           a--;
+                       } else if (b > 0) {
+                           s[i] = '1';
+                           b--;
+                       }
+                   } else {
+                       if (a >= 2) {
+                           s[i] = s[n - i - 1] = '0';
+                           a -= 2;
+                       } else if (b >= 2) {
+                           s[i] = s[n - i - 1] = '1';
+                           b -= 2;
+                       }
+                   }
+               }
+           }
 
+           if (a == 0 && b == 0 && isPalindrome(s)) {
+               cout << s << endl;
+           } else {
+               cout << -1 << endl;
+           }
 }
 
-signed main()
-{
+int main() {
        ios::sync_with_stdio(false);
        cin.tie(0);
        cout.tie(0);
-       int t;
-       t = 1;
-       cin >> t;
-       while(t--) solve();
 
+       int t;
+       cin >> t;
+       while (t--) solve();
        return 0;
 }
