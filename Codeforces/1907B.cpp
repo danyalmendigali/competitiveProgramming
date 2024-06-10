@@ -46,7 +46,7 @@ void solve()
 
        for(char c : s){
               if(c != ' '){
-                     res += c;
+                     res += c;N
               }
        }
        cout << res << endl;
