@@ -18,6 +18,7 @@ using namespace std;
 #define pb(a) push_back(a)
 #define Fast_Code ios::sync_with_stdio(false); cin.tie(0); cout.tie(0)
 
+const ll N = 5 * 1e5;
 
 void solve()
 {
