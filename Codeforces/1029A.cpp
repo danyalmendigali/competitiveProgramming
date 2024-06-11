@@ -21,26 +21,37 @@ using namespace std;
 void solve()
 {
        int n, k; cin >> n >> k;
+       vector<string> g;
        string s; cin >> s;
-       string str = "";
-       if(n == 1){
-              for(int i = 0; i < k; i++){
-                     cout << s << "";
+       string s1 = "", s2 = "";
+       int pos = s.sz - 1;
+       for(int i = 0; i < s.sz; i++){
+              s1 += s[i];
+              s2 += s[pos];
+              pos--;
+              string h = s2;
+              reverse(all(h));
+              if(h == s1){
+                     g.pb(s1);
               }
-              return;
+       }
+       int mx = 0;
+       string t;
+       for(int i = 0; i < g.sz; i++){
+              if(g[i].sz != s.sz && g[i].sz >= mx){
+                     mx = g[i].sz;
+                     t = g[i];
+              }
+       }
+       cout << t;
+       string j = "";
+       for(int i = t.sz; i < s.sz; i++){
+              j += s[i];
+       }
+       for(int i = 0; i < k; i++){
+              cout << j;
        }
        cout << endl;
-       for(int i = 0; i < k; i++){
-              str += s;
-       }
-       for(int i = 0; i < str.sz; i++){
-              if(str[i] == str[i + 1]){
-                     str.erase(str.begin() + i);
-                     i--;
-              }
-       }
-       cout << str << endl;
-
 
 
 
