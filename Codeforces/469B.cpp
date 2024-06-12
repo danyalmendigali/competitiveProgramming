@@ -36,7 +36,7 @@ void solve()
        int ans = 0;
        for(int t = l; t <= r; t++){
               bool ok = 0;
-              for(int i = 0; i < q; i++){
+              for(int i = 0; i < q; i++){N
                      int time1 = pr2[i].F + t;
                      int time2 = pr2[i].S + t;
                      for(int j = 0; j < p; j++){
