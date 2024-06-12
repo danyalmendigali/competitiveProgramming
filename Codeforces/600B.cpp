@@ -1,31 +1,26 @@
 #include <iostream>
-#include <string>
 #include <vector>
-#include <set>
-#include <map>
-#include <numeric>
+#include <string>
 #include <queue>
+#include <map>
+#include <set>
+#include <numeric>
 #include <cmath>
-#include <iomanip>
-#include <chrono>
-#include <random>
+#include <climits>
 #include <algorithm>
 
 using namespace std;
-using namespace::chrono;
 
 #define ll long long
 #define sz size()
-#define pb(a) push_back(a)
 #define F first
 #define S second
+#define pb(a) push_back(a)
 #define all(a) a.begin(), a.end()
-
-map<int, int> mp1;
+#define Fast_Code ios::sync_with_stdio(false); cin.tie(0); cout.tie(0)
 
 void solve()
 {
-       mp1.clear();
        int n, m; cin >> n >> m;
        vector<int> a(n), b(m);
        for(int i = 0; i < n; i++){
@@ -34,19 +29,18 @@ void solve()
        sort(all(a));
        for(int i = 0; i < m; i++){
               cin >> b[i];
-              int l = 1, r = n, g = 0;
-              while(l <= r){
-                     int mid = (l + r) / 2;
-                     if(a[mid] > b[i]) r = mid - 1;
-                     else {
-                            l = mid + 1;
-                            g = mid;
-                     }
-              }
-              cout << g << " ";
        }
 
+       for(int i = 0; i < m; i++){
+              int l = 0, r = a.sz;
+              while(l < r){
+                     int md = (l + r) / 2;
+                     if(a[md] <= b[i]) l = md + 1;
+                     else r = md;
+              }
 
+              cout << l << " ";
+       }
 
 
 
@@ -55,6 +49,7 @@ void solve()
 
 signed main()
 {
+       Fast_Code;
        int t;
        t = 1;
        //cin >> t;
