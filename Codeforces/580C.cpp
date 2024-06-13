@@ -67,9 +67,6 @@ void solve()
 
 
 
-
-
-
 }
 
 signed main()
