@@ -25,12 +25,13 @@ void solve()
        int n; cin >> n;
        vector<int> a(n);
        vector<int> freq(MAXN, 0);
-       int r = n;
+       int mx = n;
        for(int i = 0; i < a.sz; i++){
               cin >> a[i];
               freq[a[i]]++;
-              while(freq[r] > 0){
-                     cout << r-- << " ";
+              while(freq[mx] > 0){
+                     cout << mx << " ";
+                     mx--;
               }
               cout << endl;
        }
