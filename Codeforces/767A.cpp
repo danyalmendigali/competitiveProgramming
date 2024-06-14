@@ -1,6 +1,6 @@
 #include <iostream>
-#include <string>
 #include <vector>
+#include <string>
 #include <queue>
 #include <map>
 #include <set>
@@ -16,28 +16,24 @@ using namespace std;
 #define F first
 #define S second
 #define all(a) a.begin(), a.end()
-#define Fast_Code ios::sync_with_stdio(false); cin.tie(0); cout.tie()
+#define Fast_Code ios::sync_with_stdio(false); cin.tie(0); cout.tie(0)
 
 const int MAXN = 1e5 + 5;
 
 void solve()
 {
-       cin >> n >> m;
-       for(int i = 0; i < n; i++){
-              cin >> was[i];
+       int n; cin >> n;
+       vector<int> a(n);
+       vector<int> freq(MAXN, 0);
+       int r = n;
+       for(int i = 0; i < a.sz; i++){
+              cin >> a[i];
+              freq[a[i]]++;
+              while(freq[r] > 0){
+                     cout << r-- << " ";
+              }
+              cout << endl;
        }
-       for(int i = 1; i < n; i++){
-              int x, y; cin >> x >> y;
-              x--; y--;
-              adj[x].pb(y);
-              adj[y].pb(x);
-       }
-
-       dfs(0, -1, 0);
-
-       cout << res << endl;
-
-
 
 }
 
@@ -48,6 +44,7 @@ signed main()
        t = 1;
        //cin >> t;
        while(t--) solve();
+
 
 
        return 0;
