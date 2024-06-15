@@ -1,87 +1,60 @@
-#include <vector>
-#include <set>
 #include <iostream>
-#include <map>
+#include <vector>
 #include <string>
+#include <queue>
+#include <map>
+#include <stack>
+#include <numeric>
+#include <cmath>
 #include <algorithm>
-
-#define ll long long
-#define sz size()
-#define pb(a) push_back(a)
-#define S second
-#define F first
-#define all(dp) dp.begin(), dp.end()
 
 using namespace std;
 
-const ll INF = 1e9 + 9;
-const ll MOD = 1e9 + 7;
-const ll N = 101;
-
-map<int, int> mp;
+#define ll long long
+#define sz size()
+#define F first
+#define S second
+#define pb(a) push_back(a)
+#define all(a) a.begin(), a.end()
+#define Fast_Code ios::sync_with_stdio(false); cin.tie(); cout.tie(0)
 
 void solve()
 {
-    mp.clear();
-    ll n, m;
-    cin >> n >> m;
-    vector<ll> res;
-    vector<vector<ll>> dp(m, vector<ll>(n));
+       int n, m; cin >> n >> m;
+       vector<vector<int>> a(m, vector<int>(n));
 
-    for (int i = 0; i < m; ++i) {
-        for (int j = 0; j < n; ++j) {
-            cin >> dp[i][j];
-        }
-    }
+       for(int i = 0; i < m; i++){
+              for(int j = 0; j < n; j++){
+                     cin >> a[i][j];
+              }
+       }
 
-    for(int i = 0; i < n; i++){
-        ll k = 0;
-        ll mx = 0, ind;
-        for(int j = 0; j < m; j++){
-            if(mx < dp[j][i]){
-                mx = dp[j][i];
-                ind = j;
-            }
-        }
-        res.pb(ind + 1);
-    }
+       vector<int> votes(n);
 
-    ll s = 0;
-    for(int i = 0; i < res.sz; i++){
-        mp[res[i]]++;
-        s++;
-    }
-    vector<pair<ll, ll>> p;
-    ll r = 0;
-    for(auto i : mp){
-        cout << i.F << " " << i.S << endl;
-        p.emplace_back(i.F, i.S);
-        r++;
-    }
-    ll mx = 0;
-    for(ll i = 0; i < r; i++){
-        mx = max(mx, p[i].S);
-    }
-    cout << mx << endl;
-    vector<ll> t;
-    for(ll i = 0; i < r; i++){
-        if(p[i].S == mx){
-            t.pb(i + 1);
-        }
-    }
-    sort(all(t));
-    cout << t[0] << endl;
+       for(int i = 0; i < m; i++){
+              int w = max_element(a[i].begin(), a[i].end()) - a[i].begin();
+              votes[w] += 1;
+       }
 
+       int mx = 0;
+       for(int i = 0; i < votes.sz; i++){
+              mx = max(mx, votes[i]);
+       }
+       for(int i = 0; i < votes.sz; i++){
+              if(mx == votes[i]){
+                     cout << i + 1 << endl;
+                     return;
+              }
+       }
+       cout << 1 << endl;
 }
-
 
 signed main()
 {
-    int t;
-    t = 1;
-    //cin >> t;
-    while(t--)
-        solve();
-
-    return 0;
+     Fast_Code;
+     int t;
+     t = 1;
+     //cin >> t;
+     while(t--) solve();
+     return 0;
 }
