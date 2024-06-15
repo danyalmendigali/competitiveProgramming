@@ -21,7 +21,6 @@ void solve(){
        int n; cin >> n;
        string s; cin >> s;
        int ans = 0;
-       set<int> st;
        for(int i = 0; i < s.sz; i++){
               if(s[i] == s[s.sz - i - 1] || (abs(s[i] - s[s.sz - i - 1]) == 2)){
                      ans++;

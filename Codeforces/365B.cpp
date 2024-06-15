@@ -1,55 +1,62 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <set>
-#include <map>
 #include <queue>
-
-#define ll long long
-#define sz size()
-#define pb(a) push_back(a);
-#define F first
-#define S second
-#define all(dp) dp.begin(), dp.end()
-#define _mendigali_ ios::sync_with_stdio(false);
+#include <map>
+#include <stack>
+#include <numeric>
+#include <cmath>
+#include <algorithm>
 
 using namespace std;
 
+#define ll long long
+#define sz size()
+#define F first
+#define S second
+#define pb(a) push_back(a)
+#define all(a) a.begin(), a.end()
+#define Fast_Code ios::sync_with_stdio(false); cin.tie(); cout.tie(0)
+
 void solve()
 {
-    ll n; cin >> n;
-    vector<ll> res;
-    vector<ll> dp;
-    dp.pb(0);
-    dp.pb(1);
-    ll val;
-    for(int i = 0; i < n; i++){
-        cin >> val;
-        dp.pb(val);
-    }
-    dp.pb(0); dp.pb(0);
-    int mx = 0;
-    for(int i = 0; i < n + 5; i++){
-        if(dp[i] == dp[i - 1] + dp[i - 2]){
-            mx++;
-        }
-        else{
-            res.pb(mx);
-            mx = 0;
-        }
-    }
-    for(int i = 0; i < res.sz; i++){
-        cout << res[i] << " ";
-    }
+       int n; cin >> n;
+       vector<ll> a(n);
+       for(int i = 0; i < n; i++){
+              cin >> a[i];
+       }
+       if(n == 1){
+              cout << 1 << endl;
+              return;
+       }
+
+       int mx = 2;
+       int curr = 2;
+       for(int i = 2; i < n; i++){
+              if(a[i] == a[i - 1] + a[i - 2]){
+                     curr++;
+                     mx = max(mx, curr);
+              }
+              else{
+                     curr = 2;
+              }
+       }
+
+       cout << mx << endl;
+
+
 
 }
 
+
 signed main()
 {
-    int t;
-    t = 1;
-    //cin >> t;
-    while(t--) solve();
+       Fast_Code;
+       int t;
+       t = 1;
+       //cin >> t;
+       while(t--) solve();
 
-    return 0;
+
+       return 0;
 }
