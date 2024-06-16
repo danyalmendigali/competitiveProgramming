@@ -21,23 +21,23 @@ using namespace std;
 
 void solve()
 {
-       int n; cin >> n;
-       if(n % 2 == 0){
-              cout << n / 2 << " " << n / 2 << endl;
-              return;
-       }
-
-       for(int i = 2; i <= sqrt(n); i++){
-              if(n % i == 0){
-                     cout << n / i << " " << n - (n / i) << endl;
-                     return;
-              }
-       }
+       ll n, m; cin >> n >> m;
+       ll g = n - (m - 1);
+       ll mx = (g * (g - 1)) / 2;
 
 
 
+       ll res1 = n / m;
+       ll res2 = res1 + 1;
 
-       cout << 1 << " " << n - 1 << endl;
+       ll res3 = m - (n % m);
+       ll res4 = n % m;
+
+       ll mn = res3 * (res1 * (res1 - 1)) / 2 + res4 * (res2 * (res2 - 1)) / 2;
+
+
+       cout << mn << " " << mx << endl;
+
 
 }
 
@@ -46,7 +46,7 @@ signed main()
        Fast_Code;
        int t;
        t = 1;
-       cin >> t;
+       //cin >> t;
        while(t--) solve();
 
 
