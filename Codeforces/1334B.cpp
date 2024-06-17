@@ -22,11 +22,11 @@ using namespace std;
 void solve()
 {
        int n, x; cin >> n >> x;
-       vector<int> a(n);
+       vector<ll> a(n);
        for(int i = 0; i < n; i++){
               cin >> a[i];
        }
-       vector<int> pref(n);
+       vector<ll> pref(n);
 
        sort(all(a));
        reverse(all(a));
@@ -50,7 +50,7 @@ signed main()
        Fast_Code;
        int t;
        t = 1;
-       //cin >> t;
+       cin >> t;
        while(t--) solve();
 
 
