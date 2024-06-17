@@ -1,10 +1,10 @@
 #include <iostream>
-#include <string>
 #include <vector>
+#include <string>
 #include <queue>
+#include <map>
 #include <stack>
 #include <set>
-#include <map>
 #include <numeric>
 #include <cmath>
 #include <algorithm>
@@ -22,36 +22,26 @@ using namespace std;
 void solve()
 {
        int n; cin >> n;
-       vector<string> a(n);
-       map<string, int> mp;
-       string ans = "";
+       vector<int> a(n);
        for(int i = 0; i < n; i++){
               cin >> a[i];
-              mp[a[i]]++;
        }
-
+       map<ll, int> mp;
+       ll sum1 = 0, sum2 = 0;
        for(int i = 0; i < n; i++){
-              string d = a[i];
-              string s1 = "";
-              string s2 = "";
-              int k = 0;
-              for(int j = 0; j < d.sz; j++){
-                     s1 = d.substr(0, j);
-                     s2 = d.substr(j, d.sz);
-                     if(mp[s1] >= 1 && mp[s2] >= 1){
-                            k++;
-                     }
+              if(i % 2 == 0) sum1 += a[i];
+              else sum2 += a[i];
+              if(sum1 == sum2){
+                     cout << "YES" << endl;
+                     return;
               }
-              if(k == 0){
-                     ans += '0';
+              if(mp[sum1 - sum2] >= 1){
+                     cout << "YES" << endl;
+                     return;
               }
-              else{
-                     ans += '1';
-              }
+              mp[sum1 - sum2]++;
        }
-
-       cout << ans << endl;
-
+       cout << "NO" << endl;
 }
 
 signed main()
@@ -61,6 +51,7 @@ signed main()
        t = 1;
        cin >> t;
        while(t--) solve();
+
 
 
        return 0;
