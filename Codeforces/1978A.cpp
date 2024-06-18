@@ -33,24 +33,34 @@ const ll MOD = 1e4 + 7;
 
 void solve()
 {
-       ll n, k;
-       cin >> n >> k;
-       vector<ll> a(n);
-       map<ll, ll> mp;
+       int n; cin >> n;
+       vector<int> a(n);
        for(int i = 0; i < n; i++){
               cin >> a[i];
-              if(a[i] % k != 0){
-                     mp[k - (a[i] % k)]++;
+       }
+       int mx = -1;
+       int pos1 = -1;
+       for(int i = 0; i < a.sz; i++){
+              if(a[i] > mx){
+                     mx = a[i];
+                     pos1 = i;
               }
        }
 
-       ll mx = 0;
-       for(auto i : mp){
-              ll res = (i.S - 1) * k + i.F + 1;
-              mx = max(mx, res);
+       if(pos1 != n - 1){
+              cout << a[pos1] + a[a.sz - 1] << endl;
+              return;
+       }
+       else{
+              int num_mx = 0;
+              for(int i = 0; i < a.sz - 1; i++){
+                     num_mx = max(num_mx, a[i]);
+              }
+              cout << a[pos1] + num_mx << endl;
+              return;
        }
 
-       cout << mx << endl;
+
 
 
 
