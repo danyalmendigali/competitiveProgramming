@@ -35,6 +35,19 @@ vector<pair<ll, ll>> g[N];
 ll d[N], p[N];
 set<pair<ll, ll>> st;
 
+/*
+
+void printGraph(int n) {
+    for (int i = 1; i <= n; i++) {
+        for (auto edge : g[i]) {
+            cout << " (" << edge.first << "  " << edge.second << ")";
+        }
+        cout << endl;
+    }
+}
+
+*/
+
 void solve()
 {
        int n, m; cin >> n >> m;
