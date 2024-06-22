@@ -1,79 +1,74 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <algorithm>
+#include <queue>
+#include <map>
 #include <set>
-
-#define all(a) a.begin() , a.end()
-#define optimus_prime  cin.tie(0); cout.tie(0)
-#define endl "\n"
-#define vll vector<long long>
-#define vi vector<int>
-#define FOR(i, a, b) for(int i = a; i < b; i++)
-#define pb(a) push_back(a)
-#define sz size()
-#define ll long long
-#define F first
-#define S second
+#include <stack>
+#include <numeric>
+#include <cmath>
+#include <algorithm>
 
 using namespace std;
 
-const ll N = 101;
-const ll inf = 1e9 + 9;
-const ll mod = 1e9 + 7;
+#define ll long long
+#define sz size()
+#define pb(a) push_back(a)
+#define F first
+#define S second
+#define all(a) a.begin(), a.end()
+#define Mendigali_Daniyal ios::sync_with_stdio(false); cin.tie(0); cout.tie(0)
+#define cl clear
+#define ins insert
+#define ers erase
+#define pii pair <int, int>
+#define pll pair<long long, long long>
+#define tostr(x) to_string(x)
+#define tonum(s) stoi(s)
+#define fxd(x) fixed << setprecision(x)
 
-
-ll a[N][N];
-ll countA = 0;
-
-void solve()
+void mendigali()
 {
         int n, m;
         cin >> n >> m;
-        vector<vector<int>> board(n, vector<int>(m));
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                cin >> board[i][j];
-            }
+        vector<vector<int>> a(n, vector<int>(m));
+        for(int i = 0; i < n; i++){
+              for(int j = 0; j < m; j++){
+                     cin >> a[i][j];
+              }
         }
 
-        int maxSum = 0;
+        int mx = 0;
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                for (int dx = -1; dx <= 1; dx += 2) {
-                    for (int dy = -1; dy <= 1; dy += 2) {
-                        int x = i;
-                        int y = j;
-                        int sum = 0;
-                        while (x >= 0 && x < n && y >= 0 && y < m) {
-                            sum += board[x][y];
-                            x += dx;
-                            y += dy;
-                        }
-                        maxSum = max(maxSum, sum);
-                    }
-                }
-            }
+        for(int i = 0; i < n; i++){
+              for(int j = 0; j < m; j++){
+                     int sum = 0;
+                     for(int x = i, y = j; x >= 0 && y >= 0; x--, y--) sum += a[x][y];
+                     for(int x = i + 1, y = j + 1; x < n && y < m; x++, y++) sum += a[x][y];
+
+                     for(int x = i, y = j; x >= 0 && y < m; x--, y++) sum += a[x][y];
+                     for(int x = i + 1, y = j - 1; x < n && y >= 0; x++, y--) sum += a[x][y];
+
+                     sum -= a[i][j];
+
+                     mx = max(mx, sum);
+              }
         }
-        cout << maxSum << endl;
 
 
-
+        cout << mx << endl;
 
 }
 
 signed main()
 {
-    optimus_prime;
-    int t;
-    cin >> t;
-    while(t--)
-         solve();
+       Mendigali_Daniyal;
+       int t;
+       t = 1;
+       cin >> t;
+       while(t--) mendigali();
 
 
 
-
-
-    return 0;
+       return 0;
 }
