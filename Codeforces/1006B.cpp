@@ -28,37 +28,6 @@ using namespace std;
 
 void solve()
 {
-       int n; cin >> n;
-       vector<pair<int, int>> pr(n);
-       for(int i = 0; i < n; i++){
-              cin >> pr[i].F;
-       }
-       for(int i = 0; i < n; i++){
-              cin >> pr[i].S;
-       }
-
-       vector<int> res;
-       for(int i = 0; i < n; i++){
-              res.pb(pr[i].S - pr[i].F);
-       }
-       sort(all(res));
-
-       int ans = 0, l = 0, r = n - 1;
-
-       while(l < r){
-              if(res[l] + res[r] >= 0){
-                     ans++;
-                     r--;
-                     l++;
-              }
-              else{
-                     l++;
-              }
-       }
-
-       cout << ans << endl;
-
-
 
 }
 
@@ -68,7 +37,7 @@ signed main()
        Fast_Code;
        int t;
        t = 1;
-       cin >> t;
+       //cin >> t;
        while(t--) solve();
 
 

@@ -29,36 +29,28 @@ using namespace std;
 void solve()
 {
        int n; cin >> n;
-       vector<pair<int, int>> pr(n);
+       vector<int> a(n), b(n);
        for(int i = 0; i < n; i++){
-              cin >> pr[i].F;
+              cin >> a[i];
        }
        for(int i = 0; i < n; i++){
-              cin >> pr[i].S;
+              cin >> b[i];
        }
-
-       vector<int> res;
+       map<int, int> mp;
        for(int i = 0; i < n; i++){
-              res.pb(pr[i].S - pr[i].F);
+              mp[b[i]] = i;
        }
-       sort(all(res));
-
-       int ans = 0, l = 0, r = n - 1;
-
-       while(l < r){
-              if(res[l] + res[r] >= 0){
-                     ans++;
-                     r--;
-                     l++;
+       int cnt = 0, mx = -1;
+       for(int i = 0; i < n; i++){
+              if(mp[a[i]] > mx){
+                     mx = mp[a[i]];
               }
               else{
-                     l++;
+                     cnt++;
               }
        }
 
-       cout << ans << endl;
-
-
+       cout << cnt << endl;
 
 }
 
@@ -68,7 +60,7 @@ signed main()
        Fast_Code;
        int t;
        t = 1;
-       cin >> t;
+       //cin >> t;
        while(t--) solve();
 
 
