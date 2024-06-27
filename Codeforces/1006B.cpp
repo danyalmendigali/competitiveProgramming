@@ -1,9 +1,9 @@
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
 #include <queue>
 #include <map>
-#include <stack>
+#include <set>
 #include <numeric>
 #include <cmath>
 #include <algorithm>
@@ -26,8 +26,29 @@ using namespace std;
 #define tonum(s) stoi(s)
 #define fxd(x) fixed << setprecision(x)
 
+
+const ll INF = 1e9 + 9;
+
 void solve()
 {
+       int n; cin >> n;
+       vector<int> a(n);
+       for(int i = 0; i < n; i++){
+              cin >> a[i];
+       }
+       ll res = -1e18;
+       int l = 0, r = a.sz - 1;
+       ll sum1 = 0, sum2 = 0;
+       while(l <= r + 1){
+              if(sum1 == sum2) res = max(res, sum1);
+              if(sum2 > sum1) sum1 += a[l++];
+              else sum2 += a[r--];
+       }
+
+       cout << res << endl;
+
+
+
 
 }
 
