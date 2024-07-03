@@ -24,43 +24,39 @@ using namespace std;
 void Mendigali_Daniyal()
 {
        ll n, m; cin >> n >> m;
-       vector<ll> a(n);
-       ll sum = 0;
-       for(ll i = 0; i < n; i++){
+       vector<size_t> a(n);
+       for(int i = 0; i < n; i++){
               cin >> a[i];
-              sum += a[i];
        }
 
-       ll last_set = 0;
-       ll last_ok = -1;
+       map<int, int> update;
+       int l = 0;
+       size_t sum = 0;
+       for(int i = 0; i < a.sz; i++){
+              sum += a[i];
+              update[i] = a[i];
+       }
 
        while(m--){
-                int t; cin >> t;
-                if(t == 1){
-                     int i; ll x;
-                     cin >> i >> x;
-                     i--;
-                     if(last_ok != -1){
-                            sum = last_ok * n;
-                            for(int j = 0; j < n; j++){
-                                   a[j] = last_ok;
-                            }
-                            last_ok = -1;
+              int t; cin >> t;
+              if(t == 1){
+                     ll l1, l2;
+                     cin >> l1 >> l2;
+                     if(!update.count(l1 - 1)){
+                            update[l1 - 1] = l;
                      }
-                     sum -= a[i];
-                     a[i] = x;
-                     sum += a[i];
-                }
-                if(t == 2){
-                     ll x; cin >> x;
-                     last_ok = x;
-                     last_set = x * n;
-                     sum = last_set;
-                }
-                cout << sum << endl;
-
+                     sum -= update[l1 - 1];
+                     update[l1 - 1] = l2;
+                     sum += update[l1 - 1];
+              }
+              else{
+                     int s; cin >> s;
+                     l = s;
+                     sum = s * a.sz;
+                     update.clear();
+              }
+              cout << sum << endl;
        }
-
 
 
 }
