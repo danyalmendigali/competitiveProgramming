@@ -29,24 +29,29 @@ using namespace std;
 void solve()
 {
        int n; cin >> n;
-       vector<int> a(n);
-       for(int i = 0; i < n; i++){
-              cin >> a[i];
-       }
-       vector<int> pref(a.sz);
-       pref[0] = a[0];
-       for(int i = 1; i < n; i++){
-              pref[i] = pref[i - 1] + a[i];
-       }
-       int tot = pref[pref.sz - 1];
-       int res = 0;
-       for(int i = 0; i < n - 1; i++){
-              if(pref[i] * 2 == tot){
-                     res++;
+       int r = (2 * n) + 1;
+
+       vector<string> s(r);
+       for(int i = 0; i <= n; i++){
+              string row = "";
+              for(int j = 0; j < n - i; j++){
+                     row += "  ";
               }
+              for(int j = 0; j <= i; j++){
+                     row += to_string(j);
+                     if(j < i) row += " ";
+              }
+              for(int j = i - 1; j >= 0; j--){
+                     row += " " + to_string(j);
+              }
+              s[i] = row;
+              s[r - i - 1] = row;
        }
 
-       cout << res << endl;
+
+       for(string str : s){
+              cout << str << endl;
+       }
 
 
 }
