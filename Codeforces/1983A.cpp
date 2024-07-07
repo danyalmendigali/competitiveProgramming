@@ -26,21 +26,18 @@ using namespace std;
 #define tonum(s) stoi(s)
 #define fxd(x) fixed << setprecision(x)
 
-
 void solve()
 {
        int n; cin >> n;
        vector<int> a(n);
        for(int i = 0; i < n; i++){
-              cin >> a[i];
-       }
-       vector<ll> path1(a.sz), path2(a.sz);
-       for(int i = 0; i < a.sz - 1; i++){
-              path2[i + 1] = path2[i];
-              if(i == 0 || a[i + 1] - a[i] < a[i] - a[i - 1]) path2[i + 1]++;
-              else path[i + 1] += a[i + 1] - a[i];
+              a[i] = (i + 1) * n;
        }
 
+       for(int i = 0; i < n; i++){
+              cout << a[i] << " ";
+       }
+       cout << endl << endl;
 
 
 
