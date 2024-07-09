@@ -35,7 +35,7 @@ void solve()
        vector<int> a(n);
 
 
-       unordered_set<int> st;
+       set<int> st;
        list<int> q;
 
        for(int i = 0; i < n; i++){
