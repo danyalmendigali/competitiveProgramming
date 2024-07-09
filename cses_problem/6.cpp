@@ -6,8 +6,6 @@
 #include <set>
 #include <numeric>
 #include <cmath>
-#include <list>
-#include <unordered_set>
 #include <algorithm>
 
 using namespace std;
@@ -29,32 +27,19 @@ using namespace std;
 #define fxd(x) fixed << setprecision(x)
 
 
+
+
 void solve()
 {
-       int n, k; cin >> n >> k;
-       vector<int> a(n);
+       int a, b; cin >> a >> b;
+
+       ll
+       map<int, int> mp;
 
 
-       unordered_set<int> st;
-       list<int> q;
 
-       for(int i = 0; i < n; i++){
-              cin >> a[i];
-              if(st.find(a[i]) == st.end()){
-                     if(q.sz >= k){
-                            st.erase(q.back());
-                            q.pop_back();
-                     }
-                     q.push_front(a[i]);
-                     st.insert(a[i]);
-              }
-       }
 
-       cout << q.sz << endl;
-       for(int i : q){
-              cout << i << " ";
-       }
-       cout << endl << endl;
+
 
 
 }
