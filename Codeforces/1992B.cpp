@@ -26,40 +26,35 @@ using namespace std;
 #define tonum(s) stoi(s)
 #define fxd(x) fixed << setprecision(x)
 
-
 void solve()
 {
-       ll n, k; cin >> n >> k;
-       vector<ll> a(n), b(n);
-       for(int i = 0; i < n; i++){
+       int n, k; cin >> n >> k;
+       vector<int> a(k);
+       for(int i = 0; i < a.sz; i++){
               cin >> a[i];
        }
-       for(int i = 0; i < n; i++){
-              cin >> b[i];
-       }
-
-       ll l = 0, r = 1e9;
-       ll ans = 0;
-       while(l <= r){
-              ll md = l + r >> 1;
-              ll res = 0;
-              for(int i = 0; i < n; i++){
-                     ll h = md * a[i] * 1LL;
-                     if(h > b[i]){
-                            res += h - b[i];
-                     }
-                     if(res > k) break;
-              }
-              if(res <= k){
-                     ans = md;
-                     l = md + 1;
-              }
-              else{
-                     r = md - 1;
+       int mx = -1e9;
+       int ind = -1;
+       int sum = 0, sum2 = 0;
+       for(int i = 0; i < a.sz; i++){
+              if(mx < a[i]){
+                     mx = a[i];
+                     ind = i;
               }
        }
 
-       cout << ans << endl;
+
+       for(int i = 0; i < a.sz; i++){
+              if(a[i] >= 2 && ind != i){
+                     sum += a[i] - 1;
+              }
+              if(ind != i){
+                   sum2 += a[i];
+              }
+       }
+       cout << sum  + sum2 << endl;
+
+
 
 }
 
@@ -69,7 +64,7 @@ signed main()
        Fast_Code;
        int t;
        t = 1;
-       //cin >> t;
+       cin >> t;
        while(t--) solve();
 
 
