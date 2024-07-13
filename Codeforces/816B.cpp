@@ -29,33 +29,7 @@ using namespace std;
 
 void solve()
 {
-       int n; cin >> n;
-       string s = "";
-       vector<int> a(n), b(n);
-       for(int i = 0; i < n; i++){
-              cin >> a[i];
-              b[a[i] - 1] = i;
-       }
-//       for(int i = 0; i < b.sz; i++){
-//              cout << b[i] << " ";
-//       }
-//       cout << endl << endl;
 
-
-       int l = 0, r = a.sz;
-       for(int i = 0; i < n; i++){
-              r = min(r, b[i]);
-              l = max(l, b[i]);
-
-              if(l - r == i){
-                     s += '1';
-              }
-              else{
-                     s += '0';
-              }
-       }
-
-       cout << s << endl;
 
 }
 
