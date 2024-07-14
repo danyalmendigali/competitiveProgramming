@@ -26,36 +26,31 @@ using namespace std;
 #define tonum(s) stoi(s)
 #define fxd(x) fixed << setprecision(x)
 
-
 void solve()
 {
        int n, k; cin >> n >> k;
-       ll sum = 0;
-       vector<ll> a(n);
-       for(int i = 0; i < n; i++){
-              cin >> a[i];
-              sum += a[i];
-       }
-       sort(all(a));
+       cin.ignore();
+       int l = 1, r = n;
+
        while(k--){
-              if(n < 2) break;
-              int l = a[0] + a[1];
-              int r = a[a.sz - 1];
-              if(l < r){
-                     a.erase(a.begin());
-                     a.erase(a.begin());
-                     n -= 2;
-                     sum -= l;
+              string s;
+              getline(cin, s);
+              int ind = stoi(s.substr(s.find_last_of(' ') + 1));
+
+              if(s.find("left") != string::npos){
+                     r = min(r, ind - 1);
               }
               else{
-                     sum -= r;
-                     a.erase(a.end() - 1);
-                     n--;
+                     l = max(l, ind + 1);
+              }
+
+              if(l > r){
+                     cout << -1 << endl;
+                     return;
               }
        }
 
-       cout << sum << endl;
-
+       cout << r - l + 1 << endl;
 
 
 }
@@ -66,7 +61,7 @@ signed main()
        Fast_Code;
        int t;
        t = 1;
-       cin >> t;
+       //cin >> t;
        while(t--) solve();
 
 
