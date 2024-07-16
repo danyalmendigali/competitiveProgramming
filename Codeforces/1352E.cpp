@@ -4,6 +4,7 @@
 #include <queue>
 #include <map>
 #include <set>
+#include <unordered_set>
 #include <numeric>
 #include <cmath>
 #include <algorithm>
@@ -29,26 +30,35 @@ using namespace std;
 
 void solve()
 {
-       int n, k; cin >> n >> k;
-       ll sum = 0;
-       vector<ll> a(n);
-       for(int i = 1; i <= n; i++){
+       int n; cin >> n;
+       vector<int> a(n);
+       for(int i = 0; i < n; i++){
               cin >> a[i];
-              sum += a[i];
        }
-       sort(all(a));
-
-
-       for(int i = 1; i <= n; i++){
-              a[i] += a[i - 1];
+       unordered_set<int> st;
+       vector<int> pref(n + 1, 0);
+       for(int i = 0; i < n; i++){
+              pref[i + 1] = pref[i] + a[i];
        }
 
-       ll res = 0;
-       for(int i = 0; i <= k; i++){
-              res = max(res, a[n - (k - i)] - a[2 * i]);
+       for(int l = 0; l < n; l++){
+              for(int r = l + 1; r < n; r++){
+                     int sum = pref[r + 1] - pref[l];
+                     if(sum <= n){
+                            st.insert(sum);
+                     }
+              }
        }
 
-       cout << res << endl;
+       int cnt = 0;
+       for(int i = 0; i < n; i++){
+              if(st.find(a[i]) != st.end()){
+                     cnt++;
+              }
+       }
+
+       cout << cnt << endl;
+
 
 
 
@@ -60,7 +70,7 @@ signed main()
        Fast_Code;
        int t;
        t = 1;
-       //cin >> t;
+       cin >> t;
        while(t--) solve();
 
 
