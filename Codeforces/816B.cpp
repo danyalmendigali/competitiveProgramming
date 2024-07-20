@@ -27,8 +27,41 @@ using namespace std;
 #define fxd(x) fixed << setprecision(x)
 
 
+const ll maxN = 2 * 1e5;
+
+
 void solve()
 {
+       int n, k, q;
+       cin >> n >> k >> q;
+       vector<int> a(maxN + 2, 0);
+
+       for(int i = 0; i < n; i++){
+              int l, r;
+              cin >> l >> r;
+              a[l]++;
+              a[r + 1]--;
+       }
+       vector<int> res(maxN + 1, 0);
+       int cnt = 0;
+
+       for(int i = 1; i <= maxN; i++){
+              cnt += a[i];
+              if(cnt >= k){
+                     res[i] = 1;
+              }
+       }
+
+       vector<int> pref(maxN + 1, 0);
+       for(int i = 1; i <= maxN; i++){
+              pref[i] = pref[i - 1] + res[i];
+       }
+
+       while(q--){
+              int a, b; cin >> a >> b;
+              cout << pref[b] - pref[a - 1] << endl;
+       }
+
 
 
 }
@@ -39,7 +72,7 @@ signed main()
        Fast_Code;
        int t;
        t = 1;
-       cin >> t;
+       //cin >> t;
        while(t--) solve();
 
 
