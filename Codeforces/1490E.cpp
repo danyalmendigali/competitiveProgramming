@@ -26,35 +26,9 @@ using namespace std;
 #define tonum(s) stoi(s)
 #define fxd(x) fixed << setprecision(x)
 
-
-bool ok(ll n, ll k, ll a)
-{
-       ll tot = 0, curr = a;
-       while(curr > 0){
-              tot += curr;
-              curr /= k;
-              if(tot >= n) return true;
-       }
-       return false;
-}
-
 void solve()
 {
-       int n, k; cin >> n >> k;
-       ll l = 1, r = n;
-       ll res = 0;
-       while(l <= r){
-              ll md = l + r >> 1;
-              if(ok(n, k, md)){
-                     res = md;
-                     r = md - 1;
-              }
-              else{
-                     l = md + 1;
-              }
-       }
 
-       cout << res << endl;
 
 
 

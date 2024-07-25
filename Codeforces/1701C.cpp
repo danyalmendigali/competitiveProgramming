@@ -26,27 +26,30 @@ using namespace std;
 #define tonum(s) stoi(s)
 #define fxd(x) fixed << setprecision(x)
 
-
-bool ok(ll n, ll k, ll a)
-{
-       ll tot = 0, curr = a;
-       while(curr > 0){
-              tot += curr;
-              curr /= k;
-              if(tot >= n) return true;
-       }
-       return false;
-}
-
 void solve()
 {
-       int n, k; cin >> n >> k;
-       ll l = 1, r = n;
-       ll res = 0;
+       int n, m; cin >> n >> m;
+       ll ans = 2 * m;
+       vector<int> a(m);
+       map<int, int> mp;
+       for(int i = 0; i < m; i++){
+              cin >> a[i];
+              mp[a[i]]++;
+       }
+       int l = 1, r = m * 2;
        while(l <= r){
-              ll md = l + r >> 1;
-              if(ok(n, k, md)){
-                     res = md;
+              int md = l + r >> 1;
+              ll h = 0, le = 0;
+              for(int i = 1; i <= n; i++){
+                     if(md < mp[i]){
+                          le += mp[i] - md;
+                     }
+                     else{
+                          h += (md - mp[i]) / 2;
+                     }
+              }
+              if(h >= le){
+                     ans = md;
                      r = md - 1;
               }
               else{
@@ -54,8 +57,7 @@ void solve()
               }
        }
 
-       cout << res << endl;
-
+       cout << ans << endl;
 
 
 
@@ -67,7 +69,7 @@ signed main()
        Fast_Code;
        int t;
        t = 1;
-       //cin >> t;
+       cin >> t;
        while(t--) solve();
 
 
