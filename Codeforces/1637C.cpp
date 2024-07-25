@@ -28,21 +28,33 @@ using namespace std;
 
 void solve()
 {
-       string s; cin >> s;
-       for(int i = s.sz - 1; i > 0; i--){
-              if(s[i] >= '5'){
-                     s[i - 1]++;
-                     for(int j = i; j < s.sz; j++){
-                            s[j] = '0';
-                     }
-              }
+       int n; cin >> n;
+       vector<int> a(n);
+       for(int i = 0; i < n; i++){
+              cin >> a[i];
        }
 
-       if(s[0] >= '5'){
-             s[0] = '0';
-             cout << 1;
+       if(n == 3 && a[1] % 2 != 0){
+              cout << -1 << endl;
+              return;
        }
-       cout << s << endl;
+       int cnt_e = 0, sum = 0;
+       bool ok = false;
+
+       for(int i = 1; i < n - 1; i++){
+              if(a[i] > 1) ok = true;
+              if(a[i] % 2 == 0){
+                     cnt_e++;
+              }
+              sum += (a[i] + 1) / 2;
+       }
+
+
+       if(ok) cout << sum << endl;
+
+       else cout << -1 << endl;
+
+
 
 
 }
