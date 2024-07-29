@@ -26,11 +26,12 @@ using namespace std;
 #define tonum(s) stoi(s)
 #define fxd(x) fixed << setprecision(x)
 
+
 void solve()
 {
-
-
-
+       int n; cin >> n;
+       int mn = ((n / 4) + ((n % 4) / 2));
+       cout << mn << endl;
 
 
 }
@@ -46,4 +47,4 @@ signed main()
 
 
        return 0;
-       }
+}
