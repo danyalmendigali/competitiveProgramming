@@ -50,6 +50,7 @@ void solve()
        for(int i = 0; i < n; i++){
               if(ind < a[i]){
                      res += b[ind];
+
                      ind++;
               }
               else{
