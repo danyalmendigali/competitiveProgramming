@@ -1,52 +1,67 @@
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
+#include <queue>
 #include <map>
 #include <set>
-#include <queue>
+#include <unordered_set>
+#include <numeric>
 #include <cmath>
 #include <algorithm>
+
+using namespace std;
 
 #define ll long long
 #define sz size()
 #define pb(a) push_back(a)
 #define F first
 #define S second
-#define all(dp) dp.begin(), dp.end()
-#define _mendigali_ ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+#define all(a) a.begin(), a.end()
+#define Fast_Code ios::sync_with_stdio(false); cin.tie(0); cout.tie(0)
+#define cl clear
+#define ins insert
+#define ers erase
+#define pii pair <int, int>
+#define pll pair<long long, long long>
+#define tostr(x) to_string(x)
+#define tonum(s) stoi(s)
+#define fxd(x) fixed << setprecision(x)
 
-using namespace std;
-
-set<ll> st;
-
-void precalc() {
-    for (ll i = 1; i <= 1e4; i++) {
-        st.insert(i * i * i);
-    }
-}
 
 void solve()
 {
-    ll n;
-    cin >> n;
-    for (ll i = 1; i <= 1e4; i++) {
-            if (st.find(n - i * i * i) != st.end()) {
-            cout << "YES" << endl;
-            return;
-        }
-    }
+       ll x; cin >> x;
 
-    cout << "NO\n";
+       bool ok = false;
+
+       for(ll i = 1; i * i * i < x; i++){
+              ll res = x - (i * i * i);
+              ll res2 = round(cbrt(res));
+              if(res2 > 0 && res2 * res2 * res2 == res){
+                     ok = true;
+                     break;
+              }
+       }
+
+       if(ok){
+              cout << "YES" << endl;
+       }
+       else{
+              cout << "NO" << endl;
+       }
 
 
 }
 
+
 signed main()
 {
-    int t;
-    t = 1;
-    //cin >> t;
-    while(t--) solve();
+       Fast_Code;
+       int t;
+       t = 1;
+       cin >> t;
+       while(t--) solve();
 
-    return 0;
+
+       return 0;
 }
