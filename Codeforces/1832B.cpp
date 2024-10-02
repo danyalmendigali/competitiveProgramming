@@ -29,27 +29,26 @@ using namespace std;
 
 void solve()
 {
-       int n, k; cin >> n >> k;
+       ll n, k; cin >> n >> k;
        ll sum = 0;
        vector<ll> a(n);
-       for(int i = 1; i <= n; i++){
+       vector<ll> res(a.sz + 1);
+       for(int i = 0; i < n; i++){
               cin >> a[i];
-              sum += a[i];
        }
+
        sort(all(a));
-
-
-       for(int i = 1; i <= n; i++){
-              a[i] += a[i - 1];
+       ll mx = 0;
+       for(int i = 0; i < n; i++){
+              sum += a[i];
+              res[i + 1] = res[i] + a[i];
        }
 
-       ll res = 0;
        for(int i = 0; i <= k; i++){
-              res = max(res, a[n - (k - i)] - a[2 * i]);
+              mx = max(mx, res[n - i] - res[2 * (k - i)]);
        }
 
-       cout << res << endl;
-
+       cout << mx << endl;
 
 
 }
@@ -60,7 +59,7 @@ signed main()
        Fast_Code;
        int t;
        t = 1;
-       //cin >> t;
+       cin >> t;
        while(t--) solve();
 
 
