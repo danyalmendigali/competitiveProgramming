@@ -24,32 +24,28 @@ void solve()
        for(int i = 0; i < n; i++){
               cin >> a[i];
        }
-       vector<int> pref(n);
-
-       int q; cin >> q;
-       for(int i = 0; i < q; i++){
-              int l, r;  cin >> l >> r;
-              l--; r--;
-              if(a[l] != a[r]){
-                     cout << l + 1 << " " << r + 1 << endl;
+       vector<int> res(a.sz);
+       res[0] = -1;
+       for(int i = 1; i < n; i++){
+              if(a[i] == a[i - 1]){
+                     res[i] = res[i - 1];
               }
               else{
-                     int f = -1;
-                     for(int j = l + 1; j <= r; j++){
-                            if(a[j] != a[l]){
-                                   f = j;
-                                   break;
-                            }
-                     }
-                     if(f != -1){
-                            cout << l + 1 << " " << f + 1 << endl;
-                     }
-                     else{
-                            cout << "-1 -1" << endl;
-                     }
+                     res[i] = i - 1;
               }
        }
 
+       int q; cin >> q;
+       while(q--){
+              int l, r; cin >> l >> r;
+              l--; r--;
+              if(res[r] - res[l] == 0){
+                     cout << "-1 -1" << endl;
+              }
+              else{
+                     cout << res[r] + 1 << " " << r + 1 << endl;
+              }
+       }
 
 
 }
