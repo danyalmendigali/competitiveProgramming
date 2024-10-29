@@ -21,16 +21,6 @@ using namespace std;
 
 const ll INF = 1e9 + 9;
 
-int cnt(int num)
-{
-       int cnt = 0;
-       while(num > 0){
-              cnt += (num & 1);
-              num /= 2;
-       }
-
-       return cnt;
-}
 
 void solve()
 {
@@ -39,19 +29,25 @@ void solve()
        for(int i = 0; i < m + 1; i++){
               cin >> a[i];
        }
-
-       int f = a[m];
-       int res = 0;
+       ll cnt = 0, res = 0;
 
        for(int i = 0; i < m; i++){
-              int db = cnt(a[i] ^ f);
-              if(db <= k){
+              ll num = a[i] ^ a[m];
+              cnt = 0;
+              for(int j = 0; j < n; j++){
+                     if(num & 1){
+                            cnt++;
+                     }
+                     num >>= 1;
+              }
+
+              if(cnt <= k){
                      res++;
               }
        }
 
-       cout << res << endl;
 
+       cout << res << endl;
 
 
 }
