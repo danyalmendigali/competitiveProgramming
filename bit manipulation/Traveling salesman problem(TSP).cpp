@@ -23,10 +23,10 @@ const ll INF = 1e9 + 9;
 
 void solve()
 {
-       int n, m; cin >> n >> m;
-       vector<vector<int>> a(n, vector<int>(m));
+       int n; cin >> n;
+       vector<vector<int>> a(n, vector<int>(n));
        for(int i = 0; i < n; i++){
-              for(int j = 0; j < m; j++){
+              for(int j = 0; j < n; j++){
                      cin >> a[i][j];
               }
        }
@@ -41,14 +41,22 @@ void solve()
                             continue;
                      }
                      for(int j = 0; j < n; j++){
-                            if(!(mask & (1 << j))){
+                            if(!(mask & (1 << j)) && a[i][j] != 0){
                                    d[mask ^ (1 << j)][j] = min(d[mask ^ (1 << j)][j], d[mask][i] + a[i][j]);
                             }
                      }
               }
        }
 
-       cout << d[(1 << n) - 1][0] << endl;
+       if(d[(1 << n) - 1][0] == INF){
+              cout << "No path" << endl;
+              return;
+       }
+       else{
+              cout << d[(1 << n) - 1][0] << endl;
+              return;
+       }
+
 
 
 
