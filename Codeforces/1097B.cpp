@@ -30,11 +30,10 @@ void solve()
        }
 
        int tot = 1 << n;
-       for(int i = 0; i < tot; i++){
-              string new_s(n, ' ');
+       for(int mask = 0; mask < (1 << n); mask++){
               int sum = 0;
               for(int j = 0; j < n; j++){
-                     if(i & (1 << j)){
+                     if(mask & (1 << j)){
                             sum += a[j];
                      }
                      else{
