@@ -30,25 +30,30 @@ const int N = 1e9 + 9;
 
 void solve()
 {
-       ll n; cin >> n;
-       map<ll, ll> mp;
-       ll ans = 0;
-       vector<ll> a(n);
+       int n; cin >> n;
+       vector<int> a(n);
        for(int i = 0; i < n; i++){
               cin >> a[i];
-              ll cnt = 31 - __builtin_clz(a[i]);
-              ans += mp[cnt];
-              mp[cnt]++;
        }
 
-       if(n == 1){
-              cout << 0 << endl;
-              return;
+       for(int i = 0; i <= (1 << 8); i++){
+              vector<int> b(n);
+              for(int j = 0; j < n; j++){
+                     b[j] = a[j] ^ i;
+              }
+              ll ans = b[0];
+
+              for(int j = 1; j < b.sz; j++){
+                     ans ^= b[j];
+              }
+
+              if(ans == 0){
+                     cout << i << endl;
+                     return;
+              }
        }
-       else{
-              cout << ans << endl;
-              return;
-       }
+
+       cout << -1 << endl;
 
 
 

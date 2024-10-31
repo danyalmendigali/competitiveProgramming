@@ -30,25 +30,16 @@ const int N = 1e9 + 9;
 
 void solve()
 {
-       ll n; cin >> n;
-       map<ll, ll> mp;
-       ll ans = 0;
-       vector<ll> a(n);
-       for(int i = 0; i < n; i++){
-              cin >> a[i];
-              ll cnt = 31 - __builtin_clz(a[i]);
-              ans += mp[cnt];
-              mp[cnt]++;
+       int n; cin >> n;
+       int res = 0;
+       for(int i = 0; i < 32; i++){
+              if(n & (1 << i)){
+                     res++;
+              }
        }
 
-       if(n == 1){
-              cout << 0 << endl;
-              return;
-       }
-       else{
-              cout << ans << endl;
-              return;
-       }
+       cout << res << endl;
+
 
 
 
@@ -61,7 +52,7 @@ signed main()
        Fast_Code;
        int t;
        t = 1;
-       cin >> t;
+       //cin >> t;
        while(t--) solve();
 
 

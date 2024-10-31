@@ -26,31 +26,31 @@ using namespace std;
 #define tonum(s) stoi(s)
 #define fxd(x) fixed << setprecision(x)
 
-const int N = 1e9 + 9;
+const int N = 12;
+long long d[N + 1][1 << N];
+
+bool can(int mask, int new_mask, int n) {
+    for (int i = 0; i < n; i++) {
+        if ((mask & (1 << i)) && (new_mask & (1 << i))) return false;
+    }
+    return true;
+}
+
 
 void solve()
 {
-       ll n; cin >> n;
-       map<ll, ll> mp;
-       ll ans = 0;
-       vector<ll> a(n);
-       for(int i = 0; i < n; i++){
-              cin >> a[i];
-              ll cnt = 31 - __builtin_clz(a[i]);
-              ans += mp[cnt];
-              mp[cnt]++;
+       int n, m; cin >> n >> m;
+       d[0][0] = 1;
+       for(int i = 0; i < m; i++){
+              for(int mask = 0; mask < (1 << n); mask++){
+                     for(int new_mask = 0; new_mask < (1 << n); new_mask++){
+                            if(can(mask, new_mask, n)){
+                                   d[i + 1][new_mask] += d[i][mask];
+                            }
+                     }
+              }
+              cout << d[m][0] << endl;
        }
-
-       if(n == 1){
-              cout << 0 << endl;
-              return;
-       }
-       else{
-              cout << ans << endl;
-              return;
-       }
-
-
 
 
 }
@@ -61,7 +61,7 @@ signed main()
        Fast_Code;
        int t;
        t = 1;
-       cin >> t;
+       //cin >> t;
        while(t--) solve();
 
 

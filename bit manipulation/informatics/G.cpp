@@ -26,31 +26,18 @@ using namespace std;
 #define tonum(s) stoi(s)
 #define fxd(x) fixed << setprecision(x)
 
-const int N = 1e9 + 9;
+const int N = 12;
+long long d[N + 1][1 << N];
 
 void solve()
 {
-       ll n; cin >> n;
-       map<ll, ll> mp;
-       ll ans = 0;
-       vector<ll> a(n);
-       for(int i = 0; i < n; i++){
-              cin >> a[i];
-              ll cnt = 31 - __builtin_clz(a[i]);
-              ans += mp[cnt];
-              mp[cnt]++;
+       int n; cin >> n;
+       for(int i = 7; i >= 0; i--){
+              cout << ((n >> i) & 1);
+
        }
 
-       if(n == 1){
-              cout << 0 << endl;
-              return;
-       }
-       else{
-              cout << ans << endl;
-              return;
-       }
-
-
+       cout << endl;
 
 
 }
@@ -61,7 +48,7 @@ signed main()
        Fast_Code;
        int t;
        t = 1;
-       cin >> t;
+       //cin >> t;
        while(t--) solve();
 
 

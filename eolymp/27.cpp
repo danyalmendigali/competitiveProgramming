@@ -30,26 +30,28 @@ const int N = 1e9 + 9;
 
 void solve()
 {
-       ll n; cin >> n;
-       map<ll, ll> mp;
-       ll ans = 0;
-       vector<ll> a(n);
+       int cnt0 = 0, cnt1 = 0;
+       int n; cin >> n;
        for(int i = 0; i < n; i++){
-              cin >> a[i];
-              ll cnt = 31 - __builtin_clz(a[i]);
-              ans += mp[cnt];
-              mp[cnt]++;
+              if(!(n & (1 << i))){
+                     cnt0++;
+              }
+              else{
+                     cnt1++;
+              }
        }
 
-       if(n == 1){
-              cout << 0 << endl;
-              return;
+       string str = "";
+       for(int i = 0; i < cnt1; i++){
+              str += '1';
        }
-       else{
-              cout << ans << endl;
-              return;
+       for(int i = 0; i < cnt0; i++){
+              str += '0';
        }
 
+       int mx = stoi(str, nullptr, 2);
+
+       cout << mx << endl;
 
 
 
@@ -61,7 +63,7 @@ signed main()
        Fast_Code;
        int t;
        t = 1;
-       cin >> t;
+       //cin >> t;
        while(t--) solve();
 
 
