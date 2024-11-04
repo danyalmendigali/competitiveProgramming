@@ -38,7 +38,7 @@ void solve()
                      if(a[j] != a[j]) count_r++;
                      if(a[j + 1] != a[j + 2]) count_r++;
                      if(a[j + 2] != a[j + 3]) count_r++;
-                     if(count_r == 1){
+                     if(count_r >= 1){
                             res++;
                      }
               }
