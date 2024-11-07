@@ -27,49 +27,29 @@ using namespace std;
 #define fxd(x) fixed << setprecision(x)
 
 
-const ll N = 2e5 + 7;
-vector<ll> g[N];
-vector<bool> used(N, false);
-
-
-bool ok;
-
-void dfs(ll u){
-       used[u] = true;
-       if(g[u].sz != 2){
-              ok = false;
-       }
-
-       for(auto i : g[u]){
-              if(!used[i]){
-                     dfs(i);
-              }
-       }
-}
-
 void solve()
 {
-       ll n, m; cin >> n >> m;
-       ll v, v1;
-       for(int i = 0; i < m; i++){
-              cin >> v >> v1;
-              g[v].pb(v1);
-              g[v1].pb(v);
-       }
+       int n, d, k; cin >> n >> d >> k;
 
+       vector<int> cnt(n, 0);
+       vector<int> res(n + 1, 0);
 
-       ll cnt = 0;
-       for(int i = 0; i < n; i++){
-              if(!used[i]){
-                     ok = true;
-                     dfs(i);
-                     if(ok){
-                            cnt++;
-                     }
+       vector<pair<int, int>> pr(k);
+       for(int i = 0; i < k; i++){
+              cin >> pr[i].F >> pr[i].S;
+              for(int j = pr[i].F; j <= pr[i].S; j++){
+                     cnt[j]++;
               }
        }
+       cnt.erase(cnt.begin());
 
-       cout << cnt << endl;
+
+       for(int i = 0; i < cnt.sz; i++){
+              cout << cnt[i] << " ";
+       }
+       cout << endl;
+
+
 
 
 }

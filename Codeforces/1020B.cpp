@@ -1,49 +1,66 @@
-#include <vector>
-#include <set>
 #include <iostream>
-#include <map>
+#include <vector>
 #include <string>
+#include <queue>
+#include <map>
+#include <stack>
+#include <cmath>
+#include <numeric>
 #include <algorithm>
+
+using namespace std;
 
 #define ll long long
 #define sz size()
 #define pb(a) push_back(a)
-#define S second
 #define F first
-#define all(dp) dp.begin(), dp.end()
+#define S second
+#define all(a) a.begin(), a.end()
 
-using namespace std;
+const ll N = 1e3 , mod = 1e9 + 9 ;
 
-vector<pair<int, int>> p;
-set<pair<int, int>> st;
-set<int> st1;
-vector<int> res, res1, comp;
-vector<bool> was;
+vector<ll> g[N];
+bool used[N];
+ll cnt[N];
+map<int, int> mp;
+vector<int> path;
 
-using vertex = int;
-using Edge = vector<vertex>;
-using GraphAdjList = vector<vector<vertex>>;
-using GraphPair = vector<pair<vertex, vertex>>;
 
-GraphAdjList g1;
-GraphPair g2;
-
+void dfs(int v){
+       used[v] = true;
+       for(int u : g[v]){
+              if(!used[u]){
+                     dfs(u);
+                     cnt[u]++;
+              }
+       }
+}
 
 void solve()
 {
+       int n; cin >> n;
+       int a;
+       for(int i = 0; i < n; i++){
+              cin >> a;
+              g[i].pb(a - 1);
+       }
 
 
+
+       dfs(n - 1);
 
 }
+
 signed main()
 {
-    int t;
-    t = 1;
-    //cin >> t;
-    while(t--)
-        solve();
+       ios::sync_with_stdio(false);
+       cin.tie(0);
+       cout.tie(0);
+       int t;
+       t = 1;
+       //cin >> t;
+       while(t--) solve();
 
+       return 0;
 
-
-    return 0;
 }
