@@ -27,12 +27,13 @@ vector<int> path;
 
 
 void dfs(int v){
+       if(used[v]){
+              cout << v + 1 << " ";
+              return;
+       }
        used[v] = true;
-       for(int u : g[v]){
-              if(!used[u]){
-                     dfs(u);
-                     cnt[u]++;
-              }
+       for(auto u : g[v]){
+              dfs(u);
        }
 }
 
@@ -47,8 +48,12 @@ void solve()
 
 
 
-       dfs(n - 1);
-
+      for(int i = 0; i < n; i++){
+              for(int j = 0; j < n; j++){
+                     used[j] = 0;
+              }
+              dfs(i);
+      }
 }
 
 signed main()
