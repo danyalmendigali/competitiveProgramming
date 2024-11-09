@@ -31,8 +31,8 @@ void solve()
 {
        int n, d, k; cin >> n >> d >> k;
 
-       vector<int> cnt(n, 0);
-       vector<int> res(n + 1, 0);
+       vector<int> cnt(n);
+       cnt[0] = 0;
 
        vector<pair<int, int>> pr(k);
        for(int i = 0; i < k; i++){
@@ -41,13 +41,8 @@ void solve()
                      cnt[j]++;
               }
        }
-       cnt.erase(cnt.begin());
 
 
-       for(int i = 0; i < cnt.sz; i++){
-              cout << cnt[i] << " ";
-       }
-       cout << endl;
 
 
 
