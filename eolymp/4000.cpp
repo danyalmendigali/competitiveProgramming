@@ -30,44 +30,38 @@ const ll N = 1e2;
 const ll mod = 1e9 + 7;
 const ll inf = 1e9 + 9;
 
-vector<ll> g[N];
+int cnt = 0;
+int n, num, a;
 bool used[N];
-ll c[N];	 
-vector<ll> component;
-ll a , b , n , m;
+vector<ll> g[N];
 
-void dfs(int v, int num){
-       component[v] = num;
-       for(int u : g[v]){
-              if(!component[u]){
-                     dfs(u, num);
-              }
-       }
+int dfs(int u){
+	used[u] = true;
+	for(auto v : g[u]){
+		if(!used[v]){
+			dfs(v);
+			cnt++;
+		}
+	}
+	return cnt;
 }
 
 
 void solve()
 {
-       cin >> n >> m;
-       for(int i = 0; i < n; i++){
-              for(int j = 0; j < n; j++){
-              	cin >> a;
-              	if(a != 0){
-              		g[i].pb(j);
-              		g[j].pb(i);
-              	}
-              }
-       }
-
-
-       int cnt = 0;
-       for(int v = 0; v < n; v++){
-       		if(!component[v]){
-       			dfs(v, ++cnt);
-       		}
-       }
-       
-       cout << cnt << endl;
+	cin >> n >> num;
+	for(int i = 0; i < n; i++){
+		for(int j = 0; j < n; j++){
+			cin >> a;
+			if(a == 1){
+				g[i].pb(j);
+			}
+		}
+	}
+	
+	
+	cout << dfs(num - 1) + 1 << endl;;
+	
 
 
 }
