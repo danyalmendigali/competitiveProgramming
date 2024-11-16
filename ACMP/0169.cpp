@@ -26,34 +26,37 @@ using namespace std;
 #define tonum(s) stoi(s)
 #define fxd(x) fixed << setprecision(x)
 
-const ll N = 1e2;
+const ll N = 1e3 + 9;
 const ll mod = 1e9 + 7;
 const ll inf = 1e9 + 9;
 
 vector<ll> g[N];
-bool used[N];
-bool was[N];
-int color[N];
-
-int n, m, v1, v2;
-
-void dfs(int v, int col){
-	color[v] = col;
-	for(int u : g[v]){
-		if(!color[u]){
-			dfs(u, -col);
-		}
-		else if(color[u] != -col){
-			cout << "NO" << endl;
-			exit(0);
-		}
-	}
-}
+int d[N];
 
 void solve()
 {
-	int n, m; cin >> n >> m;
-	cout << n + m << endl;
+	int n, k; cin >> n >> k;
+	int cnt = 0;
+	
+	int d = 1 << k;
+	for(int i = 0; i < d; i++){
+		int ans = n;
+		for(int j = 0; j < k; j++){
+			if(i & (1 << j)){
+				ans++;
+			}
+			else{
+				ans--;
+			}
+		}
+		
+		if(ans == 0){
+			cnt++;
+		}
+	}
+	
+	cout << cnt << endl;
+	
 	
 	
 
