@@ -18,25 +18,36 @@ using namespace std;
 #define all(a) a.begin(), a.end()
 
 const ll N = 1e5 + 1;
+const ll inf = 1e9 + 9;
 
-ll cnt[N] , a[N] , dp[N];
 
 void solve()
 {
-	ll n; cin >> n;
+	int n; cin >> n;
+	vector<int> a(n);
 	for(int i = 0; i < n; i++){
 		cin >> a[i];
-		cnt[a[i]]++;
 	}
 	
-	dp[1] = cnt[1];
-	
-	for(int i = 2; i < N; i++){
-		dp[i] = max(dp[i - 1], dp[i - 2] + (i * cnt[i]));
+	for(int i = 0; i < n - 2; i++){
+		if(a[i] < 0) break;
+		a[i + 1] -= 2 * a[i];
+		a[i + 2] -= a[i];
+		a[i] -= a[i];
 	}
 	
-	cout << dp[N - 1] << endl;
 	
+	int cnt = 0;
+	for(auto i : a){
+		if(i == 0) cnt++;
+	}
+	
+	if(cnt == n) cout << "YES" << endl;
+	else cout << "NO" << endl;
+	
+	
+	
+	 
 
 }
 
@@ -44,7 +55,7 @@ signed main()
 {
        int t;
        t = 1;
-       //cin >> t;
+       cin >> t;
        while(t--) solve();
 
 

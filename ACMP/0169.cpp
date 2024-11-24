@@ -37,6 +37,7 @@ void solve()
 {
 	int n, k; cin >> n >> k;
 	int cnt = 0;
+
 	
 	int d = 1 << k;
 	for(int i = 0; i < d; i++){

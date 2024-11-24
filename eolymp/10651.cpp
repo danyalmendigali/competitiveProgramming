@@ -21,47 +21,44 @@ const ll N = 1e5 + 1;
 const ll inf = 1e9 + 9;
 
 vector<ll> g[N];
+vector<ll> t;
 bool used[N];
-vector<int> col(N, inf);
 
-int n , a; 
+int n, m, v1, v2;
 
-void dfs(int u, int c){
-	col[u] = c; 
-	for(auto v : g[u]){
-		if(!col[v] != c) dfs(v, c);
+void dfs(int v){
+	used[v] = true;
+	for(auto u : g[v]){
+		if(!used[u]) dfs(u);
 	}
+	t.pb(v);
 }
+
+void topological_sort(){
+	for(int v = 0; v < n; v++){
+		if(!used[v]) dfs(v);
+	}
+	reverse(all(t));
+}
+
 
 void solve()
 {
-	cin >> n; 
-	int cnt = 0;
-
-	vector<int> color(n);
-	for(int i = 0; i < n - 1; i++){
-		cin >> a;
-		g[a - 1].pb(i + 1);
-	}
-	/*
-	for(int i = 0; i < n; i++){
-		cout << i<< ": ";
-		for(auto j : g[i]){
-			cout << j<< " ";
-		}
-		cout << endl;
-	}
-	*/
-	
-	for(int i = 0; i < n; i++){
-		cin >> color[i];
-		if(col[i] != color[i]){
-			dfs(i, color[i]);
-			cnt++;
-		}
+	cin >> n >> m;
+	for(int i = 0; i < m; i++){
+		cin >> v1 >> v2;
+		v1--; v2--;
+		g[v1].pb(v2);
 	}
 	
-	cout << cnt << endl;
+	for(auto v : t){
+		cout << v + 1 << " ";
+	}
+	
+	
+	
+	
+	
 	 
 
 }
